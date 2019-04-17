@@ -23,9 +23,6 @@
             android:layout_gravity="right"
             android:src="@drawable/loggin"
             />
-
-
-        </android.support.v7.widget.Toolbar>
-
+    </android.support.v7.widget.Toolbar>
 
 </android.support.constraint.ConstraintLayout>

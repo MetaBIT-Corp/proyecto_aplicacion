@@ -8,8 +8,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.List;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private ListView listView;
 
     private Toolbar myTopToolBar;
     private ImageView loggin;
@@ -30,8 +37,22 @@ public class MainActivity extends AppCompatActivity {
                 pressed();
             }
         });
-
     }
+
+    /*
+    * Para acceder a la base de datos
+    *
+    * DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+    * databaseAccess.open();
+    * .
+    * .
+    * .
+    * your code
+    * .
+    * .
+    * .
+    * databaseAccess.close();
+    */
 
 
 
