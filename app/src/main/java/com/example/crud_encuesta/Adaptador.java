@@ -20,7 +20,7 @@ public class Adaptador extends BaseAdapter {
     GrupoEmparejamiento gpo_emp;
     Activity a;
 
-    int id =0;
+    int id;
 
     public int getId() {
         return id;
