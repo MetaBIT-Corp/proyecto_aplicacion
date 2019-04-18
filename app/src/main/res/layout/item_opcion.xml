@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_opcion"
+            android:textAlignment="center"
+            android:layout_weight="0.6"
+            android:text="Opcion"/>
+
+        <CheckBox
+            android:id="@+id/cb_correcta"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Correcta"
+            android:paddingLeft="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/btn_editar"
+                android:layout_weight="1"
+                android:background="@drawable/edit"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:id="@+id/btn_eliminar"
+                android:background="@drawable/bin"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
