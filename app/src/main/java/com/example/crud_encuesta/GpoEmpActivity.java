@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -15,6 +17,7 @@ public class GpoEmpActivity extends AppCompatActivity {
     private DaoGrupoEmp dao;
     private Adaptador adaptador;
     private ArrayList<GrupoEmparejamiento> lista_gpo_emp;
+    GrupoEmparejamiento gpo_emp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +40,40 @@ public class GpoEmpActivity extends AppCompatActivity {
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog = new Dialog(GpoEmpActivity.this);
+                final Dialog dialog = new Dialog(GpoEmpActivity.this);
                 dialog.setTitle("Nuevo Grupo Emparejamiento");
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.dialogo_gpo_emp);
                 dialog.show();
+
+                final EditText area = (EditText)dialog.findViewById(R.id.area);
+                final EditText descripcion = (EditText)dialog.findViewById(R.id.descripcion);
+                Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
+                Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
+
+                agregar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try{
+
+                            gpo_emp = new GrupoEmparejamiento(Integer.parseInt(area.getText().toString()), descripcion.getText().toString());
+                            dao.insertar(gpo_emp);
+                            adaptador.notifyDataSetChanged();
+                            lista_gpo_emp = dao.verTodos();
+                            dialog.dismiss();
+
+                        }catch (Exception e){
+                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);
+                        }
+                    }
+                });
+
+                cancelar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
             }
         });
     }

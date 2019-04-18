@@ -1,5 +1,6 @@
 package com.example.crud_encuesta;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -19,7 +20,11 @@ public class DaoGrupoEmp {
     }
 
     public boolean insertar(GrupoEmparejamiento gpo_emp){
-        return true;
+
+        ContentValues contenedor = new ContentValues();
+        contenedor.put("ID_AREA",gpo_emp.getId_area());
+        contenedor.put("DESCRIPCION_GRUPO_EMP",gpo_emp.getDescripcion());
+        return (cx.insert("GRUPO_EMPAREJAMIENTO",null,contenedor)>0);
     }
 
     public boolean eliinar(int id){
