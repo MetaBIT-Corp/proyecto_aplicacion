@@ -23,13 +23,30 @@
             android:layout_gravity="right"
             android:src="@drawable/loggin"
             />
+    </android.support.v7.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="60dp">
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/agregar"
+                android:background="@drawable/plus"/>
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/lista">
+
+            </ListView>
 
         </LinearLayout>
-    </android.support.v7.widget.Toolbar>
+
+
 
 </android.support.constraint.ConstraintLayout>
