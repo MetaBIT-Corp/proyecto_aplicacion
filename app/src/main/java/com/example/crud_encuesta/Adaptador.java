@@ -56,6 +56,27 @@ public class Adaptador extends BaseAdapter {
         EditText descripcion = (EditText)v.findViewById(R.id.txt_descripcion);
         Button editar = (Button)v.findViewById(R.id.btn_editar);
         Button eliminar = (Button)v.findViewById(R.id.btn_eliminar);
+
+        area.setText(""+gpo_emp.getId_area());
+        descripcion.setText(gpo_emp.getDescripcion());
+        editar.setTag(position);
+        eliminar.setTag(position);
+
+        editar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        eliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
+
+
         return v;
     }
 }
