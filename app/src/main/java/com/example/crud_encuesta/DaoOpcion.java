@@ -41,6 +41,12 @@ public class DaoOpcion {
     public boolean editar(Opcion opcion){
         ContentValues contenedor = new ContentValues();
         contenedor.put("OPCION",opcion.getOpcion());
+
+        if (opcion.getCorrecta()==1){
+            ContentValues contenedor_alterno = new ContentValues();
+            contenedor_alterno.put("CORRECTA",0);
+            cx.update("OPCION",contenedor_alterno,null, null);
+        }
         contenedor.put("CORRECTA",opcion.getCorrecta());
         return (cx.update("OPCION",contenedor,"ID_OPCION="+opcion.getId(), null)>0);
     }

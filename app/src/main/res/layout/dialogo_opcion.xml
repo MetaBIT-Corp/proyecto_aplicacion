@@ -21,10 +21,10 @@
             android:hint="Opcion"/>
 
         <CheckBox
-            android:id="@+id/cb_correcta"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:paddingLeft="20dp"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/cb_correcta"
+            android:text="Correcta" />
 
     </LinearLayout>
 

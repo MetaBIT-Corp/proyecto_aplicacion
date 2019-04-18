@@ -94,7 +94,7 @@ public class AdaptadorOpcion extends BaseAdapter {
                 dialog.show();
 
                 final EditText texto_opcion = (EditText)dialog.findViewById(R.id.editt_opcion);
-                final CheckBox cb_correcta = (CheckBox)v.findViewById(R.id.cb_correcta);
+                final CheckBox cb_correcta = (CheckBox)dialog.findViewById(R.id.cb_correcta);
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
 
@@ -111,7 +111,7 @@ public class AdaptadorOpcion extends BaseAdapter {
                         cb_correcta.setChecked(false);
                     }
                 }catch (Exception e){
-                    Log.d("SII", "CB");
+
                 }
 
                 agregar.setOnClickListener(new View.OnClickListener() {
