@@ -36,7 +36,10 @@ public class DaoGrupoEmp {
     }
 
     public boolean editar(GrupoEmparejamiento gpo_emp){
-        return true;
+        ContentValues contenedor = new ContentValues();
+        contenedor.put("ID_AREA",gpo_emp.getId_area());
+        contenedor.put("DESCRIPCION_GRUPO_EMP",gpo_emp.getDescripcion());
+        return (cx.update("GRUPO_EMPAREJAMIENTO",contenedor,"ID_GRUPO_EMP="+gpo_emp.getId(), null)>0);
     }
 
     public ArrayList<GrupoEmparejamiento> verTodos(){

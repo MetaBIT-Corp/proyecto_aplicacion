@@ -20,6 +20,16 @@ public class Adaptador extends BaseAdapter {
     GrupoEmparejamiento gpo_emp;
     Activity a;
 
+    int id =0;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Adaptador(ArrayList<GrupoEmparejamiento> lista_gpo_emp, Activity a, DaoGrupoEmp dao) {
         this.lista_gpo_emp = lista_gpo_emp;
         this.dao = dao;
@@ -53,6 +63,7 @@ public class Adaptador extends BaseAdapter {
         }
 
         gpo_emp = lista_gpo_emp.get(position);
+        setId(gpo_emp.getId());
 
         EditText area = (EditText)v.findViewById(R.id.txt_area);
         EditText descripcion = (EditText)v.findViewById(R.id.txt_descripcion);
@@ -67,8 +78,10 @@ public class Adaptador extends BaseAdapter {
         editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Dialog dialog = new Dialog(GpoEmpActivity.this);
-                dialog.setTitle("Nuevo Grupo Emparejamiento");
+
+                final int pos = Integer.parseInt(v.getTag().toString());
+                final Dialog dialog = new Dialog(a);
+                dialog.setTitle("Editar Grupo Emparejamiento");
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.dialogo_gpo_emp);
                 dialog.show();
@@ -78,19 +91,23 @@ public class Adaptador extends BaseAdapter {
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
 
+                gpo_emp = lista_gpo_emp.get(pos);
+                area.setText(""+gpo_emp.getId_area());
+                descripcion.setText(gpo_emp.getDescripcion());
+
                 agregar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         try{
 
-                            gpo_emp = new GrupoEmparejamiento(Integer.parseInt(area.getText().toString()), descripcion.getText().toString());
-                            dao.insertar(gpo_emp);
+                            gpo_emp = new GrupoEmparejamiento(getId(),Integer.parseInt(area.getText().toString()), descripcion.getText().toString());
+                            dao.editar(gpo_emp);
                             notifyDataSetChanged();
                             lista_gpo_emp = dao.verTodos();
                             dialog.dismiss();
 
                         }catch (Exception e){
-                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);
+                            Toast.makeText(a, "Error", Toast.LENGTH_SHORT);
                         }
                     }
                 });
