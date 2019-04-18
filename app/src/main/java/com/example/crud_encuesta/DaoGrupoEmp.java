@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,8 @@ public class DaoGrupoEmp {
     public DaoGrupoEmp(Context ct){
         this.ct = ct;
         DatabaseAccess dba = DatabaseAccess.getInstance(ct);
-        cx = dba.open();;
+        cx = dba.open();
+
     }
 
     public boolean insertar(GrupoEmparejamiento gpo_emp){
@@ -41,7 +43,8 @@ public class DaoGrupoEmp {
         lista_gpo_emp.clear();
 
         try{
-            Cursor cursor = cx.rawQuery("SELECT * FROM GRUPO_EMPAREJAMIENTO", null);
+            Log.d("Error","Aqui antes");
+            Cursor cursor = cx.rawQuery("SELECT * FROM grupo_emparejamiento", null);
             cursor.moveToFirst();
 
             do {
@@ -49,14 +52,16 @@ public class DaoGrupoEmp {
             }while (cursor.moveToNext());
 
         }catch (Exception e){
-
+            Log.d("Error","Aqui despues");
         }
 
         return lista_gpo_emp;
     }
 
     public GrupoEmparejamiento verUno(int position){
+
         Cursor cursor = cx.rawQuery("SELECT * FROM GRUPO_EMPAREJAMIENTO", null);
+
         cursor.moveToPosition(position);
         gpo_emp = new GrupoEmparejamiento(cursor.getInt(cursor.getColumnIndex("ID_AREA")), cursor.getString(cursor.getColumnIndex("GRUPO_EMPAREJAMIENTO")));
         return gpo_emp;
