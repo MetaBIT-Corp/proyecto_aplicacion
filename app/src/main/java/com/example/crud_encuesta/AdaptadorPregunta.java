@@ -5,9 +5,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +16,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Adaptador extends BaseAdapter {
+public class AdaptadorPregunta extends BaseAdapter {
 
-    private ArrayList<GrupoEmparejamiento> lista_gpo_emp = new ArrayList<>();
-    DaoGrupoEmp dao;
-    GrupoEmparejamiento gpo_emp;
-    Activity a;
-
-    int id;
+    private ArrayList<Pregunta> lista_preguntas = new ArrayList<>();
+    private DaoPregunta dao;
+    private Pregunta pregunta;
+    private Activity a;
+    private int id;
 
     public int getId() {
         return id;
@@ -36,27 +32,28 @@ public class Adaptador extends BaseAdapter {
         this.id = id;
     }
 
-    public Adaptador(ArrayList<GrupoEmparejamiento> lista_gpo_emp, Activity a, DaoGrupoEmp dao) {
-        this.lista_gpo_emp = lista_gpo_emp;
+    public AdaptadorPregunta(ArrayList<Pregunta> lista_preguntas, Activity a, DaoPregunta dao) {
+        this.lista_preguntas = lista_preguntas;
         this.dao = dao;
         this.a = a;
     }
 
+
     @Override
     public int getCount() {
-        return lista_gpo_emp.size();
+        return lista_preguntas.size();
     }
 
     @Override
-    public GrupoEmparejamiento getItem(int position) {
-        gpo_emp = lista_gpo_emp.get(position);
-        return gpo_emp;
+    public Pregunta getItem(int position) {
+        pregunta = lista_preguntas.get(position);
+        return pregunta;
     }
 
     @Override
     public long getItemId(int position) {
-        gpo_emp = lista_gpo_emp.get(position);
-        return gpo_emp.getId();
+        pregunta = lista_preguntas.get(position);
+        return pregunta.getId();
     }
 
     @Override
@@ -65,37 +62,20 @@ public class Adaptador extends BaseAdapter {
 
         if(v==null){
             LayoutInflater li = (LayoutInflater)a.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = li.inflate(R.layout.item_gpo_emp,null);
+            v = li.inflate(R.layout.item_pregunta,null);
         }
 
-        gpo_emp = lista_gpo_emp.get(position);
+        pregunta = lista_preguntas.get(position);
 
-        TextView area = (TextView)v.findViewById(R.id.txt_area);
-        TextView descripcion = (TextView)v.findViewById(R.id.txt_descripcion);
+        TextView texto_pregunta = (TextView)v.findViewById(R.id.txt_pregunta);
         Button editar = (Button)v.findViewById(R.id.btn_editar);
         Button eliminar = (Button)v.findViewById(R.id.btn_eliminar);
-        Button pregunta = (Button)v.findViewById(R.id.btn_ag_preg);
+        Button opcion = (Button)v.findViewById(R.id.btn_ag_opcion);
 
-        area.setText(""+gpo_emp.getId_area());
-        descripcion.setText(gpo_emp.getDescripcion());
-        pregunta.setTag(position);
+        texto_pregunta.setText(pregunta.getPregunta());
         editar.setTag(position);
         eliminar.setTag(position);
-
-        pregunta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                final int pos = Integer.parseInt(v.getTag().toString());
-                gpo_emp = lista_gpo_emp.get(pos);
-                Bundle b = new Bundle();
-                b.putInt("id_gpo_emp",gpo_emp.getId());
-
-                Intent i = new Intent(a,PreguntaActivity.class);
-                i.putExtras(b);
-                a.startActivity(i);
-            }
-        });
+        opcion.setTag(position);
 
         editar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,31 +83,30 @@ public class Adaptador extends BaseAdapter {
 
                 final int pos = Integer.parseInt(v.getTag().toString());
                 final Dialog dialog = new Dialog(a);
-                dialog.setTitle("Editar Grupo Emparejamiento");
+                dialog.setTitle("Editar Pregunta");
                 dialog.setCancelable(true);
-                dialog.setContentView(R.layout.dialogo_gpo_emp);
+                dialog.setContentView(R.layout.dialogo_pregunta);
                 dialog.show();
 
-                final EditText area = (EditText)dialog.findViewById(R.id.area);
-                final EditText descripcion = (EditText)dialog.findViewById(R.id.descripcion);
+                final EditText texto_pregunta = (EditText)dialog.findViewById(R.id.editt_pregunta);
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
 
                 agregar.setText("Guardar");
-                gpo_emp = lista_gpo_emp.get(pos);
-                setId(gpo_emp.getId());
-                area.setText(""+gpo_emp.getId_area());
-                descripcion.setText(gpo_emp.getDescripcion());
+                pregunta = lista_preguntas.get(pos);
+                setId(pregunta.getId());
+                final int id_grupo_emp = pregunta.getId_grupo_emp();
+                texto_pregunta.setText(pregunta.getPregunta());
 
                 agregar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         try{
 
-                            gpo_emp = new GrupoEmparejamiento(getId(),Integer.parseInt(area.getText().toString()), descripcion.getText().toString());
-                            dao.editar(gpo_emp);
+                            pregunta = new Pregunta(getId(),id_grupo_emp, texto_pregunta.getText().toString());
+                            dao.editar(pregunta);
                             notifyDataSetChanged();
-                            lista_gpo_emp = dao.verTodos();
+                            lista_preguntas = dao.verTodos();
                             dialog.dismiss();
 
                         }catch (Exception e){
@@ -149,16 +128,16 @@ public class Adaptador extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 final int pos = Integer.parseInt(v.getTag().toString());
-                gpo_emp = lista_gpo_emp.get(pos);
-                setId(gpo_emp.getId());
+                pregunta = lista_preguntas.get(pos);
+                setId(pregunta.getId());
                 AlertDialog.Builder del = new AlertDialog.Builder(a);
-                del.setMessage("Esta seguro de eliminar el grupo de emparejamiento?");
+                del.setMessage("Esta seguro de eliminar la pregunta?");
                 del.setCancelable(false);
                 del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dao.eliminar(getId());
-                        lista_gpo_emp = dao.verTodos();
+                        lista_preguntas = dao.verTodos();
                         notifyDataSetChanged();
                     }
                 });
