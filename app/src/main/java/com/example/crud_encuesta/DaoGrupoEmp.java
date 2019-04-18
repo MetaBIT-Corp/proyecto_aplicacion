@@ -44,7 +44,7 @@ public class DaoGrupoEmp {
 
         try{
             Log.d("Error","Aqui antes");
-            Cursor cursor = cx.rawQuery("SELECT * FROM grupo_emparejamiento", null);
+            Cursor cursor = cx.rawQuery("SELECT * FROM GRUPO_EMPAREJAMIENTO", null);
             cursor.moveToFirst();
 
             do {
