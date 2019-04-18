@@ -9,7 +9,35 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/area"
+        android:inputType="number"
+        android:hint="Area"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/descripcion"
-        android:hint="Nombre"/>
+        android:hint="Descripcion"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar"
+            android:id="@+id/btn_agregar"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:id="@+id/btn_cancelar"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
 
 </LinearLayout>
