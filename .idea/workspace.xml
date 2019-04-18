@@ -50,7 +50,7 @@
         <counts>
           <entry key="db" value="3" />
           <entry key="gradle" value="1" />
-          <entry key="java" value="29" />
+          <entry key="java" value="30" />
           <entry key="png" value="1" />
           <entry key="xml" value="9" />
         </counts>
@@ -59,7 +59,7 @@
         <counts>
           <entry key="Groovy" value="1" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="29" />
+          <entry key="JAVA" value="30" />
           <entry key="SQL" value="3" />
           <entry key="XML" value="9" />
         </counts>
@@ -67,14 +67,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="9" />
-          <entry key="java" value="2115" />
+          <entry key="java" value="2142" />
           <entry key="xml" value="627" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="9" />
-          <entry key="JAVA" value="2115" />
+          <entry key="JAVA" value="2142" />
           <entry key="XML" value="627" />
         </counts>
       </usages-collector>
@@ -85,7 +85,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/grupo_emparejamiento.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="237">
               <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
             </state>
           </provider>
@@ -101,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DaoGrupoEmp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+            <state relative-caret-position="194">
+              <caret line="54" column="111" lean-forward="true" selection-start-line="54" selection-start-column="111" selection-end-line="54" selection-end-column="111" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -116,7 +116,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GrupoEmparejamiento.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="180">
               <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
               <folding>
                 <element signature="e#561#562#0" expanded="true" />
@@ -125,38 +125,27 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Adaptador.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GpoEmpActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+            <state relative-caret-position="147">
+              <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#611#612#0" expanded="true" />
-                <element signature="e#636#637#0" expanded="true" />
-                <element signature="e#669#670#0" expanded="true" />
-                <element signature="e#697#698#0" expanded="true" />
-                <element signature="e#745#746#0" expanded="true" />
-                <element signature="e#788#789#0" expanded="true" />
-                <element signature="e#1978#3700#0" expanded="true" />
-                <element signature="e#3164#3848#0" expanded="true" />
-                <element signature="e#3847#3848#0" expanded="true" />
-                <element signature="e#3484#3674#0" expanded="true" />
-                <element signature="e#3673#3674#0" expanded="true" />
-                <element signature="e#3699#3700#0" expanded="true" />
+                <element signature="e#1285#3007#0" expanded="true" />
+                <element signature="e#3006#3007#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GpoEmpActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Adaptador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+            <state relative-caret-position="420">
+              <caret line="119" column="49" lean-forward="true" selection-start-line="119" selection-start-column="49" selection-end-line="119" selection-end-column="49" />
               <folding>
-                <element signature="e#1285#3007#0" expanded="true" />
-                <element signature="e#3006#3007#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#4157#4158#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -188,8 +177,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DatabaseOpenHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DatabaseAccess.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GpoEmpActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DaoGrupoEmp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Adaptador.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DaoGrupoEmp.java" />
       </list>
     </option>
   </component>
@@ -420,7 +409,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/grupo_emparejamiento.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="237">
           <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
         </state>
       </provider>
@@ -455,19 +444,30 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DaoGrupoEmp.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Adaptador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+        <state relative-caret-position="420">
+          <caret line="119" column="49" lean-forward="true" selection-start-line="119" selection-start-column="49" selection-end-line="119" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4157#4158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GrupoEmparejamiento.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+          <folding>
+            <element signature="e#561#562#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GpoEmpActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
+        <state relative-caret-position="147">
           <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
           <folding>
             <element signature="e#1285#3007#0" expanded="true" />
@@ -476,34 +476,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GrupoEmparejamiento.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DaoGrupoEmp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-          <folding>
-            <element signature="e#561#562#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Adaptador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+        <state relative-caret-position="194">
+          <caret line="54" column="111" lean-forward="true" selection-start-line="54" selection-start-column="111" selection-end-line="54" selection-end-column="111" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#611#612#0" expanded="true" />
-            <element signature="e#636#637#0" expanded="true" />
-            <element signature="e#669#670#0" expanded="true" />
-            <element signature="e#697#698#0" expanded="true" />
-            <element signature="e#745#746#0" expanded="true" />
-            <element signature="e#788#789#0" expanded="true" />
-            <element signature="e#1978#3700#0" expanded="true" />
-            <element signature="e#3164#3848#0" expanded="true" />
-            <element signature="e#3847#3848#0" expanded="true" />
-            <element signature="e#3484#3674#0" expanded="true" />
-            <element signature="e#3673#3674#0" expanded="true" />
-            <element signature="e#3699#3700#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -3,6 +3,7 @@ package com.example.crud_encuesta;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,6 +93,7 @@ public class Adaptador extends BaseAdapter {
 
                 agregar.setText("Guardar");
                 gpo_emp = lista_gpo_emp.get(pos);
+                Log.d("REAL",""+gpo_emp.getId());
                 setId(gpo_emp.getId());
                 area.setText(""+gpo_emp.getId_area());
                 descripcion.setText(gpo_emp.getDescripcion());
