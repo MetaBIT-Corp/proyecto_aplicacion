@@ -1,9 +1,8 @@
 package com.example.crud_encuesta;
 
-<<<<<<< HEAD
+
 import android.content.Intent;
-=======
->>>>>>> 11cb402901805647d91d60d9d7d6be771ef0971c
+
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +16,6 @@ import android.widget.ListView;
 
 import java.util.List;
 
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
@@ -62,11 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void pressed(){
         Toast.makeText(MainActivity.this, "Has presionado el boton login", Toast.LENGTH_SHORT).show();
-<<<<<<< HEAD
         Intent i = new Intent(getApplicationContext(),GpoEmpActivity.class);
         startActivity(i);
-=======
->>>>>>> 11cb402901805647d91d60d9d7d6be771ef0971c
+
     }
 
 
