@@ -16,7 +16,8 @@ public class DaoGrupoEmp {
 
     public DaoGrupoEmp(Context ct){
         this.ct = ct;
-        cx = ct.openOrCreateDatabase(nombreBD, Context.MODE_PRIVATE, null);
+        DatabaseAccess dba = DatabaseAccess.getInstance(ct);
+        cx = dba.open();;
     }
 
     public boolean insertar(GrupoEmparejamiento gpo_emp){

@@ -38,8 +38,10 @@ public class DatabaseAccess {
     /**
      * Open the database connection.
      */
-    public void open() {
+    public SQLiteDatabase open() {
+
         this.database = openHelper.getWritableDatabase();
+        return this.database;
     }
 
     /**
