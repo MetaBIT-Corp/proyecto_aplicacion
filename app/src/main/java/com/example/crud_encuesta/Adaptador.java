@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Adaptador extends BaseAdapter {
 
-    private ArrayList<GrupoEmparejamiento> lista_gpo_emp;
+    private ArrayList<GrupoEmparejamiento> lista_gpo_emp = new ArrayList<>();
     DaoGrupoEmp dao;
     GrupoEmparejamiento gpo_emp;
     Activity a;
@@ -72,7 +72,7 @@ public class Adaptador extends BaseAdapter {
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
 

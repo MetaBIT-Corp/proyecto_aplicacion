@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DaoGrupoEmp {
 
     private SQLiteDatabase cx;
-    private ArrayList<GrupoEmparejamiento> lista_gpo_emp;
+    private ArrayList<GrupoEmparejamiento> lista_gpo_emp=new ArrayList<>();
     private GrupoEmparejamiento gpo_emp;
     private Context ct;
     private String nombreBD = "proy_aplicacion.db";

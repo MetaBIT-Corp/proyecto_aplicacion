@@ -7,8 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae7c8671-f759-4b75-9bf2-34397be33304" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Otros_documentos/script_encuesta.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Otros_documentos/script_encuesta.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Adaptador.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Adaptador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DaoGrupoEmp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DaoGrupoEmp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GpoEmpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GpoEmpActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +46,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gradle" value="1" />
-          <entry key="java" value="15" />
+          <entry key="java" value="18" />
           <entry key="png" value="1" />
           <entry key="xml" value="8" />
         </counts>
@@ -45,21 +55,21 @@
         <counts>
           <entry key="Groovy" value="1" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="15" />
+          <entry key="JAVA" value="18" />
           <entry key="XML" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="9" />
-          <entry key="java" value="1402" />
+          <entry key="java" value="1468" />
           <entry key="xml" value="627" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="9" />
-          <entry key="JAVA" value="1402" />
+          <entry key="JAVA" value="1468" />
           <entry key="XML" value="627" />
         </counts>
       </usages-collector>
@@ -78,6 +88,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
+              <folding>
+                <element signature="e#979#1122#0" expanded="true" />
+                <element signature="e#1121#1122#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialogo_gpo_emp.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
@@ -90,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_gpo_emp.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="36" column="43" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="43" />
+            <state relative-caret-position="345">
+              <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="53" />
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
@@ -100,7 +123,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GpoEmpActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="585">
               <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
               <folding>
                 <element signature="e#1256#2444#0" expanded="true" />
@@ -114,11 +137,24 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Adaptador.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#768#769#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DaoGrupoEmp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+            <state relative-caret-position="123">
+              <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#807#808#0" expanded="true" />
@@ -126,6 +162,15 @@
                 <element signature="e#891#892#0" expanded="true" />
                 <element signature="e#921#922#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DatabaseAccess.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-492">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -147,14 +192,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/grupo_emparejamiento.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_gpo_emp.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GrupoEmparejamiento.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Adaptador.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialogo_gpo_emp.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GpoEmpActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Adaptador.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DaoGrupoEmp.java" />
       </list>
     </option>
@@ -311,7 +356,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.18437026" />
@@ -322,15 +366,15 @@
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Find" />
-      <window_info anchor="bottom" id="Run" order="0" />
+      <window_info anchor="bottom" id="Run" order="0" visible="true" weight="0.3294893" />
       <window_info anchor="bottom" id="Logcat" order="1" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.10708402" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.4332784" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
@@ -364,24 +408,10 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bin.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DatabaseAccess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DatabaseOpenHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="7" column="67" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -392,14 +422,6 @@
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_gpo_emp.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="36" column="43" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="43" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/grupo_emparejamiento.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -417,16 +439,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Adaptador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="74" column="16" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GrupoEmparejamiento.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -437,9 +449,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_gpo_emp.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="53" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
+          <folding>
+            <element signature="e#979#1122#0" expanded="true" />
+            <element signature="e#1121#1122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Adaptador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#768#769#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DatabaseAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-492">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/GpoEmpActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
+        <state relative-caret-position="585">
           <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
           <folding>
             <element signature="e#1256#2444#0" expanded="true" />
@@ -454,8 +503,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/DaoGrupoEmp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+        <state relative-caret-position="123">
+          <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#807#808#0" expanded="true" />

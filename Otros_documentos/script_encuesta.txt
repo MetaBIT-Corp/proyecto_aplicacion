@@ -290,10 +290,9 @@ ID_AREA ASC
 -- Table: GRUPO_EMPAREJAMIENTO
 --==============================================================
 create table GRUPO_EMPAREJAMIENTO (
-ID_GRUPO_EMP         INTEGER              not null,
+ID_GRUPO_EMP         INTEGER              primary key autoincrement,
 ID_AREA              INTEGER              not null,
 DESCRIPCION_GRUPO_EMP VARCHAR(100),
-primary key (ID_GRUPO_EMP),
 foreign key (ID_AREA)
       references AREA (ID_AREA)
 );

@@ -1,5 +1,6 @@
 package com.example.crud_encuesta;
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void pressed(){
         Toast.makeText(MainActivity.this, "Has presionado el boton login", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(getApplicationContext(),GpoEmpActivity.class);
+        startActivity(i);
     }
 
 
