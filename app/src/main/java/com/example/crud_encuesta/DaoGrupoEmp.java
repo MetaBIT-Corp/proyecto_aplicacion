@@ -2,6 +2,7 @@ package com.example.crud_encuesta;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class DaoGrupoEmp {
         return (cx.insert("GRUPO_EMPAREJAMIENTO",null,contenedor)>0);
     }
 
-    public boolean eliinar(int id){
+    public boolean eliminar(int id){
         return true;
     }
 
@@ -37,6 +38,8 @@ public class DaoGrupoEmp {
     }
 
     public ArrayList<GrupoEmparejamiento> verTodos(){
+        lista_gpo_emp.clear();
+        Cursor cursor = cx.rawQuery("SELECT * FROM GRUPO_EMPAREJAMIENTO", null);
         return lista_gpo_emp;
     }
 
