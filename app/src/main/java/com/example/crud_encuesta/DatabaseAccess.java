@@ -4,7 +4,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+<<<<<<< HEAD
 import android.util.Log;
+=======
+>>>>>>> 11cb402901805647d91d60d9d7d6be771ef0971c
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +42,14 @@ public class DatabaseAccess {
     /**
      * Open the database connection.
      */
+<<<<<<< HEAD
     public SQLiteDatabase open() {
         this.database = openHelper.getWritableDatabase();
         return this.database;
+=======
+    public void open() {
+        this.database = openHelper.getWritableDatabase();
+>>>>>>> 11cb402901805647d91d60d9d7d6be771ef0971c
     }
 
     /**

@@ -290,9 +290,16 @@ ID_AREA ASC
 -- Table: GRUPO_EMPAREJAMIENTO
 --==============================================================
 create table GRUPO_EMPAREJAMIENTO (
+<<<<<<< HEAD
 ID_GRUPO_EMP         INTEGER              primary key autoincrement,
 ID_AREA              INTEGER              not null,
 DESCRIPCION_GRUPO_EMP VARCHAR(100),
+=======
+ID_GRUPO_EMP         INTEGER              not null,
+ID_AREA              INTEGER              not null,
+DESCRIPCION_GRUPO_EMP VARCHAR(100),
+primary key (ID_GRUPO_EMP),
+>>>>>>> 11cb402901805647d91d60d9d7d6be771ef0971c
 foreign key (ID_AREA)
       references AREA (ID_AREA)
 );
@@ -745,6 +752,7 @@ ID_TURNO ASC
 create  index RELATIONSHIP_40_FK on TURNO_CLAVE (
 ID_CLAVE ASC
 );
+<<<<<<< HEAD
 
 INSERT INTO TIPO_ITEM(ID_TIPO_ITEM,NOMBRE_TIPO_ITEM) VALUES (1, 'Opcion multiple');
 INSERT INTO TIPO_ITEM(ID_TIPO_ITEM,NOMBRE_TIPO_ITEM) VALUES (2, 'Falso/Verdadero');
@@ -784,3 +792,5 @@ INSERT INTO AREA(ID_AREA,ID_CAT_MAT,ID_PDG_DCN,ID_TIPO_ITEM,TITULO) VALUES (8,2,
 
 
 INSERT INTO GRUPO_EMPAREJAMIENTO(ID_GRUPO_EMP,ID_AREA,DESCRIPCION_GRUPO_EMP) VALUES (1,1,'Preguntas de gestion de memoria.');
+=======
+>>>>>>> 11cb402901805647d91d60d9d7d6be771ef0971c
