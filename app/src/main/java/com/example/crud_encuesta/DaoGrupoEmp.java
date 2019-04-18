@@ -32,7 +32,8 @@ public class DaoGrupoEmp {
     }
 
     public boolean eliminar(int id){
-        return true;
+
+        return (cx.delete("GRUPO_EMPAREJAMIENTO","ID_GRUPO_EMP="+id, null)>0);
     }
 
     public boolean editar(GrupoEmparejamiento gpo_emp){

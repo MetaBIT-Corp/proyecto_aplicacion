@@ -1,8 +1,10 @@
 package com.example.crud_encuesta;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -127,7 +129,27 @@ public class Adaptador extends BaseAdapter {
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final int pos = Integer.parseInt(v.getTag().toString());
+                gpo_emp = lista_gpo_emp.get(pos);
+                setId(gpo_emp.getId());
+                AlertDialog.Builder del = new AlertDialog.Builder(a);
+                del.setMessage("Esta seguro de eliminar el grupo de emparejamiento?");
+                del.setCancelable(false);
+                del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dao.eliminar(getId());
+                        lista_gpo_emp = dao.verTodos();
+                        notifyDataSetChanged();
+                    }
+                });
 
+                del.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
             }
         });
 
