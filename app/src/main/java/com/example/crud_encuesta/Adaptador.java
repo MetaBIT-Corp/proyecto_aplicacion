@@ -150,6 +150,7 @@ public class Adaptador extends BaseAdapter {
 
                     }
                 });
+                del.show();
             }
         });
 
