@@ -63,7 +63,6 @@ public class Adaptador extends BaseAdapter {
         }
 
         gpo_emp = lista_gpo_emp.get(position);
-        setId(gpo_emp.getId());
 
         EditText area = (EditText)v.findViewById(R.id.txt_area);
         EditText descripcion = (EditText)v.findViewById(R.id.txt_descripcion);
@@ -91,7 +90,9 @@ public class Adaptador extends BaseAdapter {
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
 
+                agregar.setText("Guardar");
                 gpo_emp = lista_gpo_emp.get(pos);
+                setId(gpo_emp.getId());
                 area.setText(""+gpo_emp.getId_area());
                 descripcion.setText(gpo_emp.getDescripcion());
 

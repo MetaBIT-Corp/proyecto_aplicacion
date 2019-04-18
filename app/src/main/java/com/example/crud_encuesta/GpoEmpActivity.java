@@ -51,6 +51,7 @@ public class GpoEmpActivity extends AppCompatActivity {
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
 
+                agregar.setText("Agregar");
                 agregar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
