@@ -1,6 +1,7 @@
 package com.example.crud_encuesta;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -65,7 +67,40 @@ public class Adaptador extends BaseAdapter {
         editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final Dialog dialog = new Dialog(GpoEmpActivity.this);
+                dialog.setTitle("Nuevo Grupo Emparejamiento");
+                dialog.setCancelable(true);
+                dialog.setContentView(R.layout.dialogo_gpo_emp);
+                dialog.show();
 
+                final EditText area = (EditText)dialog.findViewById(R.id.area);
+                final EditText descripcion = (EditText)dialog.findViewById(R.id.descripcion);
+                Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
+                Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
+
+                agregar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try{
+
+                            gpo_emp = new GrupoEmparejamiento(Integer.parseInt(area.getText().toString()), descripcion.getText().toString());
+                            dao.insertar(gpo_emp);
+                            notifyDataSetChanged();
+                            lista_gpo_emp = dao.verTodos();
+                            dialog.dismiss();
+
+                        }catch (Exception e){
+                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);
+                        }
+                    }
+                });
+
+                cancelar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
             }
         });
 

@@ -48,7 +48,7 @@ public class DaoGrupoEmp {
             cursor.moveToFirst();
 
             do {
-                lista_gpo_emp.add(new GrupoEmparejamiento(cursor.getInt(cursor.getColumnIndex("ID_AREA")), cursor.getString(cursor.getColumnIndex("GRUPO_EMPAREJAMIENTO"))));
+                lista_gpo_emp.add(new GrupoEmparejamiento(cursor.getInt(cursor.getColumnIndex("ID_AREA")), cursor.getString(cursor.getColumnIndex("DESCRIPCION_GRUPO_EMP"))));
             }while (cursor.moveToNext());
 
         }catch (Exception e){
