@@ -39,11 +39,26 @@ public class DaoGrupoEmp {
 
     public ArrayList<GrupoEmparejamiento> verTodos(){
         lista_gpo_emp.clear();
-        Cursor cursor = cx.rawQuery("SELECT * FROM GRUPO_EMPAREJAMIENTO", null);
+
+        try{
+            Cursor cursor = cx.rawQuery("SELECT * FROM GRUPO_EMPAREJAMIENTO", null);
+            cursor.moveToFirst();
+
+            do {
+                lista_gpo_emp.add(new GrupoEmparejamiento(cursor.getInt(cursor.getColumnIndex("ID_AREA")), cursor.getString(cursor.getColumnIndex("GRUPO_EMPAREJAMIENTO"))));
+            }while (cursor.moveToNext());
+
+        }catch (Exception e){
+
+        }
+
         return lista_gpo_emp;
     }
 
-    public GrupoEmparejamiento verUno(int id){
+    public GrupoEmparejamiento verUno(int position){
+        Cursor cursor = cx.rawQuery("SELECT * FROM GRUPO_EMPAREJAMIENTO", null);
+        cursor.moveToPosition(position);
+        gpo_emp = new GrupoEmparejamiento(cursor.getInt(cursor.getColumnIndex("ID_AREA")), cursor.getString(cursor.getColumnIndex("GRUPO_EMPAREJAMIENTO")));
         return gpo_emp;
     }
 }
