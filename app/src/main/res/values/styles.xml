@@ -17,4 +17,34 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+
+    <!-- Estilo de boton para login -->
+    <style name="btn_dark" parent="Theme.AppCompat.Light">
+        <item name="colorButtonNormal">@color/primary_dark</item>
+        <item name="colorControlHighlight">@color/primary</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- Estilo de EditText white-->
+    <style name="et_login" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">@color/icons</item>
+        <item name="android:textSize">@dimen/edittext_size_login</item>
+        <item name="android:textColorPrimary">@color/icons</item>
+        <item name="colorAccent">@color/icons</item>
+        <item name="colorControlNormal">@color/icons</item>
+        <item name="colorControlActivated">@color/icons</item>
+    </style>
+
+    <!-- Estilo de EditText black-->
+    <style name="et_create_account" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">@color/primary_text</item>
+        <item name="android:textSize">@dimen/edittext_size_login</item>
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <item name="colorAccent">@color/primary_text</item>
+        <item name="colorControlNormal">@color/primary_text</item>
+        <item name="colorControlActivated">@color/primary_text</item>
+    </style>
+
+
 </resources>

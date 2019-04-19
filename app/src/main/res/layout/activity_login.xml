@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Componentes_AP.LoginActivity"
+    android:background="@color/icons">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/logofia" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:fillViewport="true"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/ap_padding_horizontal_login">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/ap_tiluser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/et_create_account">
+
+                    <EditText
+                        android:id="@+id/ap_et_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ap_hint_username"
+                        android:text="aa16002"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/ap_tilpass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/et_create_account">
+
+                    <EditText
+                        android:id="@+id/ap_et_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ap_hint_password"
+                        android:inputType="textPassword"
+                        android:text="35tud"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <Button
+
+                    android:id="@+id/ap_bt_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ap_button_login"
+                    android:textStyle="bold"
+                    android:theme="@style/btn_dark"
+                    android:layout_marginTop="25dp"
+                    />
+
+                <TextView
+                    android:id="@+id/copyright"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ap_text_copy"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/ap_copy"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ap_padding_horizontal_login"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
