@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AreaActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/primary"
+        tools:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            android:paddingTop="16dp"
+            android:layout_gravity="right">
+
+            <ImageView
+                android:id="@+id/add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/add"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/mensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="45dp"
+        android:layout_y="358dp"
+        android:text="@string/mensaje"
+        android:textColor="@color/primary_text"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="349dp" />
+
+    <Spinner
+        android:id="@+id/items"
+        android:layout_width="181dp"
+        android:layout_height="51dp"
+        android:layout_x="196dp"
+        android:layout_y="73dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="55dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="28dp"
+        android:layout_y="88dp"
+        android:text="Seleccionar modalidad"
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="67dp" />
+
+    <ListView
+        android:id="@+id/list_areas"
+        android:layout_width="wrap_content"
+        android:layout_height="578dp"
+        android:layout_x="0dp"
+        android:layout_y="151dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="114dp" />
+
+
+</AbsoluteLayout>

@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         myTopToolBar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(myTopToolBar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         loggin = (ImageView)findViewById(R.id.log);
         loggin.setOnClickListener(new View.OnClickListener() {
@@ -62,9 +63,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void pressed(){
         Toast.makeText(MainActivity.this, "Has presionado el boton login", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(getApplicationContext(),GpoEmpActivity.class);
-        startActivity(i);
+        //Intent i = new Intent(getApplicationContext(),GpoEmpActivity.class);
+        //startActivity(i);
 
+        Intent i = new Intent(this, AreaActivity.class);
+        startActivity(i);
     }
 
     public void prueba_escuela(View view){
