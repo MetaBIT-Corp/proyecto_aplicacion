@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">crud_encuesta</string>
-<<<<<<< HEAD
     <string name="title_agregar_escuela">Enter Data\'s School</string>
     <string name="lbl_nom_escuela">School\'s Name</string>
     <string name="hint_nom">Name</string>
     <string name="title_activity_escuela">School</string>
-=======
+    <string name="agregar_string">Insert</string>
+    <string name="cancelar_string">Cancel</string>
     <string name="mensaje">There are not areas in this matter</string>
->>>>>>> 34e0d2b4f609e888e85c4df2edf16e35e7e717e2
 </resources>

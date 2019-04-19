@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">crud_encuesta</string>
-<<<<<<< HEAD
 
     <!-- TODO: Remove or change this placeholder text -->
 
@@ -10,7 +9,6 @@
     <string name="title_activity_escuela">Escuela</string>
     <string name="agregar_string">Agregar</string>
     <string name="cancelar_string">Cancelar</string>
-=======
+
     <string name="mensaje">No hay areas en esta materia</string>
->>>>>>> 34e0d2b4f609e888e85c4df2edf16e35e7e717e2
 </resources>
