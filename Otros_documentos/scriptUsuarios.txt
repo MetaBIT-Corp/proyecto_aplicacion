@@ -1,0 +1,153 @@
+--==============================================================
+-- DBMS name:      ANSI Level 2
+-- Created on:     19/04/2019 11:04:31 AM
+--==============================================================
+
+
+--==============================================================
+-- Table: USUARIO
+--==============================================================
+create table USUARIO (
+IDUSUARIO            CHAR(2)              not null,
+NOMUSUARIO           VARCHAR(30),
+CLAVE                CHAR(5),
+primary key (IDUSUARIO)
+);
+
+--==============================================================
+-- Table: OPCIONCRUD
+--==============================================================
+create table OPCIONCRUD (
+IDOPCION             CHAR(3)              not null,
+DESCOPCION           VARCHAR(30),
+NUMOPCION            INTEGER,
+primary key (IDOPCION)
+);
+
+--==============================================================
+-- Table: ACCESOUSUARIO
+--==============================================================
+create table ACCESOUSUARIO (
+IDOPCION             CHAR(3)              not null,
+IDUSUARIO            CHAR(2)              not null,
+primary key (IDOPCION, IDUSUARIO),
+foreign key (IDUSUARIO)
+      references USUARIO (IDUSUARIO),
+foreign key (IDOPCION)
+      references OPCIONCRUD (IDOPCION)
+);
+
+--==============================================================
+-- Index: ACCESOUSUARIO_PK
+--==============================================================
+create unique index ACCESOUSUARIO_PK on ACCESOUSUARIO (
+IDOPCION ASC,
+IDUSUARIO ASC
+);
+
+--==============================================================
+-- Index: ACCESOUSUARIO2_FK
+--==============================================================
+create  index ACCESOUSUARIO2_FK on ACCESOUSUARIO (
+IDUSUARIO ASC
+);
+
+--==============================================================
+-- Index: ACCESOUSUARIO_FK
+--==============================================================
+create  index ACCESOUSUARIO_FK on ACCESOUSUARIO (
+IDOPCION ASC
+);
+
+
+--==============================================================
+-- Index: OPCIONCRUD_PK
+--==============================================================
+create unique index OPCIONCRUD_PK on OPCIONCRUD (
+IDOPCION ASC
+);
+
+
+--==============================================================
+-- Table: SESIONUSUARIO
+--==============================================================
+create table SESIONUSUARIO (
+INSESION             smallint,
+IDSESION             CHAR(10)             not null,
+IDUSUARIO            CHAR(2)              not null,
+primary key (IDSESION),
+foreign key (IDUSUARIO)
+      references USUARIO (IDUSUARIO)
+);
+
+--==============================================================
+-- Index: SESIONUSUARIO_PK
+--==============================================================
+create unique index SESIONUSUARIO_PK on SESIONUSUARIO (
+IDSESION ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_2_FK
+--==============================================================
+create  index RELATIONSHIP_2_FK on SESIONUSUARIO (
+IDUSUARIO ASC
+);
+
+--==============================================================
+-- Index: USUARIO_PK
+--==============================================================
+create unique index USUARIO_PK on USUARIO (
+IDUSUARIO ASC
+);
+
+--==============================================================
+-- Table: USUARIO_PERFIL
+--==============================================================
+create table USUARIO_PERFIL (
+ID_USUARIO_PERFIL    INTEGER              not null,
+IDUSUARIO            CHAR(2)              not null,
+ID_PDG_DCN           INTEGER,
+ID_GEN_EST           INTEGER,
+primary key (ID_USUARIO_PERFIL),
+foreign key (IDUSUARIO)
+      references USUARIO (IDUSUARIO),
+foreign key (ID_PDG_DCN)
+      references PDG_DCN_DOCENTE (ID_PDG_DCN),
+foreign key (ID_GEN_EST)
+      references GEN_EST_ESTUDIANTE (ID_GEN_EST)
+);
+
+--==============================================================
+-- Index: USUARIO_PERFIL_PK
+--==============================================================
+create unique index USUARIO_PERFIL_PK on USUARIO_PERFIL (
+ID_USUARIO_PERFIL ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_3_FK
+--==============================================================
+create  index RELATIONSHIP_3_FK on USUARIO_PERFIL (
+IDUSUARIO ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_4_FK
+--==============================================================
+create  index RELATIONSHIP_4_FK on USUARIO_PERFIL (
+ID_PDG_DCN ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_5_FK
+--==============================================================
+create  index RELATIONSHIP_5_FK on USUARIO_PERFIL (
+ID_GEN_EST ASC
+);
+
+--- VOLCADO DE DATOS
+
+INSERT INTO USUARIO (IDUSUARIO, NOMUSUARIO,CLAVE) VALUES('01','cesar.gonzalez','doc3n');
+INSERT INTO USUARIO (IDUSUARIO, NOMUSUARIO,CLAVE) VALUES('02','aa16002','35tud');
+INSERT INTO USUARIO (IDUSUARIO, NOMUSUARIO,CLAVE) VALUES('03','admin','adm1n');

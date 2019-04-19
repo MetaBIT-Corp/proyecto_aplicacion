@@ -11,13 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.crud_encuesta.Componentes_AP.LoginActivity;
+import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
 import com.example.crud_encuesta.Componentes_R.EscuelaActivity;
-
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -40,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         loggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pressed();
+                Login();
             }
         });
     }
