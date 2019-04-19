@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">crud_encuesta</string>
+    <string name="title_agregar_escuela">Enter Data\'s School</string>
+    <string name="lbl_nom_escuela">School\'s Name</string>
+    <string name="hint_nom">Name</string>
+    <string name="title_activity_escuela">School</string>
 </resources>

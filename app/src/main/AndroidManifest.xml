@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OpcionActivity"></activity>
+        <activity
+            android:name=".Componentes_R.EscuelaActivity"
+            android:label="@string/title_activity_escuela"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".OpcionActivity" />
         <activity android:name=".PreguntaActivity" />
         <activity android:name=".GpoEmpActivity" />
         <activity android:name=".MainActivity">
