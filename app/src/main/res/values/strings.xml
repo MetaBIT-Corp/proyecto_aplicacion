@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">crud_encuesta</string>
+    <string name="mensaje">No hay areas en esta materia</string>
 </resources>
