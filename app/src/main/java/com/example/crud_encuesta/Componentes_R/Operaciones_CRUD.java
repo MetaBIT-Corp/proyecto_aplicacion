@@ -20,11 +20,6 @@ import java.util.ArrayList;
 
 public class Operaciones_CRUD {
 
-
-
-    public Operaciones_CRUD() {
-    }
-
     public static final Toast insertar(SQLiteDatabase db, ContentValues c, Context context, String table_name) {
         try {
             db.insert(table_name, null, c);
@@ -56,10 +51,11 @@ public class Operaciones_CRUD {
 
 
 
-    public static ArrayList<Escuela> todos(String table_name, SQLiteDatabase db, Context ct, Escuela e) {
+    public static ArrayList<Escuela> todosEscuela(String table_name, SQLiteDatabase db, Context ct) {
         ArrayList<Escuela> lista = new ArrayList<>();
         Cursor c = db.rawQuery(" SELECT * FROM " + table_name, null);
         c.moveToFirst();
+        Escuela e;
         while (c.moveToNext()) {
             e = new Escuela();
             e.setId(c.getInt(0));
@@ -68,7 +64,21 @@ public class Operaciones_CRUD {
         }
         return lista;
     }
-    /*public static final void todos(String table_name,SQLiteDatabase db, Carrera e){
 
-    }*/
+    public static ArrayList<Carrera> todosCarrera(SQLiteDatabase db, Context ct, ArrayList<Escuela> escuelas) {
+        ArrayList<Carrera> lista = new ArrayList<>();
+        Cursor cu = db.rawQuery(" SELECT * FROM " + EstructuraTablas.CARRERA_TABLA_NAME, null);
+        cu.moveToFirst();
+        Carrera c;
+        while (cu.moveToNext()) {
+            c = new Carrera();
+            c.setId(cu.getInt(0));
+            for (int i=0;i<escuelas.size();i++){
+                if(cu.getInt(1)==escuelas.get(i).getId()) c.setEscuela(escuelas.get(i));
+            }
+            c.setNombre(cu.getString(2));
+            lista.add(c);
+        }
+        return lista;
+    }
 }

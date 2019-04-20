@@ -25,7 +25,6 @@ public class EscuelaActivity extends AppCompatActivity {
     ContentValues contentValues;
     ListView listView;
     ArrayList <Escuela> listaEscuela= new ArrayList<>();
-    Escuela e;
     EscuelaAdapter adapter;
 
     @Override
@@ -39,7 +38,7 @@ public class EscuelaActivity extends AppCompatActivity {
         db=access.open();
         listView=findViewById(R.id.list_escuelas);
 
-        listaEscuela=Operaciones_CRUD.todos(EstructuraTablas.ESCUELA_TABLA_NAME,db,EscuelaActivity.this,e);
+        listaEscuela=Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME,db,EscuelaActivity.this);
         adapter= new EscuelaAdapter(EscuelaActivity.this,listaEscuela,db,this);
         listView.setAdapter(adapter);
 
@@ -63,7 +62,7 @@ public class EscuelaActivity extends AppCompatActivity {
                             contentValues.put(EstructuraTablas.COL_1,nom.getText().toString());
                             Operaciones_CRUD.insertar(db,contentValues,EscuelaActivity.this, EstructuraTablas.ESCUELA_TABLA_NAME).show();
                             db=access.openRead();
-                            listaEscuela=Operaciones_CRUD.todos(EstructuraTablas.ESCUELA_TABLA_NAME,db,EscuelaActivity.this,e);
+                            listaEscuela=Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME,db,EscuelaActivity.this);
                             adapter.setL(listaEscuela);
                         }
                     }

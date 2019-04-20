@@ -14,6 +14,7 @@ import android.widget.Toast;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.crud_encuesta.Componentes_R.CarreraActivity;
 import com.example.crud_encuesta.Componentes_R.EscuelaActivity;
 
 import java.util.List;
@@ -72,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void prueba_escuela(View view){
         Intent i= new Intent(this, EscuelaActivity.class);
+        startActivity(i);
+    }
+
+    public void prueba_carrera(View view){
+        Intent i= new Intent(this, CarreraActivity.class);
         startActivity(i);
     }
 

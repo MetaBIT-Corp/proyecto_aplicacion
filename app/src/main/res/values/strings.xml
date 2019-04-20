@@ -19,6 +19,9 @@
     <string name="men_actualizar">Se Actualizo Correctamente</string>
     <string name="men_guardar">Se Guardo Correctamente</string>
 
-    <string name="men_camp_vacios">Empty Fields</string>
+    <string name="men_camp_vacios">Campos Vacios</string>
     <string name="actualizar_string">Cambiar</string>
+    <string name="title_activity_carrera">Carrera</string>
+    <string name="title_agregar_carrera">Ingrese Datos de Carrera</string>
+    <string name="lbl_nom_carrera">Nombre Carrera</string>
 </resources>

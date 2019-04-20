@@ -15,7 +15,10 @@
     <string name="title_borrar">Erase</string>
     <string name="men_actualizar">Updated Successfully</string>
     <string name="men_guardar">Saved Successfully</string>
-    <string name="men_camp_vacios">Campos Vacios</string>
+    <string name="men_camp_vacios">Empty Fields</string>
 
     <string name="actualizar_string">Change</string>
+    <string name="title_agregar_carrera">Major\'s Data</string>
+    <string name="title_activity_carrera">Major</string>
+    <string name="lbl_nom_carrera">Major\'s Name</string>
 </resources>

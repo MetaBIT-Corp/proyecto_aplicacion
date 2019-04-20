@@ -72,7 +72,7 @@ public class EscuelaAdapter extends BaseAdapter {
                     public void onClick(DialogInterface dialog, int which) {
                         Operaciones_CRUD.eliminar(db, context, EstructuraTablas.ESCUELA_TABLA_NAME, EstructuraTablas.COL_0, id);
                         l.clear();
-                        setL(Operaciones_CRUD.todos(EstructuraTablas.ESCUELA_TABLA_NAME, db, context, new Escuela()));
+                        setL(Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME, db, context));
                     }
                 });
                 alert.setNegativeButton(R.string.cancelar_string, new DialogInterface.OnClickListener() {
@@ -105,7 +105,7 @@ public class EscuelaAdapter extends BaseAdapter {
                             contentValues.put(EstructuraTablas.COL_1,nom.getText().toString());
                             Operaciones_CRUD.actualizar(db,contentValues,context,EstructuraTablas.ESCUELA_TABLA_NAME,EstructuraTablas.COL_0,id);
                             l.clear();
-                            setL(Operaciones_CRUD.todos(EstructuraTablas.ESCUELA_TABLA_NAME, db, context, new Escuela()));
+                            setL(Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME, db, context));
                         }
                     }
                 });
