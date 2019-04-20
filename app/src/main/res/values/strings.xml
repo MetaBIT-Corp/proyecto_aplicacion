@@ -11,6 +11,7 @@
     <string name="cancelar_string">Cancelar</string>
 
     <string name="mensaje">No hay areas en esta materia</string>
+<<<<<<< HEAD
     <string name="aceptar">Aceptar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -24,4 +25,32 @@
     <string name="title_activity_carrera">Carrera</string>
     <string name="title_agregar_carrera">Ingrese Datos de Carrera</string>
     <string name="lbl_nom_carrera">Nombre Carrera</string>
+=======
+    <string name="ap_hint_username">Usuario</string>
+    <string name="ap_hint_password">Contraseña</string>
+    <string name="ap_button_login">LOGIN</string>
+    <string name="ap_text_copy">Universidad de El Salvador</string>
+    <string name="ap_buscar_evaluacion">Buscar Evaluacion</string>
+    <string name="ap_buscar_turno">Buscar turno</string>
+    <string name="ap_item">Item</string>
+    <string name="ap_title_dialogo_evaluacion">Nuevo</string>
+    <string name="ap_nombre_eva">Nombre evaluación</string>
+    <string name="ap_duracion_eva">Duración</string>
+    <string name="ap_num_intento_eva">Cantidad intentos</string>
+    <string name="ap_desc_eva">Descripción</string>
+    <string name="ap_visible_eva">Se permite retroceder?</string>
+    <string name="ap_title_dialogo_turno">Nuevo</string>
+    <string name="ap_dateinit">Inicio</string>
+    <string name="ap_datefinish">Final</string>
+    <string name="ap_pass_turno">Contraseña</string>
+    <string name="ap_visible_turno">Visible</string>
+    <string name="ap_agregar_turno">Agregar</string>
+    <string name="ap_cancelar_turno">Cancelar</string>
+    <string name="ap_agregar_eva">Agregar</string>
+    <string name="ap_cancelar_eva">Cancelar</string>
+    <string name="ap_titlevista_eva">Datos</string>
+    <string name="ap_ok">OK</string>
+    <string name="ap_retroceder">Se permite retroceder:</string>
+    <string name="ap_titlevista_turno">Nuevo</string>
+>>>>>>> 5dbac65b24514f3b0e2dd6aebc751cc52b4f7f1e
 </resources>

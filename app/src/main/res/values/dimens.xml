@@ -1,3 +1,6 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="edittext_size_login">18sp</dimen>
+    <dimen name="ap_padding_horizontal_login">32dp</dimen>
+    <dimen name="ap_copy">18sp</dimen>
 </resources>

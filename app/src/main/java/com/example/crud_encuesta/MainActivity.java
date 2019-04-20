@@ -11,13 +11,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+<<<<<<< HEAD
 import com.example.crud_encuesta.Componentes_R.CarreraActivity;
+=======
+import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
+>>>>>>> 5dbac65b24514f3b0e2dd6aebc751cc52b4f7f1e
 import com.example.crud_encuesta.Componentes_R.EscuelaActivity;
-
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         loggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pressed();
+                Login();
             }
         });
     }
@@ -76,8 +77,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+<<<<<<< HEAD
     public void prueba_carrera(View view){
         Intent i= new Intent(this, CarreraActivity.class);
+=======
+    public void Login(){
+        Intent i= new Intent(this, LoginActivity.class);
+>>>>>>> 5dbac65b24514f3b0e2dd6aebc751cc52b4f7f1e
         startActivity(i);
     }
 

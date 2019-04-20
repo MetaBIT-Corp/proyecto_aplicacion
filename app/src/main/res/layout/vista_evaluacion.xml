@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/ap_tv_titulovista_eva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:text="@string/ap_titlevista_eva"
+            android:textColor="@color/icons"
+            android:background="@color/primary"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="25dp">
+        <TextView
+            android:id="@+id/ap_tv_nombre_eva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ap_nombre_eva" />
+        <TextView
+            android:id="@+id/ap_tv_desc_eva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ap_desc_eva" />
+        <TextView
+            android:id="@+id/ap_tv_duracion_eva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ap_duracion_eva" />
+        <TextView
+            android:id="@+id/ap_tv_num_intentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ap_num_intento_eva" />
+        <TextView
+            android:id="@+id/ap_tv_retroceder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ap_retroceder" />
+
+        <Button
+            android:id="@+id/ap_btn_cerrar_vista_eva"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ap_ok"
+            style="@style/btn_dark"/>
+
+    </LinearLayout>
+
+</LinearLayout>

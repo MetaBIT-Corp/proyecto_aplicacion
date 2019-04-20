@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/ap_tv_item"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:text="@string/ap_item"
+        android:layout_weight="0.7"
+        android:textSize="18sp"/>
+
+    <ImageView
+        android:id="@+id/ap_info_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/infoazul"
+        android:layout_weight="0.1"/>
+
+    <ImageView
+        android:id="@+id/ap_editar_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pencilazul"
+        android:layout_weight="0.1"/>
+
+    <ImageView
+        android:id="@+id/ap_eliminar_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/delete"
+        android:layout_weight="0.1"/>
+
+
+
+
+</LinearLayout>
