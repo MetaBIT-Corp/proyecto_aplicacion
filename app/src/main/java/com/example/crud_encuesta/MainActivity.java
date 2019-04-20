@@ -13,7 +13,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ListView;
 
-import com.example.crud_encuesta.Componenetes_MT.AreaActivity;
+import com.example.crud_encuesta.Componentes_MT.AreaActivity;
+import com.example.crud_encuesta.Componentes_MT.ClaveActivity;
 import com.example.crud_encuesta.Componentes_R.CarreraActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
 import com.example.crud_encuesta.Componentes_R.EscuelaActivity;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login();
-                area();
+                clave();
             }
         });
     }
@@ -69,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void area(){
         Intent i = new Intent(this, AreaActivity.class);
+        startActivity(i);
+    }
+
+    public void clave(){
+        Intent i = new Intent(this, ClaveActivity.class);
         startActivity(i);
     }
 
