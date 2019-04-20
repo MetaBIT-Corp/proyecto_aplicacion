@@ -47,6 +47,11 @@ public class DatabaseAccess {
         return this.database;
 
     }
+    public SQLiteDatabase openRead() {
+        this.database = openHelper.getReadableDatabase();
+        return this.database;
+
+    }
 
     /**
      * Close the database connection.

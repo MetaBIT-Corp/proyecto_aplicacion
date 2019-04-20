@@ -8,4 +8,14 @@
     <string name="agregar_string">Insert</string>
     <string name="cancelar_string">Cancel</string>
     <string name="mensaje">There are not areas in this matter</string>
+
+    <string name="aceptar">Accept</string>
+    <string name="lbl_borrar">Are you sure?</string>
+
+    <string name="title_borrar">Erase</string>
+    <string name="men_actualizar">Updated Successfully</string>
+    <string name="men_guardar">Saved Successfully</string>
+    <string name="men_camp_vacios">Campos Vacios</string>
+
+    <string name="actualizar_string">Change</string>
 </resources>

@@ -11,4 +11,14 @@
     <string name="cancelar_string">Cancelar</string>
 
     <string name="mensaje">No hay areas en esta materia</string>
+    <string name="aceptar">Aceptar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="lbl_borrar">¿Esta seguro?</string>
+    <string name="title_borrar">Eliminar</string>
+    <string name="men_actualizar">Se Actualizo Correctamente</string>
+    <string name="men_guardar">Se Guardo Correctamente</string>
+
+    <string name="men_camp_vacios">Empty Fields</string>
+    <string name="actualizar_string">Cambiar</string>
 </resources>
