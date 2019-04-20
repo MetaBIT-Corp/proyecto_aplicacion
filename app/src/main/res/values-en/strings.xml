@@ -18,7 +18,7 @@
     <string name="men_camp_vacios">Empty Fields</string>
 
     <string name="actualizar_string">Change</string>
-    <string name="title_agregar_carrera">Major\'s Data</string>
+    <string name="title_agregar_carrera">Enter Data\'s Major</string>
     <string name="title_activity_carrera">Major</string>
     <string name="lbl_nom_carrera">Major\'s Name</string>
 
@@ -48,4 +48,15 @@
     <string name="ap_ok">OK</string>
     <string name="ap_retroceder">Se permite retroceder:</string>
     <string name="ap_titlevista_turno">Nuevo</string>
+
+    <string name="title_activity_materia">Matter</string>
+    <string name="title_agregar_materia">Enter Data\'s Subject</string>
+    <string name="lbl_nom_pensum">Pensum</string>
+    <string name="lbl_nom_cod_materia">Subject\'s Code</string>
+    <string name="lbl_nom_materia">Subject\'s Name</string>
+    <string name="lbl_electiva">Elective</string>
+    <string name="lbl_max_pregunta">Maximum of questions</string>
+    <string name="hint_max">Maximum</string>
+    <string name="hint_cod_mat">Code</string>
+    <string name="men_eliminar">Delete Succesfully</string>
 </resources>

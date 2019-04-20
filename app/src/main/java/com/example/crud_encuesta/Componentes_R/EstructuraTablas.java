@@ -13,6 +13,24 @@ public class EstructuraTablas {
     //Constantes de Tabla Carrera
     public static final String CARRERA_TABLA_NAME = "CARRERA";
     public static final String COL_0_CARRERA = "ID_CARRERA";
-    public static final String COL_1_CARRERA= "ID_ESCUELA";
-    public static final String COL_2_CARRERA= "NOMBRE_CARRERA";
+    public static final String COL_1_CARRERA = "ID_ESCUELA";
+    public static final String COL_2_CARRERA = "NOMBRE_CARRERA";
+
+    //Constantes de Tabla Materia
+    public static final String MATERIA_TABLA_NAME = "CAT_MAT_MATERIA";
+    public static final String COL_0_MATERIA = "ID_CAT_MAT";
+    public static final String COL_1_MATERIA = "ID_PENUM";
+    public static final String COL_2_MATERIA = "ID_CARRERA";
+    public static final String COL_3_MATERIA = "CODIGO_MAT";
+    public static final String COL_4_MATERIA = "NOMBRE_MAR";
+    public static final String COL_5_MATERIA = "ES_ELECTIVA";
+    public static final String COL_6_MATERIA = "MAXIMO_CANT_PREGUNTAS";
+
+    //Constantes de Tabla Pensum
+    public static final String PENSUM_TABLA_NAME = "PENSUM";
+    public static final String COL_0_PENSUM = "ID_PENUM";
+    public static final String COL_1_PENSUM = "ANIO_PENSUM";
+
+    //Constantes de Tabla Encuesta
+
 }

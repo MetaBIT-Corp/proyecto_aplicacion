@@ -28,11 +28,9 @@ public class CarreraActivity extends AppCompatActivity {
     ContentValues contentValues;
     ListView listView;
     ArrayList <Carrera> listaCarreras= new ArrayList<>();
-    Carrera e;
-    CarreraAdapter adapter;
     ArrayList<String> listSpinner=new ArrayList<>();
-
     ArrayList<Escuela> listaEscuelas= new ArrayList<>();
+    CarreraAdapter adapter;
 
     int id_escuela=0;
 
@@ -46,12 +44,12 @@ public class CarreraActivity extends AppCompatActivity {
         access=DatabaseAccess.getInstance(CarreraActivity.this);
         db=access.open();
 
-        listaEscuelas=Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME,db,CarreraActivity.this);
+        listaEscuelas=Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME,db);
 
-        listaCarreras=Operaciones_CRUD.todosCarrera(db,CarreraActivity.this,listaEscuelas);
+        listaCarreras=Operaciones_CRUD.todosCarrera(db,listaEscuelas);
         adapter=new CarreraAdapter(CarreraActivity.this,listaCarreras,db,this,listaEscuelas);
 
-        listView=findViewById(R.id.list_escuelas);
+        listView=findViewById(R.id.list_view_base);
         listView.setAdapter(adapter);
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -92,7 +90,7 @@ public class CarreraActivity extends AppCompatActivity {
                             contentValues.put(EstructuraTablas.COL_1_CARRERA,id_escuela);
                             contentValues.put(EstructuraTablas.COL_2_CARRERA,nom.getText().toString());
                             Operaciones_CRUD.insertar(db,contentValues,CarreraActivity.this,EstructuraTablas.CARRERA_TABLA_NAME).show();
-                            listaCarreras=Operaciones_CRUD.todosCarrera(db,CarreraActivity.this,listaEscuelas);
+                            listaCarreras=Operaciones_CRUD.todosCarrera(db,listaEscuelas);
                             adapter.setL(listaCarreras);
                             id_escuela=-1;
                         }

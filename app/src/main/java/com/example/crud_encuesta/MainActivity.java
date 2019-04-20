@@ -16,6 +16,9 @@ import android.widget.ListView;
 import com.example.crud_encuesta.Componentes_R.CarreraActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
 import com.example.crud_encuesta.Componentes_R.EscuelaActivity;
+import com.example.crud_encuesta.Componentes_R.MateriaActivity;
+
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -76,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void prueba_carrera(View view) {
         Intent i = new Intent(this, CarreraActivity.class);
+        startActivity(i);
+    }
+
+    public void prueba_materia(View view) {
+        Intent i = new Intent(this, MateriaActivity.class);
         startActivity(i);
     }
 

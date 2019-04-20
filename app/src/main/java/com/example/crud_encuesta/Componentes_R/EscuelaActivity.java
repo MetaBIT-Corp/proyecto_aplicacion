@@ -36,9 +36,9 @@ public class EscuelaActivity extends AppCompatActivity {
 
         access=DatabaseAccess.getInstance(EscuelaActivity.this);
         db=access.open();
-        listView=findViewById(R.id.list_escuelas);
+        listView=findViewById(R.id.list_view_base);
 
-        listaEscuela=Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME,db,EscuelaActivity.this);
+        listaEscuela=Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME,db);
         adapter= new EscuelaAdapter(EscuelaActivity.this,listaEscuela,db,this);
         listView.setAdapter(adapter);
 
@@ -62,7 +62,7 @@ public class EscuelaActivity extends AppCompatActivity {
                             contentValues.put(EstructuraTablas.COL_1,nom.getText().toString());
                             Operaciones_CRUD.insertar(db,contentValues,EscuelaActivity.this, EstructuraTablas.ESCUELA_TABLA_NAME).show();
                             db=access.openRead();
-                            listaEscuela=Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME,db,EscuelaActivity.this);
+                            listaEscuela=Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME,db);
                             adapter.setL(listaEscuela);
                         }
                     }

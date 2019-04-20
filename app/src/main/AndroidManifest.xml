@@ -9,13 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Componentes_AP.Activities.TurnoActivity"></activity>
+        <activity
+            android:name=".Componentes_R.MateriaActivity"
+            android:label="@string/title_activity_materia"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Componentes_AP.Activities.TurnoActivity" />
         <activity android:name=".Componentes_AP.Activities.EvaluacionActivity" />
         <activity android:name=".Componentes_AP.Activities.LoginActivity" />
         <activity
             android:name=".Componentes_R.CarreraActivity"
             android:label="@string/title_activity_carrera"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Componentes_R.EscuelaActivity"
             android:label="@string/title_activity_escuela"

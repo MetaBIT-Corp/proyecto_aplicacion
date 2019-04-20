@@ -52,4 +52,14 @@
     <string name="ap_ok">OK</string>
     <string name="ap_retroceder">Se permite retroceder:</string>
     <string name="ap_titlevista_turno">Nuevo</string>
+    <string name="title_activity_materia">Materia</string>
+    <string name="title_agregar_materia">Agregar Materia</string>
+    <string name="lbl_nom_pensum">Pensum</string>
+    <string name="lbl_nom_cod_materia">Codigo Materia</string>
+    <string name="lbl_nom_materia">Nombre Materia</string>
+    <string name="lbl_electiva">Electiva</string>
+    <string name="lbl_max_pregunta">Maximo Preguntas</string>
+    <string name="hint_max">Maximo</string>
+    <string name="hint_cod_mat">Codigo</string>
+    <string name="men_eliminar">Se Elimino Correctamente</string>
 </resources>

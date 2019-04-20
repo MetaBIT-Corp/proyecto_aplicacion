@@ -81,7 +81,7 @@ public class CarreraAdapter extends BaseAdapter {
                     public void onClick(DialogInterface dialog, int which) {
                         Operaciones_CRUD.eliminar(db, context, EstructuraTablas.CARRERA_TABLA_NAME, EstructuraTablas.COL_0_CARRERA, id);
                         l.clear();
-                        setL(Operaciones_CRUD.todosCarrera(db, context, escuelas));
+                        setL(Operaciones_CRUD.todosCarrera(db, escuelas));
                     }
                 });
                 alert.setNegativeButton(R.string.cancelar_string, new DialogInterface.OnClickListener() {
@@ -138,7 +138,7 @@ public class CarreraAdapter extends BaseAdapter {
                             contentValues.put(EstructuraTablas.COL_2_CARRERA, nom.getText().toString());
                             Operaciones_CRUD.actualizar(db, contentValues, context, EstructuraTablas.CARRERA_TABLA_NAME, EstructuraTablas.COL_0_CARRERA, id).show();
                             l.clear();
-                            setL(Operaciones_CRUD.todosCarrera(db,context,escuelas));
+                            setL(Operaciones_CRUD.todosCarrera(db,escuelas));
                         }
                     }
                 });
