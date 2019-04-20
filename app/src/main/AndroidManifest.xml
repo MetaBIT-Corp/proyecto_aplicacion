@@ -9,10 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity
             android:name=".Componentes_R.MateriaActivity"
             android:label="@string/title_activity_materia"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+=======
+        <activity android:name=".Componentes_MT.ClaveActivity"></activity>
+>>>>>>> df09f76388b22ce83f95706373ef043c58d77505
         <activity android:name=".Componentes_AP.Activities.TurnoActivity" />
         <activity android:name=".Componentes_AP.Activities.EvaluacionActivity" />
         <activity android:name=".Componentes_AP.Activities.LoginActivity" />
@@ -24,7 +28,7 @@
             android:name=".Componentes_R.EscuelaActivity"
             android:label="@string/title_activity_escuela"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AreaActivity" />
+        <activity android:name=".Componentes_MT.AreaActivity" />
         <activity android:name=".OpcionActivity" />
         <activity android:name=".PreguntaActivity" />
         <activity android:name=".GpoEmpActivity" />

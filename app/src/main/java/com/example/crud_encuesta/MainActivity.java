@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ListView;
 
+import com.example.crud_encuesta.Componentes_MT.AreaActivity;
+import com.example.crud_encuesta.Componentes_MT.ClaveActivity;
 import com.example.crud_encuesta.Componentes_R.CarreraActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
 import com.example.crud_encuesta.Componentes_R.EscuelaActivity;
@@ -41,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         loggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login();
+                //Login();
+                clave();
             }
         });
     }
@@ -64,10 +67,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void pressed() {
         Toast.makeText(MainActivity.this, "Has presionado el boton login", Toast.LENGTH_SHORT).show();
-        //Intent i = new Intent(getApplicationContext(),GpoEmpActivity.class);
-        //startActivity(i);
+        Intent i = new Intent(getApplicationContext(),GpoEmpActivity.class);
+        startActivity(i);
+    }
 
+    public void area(){
         Intent i = new Intent(this, AreaActivity.class);
+        startActivity(i);
+    }
+
+    public void clave(){
+        Intent i = new Intent(this, ClaveActivity.class);
         startActivity(i);
     }
 

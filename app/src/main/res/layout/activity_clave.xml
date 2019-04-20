@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Componentes_MT.AreaActivity">
+    tools:context=".Componentes_MT.ClaveActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar7"
@@ -28,7 +28,7 @@
             android:paddingBottom="20dp">
 
             <ImageView
-                android:id="@+id/add"
+                android:id="@+id/add_clave"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@drawable/add" />
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_x="45dp"
         android:layout_y="358dp"
-        android:text="@string/mensaje"
+        android:text="No hay claves por mostrar"
         android:textColor="@color/primary_text"
         android:textSize="24sp"
         android:visibility="invisible"
@@ -53,47 +53,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <Spinner
-        android:id="@+id/items"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginRight="29dp"
-        android:layout_x="196dp"
-        android:layout_y="73dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar7"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginLeft="31dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_x="28dp"
-        android:layout_y="88dp"
-        android:text="Seleccionar modalidad"
-        app:layout_constraintEnd_toStartOf="@+id/items"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/items" />
 
     <ListView
-        android:id="@+id/list_areas"
+        android:id="@+id/list_claves"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="16dp"
-        android:layout_x="0dp"
-        android:layout_y="151dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="102dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/items" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
