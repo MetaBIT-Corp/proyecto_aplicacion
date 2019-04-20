@@ -11,7 +11,7 @@
     <string name="cancelar_string">Cancelar</string>
 
     <string name="mensaje">No hay areas en esta materia</string>
-<<<<<<< HEAD
+
     <string name="aceptar">Aceptar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -25,7 +25,7 @@
     <string name="title_activity_carrera">Carrera</string>
     <string name="title_agregar_carrera">Ingrese Datos de Carrera</string>
     <string name="lbl_nom_carrera">Nombre Carrera</string>
-=======
+
     <string name="ap_hint_username">Usuario</string>
     <string name="ap_hint_password">Contraseña</string>
     <string name="ap_button_login">LOGIN</string>
@@ -52,5 +52,4 @@
     <string name="ap_ok">OK</string>
     <string name="ap_retroceder">Se permite retroceder:</string>
     <string name="ap_titlevista_turno">Nuevo</string>
->>>>>>> 5dbac65b24514f3b0e2dd6aebc751cc52b4f7f1e
 </resources>

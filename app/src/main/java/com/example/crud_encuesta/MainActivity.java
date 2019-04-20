@@ -13,11 +13,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ListView;
 
-<<<<<<< HEAD
 import com.example.crud_encuesta.Componentes_R.CarreraActivity;
-=======
 import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
->>>>>>> 5dbac65b24514f3b0e2dd6aebc751cc52b4f7f1e
 import com.example.crud_encuesta.Componentes_R.EscuelaActivity;
 
 
@@ -33,11 +30,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
-        myTopToolBar = (Toolbar)findViewById(R.id.toolbar);
+        myTopToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myTopToolBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        loggin = (ImageView)findViewById(R.id.log);
+        loggin = (ImageView) findViewById(R.id.log);
         loggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,23 +44,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-    * Para acceder a la base de datos
-    *
-    * DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
-    * databaseAccess.open();
-    * .
-    * .
-    * .
-    * your code
-    * .
-    * .
-    * .
-    * databaseAccess.close();
-    */
+     * Para acceder a la base de datos
+     *
+     * DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+     * databaseAccess.open();
+     * .
+     * .
+     * .
+     * your code
+     * .
+     * .
+     * .
+     * databaseAccess.close();
+     */
 
 
-
-    public void pressed(){
+    public void pressed() {
         Toast.makeText(MainActivity.this, "Has presionado el boton login", Toast.LENGTH_SHORT).show();
         //Intent i = new Intent(getApplicationContext(),GpoEmpActivity.class);
         //startActivity(i);
@@ -72,20 +68,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void prueba_escuela(View view){
-        Intent i= new Intent(this, EscuelaActivity.class);
+    public void prueba_escuela(View view) {
+        Intent i = new Intent(this, EscuelaActivity.class);
         startActivity(i);
     }
 
-<<<<<<< HEAD
-    public void prueba_carrera(View view){
-        Intent i= new Intent(this, CarreraActivity.class);
-=======
+
+    public void prueba_carrera(View view) {
+        Intent i = new Intent(this, CarreraActivity.class);
+        startActivity(i);
+    }
+
     public void Login(){
-        Intent i= new Intent(this, LoginActivity.class);
->>>>>>> 5dbac65b24514f3b0e2dd6aebc751cc52b4f7f1e
+        Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
-
-
 }
