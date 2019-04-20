@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ListView;
 
+import com.example.crud_encuesta.Componenetes_MT.AreaActivity;
 import com.example.crud_encuesta.Componentes_R.CarreraActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
 import com.example.crud_encuesta.Componentes_R.EscuelaActivity;
