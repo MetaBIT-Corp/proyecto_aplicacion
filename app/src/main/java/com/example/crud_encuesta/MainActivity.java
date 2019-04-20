@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         loggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login();
+                //Login();
+                area();
             }
         });
     }
@@ -61,9 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void pressed() {
         Toast.makeText(MainActivity.this, "Has presionado el boton login", Toast.LENGTH_SHORT).show();
-        //Intent i = new Intent(getApplicationContext(),GpoEmpActivity.class);
-        //startActivity(i);
+        Intent i = new Intent(getApplicationContext(),GpoEmpActivity.class);
+        startActivity(i);
+    }
 
+    public void area(){
         Intent i = new Intent(this, AreaActivity.class);
         startActivity(i);
     }

@@ -11,7 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -19,7 +18,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class AreaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -27,6 +25,8 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
     private Spinner spItems;
     private ArrayAdapter<String> comboAdapter;
     private List <String> items;
+    private int[] iconos={R.drawable.edit1, R.drawable.delete};
+
     private String[] valorItem = new String[]{"Opción múltiple","V/F","Emparejamient","Resouesta corta", "Ordenamiento"};
     private ImageView add;
     private EditText mArea;
@@ -41,8 +41,8 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_area);
 
         cargarItems();
-        r_area();
-
+        listView = (ListView)findViewById(R.id.list_areas);
+        listView.setAdapter(new AreaAdapter(this, r_area(), ides(), iconos) );
         add = (ImageView)findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,12 +93,14 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void agregar_area(){
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(AreaActivity.this);
-        final View mView =getLayoutInflater().inflate(R.layout.area_agregar, null);
+        final View mView = getLayoutInflater().inflate(R.layout.modal_area, null);
 
+        mBuilder.setCancelable(false);
         mBuilder.setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 c_area(mView);
+                todos();
             }
         });
 
@@ -115,7 +117,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void c_area(View v){
-        //View mView =getLayoutInflater().inflate(R.layout.area_agregar, null);
+        //View mView =getLayoutInflater().inflate(R.layout.modal_area, null);
         mArea = (EditText)v.findViewById(R.id.etArea);
 
         String titulo_area = mArea.getText().toString();
@@ -132,7 +134,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
 
             db.insert("area", null, registro);
             Toast.makeText(this, "Area agregada con éxito", Toast.LENGTH_SHORT).show();
-            
+
             databaseAccess.close();
         }else{
             Toast.makeText(this, "Ingrese el título del área", Toast.LENGTH_SHORT).show();
@@ -140,11 +142,10 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    public void r_area(){
+    public List<String> r_area(){
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         SQLiteDatabase db = databaseAccess.open();
 
-        listView = (ListView)findViewById(R.id.list_areas);
         List<String> areas = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT titulo FROM area", null);
 
@@ -158,8 +159,31 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
         cursor.close();
         databaseAccess.close();
 
-        ArrayAdapter<String>adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, areas);
-        listView.setAdapter(adapter);
+        return areas;
+    }
+
+    public List<String> ides(){
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        SQLiteDatabase db = databaseAccess.open();
+
+        List<String> ides = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT id_area FROM area", null);
+
+        if(cursor!=null){
+            while(cursor.moveToNext()){
+                ides.add(cursor.getString(0));
+            }
+        }else{
+            Toast.makeText(this, "La tabla está vacia", Toast.LENGTH_SHORT).show();
+        }
+        cursor.close();
+        databaseAccess.close();
+
+        return ides;
+    }
+
+    public void todos(){
+        listView.setAdapter(new AreaAdapter(this, r_area(), ides(), iconos));
     }
 
 
