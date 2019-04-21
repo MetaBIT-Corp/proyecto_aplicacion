@@ -62,9 +62,16 @@
     <string name="lbl_nom_encuesta">Survey\'s Name</string>
     <string name="hint_descripcion">Start Date</string>
     <string name="hint_fecha_final">dd/mm/aa</string>
-    <string name="lbl_fecha">Date</string>
+    <string name="lbl_fecha">Select Date</string>
     <string name="title_activity_encuesta">Survey</string>
 
     <string name="title_agregar_encuesta">Add a Survey</string>
+    <string name="lbl_fecha_in">Start Date</string>
     <string name="lbl_fecha_fi">End Date</string>
+    <string name="men_fecha_error">Incorrect Date</string>
+
+    <string name="men_fecha_in">Initial date of Survey</string>
+    <string name="men_fecha_fi">Final date of Survey</string>
+    <string name="men_hora_in">Initial hour of Survey</string>
+    <string name="men_hora_fi">Final hour of Survey</string>
 </resources>

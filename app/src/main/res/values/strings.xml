@@ -67,7 +67,12 @@
     <string name="hint_descripcion">Descripcion</string>
     <string name="lbl_fecha_in">Fecha Inicio</string>
     <string name="hint_fecha_final">dd/mm/aa</string>
-    <string name="lbl_fecha">Fecha</string>
+    <string name="lbl_fecha">Seleccione Fecha</string>
     <string name="title_agregar_encuesta">Agregar Encuesta</string>
     <string name="lbl_fecha_fi">Fecha Final</string>
+    <string name="men_fecha_error">Fechas Incorrectas</string>
+    <string name="men_fecha_in">Fecha de Inicio Encuesta</string>
+    <string name="men_fecha_fi">Fecha Final de Encuesta</string>
+    <string name="men_hora_in">Hora de Inicio de Encuesta</string>
+    <string name="men_hora_fi">Hora Final de Encuesta</string>
 </resources>

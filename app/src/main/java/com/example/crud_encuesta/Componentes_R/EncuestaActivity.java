@@ -35,7 +35,9 @@ public class EncuestaActivity extends AppCompatActivity {
     int dia,mes,año,ho,min;
     boolean seg;
 
-    int di,df,mi,mf,ai,af;
+    int di,df,mi,mf,ai,af,hi,hf;
+    String cadenai = null;
+    String cadenaf=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,7 @@ public class EncuestaActivity extends AppCompatActivity {
                 final EditText infi=v.findViewById(R.id.in_fecha_inicial);
                 final EditText inff=v.findViewById(R.id.in_fecha_final);
                 final EditText nom=v.findViewById(R.id.in_nom_encuesta);
-                final EditText desc=findViewById(R.id.in_descrip_encuesta);
+                final EditText desc=v.findViewById(R.id.in_descrip_encuesta);
 
                 btnfi.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -82,9 +84,20 @@ public class EncuestaActivity extends AppCompatActivity {
                                 ai=year;
                                 mi=month;
                                 di=dayOfMonth;
-                                infi.setText(dayOfMonth+"/"+month+"/"+year);
+                                cadenai=dayOfMonth+"/"+month+"/"+year+"T";
+
+                                TimePickerDialog hora=new TimePickerDialog(EncuestaActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                                    @Override
+                                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                                        hi=hourOfDay;
+                                        infi.setText(cadenai+hourOfDay+":"+minute);
+                                    }
+                                },ho,min,seg);
+                                hora.setTitle(R.string.men_hora_in);
+                                hora.show();
                             }
                         },año,mes,dia);
+                        calendar.setTitle(R.string.men_fecha_in);
                         calendar.show();
                     }
                 });
@@ -103,28 +116,36 @@ public class EncuestaActivity extends AppCompatActivity {
                                 af=year;
                                 mf=month;
                                 df=dayOfMonth;
-                                final String cadena=dayOfMonth+"/"+month+"/"+year;
+                                cadenaf=dayOfMonth+"/"+month+"/"+year+"T";
 
                                 TimePickerDialog hora=new TimePickerDialog(EncuestaActivity.this, new TimePickerDialog.OnTimeSetListener() {
                                     @Override
                                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                        infi.setText(cadena+hourOfDay+":"+minute);
+                                        hf=hourOfDay;
+                                        inff.setText(cadenaf+hourOfDay+":"+minute);
+
+                                        if ((di>df&&mi>=mf)||mi>mf||ai>af||(di==df&&hi>=hf)||(hi==12&&hf>=12)){
+                                            Toast.makeText(EncuestaActivity.this,R.string.men_fecha_error,Toast.LENGTH_SHORT).show();
+                                            infi.setText("dd/mm/aa");
+                                            inff.setText("dd/mm/aa");
+                                        }
                                     }
                                 },ho,min,seg);
+                                hora.setTitle(R.string.men_hora_fi);
                                 hora.show();
+
                             }
                         },año,mes,dia);
+                        calendar.setTitle(R.string.men_fecha_fi);
                         calendar.show();
                     }
                 });
 
-                if ((di>df&&mi>=mf)||mi>mf||ai>af){
 
-                }
                 d.setPositiveButton(R.string.agregar_string, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if(nom.getText().toString().isEmpty()|| desc.getText().toString().isEmpty()|| infi.getText().toString().equals("dd/mm/aa") || inff.getText().toString().equals("dd/mm/aa"))
+                        if(nom.getText().toString().isEmpty()|| desc.getText().toString().isEmpty() || infi.getText().toString().equals("dd/mm/aa") || inff.getText().toString().equals("dd/mm/aa"))
                             Toast.makeText(EncuestaActivity.this,R.string.men_camp_vacios,Toast.LENGTH_SHORT).show();
                         else{
                             ContentValues contentValues=new ContentValues();

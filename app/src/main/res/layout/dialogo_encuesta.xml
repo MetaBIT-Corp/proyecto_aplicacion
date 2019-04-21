@@ -72,8 +72,8 @@
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="@string/hint_nom"
-            android:inputType="textPersonName"
 
+            android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.15"
@@ -142,7 +142,7 @@
 
         <EditText
             android:id="@+id/in_fecha_inicial"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="0dp"
@@ -150,12 +150,9 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:editable="false"
-
-            android:ems="10"
             android:enabled="false"
-            android:hint="@string/hint_fecha_final"
-            android:inputType="number"
+            android:ems="10"
+            android:text="@string/hint_fecha_final"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.15"
@@ -163,12 +160,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.482" />
 
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <Button
             android:id="@+id/btn_fecha_inicio"
             android:layout_width="111dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:layout_weight="1"
             android:text="@string/lbl_fecha" />
     </LinearLayout>
@@ -197,7 +199,7 @@
 
         <EditText
             android:id="@+id/in_fecha_final"
-            android:layout_width="104dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="0dp"
@@ -205,12 +207,9 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:editable="false"
-
-            android:ems="10"
             android:enabled="false"
-            android:hint="@string/hint_fecha_final"
-            android:inputType="number"
+            android:ems="10"
+            android:text="@string/hint_fecha_final"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.15"
@@ -218,12 +217,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.482" />
 
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <Button
             android:id="@+id/btn_fecha_final"
-            android:layout_width="92dp"
+            android:layout_width="275dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:layout_weight="1"
             android:text="@string/lbl_fecha" />
     </LinearLayout>
