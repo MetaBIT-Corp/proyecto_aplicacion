@@ -61,6 +61,7 @@
                 android:inputType="textMultiLine"
                 android:hint="@string/ap_desc_eva"/>
             <CheckBox
+                android:id="@+id/ap_cb_retroceder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ap_visible_eva"

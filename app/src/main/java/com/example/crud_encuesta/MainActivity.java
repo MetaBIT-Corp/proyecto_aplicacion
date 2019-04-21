@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ListView;
 
+import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
 import com.example.crud_encuesta.Componentes_MT.AreaActivity;
 import com.example.crud_encuesta.Componentes_MT.ClaveActivity;
 import com.example.crud_encuesta.Componentes_R.CarreraActivity;
@@ -105,6 +106,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void Login(){
         Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+    }
+
+    public void evaluacion(){
+        Intent i = new Intent(this, EvaluacionActivity.class);
         startActivity(i);
     }
 }
