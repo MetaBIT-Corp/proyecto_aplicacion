@@ -4,8 +4,18 @@ public class Docente {
 
     int id;
     String carnet,nombre,descripcion,anio_titulo;
-    int tipo_jornada,cargo_actual,cargo_segundario;
+    int tipo_jornada,cargo_actual,cargo_segundario,id_escuela;
     boolean activo;
+
+
+
+    public int getId_escuela() {
+        return id_escuela;
+    }
+
+    public void setId_escuela(int id_escuela) {
+        this.id_escuela = id_escuela;
+    }
 
     public int getId() {
         return id;
@@ -77,5 +87,9 @@ public class Docente {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    public String toString(){
+        return nombre+"";
     }
 }

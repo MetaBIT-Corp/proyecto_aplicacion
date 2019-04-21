@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class EncuestaActivity extends AppCompatActivity {
@@ -39,6 +40,10 @@ public class EncuestaActivity extends AppCompatActivity {
     String cadenai = null;
     String cadenaf=null;
 
+    ArrayList<Docente>listaDocentes=new ArrayList<>();
+    ArrayList<Encuesta>listaEncuesta=new ArrayList<>();
+    EncuestaAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +51,16 @@ public class EncuestaActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        listView=findViewById(R.id.list_view_base);
         access=DatabaseAccess.getInstance(EncuestaActivity.this);
         db=access.open();
+
+        listaDocentes=Operaciones_CRUD.todosDocente(db);
+        listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes);
+
+        adapter=new EncuestaAdapter(EncuestaActivity.this,listaEncuesta,db,this,listaDocentes);
+
+        listView.setAdapter(adapter);
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -84,7 +97,7 @@ public class EncuestaActivity extends AppCompatActivity {
                                 ai=year;
                                 mi=month;
                                 di=dayOfMonth;
-                                cadenai=dayOfMonth+"/"+month+"/"+year+"T";
+                                cadenai=dayOfMonth+"/"+month+"/"+year+" ";
 
                                 TimePickerDialog hora=new TimePickerDialog(EncuestaActivity.this, new TimePickerDialog.OnTimeSetListener() {
                                     @Override
@@ -116,7 +129,7 @@ public class EncuestaActivity extends AppCompatActivity {
                                 af=year;
                                 mf=month;
                                 df=dayOfMonth;
-                                cadenaf=dayOfMonth+"/"+month+"/"+year+"T";
+                                cadenaf=dayOfMonth+"/"+month+"/"+year+" ";
 
                                 TimePickerDialog hora=new TimePickerDialog(EncuestaActivity.this, new TimePickerDialog.OnTimeSetListener() {
                                     @Override
@@ -151,15 +164,15 @@ public class EncuestaActivity extends AppCompatActivity {
                             ContentValues contentValues=new ContentValues();
 
                             /*OOOOOJOOOOO CAMBIAR CUANDO MANDEN EL ID DEL DOCENTE LOGUEADO*/
-                            contentValues.put(EstructuraTablas.COL_1_ENCUESTA,1);
+                            contentValues.put(EstructuraTablas.COL_1_ENCUESTA,2);
 
                             contentValues.put(EstructuraTablas.COL_2_ENCUESTA,nom.getText().toString());
                             contentValues.put(EstructuraTablas.COL_3_ENCUESTA,desc.getText().toString());
                             contentValues.put(EstructuraTablas.COL_4_ENCUESTA,infi.getText().toString());
                             contentValues.put(EstructuraTablas.COL_5_ENCUESTA,inff.getText().toString());
                             Operaciones_CRUD.insertar(db,contentValues,EncuestaActivity.this,EstructuraTablas.ENCUESTA_TABLA_NAME).show();
-                            /*listaCarreras=Operaciones_CRUD.todosCarrera(db,listaEscuelas);
-                            adapter.setL(listaCarreras);*/
+                            listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes);
+                            adapter.setL(listaEncuesta);
                         }
                     }
                 });

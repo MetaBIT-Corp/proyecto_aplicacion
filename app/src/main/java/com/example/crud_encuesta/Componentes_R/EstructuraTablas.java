@@ -39,4 +39,8 @@ public class EstructuraTablas {
     public static final String COL_3_ENCUESTA = "DESCRIPCION_ENCUESTA";
     public static final String COL_4_ENCUESTA = "FECHA_INICIO_ENCUESTA";
     public static final String COL_5_ENCUESTA = "FECHA_FINAL_ENCUESTA";
+
+    //Constante de Tabla de Docente
+    public static final String DOCENTE_TABLE_NAME="PDG_DCN_DOCENTE";
+    public static final String COL_0_DOCENTE="ID_PDG_DCN";
 }
