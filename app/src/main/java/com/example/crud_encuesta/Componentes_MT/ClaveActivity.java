@@ -1,8 +1,10 @@
 package com.example.crud_encuesta.Componentes_MT;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,7 +37,7 @@ public class ClaveActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                agregar_clave(v);
+                claveDialog();
             }
         });
     }
@@ -76,7 +78,7 @@ public class ClaveActivity extends AppCompatActivity {
         return claves;
     }
 
-    public void agregar_clave(View v){
+    public void agregar_clave(){
         int clave_nueva;
         int tamanio=claves().size();
 
@@ -86,20 +88,51 @@ public class ClaveActivity extends AppCompatActivity {
         }else{
             clave_nueva = Integer.parseInt(claves().get(tamanio-1));
             clave_nueva++;
-            Toast.makeText(this, "Sí hay", Toast.LENGTH_SHORT).show();
+
         }
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         SQLiteDatabase db = databaseAccess.open();
-
         ContentValues registro = new ContentValues();
-        //registro.put("id_clave", clave_nueva);
+
         registro.put("id_encuesta", id_encuesta);
         registro.put("numero_clave", clave_nueva);
 
         db.insert("clave", null, registro);
         databaseAccess.close();
 
+    }
+
+    public void claveDialog(){
+        AlertDialog.Builder dialogo = new AlertDialog.Builder(this);
+        dialogo.setCancelable(false);
+        dialogo.setIcon(R.drawable.infoazul);
+        dialogo.setTitle("Agregar");
+        dialogo.setMessage("Desea agregar una nueva clave");
+
+        dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                agregar_clave();
+                todos();
+                Toast.makeText(ClaveActivity.this, "Nueva clave agregada", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        dialogo.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog ventana = dialogo.create();
+        ventana.show();
+
+    }
+
+    public void todos(){
+        listView.setAdapter(new ClaveAdapter(claves(), ides(), this, iconos));
     }
 
 

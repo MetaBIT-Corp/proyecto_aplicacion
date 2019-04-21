@@ -57,8 +57,8 @@
     <ListView
         android:id="@+id/list_claves"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="102dp"
+        android:layout_height="507dp"
+        android:layout_marginTop="68dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
