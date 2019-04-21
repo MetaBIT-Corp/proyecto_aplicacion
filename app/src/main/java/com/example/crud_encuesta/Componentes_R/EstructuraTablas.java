@@ -32,5 +32,11 @@ public class EstructuraTablas {
     public static final String COL_1_PENSUM = "ANIO_PENSUM";
 
     //Constantes de Tabla Encuesta
-
+    public static final String ENCUESTA_TABLA_NAME = "ENCUESTA";
+    public static final String COL_0_ENCUESTA = "ID_ENCUESTA";
+    public static final String COL_1_ENCUESTA = "ID_PDG_DCN";
+    public static final String COL_2_ENCUESTA = "TITULO_ENCUESTA";
+    public static final String COL_3_ENCUESTA = "DESCRIPCION_ENCUESTA";
+    public static final String COL_4_ENCUESTA = "FECHA_INICIO_ENCUESTA";
+    public static final String COL_5_ENCUESTA = "FECHA_FINAL_ENCUESTA";
 }

@@ -59,4 +59,12 @@
     <string name="hint_max">Maximum</string>
     <string name="hint_cod_mat">Code</string>
     <string name="men_eliminar">Delete Succesfully</string>
+    <string name="lbl_nom_encuesta">Survey\'s Name</string>
+    <string name="hint_descripcion">Start Date</string>
+    <string name="hint_fecha_final">dd/mm/aa</string>
+    <string name="lbl_fecha">Date</string>
+    <string name="title_activity_encuesta">Survey</string>
+
+    <string name="title_agregar_encuesta">Add a Survey</string>
+    <string name="lbl_fecha_fi">End Date</string>
 </resources>

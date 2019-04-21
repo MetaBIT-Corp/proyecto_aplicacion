@@ -62,4 +62,12 @@
     <string name="hint_max">Maximo</string>
     <string name="hint_cod_mat">Codigo</string>
     <string name="men_eliminar">Se Elimino Correctamente</string>
+    <string name="title_activity_encuesta">Encuesta</string>
+    <string name="lbl_nom_encuesta">Nombre Encuesta</string>
+    <string name="hint_descripcion">Descripcion</string>
+    <string name="lbl_fecha_in">Fecha Inicio</string>
+    <string name="hint_fecha_final">dd/mm/aa</string>
+    <string name="lbl_fecha">Fecha</string>
+    <string name="title_agregar_encuesta">Agregar Encuesta</string>
+    <string name="lbl_fecha_fi">Fecha Final</string>
 </resources>

@@ -84,7 +84,7 @@ public class CarreraActivity extends AppCompatActivity {
                 d.setPositiveButton(R.string.agregar_string, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (nom.getText().toString().isEmpty() || id_escuela==-1) Toast.makeText(CarreraActivity.this,"Campos Vacios.",Toast.LENGTH_SHORT).show();
+                        if (nom.getText().toString().isEmpty() || id_escuela==-1) Toast.makeText(CarreraActivity.this,R.string.men_camp_vacios,Toast.LENGTH_SHORT).show();
                         else{
                             contentValues=new ContentValues();
                             contentValues.put(EstructuraTablas.COL_1_CARRERA,id_escuela);

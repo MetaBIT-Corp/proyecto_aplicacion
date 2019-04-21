@@ -55,7 +55,7 @@ public class EscuelaActivity extends AppCompatActivity {
                 d.setPositiveButton(R.string.agregar_string, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (nom.getText().toString().isEmpty())Toast.makeText(EscuelaActivity.this,"Campos Vacios.",Toast.LENGTH_SHORT).show();
+                        if (nom.getText().toString().isEmpty())Toast.makeText(EscuelaActivity.this,R.string.men_camp_vacios,Toast.LENGTH_SHORT).show();
                         else{
                             db=access.open();
                             contentValues=new ContentValues();

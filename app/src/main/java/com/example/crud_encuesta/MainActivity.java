@@ -17,6 +17,7 @@ import com.example.crud_encuesta.Componentes_MT.AreaActivity;
 import com.example.crud_encuesta.Componentes_MT.ClaveActivity;
 import com.example.crud_encuesta.Componentes_R.CarreraActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
+import com.example.crud_encuesta.Componentes_R.EncuestaActivity;
 import com.example.crud_encuesta.Componentes_R.EscuelaActivity;
 import com.example.crud_encuesta.Componentes_R.MateriaActivity;
 
@@ -94,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void prueba_materia(View view) {
         Intent i = new Intent(this, MateriaActivity.class);
+        startActivity(i);
+    }
+
+    public void prueba_encuesta(View view) {
+        Intent i = new Intent(this, EncuestaActivity.class);
         startActivity(i);
     }
 

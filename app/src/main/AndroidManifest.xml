@@ -10,11 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Componentes_R.EncuestaActivity"
+            android:label="@string/title_activity_encuesta"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Componentes_R.MateriaActivity"
             android:label="@string/title_activity_materia"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity android:name=".Componentes_MT.ClaveActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Componentes_MT.ClaveActivity" />
         <activity android:name=".Componentes_AP.Activities.TurnoActivity" />
         <activity android:name=".Componentes_AP.Activities.EvaluacionActivity" />
         <activity android:name=".Componentes_AP.Activities.LoginActivity" />
