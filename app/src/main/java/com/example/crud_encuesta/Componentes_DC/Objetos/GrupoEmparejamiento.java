@@ -1,4 +1,4 @@
-package com.example.crud_encuesta;
+package com.example.crud_encuesta.Componentes_DC.Objetos;
 
 public class GrupoEmparejamiento {
 
@@ -16,8 +16,7 @@ public class GrupoEmparejamiento {
         this.descripcion = descripcion;
     }
 
-    public GrupoEmparejamiento(int id_area, String descripcion) {
-        this.id_area = id_area;
+    public GrupoEmparejamiento(String descripcion) {
         this.descripcion = descripcion;
     }
 

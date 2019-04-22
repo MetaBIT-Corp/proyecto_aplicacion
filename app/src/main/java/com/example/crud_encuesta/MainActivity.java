@@ -14,6 +14,7 @@ import android.widget.Toast;
 import android.widget.ListView;
 
 import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
+import com.example.crud_encuesta.Componentes_DC.Activities.GpoEmpActivity;
 import com.example.crud_encuesta.Componentes_MT.AreaActivity;
 import com.example.crud_encuesta.Componentes_MT.ClaveActivity;
 import com.example.crud_encuesta.Componentes_R.CarreraActivity;
@@ -21,8 +22,6 @@ import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
 import com.example.crud_encuesta.Componentes_R.EncuestaActivity;
 import com.example.crud_encuesta.Componentes_R.EscuelaActivity;
 import com.example.crud_encuesta.Componentes_R.MateriaActivity;
-
-import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void pressed() {
         Toast.makeText(MainActivity.this, "Has presionado el boton login", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(getApplicationContext(),GpoEmpActivity.class);
+        Intent i = new Intent(getApplicationContext(), GpoEmpActivity.class);
         startActivity(i);
     }
 

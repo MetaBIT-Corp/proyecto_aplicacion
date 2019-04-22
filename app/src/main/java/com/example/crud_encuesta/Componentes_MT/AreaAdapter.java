@@ -11,11 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.crud_encuesta.Componentes_DC.Activities.GpoEmpActivity;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 
@@ -45,6 +47,7 @@ public class AreaAdapter extends BaseAdapter {
         TextView tituloArea = (TextView)mView.findViewById(R.id.elemento_area);
         ImageView imgEdit = (ImageView)mView.findViewById(R.id.img_edit);
         ImageView imgDelete = (ImageView)mView.findViewById(R.id.img_delete);
+        Button btnAddGrupoEmp = (Button) mView.findViewById(R.id.btn_grupo_emp);
 
         tituloArea.setText(areas.get(position));
         imgEdit.setImageResource(iconos[0]);
@@ -52,6 +55,18 @@ public class AreaAdapter extends BaseAdapter {
 
         imgEdit.setTag(position);
         imgDelete.setTag(position);
+        btnAddGrupoEmp.setTag(position);
+
+        btnAddGrupoEmp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final int i = Integer.parseInt(v.getTag().toString());
+                int id = Integer.parseInt(ides.get(i));
+                Intent in = new Intent(context, GpoEmpActivity.class);
+                in.putExtra("id_area",id);
+                context.startActivity(in);
+            }
+        });
 
         imgEdit.setOnClickListener(new View.OnClickListener(){
 

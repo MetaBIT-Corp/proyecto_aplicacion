@@ -31,9 +31,9 @@
             android:label="@string/title_activity_escuela"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Componentes_MT.AreaActivity" />
-        <activity android:name=".OpcionActivity" />
-        <activity android:name=".PreguntaActivity" />
-        <activity android:name=".GpoEmpActivity" />
+        <activity android:name=".Componentes_DC.Activities.OpcionActivity" />
+        <activity android:name=".Componentes_DC.Activities.PreguntaActivity" />
+        <activity android:name=".Componentes_DC.Activities.GpoEmpActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

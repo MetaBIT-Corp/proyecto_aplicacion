@@ -1,4 +1,4 @@
-package com.example.crud_encuesta;
+package com.example.crud_encuesta.Componentes_DC.Adaptadores;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.crud_encuesta.Componentes_DC.Dao.DaoGrupoEmp;
+import com.example.crud_encuesta.Componentes_DC.Objetos.GrupoEmparejamiento;
+import com.example.crud_encuesta.Componentes_DC.Activities.PreguntaActivity;
+import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
 
@@ -70,13 +74,11 @@ public class Adaptador extends BaseAdapter {
 
         gpo_emp = lista_gpo_emp.get(position);
 
-        TextView area = (TextView)v.findViewById(R.id.txt_area);
         TextView descripcion = (TextView)v.findViewById(R.id.txt_descripcion);
         Button editar = (Button)v.findViewById(R.id.btn_editar);
         Button eliminar = (Button)v.findViewById(R.id.btn_eliminar);
         Button pregunta = (Button)v.findViewById(R.id.btn_ag_preg);
 
-        area.setText(""+gpo_emp.getId_area());
         descripcion.setText(gpo_emp.getDescripcion());
         pregunta.setTag(position);
         editar.setTag(position);
@@ -91,7 +93,7 @@ public class Adaptador extends BaseAdapter {
                 Bundle b = new Bundle();
                 b.putInt("id_gpo_emp",gpo_emp.getId());
 
-                Intent i = new Intent(a,PreguntaActivity.class);
+                Intent i = new Intent(a, PreguntaActivity.class);
                 i.putExtras(b);
                 a.startActivity(i);
             }
@@ -108,15 +110,14 @@ public class Adaptador extends BaseAdapter {
                 dialog.setContentView(R.layout.dialogo_gpo_emp);
                 dialog.show();
 
-                final EditText area = (EditText)dialog.findViewById(R.id.area);
                 final EditText descripcion = (EditText)dialog.findViewById(R.id.descripcion);
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
 
                 agregar.setText("Guardar");
                 gpo_emp = lista_gpo_emp.get(pos);
+                final int id_area = gpo_emp.getId_area();
                 setId(gpo_emp.getId());
-                area.setText(""+gpo_emp.getId_area());
                 descripcion.setText(gpo_emp.getDescripcion());
 
                 agregar.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +125,7 @@ public class Adaptador extends BaseAdapter {
                     public void onClick(View v) {
                         try{
 
-                            gpo_emp = new GrupoEmparejamiento(getId(),Integer.parseInt(area.getText().toString()), descripcion.getText().toString());
+                            gpo_emp = new GrupoEmparejamiento(getId(),id_area, descripcion.getText().toString());
                             dao.editar(gpo_emp);
                             notifyDataSetChanged();
                             lista_gpo_emp = dao.verTodos();

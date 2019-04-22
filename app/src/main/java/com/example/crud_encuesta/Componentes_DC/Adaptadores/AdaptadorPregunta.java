@@ -1,4 +1,4 @@
-package com.example.crud_encuesta;
+package com.example.crud_encuesta.Componentes_DC.Adaptadores;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,6 +15,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.crud_encuesta.Componentes_DC.Dao.DaoPregunta;
+import com.example.crud_encuesta.Componentes_DC.Activities.OpcionActivity;
+import com.example.crud_encuesta.Componentes_DC.Objetos.Pregunta;
+import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
 

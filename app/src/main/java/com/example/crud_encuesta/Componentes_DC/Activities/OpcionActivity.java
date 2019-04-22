@@ -1,4 +1,4 @@
-package com.example.crud_encuesta;
+package com.example.crud_encuesta.Componentes_DC.Activities;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -10,7 +10,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.example.crud_encuesta.Componentes_DC.Adaptadores.AdaptadorOpcion;
+import com.example.crud_encuesta.Componentes_DC.Dao.DaoOpcion;
+import com.example.crud_encuesta.Componentes_DC.Objetos.Opcion;
+import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
 
@@ -48,13 +52,8 @@ public class OpcionActivity extends AppCompatActivity {
 
                 final EditText texto_opcion = (EditText)dialog.findViewById(R.id.editt_opcion);
                 final CheckBox cb_correcta = (CheckBox)dialog.findViewById(R.id.cb_correcta);
-                int check = 0;
 
-                try{
-                    if(cb_correcta.isChecked())check = 1;
-                }catch (Exception e){}
 
-                final int check_op = check;
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
 
@@ -63,7 +62,12 @@ public class OpcionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         try{
-                            opcion = new Opcion(id_pregunta, texto_opcion.getText().toString(), check_op);
+                            int check = 0;
+
+                            if(cb_correcta.isChecked())check = 1;
+
+                            Log.d("CHECKED", ""+check);
+                            opcion = new Opcion(id_pregunta, texto_opcion.getText().toString(), check);
 
                             dao.insertar(opcion);
                             adaptador.notifyDataSetChanged();

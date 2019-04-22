@@ -10,13 +10,6 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/area"
-        android:inputType="number"
-        android:hint="Area"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/descripcion"
         android:hint="Descripcion"/>
 

@@ -1,10 +1,12 @@
-package com.example.crud_encuesta;
+package com.example.crud_encuesta.Componentes_DC.Dao;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
+
+import com.example.crud_encuesta.Componentes_DC.Objetos.Pregunta;
+import com.example.crud_encuesta.DatabaseAccess;
 
 import java.util.ArrayList;
 

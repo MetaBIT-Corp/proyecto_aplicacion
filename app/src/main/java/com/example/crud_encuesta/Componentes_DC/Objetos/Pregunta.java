@@ -1,4 +1,4 @@
-package com.example.crud_encuesta;
+package com.example.crud_encuesta.Componentes_DC.Objetos;
 
 public class Pregunta {
 

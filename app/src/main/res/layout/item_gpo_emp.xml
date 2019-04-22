@@ -15,17 +15,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_area"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:text="Area"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/txt_descripcion"
             android:textAlignment="center"
             android:layout_weight="0.3"
+            android:paddingRight="5dp"
             android:text="Descripcion"/>
 
         <LinearLayout
