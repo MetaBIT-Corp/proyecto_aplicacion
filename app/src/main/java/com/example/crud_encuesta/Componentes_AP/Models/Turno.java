@@ -4,7 +4,7 @@ public class Turno {
 
     int id;
     int idEvaluacion;
-    String dateInicial; //TODO: duda acerca del tipo DATE (Sql)
+    String dateInicial;
     String dateFinal;
     int visible;
     String contrasenia;

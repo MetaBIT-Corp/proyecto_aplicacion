@@ -1,6 +1,7 @@
 package com.example.crud_encuesta.Componentes_AP.Activities;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -48,7 +49,9 @@ public class EvaluacionActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO: Intent al siguiente CRUD de turnos
+                //TODO: Intent al siguiente CRUD de turnos falta enviar parametro
+                Intent i = new Intent(view.getContext(), TurnoActivity.class);
+                startActivity(i);
             }
         });
         //final de listener de listview

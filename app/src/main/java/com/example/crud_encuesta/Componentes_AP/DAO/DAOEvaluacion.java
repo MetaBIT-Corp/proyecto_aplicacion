@@ -91,15 +91,17 @@ public class DAOEvaluacion {
         Cursor cursor  = baseDeDatos.rawQuery("Select * FROM EVALUACION WHERE NOMBRE_EVALUACION = '" + nombre + "'"  ,null);
         if(cursor.moveToFirst()){
             cursor.moveToFirst();
-            evaluaciones.add(new Evaluacion(
-                    cursor.getInt(0),
-                    cursor.getInt(1),
-                    cursor.getInt(2),
-                    cursor.getInt(3),
-                    cursor.getString(4),
-                    cursor.getString(5),
-                    cursor.getInt(6)
-            ));
+            do {
+                evaluaciones.add(new Evaluacion(
+                        cursor.getInt(0),
+                        cursor.getInt(1),
+                        cursor.getInt(2),
+                        cursor.getInt(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getInt(6)
+                ));
+            }while (cursor.moveToNext());
         }
         return evaluaciones;
     }

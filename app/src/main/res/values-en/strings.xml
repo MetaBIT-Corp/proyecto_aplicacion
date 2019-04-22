@@ -74,4 +74,7 @@
     <string name="men_fecha_fi">Final date of Survey</string>
     <string name="men_hora_in">Initial hour of Survey</string>
     <string name="men_hora_fi">Final hour of Survey</string>
+    <string name="ap_datefinal">Final</string>
+    <string name="ap_edt_datefinal">Fecha</string>
+    <string name="ap_qdt_timefinal">Hora</string>
 </resources>

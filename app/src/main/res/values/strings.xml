@@ -43,7 +43,7 @@
     <string name="ap_dateinit">Inicio</string>
     <string name="ap_datefinish">Final</string>
     <string name="ap_pass_turno">Contraseña</string>
-    <string name="ap_visible_turno">Visible</string>
+    <string name="ap_visible_turno">Turno visible</string>
     <string name="ap_agregar_turno">Agregar</string>
     <string name="ap_cancelar_turno">Cancelar</string>
     <string name="ap_agregar_eva">Agregar</string>
@@ -75,4 +75,7 @@
     <string name="men_fecha_fi">Fecha Final de Encuesta</string>
     <string name="men_hora_in">Hora de Inicio de Encuesta</string>
     <string name="men_hora_fi">Hora Final de Encuesta</string>
+    <string name="ap_datefinal">Final</string>
+    <string name="ap_edt_datefinal">Fecha</string>
+    <string name="ap_qdt_timefinal">Hora</string>
 </resources>

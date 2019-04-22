@@ -33,19 +33,147 @@
             android:orientation="vertical"
             android:padding="15dp">
 
-            <EditText
-                android:id="@+id/ap_edt_dateinit_turno"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="datetime"
-                android:hint="@string/ap_dateinit"/>
 
-            <EditText
-                android:id="@+id/ap_edt_datefinish_turno"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="datetime"
-                android:hint="@string/ap_datefinish"/>
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/ap_dateinit"
+                    android:textSize="18sp"
+                    android:layout_weight="0.04"
+                    android:gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="0.96">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <EditText
+                            android:id="@+id/ap_edt_dateinicial"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Fecha"
+                            android:layout_weight="0.9"
+                            android:inputType="date"
+                            android:enabled="false"
+                            />
+
+                        <ImageView
+                            android:id="@+id/ap_imv_dateinicial"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/dateazul"
+                            android:layout_weight="0.1"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+                        <EditText
+                            android:id="@+id/ap_edt_timeinicial"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Hora"
+                            android:layout_weight="0.9"
+                            android:inputType="time"
+                            android:enabled="false"
+                            />
+                        <ImageView
+                            android:id="@+id/ap_imv_timeinicial"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/timerazul"
+                            android:layout_weight="0.1"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/ap_datefinal"
+                    android:textSize="18sp"
+                    android:layout_weight="0.06"
+                    android:gravity="center"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="0.94">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <EditText
+                            android:id="@+id/ap_edt_datefinal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/ap_edt_datefinal"
+                            android:layout_weight="0.9"
+                            android:inputType="date"
+                            android:enabled="false"
+                            />
+
+                        <ImageView
+                            android:id="@+id/ap_imv_datefinal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/dateazul"
+                            android:layout_weight="0.1"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+                        <EditText
+                            android:id="@+id/ap_edt_timefinal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/ap_qdt_timefinal"
+                            android:layout_weight="0.9"
+                            android:inputType="time"
+                            android:enabled="false"
+                            />
+                        <ImageView
+                            android:id="@+id/ap_imv_timefinal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/timerazul"
+                            android:layout_weight="0.1"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/ap_edt_pass_turno"
@@ -55,6 +183,7 @@
                 android:hint="@string/ap_pass_turno"/>
 
             <CheckBox
+                android:id="@+id/ap_cb_visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ap_visible_turno"

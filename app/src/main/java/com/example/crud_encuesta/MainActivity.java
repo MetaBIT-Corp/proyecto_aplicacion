@@ -14,6 +14,7 @@ import android.widget.Toast;
 import android.widget.ListView;
 
 import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
+import com.example.crud_encuesta.Componentes_AP.Activities.TurnoActivity;
 import com.example.crud_encuesta.Componentes_DC.Activities.GpoEmpActivity;
 import com.example.crud_encuesta.Componentes_MT.AreaActivity;
 import com.example.crud_encuesta.Componentes_MT.ClaveActivity;
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 //Login();
                 //clave();
                 pressed();
+
+
             }
         });
     }
@@ -110,6 +113,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void evaluacion(){
         Intent i = new Intent(this, EvaluacionActivity.class);
+        startActivity(i);
+    }
+    public void turno(){
+        Intent i = new Intent(this, TurnoActivity.class);
         startActivity(i);
     }
 }
