@@ -113,7 +113,8 @@ public class Adaptador extends BaseAdapter {
                 final EditText descripcion = (EditText)dialog.findViewById(R.id.descripcion);
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
-
+                TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
+                texto_titulo.setText("Editar grupo emparejamiento");
                 agregar.setText("Guardar");
                 gpo_emp = lista_gpo_emp.get(pos);
                 final int id_area = gpo_emp.getId_area();
@@ -124,12 +125,18 @@ public class Adaptador extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
                         try{
+                            if(!descripcion.getText().toString().equals("")){
 
-                            gpo_emp = new GrupoEmparejamiento(getId(),id_area, descripcion.getText().toString());
-                            dao.editar(gpo_emp);
-                            notifyDataSetChanged();
-                            lista_gpo_emp = dao.verTodos();
-                            dialog.dismiss();
+                                gpo_emp = new GrupoEmparejamiento(getId(),id_area, descripcion.getText().toString());
+                                dao.editar(gpo_emp);
+                                notifyDataSetChanged();
+                                lista_gpo_emp = dao.verTodos();
+                                dialog.dismiss();
+
+                            }else{
+                                Toast.makeText(v.getContext(), "¡No se permite dejar vacia la descripción del grupo de emparejamiento!", Toast.LENGTH_SHORT).show();
+                                descripcion.setFocusable(true);
+                            }
 
                         }catch (Exception e){
                             Toast.makeText(a, "Error", Toast.LENGTH_SHORT);

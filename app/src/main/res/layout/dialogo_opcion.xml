@@ -1,17 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp">
 
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <TextView
+            android:id="@+id/texto_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingRight="10dp"
+            android:textAlignment="center"
+            android:text="Agregar opcion"
+            android:textStyle="bold"
+            android:textSize="12sp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"></android.support.v4.widget.Space>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <EditText
             android:layout_width="match_parent"
@@ -20,6 +45,10 @@
             android:layout_weight="0.8"
             android:hint="Opcion"/>
 
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"></android.support.v4.widget.Space>
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,6 +56,10 @@
             android:text="Correcta" />
 
     </LinearLayout>
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"></android.support.v4.widget.Space>
 
     <LinearLayout
         android:layout_width="match_parent"

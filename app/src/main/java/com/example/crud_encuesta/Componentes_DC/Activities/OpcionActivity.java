@@ -2,6 +2,7 @@ package com.example.crud_encuesta.Componentes_DC.Activities;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_DC.Adaptadores.AdaptadorOpcion;
 import com.example.crud_encuesta.Componentes_DC.Dao.DaoOpcion;
@@ -38,7 +41,7 @@ public class OpcionActivity extends AppCompatActivity {
         lista_opciones = dao.verTodos();
         adaptador = new AdaptadorOpcion(lista_opciones,this,dao);
         ListView list = (ListView)findViewById(R.id.lista);
-        Button agregar = (Button)findViewById(R.id.btn_nuevo);
+        FloatingActionButton agregar = findViewById(R.id.btn_nuevo);
         list.setAdapter(adaptador);
 
         agregar.setOnClickListener(new View.OnClickListener() {
@@ -56,23 +59,32 @@ public class OpcionActivity extends AppCompatActivity {
 
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
-
+                TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
+                texto_titulo.setText("Agregar opción");
                 agregar.setText("Agregar");
                 agregar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        int check = 0;
+
+                        if(cb_correcta.isChecked())check = 1;
+
                         try{
-                            int check = 0;
 
-                            if(cb_correcta.isChecked())check = 1;
+                            if(!texto_opcion.getText().toString().equals("")){
 
-                            Log.d("CHECKED", ""+check);
-                            opcion = new Opcion(id_pregunta, texto_opcion.getText().toString(), check);
+                                opcion = new Opcion(id_pregunta, texto_opcion.getText().toString(), check);
 
-                            dao.insertar(opcion);
-                            adaptador.notifyDataSetChanged();
-                            lista_opciones = dao.verTodos();
-                            dialog.dismiss();
+                                dao.insertar(opcion);
+                                adaptador.notifyDataSetChanged();
+                                lista_opciones = dao.verTodos();
+                                dialog.dismiss();
+
+                            }else{
+                                Toast.makeText(v.getContext(), "¡Ingrese el texto de la opción!", Toast.LENGTH_SHORT).show();
+                                texto_opcion.setFocusable(true);
+                            }
 
                         }catch (Exception e){
                             Log.d("BUSQUEDA", "CATCH");

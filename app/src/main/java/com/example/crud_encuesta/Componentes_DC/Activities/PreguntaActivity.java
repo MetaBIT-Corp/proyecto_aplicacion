@@ -2,12 +2,14 @@ package com.example.crud_encuesta.Componentes_DC.Activities;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_DC.Adaptadores.AdaptadorPregunta;
@@ -37,7 +39,7 @@ public class PreguntaActivity extends AppCompatActivity {
         lista_preguntas = dao.verTodos();
         adaptador = new AdaptadorPregunta(lista_preguntas,this,dao);
         ListView list = (ListView)findViewById(R.id.lista);
-        Button agregar = (Button)findViewById(R.id.btn_nuevo);
+        FloatingActionButton agregar = findViewById(R.id.btn_nuevo);
         list.setAdapter(adaptador);
 
         agregar.setOnClickListener(new View.OnClickListener() {
@@ -52,18 +54,25 @@ public class PreguntaActivity extends AppCompatActivity {
                 final EditText texto_pregunta = (EditText)dialog.findViewById(R.id.editt_pregunta);
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
-
+                TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
+                texto_titulo.setText("Agregar pregunta");
                 agregar.setText("Agregar");
                 agregar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         try{
+                            if(!texto_pregunta.getText().toString().equals("")){
 
-                            pregunta = new Pregunta(id_gpo_emp, texto_pregunta.getText().toString());
-                            dao.insertar(pregunta);
-                            adaptador.notifyDataSetChanged();
-                            lista_preguntas = dao.verTodos();
-                            dialog.dismiss();
+                                pregunta = new Pregunta(id_gpo_emp, texto_pregunta.getText().toString());
+                                dao.insertar(pregunta);
+                                adaptador.notifyDataSetChanged();
+                                lista_preguntas = dao.verTodos();
+                                dialog.dismiss();
+
+                            }else{
+                                Toast.makeText(v.getContext(), "¡Ingrese el texto de la pregunta!", Toast.LENGTH_SHORT).show();
+                                texto_pregunta.setFocusable(true);
+                            }
 
                         }catch (Exception e){
                             Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);

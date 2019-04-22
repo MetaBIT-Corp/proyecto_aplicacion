@@ -111,7 +111,8 @@ public class AdaptadorPregunta extends BaseAdapter {
                 final EditText texto_pregunta = (EditText)dialog.findViewById(R.id.editt_pregunta);
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
-
+                TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
+                texto_titulo.setText("Editar pregunta");
                 agregar.setText("Guardar");
                 pregunta = lista_preguntas.get(pos);
                 setId(pregunta.getId());
@@ -123,11 +124,18 @@ public class AdaptadorPregunta extends BaseAdapter {
                     public void onClick(View v) {
                         try{
 
-                            pregunta = new Pregunta(getId(),id_grupo_emp, texto_pregunta.getText().toString());
-                            dao.editar(pregunta);
-                            notifyDataSetChanged();
-                            lista_preguntas = dao.verTodos();
-                            dialog.dismiss();
+                            if(!texto_pregunta.getText().toString().equals("")){
+
+                                pregunta = new Pregunta(getId(),id_grupo_emp, texto_pregunta.getText().toString());
+                                dao.editar(pregunta);
+                                notifyDataSetChanged();
+                                lista_preguntas = dao.verTodos();
+                                dialog.dismiss();
+
+                            }else{
+                                Toast.makeText(v.getContext(), "¡No se permite dejar vacio el texto de pregunta!", Toast.LENGTH_SHORT).show();
+                                texto_pregunta.setFocusable(true);
+                            }
 
                         }catch (Exception e){
                             Toast.makeText(a, "Error", Toast.LENGTH_SHORT);

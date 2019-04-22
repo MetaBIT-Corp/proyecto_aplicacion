@@ -2,6 +2,7 @@ package com.example.crud_encuesta.Componentes_DC.Activities;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_DC.Adaptadores.Adaptador;
@@ -37,7 +39,7 @@ public class GpoEmpActivity extends AppCompatActivity {
         lista_gpo_emp = dao.verTodos();
         adaptador = new Adaptador(lista_gpo_emp,this,dao);
         ListView list = (ListView)findViewById(R.id.lista);
-        Button agregar = (Button)findViewById(R.id.btn_nuevo);
+        FloatingActionButton agregar = findViewById(R.id.btn_nuevo);
         list.setAdapter(adaptador);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -60,18 +62,28 @@ public class GpoEmpActivity extends AppCompatActivity {
                 final EditText descripcion = (EditText)dialog.findViewById(R.id.descripcion);
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
-
+                TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
+                texto_titulo.setText("Agregar grupo emparejamiento");
                 agregar.setText("Agregar");
                 agregar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         try{
 
-                            gpo_emp = new GrupoEmparejamiento(descripcion.getText().toString());
-                            dao.insertar(gpo_emp);
-                            adaptador.notifyDataSetChanged();
-                            lista_gpo_emp = dao.verTodos();
-                            dialog.dismiss();
+                            if(!descripcion.getText().toString().equals("")){
+
+                                gpo_emp = new GrupoEmparejamiento(descripcion.getText().toString());
+                                dao.insertar(gpo_emp);
+                                adaptador.notifyDataSetChanged();
+                                lista_gpo_emp = dao.verTodos();
+                                dialog.dismiss();
+
+                            }else{
+                                Toast.makeText(v.getContext(), "¡Ingrese la descripción del grupo de emparejamiento!", Toast.LENGTH_SHORT).show();
+                                descripcion.setFocusable(true);
+                            }
+
 
                         }catch (Exception e){
                             Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);

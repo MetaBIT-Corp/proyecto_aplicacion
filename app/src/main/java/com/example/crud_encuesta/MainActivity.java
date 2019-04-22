@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login();
-                clave();
+                //clave();
+                pressed();
             }
         });
     }
@@ -67,8 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void pressed() {
-        Toast.makeText(MainActivity.this, "Has presionado el boton login", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(getApplicationContext(), GpoEmpActivity.class);
+        Intent i = new Intent(getApplicationContext(), AreaActivity.class);
         startActivity(i);
     }
 

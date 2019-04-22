@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txt_opcion"
-            android:textAlignment="center"
+            android:textAlignment="gravity"
             android:layout_weight="0.6"
             android:text="Opcion"/>
 
@@ -34,19 +34,27 @@
             android:orientation="horizontal"
             android:layout_weight="1">
 
+            <android.support.v4.widget.Space
+                android:layout_height="0dp"
+                android:layout_width="8dp"/>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/btn_editar"
                 android:layout_weight="1"
-                android:background="@drawable/edit"/>
+                android:background="@drawable/ic_edit"/>
+
+            <android.support.v4.widget.Space
+                android:layout_height="0dp"
+                android:layout_width="5dp"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:id="@+id/btn_eliminar"
-                android:background="@drawable/bin"/>
+                android:background="@drawable/ic_delete"/>
 
         </LinearLayout>
     </LinearLayout>

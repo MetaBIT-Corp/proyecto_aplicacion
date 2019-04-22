@@ -100,7 +100,8 @@ public class AdaptadorOpcion extends BaseAdapter {
                 final CheckBox cb_correcta = (CheckBox)dialog.findViewById(R.id.cb_correcta);
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
-
+                TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
+                texto_titulo.setText("Editar opción");
                 agregar.setText("Guardar");
                 opcion = lista_opciones.get(pos);
                 setId(opcion.getId());
@@ -129,12 +130,18 @@ public class AdaptadorOpcion extends BaseAdapter {
                             }catch (Exception e){
 
                             }
+                            if(!texto_opcion.getText().toString().equals("")){
 
-                            opcion = new Opcion(getId(),id_pregunta,texto_opcion.getText().toString(),check);
-                            dao.editar(opcion);
-                            notifyDataSetChanged();
-                            lista_opciones = dao.verTodos();
-                            dialog.dismiss();
+                                opcion = new Opcion(getId(),id_pregunta,texto_opcion.getText().toString(),check);
+                                dao.editar(opcion);
+                                notifyDataSetChanged();
+                                lista_opciones = dao.verTodos();
+                                dialog.dismiss();
+
+                            }else{
+                                Toast.makeText(v.getContext(), "¡No se permite dejar vacio el texto de opción!", Toast.LENGTH_SHORT).show();
+                                texto_opcion.setFocusable(true);
+                            }
 
                         }catch (Exception e){
                             Toast.makeText(a, "Error", Toast.LENGTH_SHORT);
