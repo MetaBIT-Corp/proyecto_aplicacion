@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Componentes_MT.VerAreasActivity"></activity>
+        <activity android:name=".Componentes_MT.IntentoActivity"></activity>
+        <activity android:name=".Componentes_MT.VerAreasActivity" />
         <activity
             android:name=".Componentes_R.EncuestaActivity"
             android:label="@string/title_activity_encuesta"
@@ -30,7 +31,7 @@
             android:name=".Componentes_R.EscuelaActivity"
             android:label="@string/title_activity_escuela"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Componentes_Docente.ActivityDocente"/>
+        <activity android:name=".Componentes_Docente.ActivityDocente" />
         <activity android:name=".Componentes_MT.AreaActivity" />
         <activity android:name=".Componentes_DC.Activities.OpcionActivity" />
         <activity android:name=".Componentes_DC.Activities.PreguntaActivity" />
