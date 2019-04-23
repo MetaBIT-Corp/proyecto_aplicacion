@@ -30,6 +30,7 @@ import com.example.crud_encuesta.R;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class TurnoActivity extends AppCompatActivity {
@@ -220,9 +221,10 @@ public class TurnoActivity extends AppCompatActivity {
     }
 
     public void datePicker(final EditText editText, Context context){
-        anio = 2019;
-        mes = 1;
-        dia = 0;
+        final Calendar c = Calendar.getInstance();
+        dia = c.get(Calendar.DAY_OF_MONTH);
+        mes = c.get(Calendar.MONTH);
+        anio = c.get(Calendar.YEAR);
 
         //creamos instancia de clase DatePickerDialog
         DatePickerDialog datePickerDialog =new DatePickerDialog(
@@ -233,16 +235,17 @@ public class TurnoActivity extends AppCompatActivity {
                         editText.setText(year+"/"+(month+1)+"/"+dayOfMonth);
                     }
                 },
-                dia,
+                anio,
                 mes,
-                anio
+                dia
         );
         datePickerDialog.show();
     }
 
     public void timepicker(final EditText editText,Context context){
-        hora = 12;
-        minuto = 0;
+        final Calendar c = Calendar.getInstance();
+        hora=c.get(Calendar.HOUR_OF_DAY);
+        minuto=c.get(Calendar.MINUTE);
         TimePickerDialog timePickerDialog = new TimePickerDialog(
                 context,
                 new TimePickerDialog.OnTimeSetListener() {

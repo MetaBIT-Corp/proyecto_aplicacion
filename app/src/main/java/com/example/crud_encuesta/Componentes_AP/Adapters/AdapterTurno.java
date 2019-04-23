@@ -27,6 +27,7 @@ import com.example.crud_encuesta.Componentes_AP.Models.Turno;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class AdapterTurno extends BaseAdapter {
     private int anio, mes, dia, hora, minuto;
@@ -38,7 +39,7 @@ public class AdapterTurno extends BaseAdapter {
 
 
     //variables que nos ayudara a manejar los id de turno y de valauacion
-    int idTurno=0;
+    int idTurno = 0;
     int idEvaluacion = 0;
 
 
@@ -67,7 +68,6 @@ public class AdapterTurno extends BaseAdapter {
     }
 
     //metodos para date picker y time picker
-
 
 
     //metodos
@@ -105,13 +105,12 @@ public class AdapterTurno extends BaseAdapter {
         ImageView info = (ImageView) view.findViewById(R.id.ap_info_item);
 
         String fechainicial = turno.getDateInicial();
-        String[] pfechainicial =fechainicial.split(" ");
+        String[] pfechainicial = fechainicial.split(" ");
 
         String fechafinal = turno.getDateFinal();
-        String[] pfechafinal =fechafinal.split(" ");
+        String[] pfechafinal = fechafinal.split(" ");
 
-        tv_item.setText("Id: " +turno.getId()+ "\r\nInicio:\r\n" +turno.getDateInicial()+ " \r\nFinal:\r\n " + turno.getDateFinal());
-
+        tv_item.setText("Id: " + turno.getId() + "\r\nInicio:\r\n" + turno.getDateInicial() + " \r\nFinal:\r\n " + turno.getDateFinal());
 
 
         //utilizamos setTag para que al presionar editar o eliminar, android sepa cuál registro queremos afectar
@@ -148,7 +147,7 @@ public class AdapterTurno extends BaseAdapter {
                 final EditText timeinicial = (EditText) dialog.findViewById(R.id.ap_edt_timeinicial);
                 final EditText timefinal = (EditText) dialog.findViewById(R.id.ap_edt_timefinal);
                 final EditText contrasenia = (EditText) dialog.findViewById(R.id.ap_edt_pass_turno);
-                final CheckBox visible =(CheckBox) dialog.findViewById(R.id.ap_cb_visible);
+                final CheckBox visible = (CheckBox) dialog.findViewById(R.id.ap_cb_visible);
 
                 Button btCrear = (Button) dialog.findViewById(R.id.d_agregar_turno);
                 Button btCancelar = (Button) dialog.findViewById(R.id.d_cancelar_turno);
@@ -159,10 +158,10 @@ public class AdapterTurno extends BaseAdapter {
 
                 //;)
                 String fechainicial = turno.getDateInicial();
-                String[] pfechainicial =fechainicial.split(" ");
+                String[] pfechainicial = fechainicial.split(" ");
 
                 String fechafinal = turno.getDateFinal();
-                String[] pfechafinal =fechafinal.split(" ");
+                String[] pfechafinal = fechafinal.split(" ");
 
                 //seteamos valores de views
                 btCrear.setText("Guardar");
@@ -172,9 +171,9 @@ public class AdapterTurno extends BaseAdapter {
                 timeinicial.setText(pfechainicial[1]);
                 timefinal.setText(pfechafinal[1]);
                 contrasenia.setText(turno.getContrasenia());
-                if(turno.getVisible()==1){
+                if (turno.getVisible() == 1) {
                     visible.setChecked(true);
-                }else {
+                } else {
                     visible.setChecked(false);
                 }
 
@@ -183,28 +182,28 @@ public class AdapterTurno extends BaseAdapter {
                 imv_dateinicial.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        datePicker(dateinicial,v.getContext());
+                        datePicker(dateinicial, v.getContext());
                     }
                 });
 
                 imv_timefinal.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        timepicker(timeinicial,v.getContext());
+                        timepicker(timeinicial, v.getContext());
                     }
                 });
 
                 imv_datefinal.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        datePicker(datefinal,v.getContext());
+                        datePicker(datefinal, v.getContext());
                     }
                 });
 
                 imv_timefinal.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        timepicker(timefinal,v.getContext());
+                        timepicker(timefinal, v.getContext());
                     }
                 });
 
@@ -343,9 +342,9 @@ public class AdapterTurno extends BaseAdapter {
                 tv_dateinicial.setText("Inicio: " + turno.getDateInicial());
                 tv_datefinal.setText("Final: " + turno.getDateFinal());
                 tv_pass.setText("Contraseña: " + turno.getContrasenia());
-                if (turno.getVisible()==1){
+                if (turno.getVisible() == 1) {
                     tv_visible.setText("Visible: SI");
-                }else {
+                } else {
                     tv_visible.setText("Visible: NO");
                 }
 
@@ -361,36 +360,41 @@ public class AdapterTurno extends BaseAdapter {
         return view;
     }
 
-    public void datePicker(final EditText editText, Context context){
-        anio = 2019;
-        mes = 1;
-        dia = 0;
+    public void datePicker(final EditText editText, Context context) {
+
+        final Calendar c = Calendar.getInstance();
+        dia = c.get(Calendar.DAY_OF_MONTH);
+        mes = c.get(Calendar.MONTH);
+        anio = c.get(Calendar.YEAR);
+
 
         //creamos instancia de clase DatePickerDialog
-        DatePickerDialog datePickerDialog =new DatePickerDialog(
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        editText.setText(year+"/"+(month+1)+"/"+dayOfMonth);
+                        editText.setText(year + "/" + (month + 1) + "/" + dayOfMonth);
                     }
                 },
-                dia,
+                anio,
                 mes,
-                anio
+                dia
         );
         datePickerDialog.show();
     }
 
-    public void timepicker(final EditText editText,Context context){
-        hora = 12;
-        minuto = 0;
+    public void timepicker(final EditText editText, Context context) {
+        final Calendar c = Calendar.getInstance();
+        hora=c.get(Calendar.HOUR_OF_DAY);
+        minuto=c.get(Calendar.MINUTE);
+
         TimePickerDialog timePickerDialog = new TimePickerDialog(
                 context,
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        editText.setText(hourOfDay+":"+minute);
+                        editText.setText(hourOfDay + ":" + minute);
                     }
                 },
                 hora,
