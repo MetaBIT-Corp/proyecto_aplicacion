@@ -16,6 +16,7 @@ import android.widget.ListView;
 import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.TurnoActivity;
 import com.example.crud_encuesta.Componentes_DC.Activities.GpoEmpActivity;
+import com.example.crud_encuesta.Componentes_Docente.ActivityDocente;
 import com.example.crud_encuesta.Componentes_MT.AreaActivity;
 import com.example.crud_encuesta.Componentes_MT.ClaveActivity;
 import com.example.crud_encuesta.Componentes_R.CarreraActivity;
@@ -117,6 +118,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void turno(){
         Intent i = new Intent(this, TurnoActivity.class);
+        startActivity(i);
+    }
+
+    public void activity_docente(View view){
+        Intent i= new Intent(this, ActivityDocente.class);
         startActivity(i);
     }
 }
