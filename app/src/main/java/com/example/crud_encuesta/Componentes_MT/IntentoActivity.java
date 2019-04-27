@@ -1,10 +1,13 @@
 package com.example.crud_encuesta.Componentes_MT;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -35,26 +38,8 @@ public class IntentoActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.lsPreguntas);
         listView.setAdapter(new IntentoAdapter(getPreguntas(), this));
 
-    }
-
-    public RadioGroup prueba(){
-        a = new RadioGroup(getApplicationContext());
-        a.setOrientation(LinearLayout.VERTICAL);
-        RadioButton rb1 = new RadioButton(getApplicationContext());
-        RadioButton rb2 = new RadioButton(getApplicationContext());
-        RadioButton rb3 = new RadioButton(getApplicationContext());
-        RadioButton rb4 = new RadioButton(getApplicationContext());
-        rb1.setText("Aglo1");
-        rb2.setText("Aglo2");
-        rb3.setText("Aglo3");
-        rb4.setText("Aglo4");
-
-        a.addView(rb1);
-        a.addView(rb2);
-        a.addView(rb3);
-        a.addView(rb4);
-
-        return a;
+        //InteraccionView evento = new InteraccionView(this);
+        //setContentView(evento);
     }
 
     public List<Pregunta> getPreguntas(){
@@ -122,21 +107,25 @@ public class IntentoActivity extends AppCompatActivity {
         float cantidad_f = (float)cantidad;
 
         valor_pregunta = (peso_f/cantidad_f)/10;
-        Log.d("Valor pregunta",String.valueOf(valor_pregunta));
         return valor_pregunta;
     }
 
-    public void prueba2(){
-        List<Pregunta> ejemplo = new ArrayList<>();
-        ejemplo = getPreguntas();
+    public int getModalidad(int id_pregunta){
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        SQLiteDatabase db = databaseAccess.open();
 
-        for(Pregunta p:ejemplo){
-            Toast.makeText(this, p.pregunta, Toast.LENGTH_SHORT).show();
-            for (String op:p.opciones) {
-                Toast.makeText(this, op, Toast.LENGTH_SHORT).show();
-            }
-        }
+        int id_modalidad;
+        String sentencia;
 
+        sentencia="SELECT ID_TIPO_ITEM FROM AREA WHERE ID_AREA IN\n" +
+                "(SELECT ID_AREA FROM CLAVE_AREA WHERE ID_CLAVE_AREA IN\n" +
+                "(SELECT ID_CLAVE_AREA FROM CLAVE_AREA_PREGUNTA WHERE ID_PREGUNTA="+id_pregunta+"))";
+
+        Cursor cursor = db.rawQuery(sentencia,null);
+        cursor.moveToFirst();
+
+        id_modalidad= cursor.getInt(0);
+        Log.d("ID modalidad",String.valueOf(id_modalidad));
+        return id_modalidad;
     }
-
 }
