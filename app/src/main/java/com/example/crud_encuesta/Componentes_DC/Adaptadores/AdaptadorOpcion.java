@@ -28,13 +28,15 @@ public class AdaptadorOpcion extends BaseAdapter {
     private Opcion opcion;
     private Activity a;
     private int id;
-    private int tipo;
+    private int es_verdadero_falso;
+    private int es_respuesta_corta;
 
-    public AdaptadorOpcion(ArrayList<Opcion> lista_opciones, Activity a, DaoOpcion dao, int tipo) {
+    public AdaptadorOpcion(ArrayList<Opcion> lista_opciones, Activity a, DaoOpcion dao, int es_verdadero_falso, int es_respuesta_corta) {
         this.lista_opciones = lista_opciones;
         this.dao = dao;
         this.a = a;
-        this.tipo = tipo;
+        this.es_verdadero_falso = es_verdadero_falso;
+        this.es_respuesta_corta = es_respuesta_corta;
     }
     @Override
     public int getCount() {
@@ -83,12 +85,15 @@ public class AdaptadorOpcion extends BaseAdapter {
         }else{
             cb_correcta.setChecked(false);
         }
-        if(tipo==1){
+        if(es_verdadero_falso==1){
             editar.setVisibility(View.GONE);
             eliminar.setVisibility(View.GONE);
         }else{
             editar.setTag(position);
             eliminar.setTag(position);
+
+            final int es_resp_corta_final=es_respuesta_corta;
+
             editar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -97,7 +102,10 @@ public class AdaptadorOpcion extends BaseAdapter {
                     final Dialog dialog = new Dialog(a);
                     dialog.setTitle("Editar Opcion");
                     dialog.setCancelable(true);
-                    dialog.setContentView(R.layout.dialogo_opcion);
+
+                    if(es_resp_corta_final!=1) dialog.setContentView(R.layout.dialogo_opcion);
+                    else dialog.setContentView(R.layout.dialogo_opcion_resp_corta);
+
                     dialog.show();
 
                     final EditText texto_opcion = (EditText)dialog.findViewById(R.id.editt_opcion);

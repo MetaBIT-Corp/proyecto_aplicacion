@@ -19,13 +19,15 @@ public class DaoOpcion {
     private Context ct;
     private String nombreBD = "proy_aplicacion.db";
     private int id_pregunta;
+    private int es_respuesta_corta;
 
-    public DaoOpcion(Context ct, int id_pregunta, int tipo){
+    public DaoOpcion(Context ct, int id_pregunta, int es_verdadero_falso, int es_respuesta_corta){
         this.ct = ct;
         this.id_pregunta = id_pregunta;
         DatabaseAccess dba = DatabaseAccess.getInstance(ct);
         cx = dba.open();
-        if (tipo==1)insertar_automatico();
+        this.es_respuesta_corta = es_respuesta_corta;
+        if (es_verdadero_falso==1)insertar_automatico();
     }
 
     private void insertar_automatico(){
@@ -53,10 +55,12 @@ public class DaoOpcion {
         contenedor.put("ID_PREGUNTA ",opcion.getId_pregunta());
         contenedor.put("OPCION",opcion.getOpcion());
 
-        if (opcion.getCorrecta()==1){
-            ContentValues contenedor_alterno = new ContentValues();
-            contenedor_alterno.put("CORRECTA",0);
-            cx.update("OPCION",contenedor_alterno,"ID_PREGUNTA="+id_pregunta, null);
+        if (opcion.getCorrecta()==1 && es_respuesta_corta!=1){
+
+                ContentValues contenedor_alterno = new ContentValues();
+                contenedor_alterno.put("CORRECTA",0);
+                cx.update("OPCION",contenedor_alterno,"ID_PREGUNTA="+id_pregunta, null);
+
         }
 
         contenedor.put("CORRECTA",opcion.getCorrecta());
@@ -72,7 +76,7 @@ public class DaoOpcion {
         ContentValues contenedor = new ContentValues();
         contenedor.put("OPCION",opcion.getOpcion());
 
-        if (opcion.getCorrecta()==1){
+        if (opcion.getCorrecta()==1 && es_respuesta_corta!=1){
             ContentValues contenedor_alterno = new ContentValues();
             contenedor_alterno.put("CORRECTA",0);
             cx.update("OPCION",contenedor_alterno,"ID_PREGUNTA="+id_pregunta, null);

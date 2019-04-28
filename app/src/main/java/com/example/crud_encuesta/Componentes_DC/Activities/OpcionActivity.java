@@ -45,15 +45,20 @@ public class OpcionActivity extends AppCompatActivity {
         id_pregunta = b.getInt("id_pregunta");
         id_tipo_item = b.getInt("id_tipo_item");
 
-        int tipo=0;
+        int es_verdadero_falso=0;
+        int es_respuesta_corta=0;
         if(id_tipo_item==2){
-            tipo=1;
+            es_verdadero_falso=1;
             agregar.setVisibility(View.GONE);
             btn_change.setVisibility(View.VISIBLE);
+        }else if(id_tipo_item==4){
+            es_respuesta_corta=1;
         }
-        dao = new DaoOpcion(this, id_pregunta,tipo);
+        final int es_resp_corta_final = es_respuesta_corta;
+
+        dao = new DaoOpcion(this, id_pregunta,es_verdadero_falso, es_respuesta_corta);
         lista_opciones = dao.verTodos();
-        adaptador = new AdaptadorOpcion(lista_opciones,this,dao, tipo);
+        adaptador = new AdaptadorOpcion(lista_opciones,this,dao, es_verdadero_falso,es_respuesta_corta);
         ListView list = (ListView)findViewById(R.id.lista);
         list.setAdapter(adaptador);
 
@@ -72,7 +77,8 @@ public class OpcionActivity extends AppCompatActivity {
                 final Dialog dialog = new Dialog(OpcionActivity.this);
                 dialog.setTitle("Nueva Opcion");
                 dialog.setCancelable(true);
-                dialog.setContentView(R.layout.dialogo_opcion);
+                if(es_resp_corta_final!=1) dialog.setContentView(R.layout.dialogo_opcion);
+                else dialog.setContentView(R.layout.dialogo_opcion_resp_corta);
                 dialog.show();
 
                 final EditText texto_opcion = (EditText)dialog.findViewById(R.id.editt_opcion);
@@ -90,7 +96,13 @@ public class OpcionActivity extends AppCompatActivity {
 
                         int check = 0;
 
-                        if(cb_correcta.isChecked())check = 1;
+                        if(es_resp_corta_final!=1){
+
+                            if(cb_correcta.isChecked())check = 1;
+                        }else{
+                            cb_correcta.setVisibility(View.GONE);
+                            check = 1;
+                        }
 
                         try{
 
