@@ -8,12 +8,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -34,11 +37,14 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class IntentoAdapter extends BaseAdapter {
+public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSelectedListener {
     private LayoutInflater inflater;
+    private Tamanio tamanio= new Tamanio();
     private List<Pregunta> preguntas = new ArrayList<>();
     private List<RadioGroup> rg_lista = new ArrayList<>();
     private List<RadioButton> rb_lista = new ArrayList<>();
+    private List<Spinner> sp_lista = new ArrayList<>();
+    private List<Integer> idesGPO = new ArrayList<>();
     private Context context;
     private int id_intento;
 
@@ -47,49 +53,110 @@ public class IntentoAdapter extends BaseAdapter {
     int id_clave = 1;
     int id = 1;
 
-    public IntentoAdapter(List<Pregunta> preguntas, Context context) {
+    public IntentoAdapter(List<Pregunta> preguntas, Context context, Tamanio tamanio) {
         this.preguntas = preguntas;
         this.context = context;
+        this.tamanio = tamanio;
 
         inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         iniciar_intento();
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, ViewGroup parent) {
         final View mView = inflater.inflate(R.layout.elemento_list_pregunta, null);
         TextView txt_pregrunta = mView.findViewById(R.id.txtPregunta);
         LinearLayout ll_pregunta = mView.findViewById(R.id.llPregunta);
         Button finalizar = new Button(context);
         finalizar.setText("Finalizar");
 
-        //Toast.makeText(context, "Position: "+position+", RadioGruop: "+rg_lista.size(), Toast.LENGTH_SHORT).show();
+        switch (preguntas.get(position).modalidad) {
+            case 1:
+                txt_pregrunta.setText(preguntas.get(position).preguntaPList.get(0).pregunta);
 
-        txt_pregrunta.setText(preguntas.get(position).pregunta);
+                if(tamanio.getOpcion_multiple()>rg_lista.size()){
+                    RadioGroup rg_pregunta = new RadioGroup(context);
+                    for (int i = 0; i < preguntas.get(position).preguntaPList.get(0).opciones.size(); i++) {
+                        RadioButton rb_pregunta = new RadioButton(context);
+                        rb_pregunta.setText( preguntas.get(position).preguntaPList.get(0).opciones.get(i));
+                        rb_pregunta.setId( preguntas.get(position).preguntaPList.get(0).ides.get(i));
+                        rb_lista.add(rb_pregunta);
+                        rg_pregunta.addView(rb_pregunta);
+                    }
 
-        if(getCount()>rg_lista.size()){
-            RadioGroup rg_pregunta = new RadioGroup(context);
-            for (int i = 0; i < preguntas.get(position).opciones.size(); i++) {
-                RadioButton rb_pregunta = new RadioButton(context);
-                rb_pregunta.setText(preguntas.get(position).opciones.get(i));
-                rb_pregunta.setId(preguntas.get(position).ides.get(i));
-                rb_lista.add(rb_pregunta);
-                rg_pregunta.addView(rb_pregunta);
-            }
+                    rg_lista.add(rg_pregunta);
+                    ll_pregunta.addView(rg_pregunta);
+                }else {
+                    RadioGroup rg_pregunta = rg_lista.get(position);
+                    if(rg_pregunta.getParent() != null) {
+                        ((ViewGroup)rg_pregunta.getParent()).removeView(rg_pregunta);
+                    }
+                    ll_pregunta.addView(rg_pregunta);
+                }
+                break;
 
-            rg_lista.add(rg_pregunta);
-            ll_pregunta.addView(rg_pregunta);
-        }else {
-            RadioGroup rg_pregunta = rg_lista.get(position);
-            if(rg_pregunta.getParent() != null) {
-                ((ViewGroup)rg_pregunta.getParent()).removeView(rg_pregunta);
-            }
-            ll_pregunta.addView(rg_pregunta);
+            case 3:
+                txt_pregrunta.setText(preguntas.get(position).descripcion);
+
+                if(tamanio.getEmparejamiento()>sp_lista.size()){
+                    ArrayAdapter<String> comboAdapter;
+                    List<String> opcionesGPO = new ArrayList<>();
+
+                    for(int i=0; i<preguntas.get(position).preguntaPList.size();i++){
+                        for(int j=0; j<preguntas.get(position).preguntaPList.get(i).opciones.size(); j++){
+                            opcionesGPO.add(preguntas.get(position).preguntaPList.get(i).opciones.get(j));
+                            idesGPO.add(preguntas.get(position).preguntaPList.get(i).ides.get(j));
+                        }
+                    }
+
+                    for(PreguntaP p : preguntas.get(position).preguntaPList){
+                        TextView txt = new TextView(context);
+                        Spinner spGPO = new Spinner(context);
+                        spGPO.setId(p.respuesta);
+
+                        spGPO.setOnItemSelectedListener(this);
+
+                        txt.setTextSize(15);
+                        txt.setTextColor(Color.BLACK);
+                        txt.setText(p.pregunta);
+                        txt.setPadding(0,30,0,20);
+
+                        comboAdapter = new ArrayAdapter<>(context,android.R.layout.simple_spinner_item, opcionesGPO);
+                        spGPO.setAdapter(comboAdapter);
+
+                        sp_lista.add(spGPO);
+
+                        ll_pregunta.addView(txt);
+                        ll_pregunta.addView(spGPO);
+                    }
+                }else{
+                    for (int i =0; i<sp_lista.size(); i++) {
+                        TextView txt = new TextView(context);
+                        Spinner spGPO = sp_lista.get(i);
+
+                        txt.setTextSize(15);
+                        txt.setTextColor(Color.BLACK);
+                        txt.setText(preguntas.get(position).preguntaPList.get(i).pregunta);
+                        txt.setPadding(0,30,0,20);
+
+                        if(txt.getParent() != null) {
+                            ((ViewGroup)txt.getParent()).removeView(txt);
+                        }
+
+                        ll_pregunta.addView(txt);
+
+                        if(spGPO.getParent() != null) {
+                            ((ViewGroup)spGPO.getParent()).removeView(spGPO);
+                        }
+                        ll_pregunta.addView(spGPO);
+                    }
+                }
         }
 
         if (position == getCount() - 1) {
             ll_pregunta.addView(finalizar);
         }
+
 
         /*mView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -123,7 +190,7 @@ public class IntentoAdapter extends BaseAdapter {
                 emergente.setPositiveButton("Finalizar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        modelo_respuesta(rg_lista);
+                        modelo_respuesta(rg_lista, sp_lista);
                         terminar_intento();
 
                         AlertDialog.Builder nota = new AlertDialog.Builder(context);
@@ -215,7 +282,7 @@ public class IntentoAdapter extends BaseAdapter {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
         SQLiteDatabase db = databaseAccess.open();
 
-        Cursor cursor = db.rawQuery("SELECT NUMERO_INTENTO FROM INTENTO WHERE ID_GEN_EST=" + id, null);
+        Cursor cursor = db.rawQuery("SELECT NUMERO_INTENTO FROM INTENTO WHERE ID_GEN_EST="+id+" ORDER BY ID_INTENTO DESC LIMIT 1", null);
         cursor.moveToFirst();
 
         if (cursor.getCount() > 0) {
@@ -225,13 +292,19 @@ public class IntentoAdapter extends BaseAdapter {
         return numero_intento;
     }
 
-    public void modelo_respuesta(List<RadioGroup> rg_seleccion) {
+    public void modelo_respuesta(List<RadioGroup> rg_seleccion, List<Spinner> sp_seleccion) {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
         SQLiteDatabase db = databaseAccess.open();
         ContentValues registro = new ContentValues();
 
         for (RadioGroup rg : rg_seleccion) {
             registro.put("id_opcion", rg.getCheckedRadioButtonId());
+            registro.put("id_intento", id_intento);
+            db.insert("respuesta", null, registro);
+        }
+
+        for (Spinner sp : sp_seleccion) {
+            registro.put("id_opcion", idesGPO.get(sp.getSelectedItemPosition()));
             registro.put("id_intento", id_intento);
             db.insert("respuesta", null, registro);
         }
@@ -245,8 +318,18 @@ public class IntentoAdapter extends BaseAdapter {
 
         elecciones = getRespuestas();
         while (i < preguntas.size()) {
-            if (preguntas.get(i).respuesta == elecciones.get(i)) {
-                nota += preguntas.get(i).ponderacion;
+            if(preguntas.get(i).modalidad==3){
+                for(int j=0; j<sp_lista.size();j++){
+                    int re = sp_lista.get(j).getId();
+                    int el = idesGPO.get(sp_lista.get(j).getSelectedItemPosition());
+                    if(re==el){
+                        nota +=preguntas.get(i).preguntaPList.get(j).ponderacion;
+                    }
+                }
+            }else{
+                if (preguntas.get(i).preguntaPList.get(0).respuesta == elecciones.get(i)) {
+                    nota += preguntas.get(i).preguntaPList.get(0).ponderacion;
+                }
             }
             i++;
 
@@ -271,6 +354,15 @@ public class IntentoAdapter extends BaseAdapter {
         return elecciones;
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        //Toast.makeText(context, "Seleccion: "+position, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 
 
 }
