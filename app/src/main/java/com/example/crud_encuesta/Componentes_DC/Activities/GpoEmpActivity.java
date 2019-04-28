@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -27,6 +28,7 @@ public class GpoEmpActivity extends AppCompatActivity {
     private ArrayList<GrupoEmparejamiento> lista_gpo_emp;
     private GrupoEmparejamiento gpo_emp;
     private int id_area;
+    private int id_tipo_item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,10 @@ public class GpoEmpActivity extends AppCompatActivity {
         Intent i = getIntent();
         Bundle b = i.getExtras();
         id_area = b.getInt("id_area");
+        //Inicio
+        id_tipo_item = b.getInt("id_tipo_item");
+        Log.d("RETORNA", ""+id_tipo_item);
+        //Fin
         dao = new DaoGrupoEmp(this, id_area);
         lista_gpo_emp = dao.verTodos();
         adaptador = new Adaptador(lista_gpo_emp,this,dao);
@@ -45,15 +51,14 @@ public class GpoEmpActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
+                
             }
         });
 
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Dialog dialog = new Dialog(GpoEmpActivity.this);
+                /*final Dialog dialog = new Dialog(GpoEmpActivity.this);
                 dialog.setTitle("Nuevo Grupo Emparejamiento");
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.dialogo_gpo_emp);
@@ -96,7 +101,8 @@ public class GpoEmpActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         dialog.dismiss();
                     }
-                });
+                });*/
+                Toast.makeText(v.getContext(), "ID_TIPO_ITEM: "+id_tipo_item, Toast.LENGTH_SHORT).show();
             }
         });
     }

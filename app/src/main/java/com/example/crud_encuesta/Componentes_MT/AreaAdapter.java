@@ -5,8 +5,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +66,12 @@ public class AreaAdapter extends BaseAdapter {
                 int id = Integer.parseInt(ides.get(i));
                 Intent in = new Intent(context, GpoEmpActivity.class);
                 in.putExtra("id_area",id);
+
+                //inicio
+
+                int id_tipo_item=obtener_tipo_item(id,v.getContext());
+                in.putExtra("id_tipo_item",id_tipo_item);
+                //fin
                 context.startActivity(in);
             }
         });
@@ -143,6 +151,22 @@ public class AreaAdapter extends BaseAdapter {
         });
 
         return mView;
+    }
+
+    public int obtener_tipo_item(int id, Context ct){
+        int id_tipo_item=0;
+        try{
+
+            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(ct);
+            SQLiteDatabase db = databaseAccess.open();
+            Cursor cursor = db.rawQuery("SELECT ID_TIPO_ITEM FROM area WHERE ID_AREA="+id, null);
+            cursor.moveToFirst();
+            id_tipo_item=cursor.getInt(0);
+
+        }catch (Exception e){
+            Log.d("Error","Ocurrio error");
+        }
+        return id_tipo_item;
     }
 
     @Override
