@@ -48,8 +48,6 @@ public class IntentoActivity extends AppCompatActivity {
         boolean emparejamiento=false;
         int i = 1;
 
-        Log.d("Hey", "Aqui 1");
-
         String sentencia_pregunta = "SELECT ID_PREGUNTA, ID_GRUPO_EMP, PREGUNTA FROM PREGUNTA WHERE ID_PREGUNTA IN\n" +
                 "(SELECT ID_PREGUNTA FROM CLAVE_AREA_PREGUNTA WHERE ID_CLAVE_AREA IN\n" +
                 "(SELECT ID_CLAVE_AREA FROM CLAVE_AREA WHERE ID_CLAVE ="+id_clave+"))";
@@ -59,11 +57,7 @@ public class IntentoActivity extends AppCompatActivity {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         SQLiteDatabase db = databaseAccess.open();
 
-        Log.d("Hey", "Aqui 2");
-
         Cursor cursor_pregunta = db.rawQuery(sentencia_pregunta, null);
-
-        Log.d("Hey", "Aqui 3");
 
         while (cursor_pregunta.moveToNext()){
             List<String> opciones = new ArrayList<>();
@@ -75,23 +69,18 @@ public class IntentoActivity extends AppCompatActivity {
                 preguntaPList = new ArrayList<>();
             }
 
-            Log.d("Hey", "Aqui 4");
-
             id = cursor_pregunta.getInt(0);
-
-            Log.d("Hey", "Aqui 5");
             pregunta = cursor_pregunta.getString(2);
-            Log.d("Hey", "Aqui 6");
             id_gpo = cursor_pregunta.getInt(1);
 
-            Log.d("Hey", "Aqui 7");
+            Log.d("ID modalidad","Aqui 1");
+            Log.d("ID modalidad",""+id_gpo);
             ponderacion = getPonderacion(id);
-            Log.d("Hey", "Aqui 8");
             modalidad = getModalidad(id);
-            Log.d("Hey", "Aqui 9");
-            Log.d("Hey", "id_GPO: "+id_gpo);
             descripcion = getDescripcion(id_gpo);
-            Log.d("Hey", "Aqui 10");
+
+
+            Log.d("ID modalidad",""+modalidad);
 
             Cursor cursor_opcion = db.rawQuery(sentencia_opcion+id, null);
             while (cursor_opcion.moveToNext()){
@@ -120,9 +109,6 @@ public class IntentoActivity extends AppCompatActivity {
 
         databaseAccess.close();
         cursor_pregunta.close();
-
-        Log.d("OP: ", ""+tamanio.getOpcion_multiple());
-        Log.d("EM", ""+tamanio.getEmparejamiento());
 
         return preguntas;
     }
@@ -201,7 +187,6 @@ public class IntentoActivity extends AppCompatActivity {
         cursor.moveToFirst();
 
         id_modalidad= cursor.getInt(0);
-        Log.d("ID modalidad",String.valueOf(id_modalidad));
         return id_modalidad;
     }
 

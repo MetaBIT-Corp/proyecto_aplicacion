@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -151,6 +152,18 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                         ll_pregunta.addView(spGPO);
                     }
                 }
+                break;
+
+            case 4:
+                txt_pregrunta.setText(preguntas.get(position).preguntaPList.get(0).pregunta);
+                EditText et_respuesa = new EditText(context);
+                et_respuesa.setId(preguntas.get(position).preguntaPList.get(0).ides.get(0));
+
+                et_respuesa.setInputType(View.TEXT_ALIGNMENT_CENTER);
+                ll_pregunta.addView(et_respuesa);
+
+                break;
+
         }
 
         if (position == getCount() - 1) {
