@@ -36,7 +36,7 @@ public class DaoOpcion {
         if (opcion.getCorrecta()==1){
             ContentValues contenedor_alterno = new ContentValues();
             contenedor_alterno.put("CORRECTA",0);
-            cx.update("OPCION",contenedor_alterno,null, null);
+            cx.update("OPCION",contenedor_alterno,"ID_PREGUNTA="+id_pregunta, null);
         }
 
         contenedor.put("CORRECTA",opcion.getCorrecta());
@@ -55,7 +55,7 @@ public class DaoOpcion {
         if (opcion.getCorrecta()==1){
             ContentValues contenedor_alterno = new ContentValues();
             contenedor_alterno.put("CORRECTA",0);
-            cx.update("OPCION",contenedor_alterno,null, null);
+            cx.update("OPCION",contenedor_alterno,"ID_PREGUNTA="+id_pregunta, null);
         }
         contenedor.put("CORRECTA",opcion.getCorrecta());
         return (cx.update("OPCION",contenedor,"ID_OPCION="+opcion.getId(), null)>0);

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.crud_encuesta.Componentes_DC.Adaptadores.Adaptador;
 import com.example.crud_encuesta.Componentes_DC.Dao.DaoGrupoEmp;
 import com.example.crud_encuesta.Componentes_DC.Objetos.GrupoEmparejamiento;
+import com.example.crud_encuesta.Componentes_MT.AreaActivity;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class GpoEmpActivity extends AppCompatActivity {
     private GrupoEmparejamiento gpo_emp;
     private int id_area;
     private int id_tipo_item;
+    private int accion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,28 +39,30 @@ public class GpoEmpActivity extends AppCompatActivity {
         Intent i = getIntent();
         Bundle b = i.getExtras();
         id_area = b.getInt("id_area");
-        //Inicio
-        id_tipo_item = b.getInt("id_tipo_item");
-        Log.d("RETORNA", ""+id_tipo_item);
-        //Fin
         dao = new DaoGrupoEmp(this, id_area);
         lista_gpo_emp = dao.verTodos();
-        adaptador = new Adaptador(lista_gpo_emp,this,dao);
-        ListView list = (ListView)findViewById(R.id.lista);
-        FloatingActionButton agregar = findViewById(R.id.btn_nuevo);
+
+        //Inicio
+        id_tipo_item = b.getInt("id_tipo_item");
+        accion = b.getInt("accion");
+
+        //Fin
+
+        FloatingActionButton agregar = (FloatingActionButton)findViewById(R.id.btn_nuevo);
+        /*ListView list = (ListView)findViewById(R.id.lista);
         list.setAdapter(adaptador);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
+
             }
-        });
+        });*/
 
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*final Dialog dialog = new Dialog(GpoEmpActivity.this);
+                final Dialog dialog = new Dialog(GpoEmpActivity.this);
                 dialog.setTitle("Nuevo Grupo Emparejamiento");
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.dialogo_gpo_emp);
@@ -80,9 +84,17 @@ public class GpoEmpActivity extends AppCompatActivity {
 
                                 gpo_emp = new GrupoEmparejamiento(descripcion.getText().toString());
                                 dao.insertar(gpo_emp);
-                                adaptador.notifyDataSetChanged();
                                 lista_gpo_emp = dao.verTodos();
                                 dialog.dismiss();
+
+                                //INICIO
+                                Intent in = new Intent(v.getContext(), PreguntaActivity.class);
+                                gpo_emp = lista_gpo_emp.get(0);
+                                in.putExtra("id_gpo_emp",gpo_emp.getId());
+                                in.putExtra("desc_gpo_emp",gpo_emp.getDescripcion());
+                                in.putExtra("id_area",id_area);
+                                startActivity(in);
+                                //FIN
 
                             }else{
                                 Toast.makeText(v.getContext(), "¡Ingrese la descripción del grupo de emparejamiento!", Toast.LENGTH_SHORT).show();
@@ -99,11 +111,42 @@ public class GpoEmpActivity extends AppCompatActivity {
                 cancelar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Intent in = new Intent(v.getContext(), AreaActivity.class);
+                        startActivity(in);
                         dialog.dismiss();
                     }
-                });*/
-                Toast.makeText(v.getContext(), "ID_TIPO_ITEM: "+id_tipo_item, Toast.LENGTH_SHORT).show();
+                });
             }
         });
+
+        //INICIO
+        if(id_tipo_item==3){
+
+
+                if(accion == 0){
+
+                    if(lista_gpo_emp.isEmpty()){
+                        agregar.performClick();
+                    }else{
+
+                        Intent in = new Intent(this, PreguntaActivity.class);
+                        gpo_emp = lista_gpo_emp.get(0);
+                        in.putExtra("id_gpo_emp",gpo_emp.getId());
+                        in.putExtra("desc_gpo_emp",gpo_emp.getDescripcion());
+                        startActivity(in);
+                    }
+
+                }else{
+                    /*Toast.makeText(this, "Tamanio: "+lista_gpo_emp.size(), Toast.LENGTH_SHORT).show();
+                    adaptador = new Adaptador(lista_gpo_emp, this, dao);
+                    ListView list = (ListView)findViewById(R.id.lista);
+                    list.setAdapter(adaptador);*/
+                }
+
+        }else{
+
+        }
+        //FIN
     }
+
 }

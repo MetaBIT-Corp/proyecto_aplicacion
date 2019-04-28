@@ -71,6 +71,7 @@ public class AreaAdapter extends BaseAdapter {
 
                 int id_tipo_item=obtener_tipo_item(id,v.getContext());
                 in.putExtra("id_tipo_item",id_tipo_item);
+                in.putExtra("accion",0);
                 //fin
                 context.startActivity(in);
             }
