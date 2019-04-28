@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_DC.Objetos.Opcion;
 import com.example.crud_encuesta.DatabaseAccess;
@@ -19,12 +20,31 @@ public class DaoOpcion {
     private String nombreBD = "proy_aplicacion.db";
     private int id_pregunta;
 
-    public DaoOpcion(Context ct, int id_pregunta){
+    public DaoOpcion(Context ct, int id_pregunta, int tipo){
         this.ct = ct;
         this.id_pregunta = id_pregunta;
         DatabaseAccess dba = DatabaseAccess.getInstance(ct);
         cx = dba.open();
+        if (tipo==1)insertar_automatico();
+    }
 
+    private void insertar_automatico(){
+        Cursor cursor = cx.rawQuery("SELECT*FROM OPCION WHERE ID_PREGUNTA="+id_pregunta,null);
+     if(cursor.getCount()==0){
+         Opcion opcion_verdadero = new Opcion(id_pregunta, "Verdadero",1);
+         Opcion opcion_falso = new Opcion(id_pregunta, "Falso",0);
+         insertar(opcion_verdadero);
+         insertar(opcion_falso);
+        }
+    }
+
+    public void cambiar(){
+        Cursor cursor = cx.rawQuery("SELECT*FROM OPCION WHERE ID_PREGUNTA="+id_pregunta+" AND CORRECTA="+0,null);
+        if (cursor.getCount()==1){
+            cursor.moveToFirst();
+            Opcion opcion = new Opcion(cursor.getInt(cursor.getColumnIndex("ID_OPCION")), cursor.getInt(cursor.getColumnIndex("ID_PREGUNTA")),cursor.getString(cursor.getColumnIndex("OPCION")), 1);
+            editar(opcion);
+        }
     }
 
     public boolean insertar(Opcion opcion){

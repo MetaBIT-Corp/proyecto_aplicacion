@@ -46,7 +46,7 @@ public class PreguntaActivity extends AppCompatActivity {
         dao = new DaoPregunta(this, id_gpo_emp, id_area);
 
         lista_preguntas = dao.verTodos();
-        adaptador = new AdaptadorPregunta(lista_preguntas,this,dao);
+        adaptador = new AdaptadorPregunta(lista_preguntas,this,dao, id_tipo_item);
         ListView list = (ListView)findViewById(R.id.lista);
         FloatingActionButton agregar = findViewById(R.id.btn_nuevo);
         list.setAdapter(adaptador);

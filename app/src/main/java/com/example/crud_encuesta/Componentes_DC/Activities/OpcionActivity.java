@@ -1,7 +1,9 @@
 package com.example.crud_encuesta.Componentes_DC.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.support.annotation.DrawableRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,22 +29,42 @@ public class OpcionActivity extends AppCompatActivity {
     private AdaptadorOpcion adaptador;
     private ArrayList<Opcion> lista_opciones;
     private Opcion opcion;
+    private int id_tipo_item;
 
     private int id_pregunta;
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opcion);
+
+        FloatingActionButton agregar = (FloatingActionButton)findViewById(R.id.btn_nuevo);
+        Button btn_change = (Button)findViewById(R.id.btn_change);
         Intent i = getIntent();
         Bundle b = i.getExtras();
         id_pregunta = b.getInt("id_pregunta");
+        id_tipo_item = b.getInt("id_tipo_item");
 
-        dao = new DaoOpcion(this, id_pregunta);
+        int tipo=0;
+        if(id_tipo_item==2){
+            tipo=1;
+            agregar.setVisibility(View.GONE);
+            btn_change.setVisibility(View.VISIBLE);
+        }
+        dao = new DaoOpcion(this, id_pregunta,tipo);
         lista_opciones = dao.verTodos();
-        adaptador = new AdaptadorOpcion(lista_opciones,this,dao);
+        adaptador = new AdaptadorOpcion(lista_opciones,this,dao, tipo);
         ListView list = (ListView)findViewById(R.id.lista);
-        FloatingActionButton agregar = findViewById(R.id.btn_nuevo);
         list.setAdapter(adaptador);
+
+        btn_change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dao.cambiar();
+                adaptador.notifyDataSetChanged();
+                lista_opciones = dao.verTodos();
+            }
+        });
 
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override

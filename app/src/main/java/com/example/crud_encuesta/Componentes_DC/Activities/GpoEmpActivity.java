@@ -89,7 +89,7 @@ public class GpoEmpActivity extends AppCompatActivity {
                                 dialog.dismiss();
 
                                 //INICIO
-                                
+
                                 //FIN
 
                             }else{
