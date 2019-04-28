@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.crud_encuesta.Componentes_DC.Adaptadores.AdaptadorPregunta;
 import com.example.crud_encuesta.Componentes_DC.Dao.DaoPregunta;
 import com.example.crud_encuesta.Componentes_DC.Objetos.Pregunta;
+import com.example.crud_encuesta.Componentes_MT.AreaActivity;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
@@ -26,21 +27,44 @@ public class PreguntaActivity extends AppCompatActivity {
     private ArrayList<Pregunta> lista_preguntas;
     private Pregunta pregunta;
 
-    private int id_gpo_emp;
+    private int id_gpo_emp=0;
+    private String desc_gpo_emp;
+    private  int id_area =0;
+    private int id_tipo_item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pregunta);
         Intent i = getIntent();
         Bundle b = i.getExtras();
+
         id_gpo_emp = b.getInt("id_gpo_emp");
-        dao = new DaoPregunta(this, id_gpo_emp);
+        desc_gpo_emp = b.getString("desc_gpo_emp");
+        id_area = b.getInt("id_area");
+        id_tipo_item = b.getInt("id_tipo_item");
+
+        dao = new DaoPregunta(this, id_gpo_emp, id_area);
 
         lista_preguntas = dao.verTodos();
-        adaptador = new AdaptadorPregunta(lista_preguntas,this,dao);
+        adaptador = new AdaptadorPregunta(lista_preguntas,this,dao, id_tipo_item);
         ListView list = (ListView)findViewById(R.id.lista);
         FloatingActionButton agregar = findViewById(R.id.btn_nuevo);
         list.setAdapter(adaptador);
+       /* TextView texto_desc_emp = (TextView)findViewById(R.id.txt_desc_emp);
+        texto_desc_emp.setText(desc_gpo_emp);
+        Button editar_gpo_emp = (Button)findViewById(R.id.btn_editar_desc_emp);
+
+        editar_gpo_emp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(PreguntaActivity.this, GpoEmpActivity.class);
+                in.putExtra("id_gpo_emp",id_gpo_emp);
+                in.putExtra("id_tipo_item",3);
+                in.putExtra("accion",1);
+                in.putExtra("id_area",id_area);
+                startActivity(in);
+            }
+        });*/
 
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,5 +113,14 @@ public class PreguntaActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void onBackPressed()
+    {
+        //do whatever you want the 'Back' button to do
+        //as an example the 'Back' button is set to start a new Activity named 'NewActivity'
+        this.startActivity(new Intent(PreguntaActivity.this, AreaActivity.class));
+
+        return;
     }
 }

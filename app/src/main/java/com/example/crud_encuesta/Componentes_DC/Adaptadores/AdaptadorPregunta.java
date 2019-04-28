@@ -30,6 +30,7 @@ public class AdaptadorPregunta extends BaseAdapter {
     private Pregunta pregunta;
     private Activity a;
     private int id;
+    private int id_tipo_item;
 
     public int getId() {
         return id;
@@ -39,10 +40,11 @@ public class AdaptadorPregunta extends BaseAdapter {
         this.id = id;
     }
 
-    public AdaptadorPregunta(ArrayList<Pregunta> lista_preguntas, Activity a, DaoPregunta dao) {
+    public AdaptadorPregunta(ArrayList<Pregunta> lista_preguntas, Activity a, DaoPregunta dao,int id_tipo_item) {
         this.lista_preguntas = lista_preguntas;
         this.dao = dao;
         this.a = a;
+        this.id_tipo_item = id_tipo_item;
     }
 
 
@@ -90,7 +92,8 @@ public class AdaptadorPregunta extends BaseAdapter {
                 final int pos = Integer.parseInt(v.getTag().toString());
                 pregunta = lista_preguntas.get(pos);
                 Bundle b = new Bundle();
-                b.putInt("id_pregunta",pregunta.getId());
+                b.putInt("id_pregunta",pregunta.getId());;
+                b.putInt("id_tipo_item",id_tipo_item);
                 Intent i = new Intent(a, OpcionActivity.class);
                 i.putExtras(b);
                 a.startActivity(i);

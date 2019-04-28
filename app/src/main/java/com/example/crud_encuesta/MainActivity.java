@@ -19,6 +19,7 @@ import com.example.crud_encuesta.Componentes_DC.Activities.GpoEmpActivity;
 import com.example.crud_encuesta.Componentes_Docente.ActivityDocente;
 import com.example.crud_encuesta.Componentes_MT.AreaActivity;
 import com.example.crud_encuesta.Componentes_MT.ClaveActivity;
+import com.example.crud_encuesta.Componentes_MT.IntentoActivity;
 import com.example.crud_encuesta.Componentes_R.CarreraActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
 import com.example.crud_encuesta.Componentes_R.EncuestaActivity;
@@ -47,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login();
-                //clave();
-                evaluacion();
-
+                intento();
+                //evaluacion();
+                //pressed();
 
             }
         });
@@ -78,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void area(){
         Intent i = new Intent(this, AreaActivity.class);
+        startActivity(i);
+    }
+
+    public void intento(){
+        Intent i = new Intent(this, IntentoActivity.class);
         startActivity(i);
     }
 

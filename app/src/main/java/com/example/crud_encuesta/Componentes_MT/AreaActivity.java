@@ -30,7 +30,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
     private Spinner spItems;
     private ArrayAdapter<String> comboAdapter;
     private List <String> items;
-    private int[] iconos={R.drawable.edit1, R.drawable.delete};
+    private int[] iconos={R.drawable.edit1, R.drawable.ic_delete};
 
     private String[] valorItem = new String[]{"Opción múltiple","V/F","Emparejamient","Resouesta corta", "Ordenamiento"};
     private ImageView add;
@@ -85,8 +85,8 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
         switch (parent.getId()){
             case R.id.items:
 
-                Toast.makeText(this, "Modalidad: " + valorItem[position], Toast.LENGTH_SHORT).show();
-                seleccion_item = position;
+                //Toast.makeText(this, "Modalidad: " + valorItem[position], Toast.LENGTH_SHORT).show();
+                seleccion_item = position+1;
                 break;
         }
     }

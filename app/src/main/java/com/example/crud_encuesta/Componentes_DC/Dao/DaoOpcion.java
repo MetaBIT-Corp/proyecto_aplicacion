@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_DC.Objetos.Opcion;
 import com.example.crud_encuesta.DatabaseAccess;
@@ -18,13 +19,34 @@ public class DaoOpcion {
     private Context ct;
     private String nombreBD = "proy_aplicacion.db";
     private int id_pregunta;
+    private int es_respuesta_corta;
 
-    public DaoOpcion(Context ct, int id_pregunta){
+    public DaoOpcion(Context ct, int id_pregunta, int es_verdadero_falso, int es_respuesta_corta){
         this.ct = ct;
         this.id_pregunta = id_pregunta;
         DatabaseAccess dba = DatabaseAccess.getInstance(ct);
         cx = dba.open();
+        this.es_respuesta_corta = es_respuesta_corta;
+        if (es_verdadero_falso==1)insertar_automatico();
+    }
 
+    private void insertar_automatico(){
+        Cursor cursor = cx.rawQuery("SELECT*FROM OPCION WHERE ID_PREGUNTA="+id_pregunta,null);
+     if(cursor.getCount()==0){
+         Opcion opcion_verdadero = new Opcion(id_pregunta, "Verdadero",1);
+         Opcion opcion_falso = new Opcion(id_pregunta, "Falso",0);
+         insertar(opcion_verdadero);
+         insertar(opcion_falso);
+        }
+    }
+
+    public void cambiar(){
+        Cursor cursor = cx.rawQuery("SELECT*FROM OPCION WHERE ID_PREGUNTA="+id_pregunta+" AND CORRECTA="+0,null);
+        if (cursor.getCount()==1){
+            cursor.moveToFirst();
+            Opcion opcion = new Opcion(cursor.getInt(cursor.getColumnIndex("ID_OPCION")), cursor.getInt(cursor.getColumnIndex("ID_PREGUNTA")),cursor.getString(cursor.getColumnIndex("OPCION")), 1);
+            editar(opcion);
+        }
     }
 
     public boolean insertar(Opcion opcion){
@@ -33,10 +55,12 @@ public class DaoOpcion {
         contenedor.put("ID_PREGUNTA ",opcion.getId_pregunta());
         contenedor.put("OPCION",opcion.getOpcion());
 
-        if (opcion.getCorrecta()==1){
-            ContentValues contenedor_alterno = new ContentValues();
-            contenedor_alterno.put("CORRECTA",0);
-            cx.update("OPCION",contenedor_alterno,null, null);
+        if (opcion.getCorrecta()==1 && es_respuesta_corta!=1){
+
+                ContentValues contenedor_alterno = new ContentValues();
+                contenedor_alterno.put("CORRECTA",0);
+                cx.update("OPCION",contenedor_alterno,"ID_PREGUNTA="+id_pregunta, null);
+
         }
 
         contenedor.put("CORRECTA",opcion.getCorrecta());
@@ -52,10 +76,10 @@ public class DaoOpcion {
         ContentValues contenedor = new ContentValues();
         contenedor.put("OPCION",opcion.getOpcion());
 
-        if (opcion.getCorrecta()==1){
+        if (opcion.getCorrecta()==1 && es_respuesta_corta!=1){
             ContentValues contenedor_alterno = new ContentValues();
             contenedor_alterno.put("CORRECTA",0);
-            cx.update("OPCION",contenedor_alterno,null, null);
+            cx.update("OPCION",contenedor_alterno,"ID_PREGUNTA="+id_pregunta, null);
         }
         contenedor.put("CORRECTA",opcion.getCorrecta());
         return (cx.update("OPCION",contenedor,"ID_OPCION="+opcion.getId(), null)>0);
