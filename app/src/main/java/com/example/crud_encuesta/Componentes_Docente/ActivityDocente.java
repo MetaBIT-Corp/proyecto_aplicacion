@@ -1,17 +1,22 @@
 package com.example.crud_encuesta.Componentes_Docente;
 
 import android.app.Dialog;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
-
+import com.example.crud_encuesta.Componentes_R.Escuela;
+import com.example.crud_encuesta.Componentes_R.Operaciones_CRUD;
+import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
@@ -22,6 +27,12 @@ public class ActivityDocente extends AppCompatActivity {
     private AdaptadorDocente adapter;
     private ArrayList<Docente> lista;
     private Docente dc;
+    private SQLiteDatabase db;
+    private DatabaseAccess access;
+    private String tableName = "ESCUELA";
+    private ArrayList<Escuela> escuelas = new ArrayList<>();
+    private ArrayList<String> listaEscuelas = new ArrayList<>();
+    private int id_escuela;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -31,7 +42,14 @@ public class ActivityDocente extends AppCompatActivity {
 
         dao = new DAODocente(this);
         lista = dao.verTodos();
+
         adapter = new AdaptadorDocente(this,lista,dao);
+        access=DatabaseAccess.getInstance(ActivityDocente.this);
+        db=access.open();
+
+        escuelas=Operaciones_CRUD.todosEscuela(tableName,db);
+        listaEscuelas = obtenerListaEscuelas();
+
         ListView list = (ListView) findViewById(R.id.lista_docente);
         Button agregar = (Button) findViewById(R.id.btn_nuevo_docente);
 
@@ -47,6 +65,7 @@ public class ActivityDocente extends AppCompatActivity {
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 final Dialog dialogo =new Dialog(ActivityDocente.this);
                 dialogo.setTitle("Registro de Docente");
                 dialogo.setCancelable(true);
@@ -54,7 +73,7 @@ public class ActivityDocente extends AppCompatActivity {
                 dialogo.show();
                 dialogo.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-                final EditText id_escuela = (EditText) dialogo.findViewById(R.id.editt_id_escuela);
+                final Spinner sp_escuela = (Spinner) dialogo.findViewById(R.id.sp_escuela);
                 final EditText carnet = (EditText) dialogo.findViewById(R.id.editt_carnet);
                 final EditText anio_titulo = (EditText) dialogo.findViewById(R.id.editt_anio_titulo);
                 final CheckBox activo = (CheckBox) dialogo.findViewById(R.id.cb_actividad);
@@ -64,13 +83,31 @@ public class ActivityDocente extends AppCompatActivity {
                 final EditText cargo_secundario = (EditText) dialogo.findViewById(R.id.editt_cargo_secundario);
                 final EditText nombre = (EditText) dialogo.findViewById(R.id.editt_nombre);
 
-                Button guardar =(Button) dialogo.findViewById(R.id.btn_agregar_dcn);
-                guardar.setText("Registrar");
-                Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar_dcn);
+                ArrayAdapter adapterEs = new ArrayAdapter(ActivityDocente.this, android.R.layout.simple_list_item_1, listaEscuelas);
+                sp_escuela.setAdapter(adapterEs);
 
-                guardar.setOnClickListener(new View.OnClickListener() {
+               sp_escuela.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (position != 0){
+                            id_escuela = escuelas.get(position).getId();
+                        } else {
+                            id_escuela = 0;
+                        }
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+               });
+
+               Button guardar =(Button) dialogo.findViewById(R.id.btn_agregar_dcn);
+               guardar.setText("Registrar");
+               Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar_dcn);
+
+               guardar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         try {
                             int checki;
                             if(activo.isChecked()){
@@ -79,7 +116,7 @@ public class ActivityDocente extends AppCompatActivity {
                                 checki = 0;
                             }
                             dc = new Docente(
-                                    Integer.parseInt(id_escuela.getText().toString()),
+                                    id_escuela,
                                     carnet.getText().toString(),
                                     anio_titulo.getText().toString(),
                                     checki,
@@ -88,17 +125,18 @@ public class ActivityDocente extends AppCompatActivity {
                                     Integer.parseInt(cargo_actual.getText().toString()),
                                     Integer.parseInt(cargo_secundario.getText().toString()),
                                     nombre.getText().toString());
+
                             dao.insertar(dc);
-                            lista = dao.verTodos();
                             adapter.notifyDataSetChanged();
+                            lista = dao.verTodos();
                             dialogo.dismiss();
 
                         }catch (Exception e){
                             Toast.makeText(getApplicationContext(), "¡Error!", Toast.LENGTH_SHORT).show();
                         }
                     }
-                });
-                cancelar.setOnClickListener(new View.OnClickListener() {
+               });
+               cancelar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialogo.dismiss();
@@ -106,5 +144,13 @@ public class ActivityDocente extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    public ArrayList<String> obtenerListaEscuelas() {
+        ArrayList<String> escuelasList = new ArrayList<>();
+        for (int i =0 ; i < escuelas.size(); i++) {
+            escuelasList.add(escuelas.get(i).getNombre());
+        }
+        return escuelasList;
     }
 }

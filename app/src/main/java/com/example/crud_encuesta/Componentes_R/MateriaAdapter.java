@@ -151,7 +151,6 @@ public class MateriaAdapter extends BaseAdapter {
                         if (position != 0) id_carrera = listaCarreras.get(position - 1).getId();
                         else id_carrera = -1;
                     }
-
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
 
@@ -205,7 +204,6 @@ public class MateriaAdapter extends BaseAdapter {
                 });
                 d.setView(view);
                 d.show();
-
             }
         });
 

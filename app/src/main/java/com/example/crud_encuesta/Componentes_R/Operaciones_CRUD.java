@@ -1,5 +1,7 @@
 package com.example.crud_encuesta.Componentes_R;
 
+import com.example.crud_encuesta.Componentes_Docente.Docente;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.example.crud_encuesta.R;
 
 import java.text.ParseException;
@@ -55,13 +56,15 @@ public class Operaciones_CRUD {
     public static ArrayList<Escuela> todosEscuela(String table_name, SQLiteDatabase db) {
         ArrayList<Escuela> lista = new ArrayList<>();
         Cursor c = db.rawQuery(" SELECT * FROM " + table_name, null);
-        c.moveToFirst();
-        Escuela e;
-        while (c.moveToNext()) {
-            e = new Escuela();
-            e.setId(c.getInt(0));
-            e.setNombre(c.getString(1));
-            lista.add(e);
+        if (c.moveToFirst()){
+            c.moveToFirst();
+            Escuela e;
+            do {
+                e = new Escuela();
+                e.setId(c.getInt(0));
+                e.setNombre(c.getString(1));
+                lista.add(e);
+            }while (c.moveToNext());
         }
         return lista;
     }
@@ -71,7 +74,7 @@ public class Operaciones_CRUD {
         Cursor cu = db.rawQuery(" SELECT * FROM " + EstructuraTablas.CARRERA_TABLA_NAME, null);
         cu.moveToFirst();
         Carrera c;
-        while (cu.moveToNext()) {
+        do{
             c = new Carrera();
             c.setId(cu.getInt(0));
             for (int i=0;i<escuelas.size();i++){
@@ -79,7 +82,7 @@ public class Operaciones_CRUD {
             }
             c.setNombre(cu.getString(2));
             lista.add(c);
-        }
+        }while (cu.moveToNext());
         return lista;
     }
 
@@ -89,12 +92,12 @@ public class Operaciones_CRUD {
         Cursor cu = db.rawQuery(" SELECT * FROM " + EstructuraTablas.PENSUM_TABLA_NAME, null);
         cu.moveToFirst();
         Pensum p;
-        while (cu.moveToNext()) {
+        do{
             p = new Pensum();
             p.setId(cu.getInt(0));
             p.setAño(cu.getInt(1));
             lista.add(p);
-        }
+        }while (cu.moveToNext());
         return lista;
     }
     public static ArrayList<Materia> todosMateria(SQLiteDatabase db, ArrayList<Carrera> c,ArrayList<Pensum> p) {
@@ -125,44 +128,48 @@ public class Operaciones_CRUD {
         ArrayList<Encuesta> lista = new ArrayList<>();
         Cursor c = db.rawQuery(" SELECT * FROM " + EstructuraTablas.ENCUESTA_TABLA_NAME, null);
 
-        c.moveToFirst();
-        Encuesta e;
-        while (c.moveToNext()) {
-            e = new Encuesta();
-            e.setId(c.getInt(0));
-            for (int i=0;i<d.size();i++){
-                if(c.getInt(1)==d.get(i).getId()) e.setId_docente(d.get(i));
-            }
-            e.setTitulo(c.getString(2));
-            e.setDescripcion(c.getString(3));
-            e.setFecha_in(c.getString(4));
-            e.setFecha_fin(c.getString(5));
-            lista.add(e);
+        if(c.moveToFirst()){
+            c.moveToFirst();
+            Encuesta e;
+            do {
+                e = new Encuesta();
+                e.setId(c.getInt(0));
+                for (int i=0;i<d.size();i++){
+                    if(c.getInt(1)==d.get(i).getId()) e.setId_docente(d.get(i));
+                }
+                e.setTitulo(c.getString(2));
+                e.setDescripcion(c.getString(3));
+                e.setFecha_in(c.getString(4));
+                e.setFecha_fin(c.getString(5));
+                lista.add(e);
+            }while (c.moveToNext());
         }
         return lista;
     }
 
     public static ArrayList<Docente> todosDocente(SQLiteDatabase db){
+
         ArrayList<Docente> lista = new ArrayList<>();
         Cursor c = db.rawQuery(" SELECT * FROM " + EstructuraTablas.DOCENTE_TABLE_NAME, null);
 
-        c.moveToFirst();
-        Docente d;
-        while (c.moveToNext()) {
-            d=new Docente();
-            d.setId(c.getInt(0));
-            d.setId_escuela(c.getInt(1));
-            d.setCarnet(c.getString(2));
-            d.setAnio_titulo(c.getString(3));
-            d.setActivo(c.getInt(4)==1);
-            d.setTipo_jornada(c.getInt(7));
-            d.setDescripcion(c.getString(8));
-            d.setCargo_actual(c.getInt(9));
-            d.setCargo_segundario(c.getInt(11));
-            d.setNombre(c.getString(12));
-            lista.add(d);
+        if(c.moveToFirst()) {
+            c.moveToFirst();
+            Docente d;
+            do {
+                d = new Docente();
+                d.setId(c.getInt(0));
+                d.setId_escuela(c.getInt(1));
+                d.setCarnet(c.getString(2));
+                d.setAnio_titulacion(c.getString(3));
+                d.setActivo(c.getInt(4));
+                d.setTipo_jornada(c.getInt(5));
+                d.setDescripcion(c.getString(6));
+                d.setCargo_actual(c.getInt(7));
+                d.setCargo_secundario(c.getInt(8));
+                d.setNombre(c.getString(9));
+                lista.add(d);
+            } while (c.moveToNext());
         }
-        System.out.println(lista.get(0));
         return lista;
     }
 }

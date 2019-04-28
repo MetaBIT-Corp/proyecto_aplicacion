@@ -1,5 +1,6 @@
 package com.example.crud_encuesta.Componentes_R;
 
+import com.example.crud_encuesta.Componentes_Docente.Docente;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;

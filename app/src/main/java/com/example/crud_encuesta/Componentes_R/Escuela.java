@@ -1,6 +1,6 @@
 package com.example.crud_encuesta.Componentes_R;
 
-class Escuela {
+public class Escuela {
     private int id;
     private String nombre;
 

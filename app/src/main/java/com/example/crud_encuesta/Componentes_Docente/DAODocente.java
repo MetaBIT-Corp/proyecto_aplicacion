@@ -22,6 +22,14 @@ public class DAODocente {
         cx = dba.open();
     }
 
+    public Context getCt() {
+        return ct;
+    }
+
+    public void setCt(Context ct) {
+        this.ct = ct;
+    }
+
     public boolean insertar(Docente dc){
         ContentValues contenedor = new ContentValues();
         contenedor.put("ID_ESCUELA",dc.getId_escuela());
@@ -48,11 +56,13 @@ public class DAODocente {
         contenedor.put("ID_CARGO_ACTUAL",dc.getCargo_actual());
         contenedor.put("ID_SEGUNDO_CARGO",dc.getCargo_secundario());
         contenedor.put("NOMBRE_DOCENTE",dc.getNombre());
-        if (dc.getActivo()==1){
+
+        /*if (dc.getActivo()==1){
             ContentValues contenedor_alterno = new ContentValues();
             contenedor_alterno.put("ACTIVO",1);
             cx.update("PDG_DCN_DOCENTE",contenedor_alterno,null, null);
-        }
+        }*/
+
         contenedor.put("ACTIVO",dc.getActivo());
 
         return (cx.update("PDG_DCN_DOCENTE",contenedor,"ID_PDG_DCN="+dc.getId(), null)>0);
