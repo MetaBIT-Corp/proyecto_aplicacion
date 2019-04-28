@@ -86,7 +86,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
             case R.id.items:
 
                 //Toast.makeText(this, "Modalidad: " + valorItem[position], Toast.LENGTH_SHORT).show();
-                seleccion_item = position;
+                seleccion_item = position+1;
                 break;
         }
     }

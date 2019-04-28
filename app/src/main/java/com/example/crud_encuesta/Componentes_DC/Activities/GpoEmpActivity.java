@@ -41,6 +41,7 @@ public class GpoEmpActivity extends AppCompatActivity {
         id_area = b.getInt("id_area");
         dao = new DaoGrupoEmp(this, id_area);
         lista_gpo_emp = dao.verTodos();
+        adaptador = new Adaptador(lista_gpo_emp, this, dao);
 
         //Inicio
         id_tipo_item = b.getInt("id_tipo_item");
@@ -49,15 +50,15 @@ public class GpoEmpActivity extends AppCompatActivity {
         //Fin
 
         FloatingActionButton agregar = (FloatingActionButton)findViewById(R.id.btn_nuevo);
-        /*ListView list = (ListView)findViewById(R.id.lista);
-        list.setAdapter(adaptador);
+        ListView list = (ListView)findViewById(R.id.lista);
+
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
             }
-        });*/
+        });
 
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,12 +89,7 @@ public class GpoEmpActivity extends AppCompatActivity {
                                 dialog.dismiss();
 
                                 //INICIO
-                                Intent in = new Intent(v.getContext(), PreguntaActivity.class);
-                                gpo_emp = lista_gpo_emp.get(0);
-                                in.putExtra("id_gpo_emp",gpo_emp.getId());
-                                in.putExtra("desc_gpo_emp",gpo_emp.getDescripcion());
-                                in.putExtra("id_area",id_area);
-                                startActivity(in);
+                                
                                 //FIN
 
                             }else{
@@ -122,8 +118,8 @@ public class GpoEmpActivity extends AppCompatActivity {
         //INICIO
         if(id_tipo_item==3){
 
-
-                if(accion == 0){
+            list.setAdapter(adaptador);
+                /*if(accion == 0){
 
                     if(lista_gpo_emp.isEmpty()){
                         agregar.performClick();
@@ -137,14 +133,18 @@ public class GpoEmpActivity extends AppCompatActivity {
                     }
 
                 }else{
-                    /*Toast.makeText(this, "Tamanio: "+lista_gpo_emp.size(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Tamanio: "+lista_gpo_emp.size(), Toast.LENGTH_SHORT).show();
                     adaptador = new Adaptador(lista_gpo_emp, this, dao);
                     ListView list = (ListView)findViewById(R.id.lista);
-                    list.setAdapter(adaptador);*/
-                }
+                    list.setAdapter(adaptador);
+                }*/
 
         }else{
-
+            Intent in = new Intent(this, PreguntaActivity.class);
+            in.putExtra("id_gpo_emp",0);
+            in.putExtra("id_tipo_item",id_tipo_item);
+            in.putExtra("id_area",id_area);
+            startActivity(in);
         }
         //FIN
     }

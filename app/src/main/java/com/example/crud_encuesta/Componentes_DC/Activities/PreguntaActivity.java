@@ -27,9 +27,10 @@ public class PreguntaActivity extends AppCompatActivity {
     private ArrayList<Pregunta> lista_preguntas;
     private Pregunta pregunta;
 
-    private int id_gpo_emp;
+    private int id_gpo_emp=0;
     private String desc_gpo_emp;
-    private  int id_area;
+    private  int id_area =0;
+    private int id_tipo_item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,17 +41,18 @@ public class PreguntaActivity extends AppCompatActivity {
         id_gpo_emp = b.getInt("id_gpo_emp");
         desc_gpo_emp = b.getString("desc_gpo_emp");
         id_area = b.getInt("id_area");
+        id_tipo_item = b.getInt("id_tipo_item");
 
-        dao = new DaoPregunta(this, id_gpo_emp);
+        dao = new DaoPregunta(this, id_gpo_emp, id_area);
 
         lista_preguntas = dao.verTodos();
         adaptador = new AdaptadorPregunta(lista_preguntas,this,dao);
         ListView list = (ListView)findViewById(R.id.lista);
         FloatingActionButton agregar = findViewById(R.id.btn_nuevo);
         list.setAdapter(adaptador);
-        TextView texto_desc_emp = (TextView)findViewById(R.id.txt_desc_emp);
+       /* TextView texto_desc_emp = (TextView)findViewById(R.id.txt_desc_emp);
         texto_desc_emp.setText(desc_gpo_emp);
-       /* Button editar_gpo_emp = (Button)findViewById(R.id.btn_editar_desc_emp);
+        Button editar_gpo_emp = (Button)findViewById(R.id.btn_editar_desc_emp);
 
         editar_gpo_emp.setOnClickListener(new View.OnClickListener() {
             @Override
