@@ -1,25 +1,30 @@
 package com.example.crud_encuesta.Componentes_Docente;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.crud_encuesta.Componentes_R.Escuela;
 import com.example.crud_encuesta.Componentes_R.Operaciones_CRUD;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
-
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ActivityDocente extends AppCompatActivity {
 
@@ -32,6 +37,7 @@ public class ActivityDocente extends AppCompatActivity {
     private String tableName = "ESCUELA";
     private ArrayList<Escuela> escuelas = new ArrayList<>();
     private ArrayList<String> listaEscuelas = new ArrayList<>();
+    private int anio = Calendar.getInstance().get(Calendar.YEAR);
     private int id_escuela;
 
     @Override
@@ -82,6 +88,7 @@ public class ActivityDocente extends AppCompatActivity {
                 final EditText cargo_actual = (EditText) dialogo.findViewById(R.id.editt_cargo_actual);
                 final EditText cargo_secundario = (EditText) dialogo.findViewById(R.id.editt_cargo_secundario);
                 final EditText nombre = (EditText) dialogo.findViewById(R.id.editt_nombre);
+                Button btn_anio = (Button) dialogo.findViewById(R.id.btn_agregar_anio);
 
                 ArrayAdapter adapterEs = new ArrayAdapter(ActivityDocente.this, android.R.layout.simple_list_item_1, listaEscuelas);
                 sp_escuela.setAdapter(adapterEs);
@@ -98,6 +105,44 @@ public class ActivityDocente extends AppCompatActivity {
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
+               });
+
+               btn_anio.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       final Dialog d = new Dialog(ActivityDocente.this);
+                       d.setTitle("Year Picker");
+                       d.setContentView(R.layout.year_picker);
+                       Button set = (Button) d.findViewById(R.id.button1);
+                       Button cancel = (Button) d.findViewById(R.id.button2);
+                       TextView year_text=(TextView)d.findViewById(R.id.year_text);
+                       year_text.setText(""+anio);
+                       final NumberPicker nopicker = (NumberPicker) d.findViewById(R.id.numberPicker1);
+
+                       nopicker.setMaxValue(anio+50);
+                       nopicker.setMinValue(anio-50);
+                       nopicker.setWrapSelectorWheel(false);
+                       nopicker.setValue(anio);
+                       nopicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+
+                       set.setOnClickListener(new View.OnClickListener()
+                       {
+                           @Override
+                           public void onClick(View v) {
+                               anio_titulo.setText(String.valueOf(nopicker.getValue()));
+                               d.dismiss();
+                           }
+                       });
+                       cancel.setOnClickListener(new View.OnClickListener()
+                       {
+                           @Override
+                           public void onClick(View v) {
+                               d.dismiss();
+                           }
+                       });
+                       d.show();
+                       d.getWindow().setLayout(((getWidth(d.getContext()) / 100) * 75), ViewGroup.LayoutParams.WRAP_CONTENT);
+                   }
                });
 
                Button guardar =(Button) dialogo.findViewById(R.id.btn_agregar_dcn);
@@ -152,5 +197,12 @@ public class ActivityDocente extends AppCompatActivity {
             escuelasList.add(escuelas.get(i).getNombre());
         }
         return escuelasList;
+    }
+
+    public static int getWidth(Context context) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        WindowManager windowmanager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        windowmanager.getDefaultDisplay().getMetrics(displayMetrics);
+        return displayMetrics.widthPixels;
     }
 }

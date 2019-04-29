@@ -6,15 +6,18 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +27,7 @@ import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class AdaptadorDocente extends BaseAdapter {
 
@@ -38,6 +42,7 @@ public class AdaptadorDocente extends BaseAdapter {
     private String tableName = "ESCUELA";
     private ArrayList<Escuela> escuelas = new ArrayList<>();
     private ArrayList<String> listaEscuelas = new ArrayList<>();
+    private int anio = Calendar.getInstance().get(Calendar.YEAR);
 
 
     public AdaptadorDocente(Activity a, ArrayList<Docente> lista, DAODocente dao){
@@ -119,12 +124,51 @@ public class AdaptadorDocente extends BaseAdapter {
                 final EditText cargo_actual = (EditText) dialogo.findViewById(R.id.editt_cargo_actual);
                 final EditText cargo_secundario = (EditText) dialogo.findViewById(R.id.editt_cargo_secundario);
                 final EditText nombre = (EditText) dialogo.findViewById(R.id.editt_nombre);
+                Button btn_anio = (Button) dialogo.findViewById(R.id.btn_agregar_anio);
 
                 Button guardar =(Button) dialogo.findViewById(R.id.btn_agregar_dcn);
                 guardar.setText("Guardar");
                 Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar_dcn);
 
                 dc = lista.get(pos);
+
+                btn_anio.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        final Dialog d = new Dialog(dialogo.getContext());
+                        d.setTitle("Year Picker");
+                        d.setContentView(R.layout.year_picker);
+                        Button set = (Button) d.findViewById(R.id.button1);
+                        Button cancel = (Button) d.findViewById(R.id.button2);
+                        TextView year_text=(TextView)d.findViewById(R.id.year_text);
+                        year_text.setText(""+anio);
+                        final NumberPicker nopicker = (NumberPicker) d.findViewById(R.id.numberPicker1);
+
+                        nopicker.setMaxValue(anio+50);
+                        nopicker.setMinValue(anio-50);
+                        nopicker.setWrapSelectorWheel(false);
+                        nopicker.setValue(anio);
+                        nopicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+
+                        set.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v) {
+                                anio_titulo.setText(String.valueOf(nopicker.getValue()));
+                                d.dismiss();
+                            }
+                        });
+                        cancel.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v) {
+                                d.dismiss();
+                            }
+                        });
+                        d.show();
+                        d.getWindow().setLayout(((getWidth(d.getContext()) / 100) * 75), ViewGroup.LayoutParams.WRAP_CONTENT);
+                    }
+                });
 
                 setId(dc.getId());
                 carnet.setText(dc.getCarnet());
@@ -165,6 +209,8 @@ public class AdaptadorDocente extends BaseAdapter {
                 cargo_actual.setText(""+dc.getCargo_actual());
                 cargo_secundario.setText(""+dc.getCargo_secundario());
                 nombre.setText(dc.getNombre());
+
+
 
                 guardar.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -247,5 +293,11 @@ public class AdaptadorDocente extends BaseAdapter {
             escuelasList.add(escuelas.get(i).getNombre());
         }
         return escuelasList;
+    }
+    public static int getWidth(Context context) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        WindowManager windowmanager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        windowmanager.getDefaultDisplay().getMetrics(displayMetrics);
+        return displayMetrics.widthPixels;
     }
 }
