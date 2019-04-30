@@ -58,7 +58,11 @@ public class OpcionActivity extends AppCompatActivity {
 
         dao = new DaoOpcion(this, id_pregunta,es_verdadero_falso, es_respuesta_corta);
         lista_opciones = dao.verTodos();
-        adaptador = new AdaptadorOpcion(lista_opciones,this,dao, es_verdadero_falso,es_respuesta_corta);
+
+        if (lista_opciones.size()==1){
+            agregar.setVisibility(View.GONE);
+        }
+        adaptador = new AdaptadorOpcion(lista_opciones,this,dao, es_verdadero_falso,es_respuesta_corta, id_tipo_item);
         ListView list = (ListView)findViewById(R.id.lista);
         list.setAdapter(adaptador);
 
@@ -85,7 +89,7 @@ public class OpcionActivity extends AppCompatActivity {
                 final CheckBox cb_correcta = (CheckBox)dialog.findViewById(R.id.cb_correcta);
 
 
-                Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
+                final Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
                 TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
                 texto_titulo.setText("Agregar opción");
@@ -115,6 +119,14 @@ public class OpcionActivity extends AppCompatActivity {
                                 lista_opciones = dao.verTodos();
                                 dialog.dismiss();
 
+                                if(id_tipo_item==4){
+
+                                    Intent in = new Intent(getApplicationContext(), OpcionActivity.class);
+                                    in.putExtra("id_pregunta", id_pregunta);
+                                    in.putExtra("id_tipo_item",id_tipo_item);
+                                    v.getContext().startActivity(in);
+                                }
+
                             }else{
                                 Toast.makeText(v.getContext(), "¡Ingrese el texto de la opción!", Toast.LENGTH_SHORT).show();
                                 texto_opcion.setFocusable(true);
@@ -135,4 +147,5 @@ public class OpcionActivity extends AppCompatActivity {
             }
         });
     }
+
 }
