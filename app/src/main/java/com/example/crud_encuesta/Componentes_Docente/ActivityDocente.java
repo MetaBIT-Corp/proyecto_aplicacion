@@ -89,6 +89,8 @@ public class ActivityDocente extends AppCompatActivity {
                 final EditText cargo_secundario = (EditText) dialogo.findViewById(R.id.editt_cargo_secundario);
                 final EditText nombre = (EditText) dialogo.findViewById(R.id.editt_nombre);
                 Button btn_anio = (Button) dialogo.findViewById(R.id.btn_agregar_anio);
+                final TextView mensaje = (TextView) dialogo.findViewById(R.id.toolbar_docente);
+                mensaje.setText("Agregar Nuevo Docente");
 
                 ArrayAdapter adapterEs = new ArrayAdapter(ActivityDocente.this, android.R.layout.simple_list_item_1, listaEscuelas);
                 sp_escuela.setAdapter(adapterEs);
@@ -99,7 +101,7 @@ public class ActivityDocente extends AppCompatActivity {
                         if (position != 0){
                             id_escuela = escuelas.get(position).getId();
                         } else {
-                            id_escuela = 0;
+                            id_escuela = 1;
                         }
                     }
                     @Override

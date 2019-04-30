@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,17 +38,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <EditText
                     android:id="@+id/editt_carnet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.75"
+                    android:textSize="18sp"
                     android:hint="Carnet" />
                 <CheckBox
                     android:id="@+id/cb_actividad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
+                    android:textSize="18sp"
                     android:text="Activo" />
             </LinearLayout>
 
@@ -58,13 +62,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Nombre:"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:text="Nombre:"/>
                 <EditText
                     android:id="@+id/editt_nombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.75" />
+                    android:layout_weight="0.75"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -74,8 +80,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Escuela:"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:text="Escuela:"/>
                 <Spinner
                     android:id="@+id/sp_escuela"
                     android:layout_width="match_parent"
@@ -92,15 +98,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Año Titulo:"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:text="Año Titulo:"/>
                 <android.support.v4.widget.Space
-                    android:layout_width="20dp"
+                    android:layout_width="30dp"
                     android:layout_height="0dp" />
                 <EditText
                     android:id="@+id/editt_anio_titulo"
                     android:layout_width="115dp"
                     android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
                     android:inputType="number"
                     android:hint="YYYY"/>
                 <android.support.v4.widget.Space
@@ -120,12 +128,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Descripción:"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:text="Descripción:"/>
                 <EditText
                     android:id="@+id/editt_descripcion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
                     android:inputType="textLongMessage" />
             </LinearLayout>
 
@@ -136,12 +145,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Tipo Jornada:"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:text="Tipo Jornada:"/>
                 <EditText
                     android:id="@+id/editt_tipo_jornada"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
                     android:inputType="number" />
             </LinearLayout>
 
@@ -152,12 +163,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Cargo Actual:"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:text="Cargo Actual:"/>
                 <EditText
                     android:id="@+id/editt_cargo_actual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
                     android:inputType="number" />
             </LinearLayout>
 
@@ -168,12 +181,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Cargo Secundario:"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:text="Cargo Secundario:"/>
                 <EditText
                     android:id="@+id/editt_cargo_secundario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
                     android:inputType="number" />
             </LinearLayout>
 

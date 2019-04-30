@@ -25,13 +25,11 @@ import com.example.crud_encuesta.Componentes_R.Escuela;
 import com.example.crud_encuesta.Componentes_R.Operaciones_CRUD;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AdaptadorDocente extends BaseAdapter {
 
-    private ArrayList<Docente> lista;
     private DAODocente dao;
     private Docente dc;
     private Activity a;
@@ -39,10 +37,10 @@ public class AdaptadorDocente extends BaseAdapter {
     private int id_escuela = 0;
     private SQLiteDatabase db;
     private DatabaseAccess access;
-    private String tableName = "ESCUELA";
+    private int anio = Calendar.getInstance().get(Calendar.YEAR);
+    private ArrayList<Docente> lista;
     private ArrayList<Escuela> escuelas = new ArrayList<>();
     private ArrayList<String> listaEscuelas = new ArrayList<>();
-    private int anio = Calendar.getInstance().get(Calendar.YEAR);
 
 
     public AdaptadorDocente(Activity a, ArrayList<Docente> lista, DAODocente dao){
@@ -88,20 +86,81 @@ public class AdaptadorDocente extends BaseAdapter {
 
         TextView nombre = (TextView) v.findViewById(R.id.txt_nombre);
         TextView carnet = (TextView) v.findViewById(R.id.txt_carnet);
+        Button ver = (Button) v.findViewById(R.id.btn_ver_dcn);
         Button editar = (Button) v.findViewById(R.id.btn_editar_dcn);
         Button eliminar = (Button) v.findViewById(R.id.btn_eliminar_dcn);
 
         dc = lista.get(position);
         nombre.setText(dc.getNombre());
         carnet.setText(dc.getCarnet());
+        ver.setTag(position);
         editar.setTag(position);
         eliminar.setTag(position);
 
         access = DatabaseAccess.getInstance(v.getContext());
         db=access.open();
 
-        escuelas= Operaciones_CRUD.todosEscuela(tableName,db);
+        escuelas= Operaciones_CRUD.todosEscuela("ESCUELA",db);
         listaEscuelas = obtenerListaEscuelas();
+
+        ver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int pos = Integer.parseInt(v.getTag().toString());
+                String e = "";
+                final Dialog dialogo = new Dialog(a);
+                dialogo.setTitle("Edición de Docente");
+                dialogo.setCancelable(true);
+                dialogo.setContentView(R.layout.vista_docente);
+                dialogo.show();
+                dialogo.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                final TextView mensaje = (TextView) dialogo.findViewById(R.id.toolbar_docente);
+                final TextView escuela = (TextView) dialogo.findViewById(R.id.tv_escuela);
+                final TextView carnet = (TextView) dialogo.findViewById(R.id.tv_carnet);
+                final TextView anio_titulo = (TextView) dialogo.findViewById(R.id.tv_anio_titulo);
+                final CheckBox activo = (CheckBox) dialogo.findViewById(R.id.cb_actividad);
+                final TextView tipo_jornada = (TextView) dialogo.findViewById(R.id.tv_tipo_jornada);
+                final TextView descripcion = (TextView) dialogo.findViewById(R.id.tv_descripcion);
+                final TextView cargo_actual = (TextView) dialogo.findViewById(R.id.tv_cargo_actual);
+                final TextView cargo_secundario = (TextView) dialogo.findViewById(R.id.tv_cargo_secundario);
+                final TextView nombre = (TextView) dialogo.findViewById(R.id.tv_nombre);
+                Button salir = (Button) dialogo.findViewById(R.id.btn_salir);
+
+                dc = lista.get(pos);
+                mensaje.setText("Docente: "+dc.getCarnet());
+
+                for(int i=0;i<escuelas.size();i++){
+                    if(dc.getId_escuela()==escuelas.get(i).getId()){
+                        e = escuelas.get(i).getNombre();
+                    }
+                }
+
+                escuela.setText(""+e);
+                carnet.setText(dc.getCarnet());
+                anio_titulo.setText(dc.getAnio_titulo());
+                if(dc.getActivo()==1){
+                    activo.setChecked(true);
+                }
+                else{
+                    activo.setChecked(false);
+                }
+                tipo_jornada.setText(""+dc.getTipo_jornada());
+                descripcion.setText(""+dc.getDescripcion());
+                cargo_actual.setText(""+dc.getCargo_actual());
+                cargo_secundario.setText(""+dc.getCargo_secundario());
+                nombre.setText(dc.getNombre());
+
+                salir.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogo.dismiss();
+                    }
+                });
+
+            }
+        });
 
         editar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +174,7 @@ public class AdaptadorDocente extends BaseAdapter {
                 dialogo.show();
                 dialogo.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
+                final TextView mensaje = (TextView) dialogo.findViewById(R.id.toolbar_docente);
                 final Spinner sp_escuela = (Spinner) dialogo.findViewById(R.id.sp_escuela);
                 final EditText carnet = (EditText) dialogo.findViewById(R.id.editt_carnet);
                 final EditText anio_titulo = (EditText) dialogo.findViewById(R.id.editt_anio_titulo);
@@ -124,17 +184,52 @@ public class AdaptadorDocente extends BaseAdapter {
                 final EditText cargo_actual = (EditText) dialogo.findViewById(R.id.editt_cargo_actual);
                 final EditText cargo_secundario = (EditText) dialogo.findViewById(R.id.editt_cargo_secundario);
                 final EditText nombre = (EditText) dialogo.findViewById(R.id.editt_nombre);
-                Button btn_anio = (Button) dialogo.findViewById(R.id.btn_agregar_anio);
 
+                Button btn_anio = (Button) dialogo.findViewById(R.id.btn_agregar_anio);
                 Button guardar =(Button) dialogo.findViewById(R.id.btn_agregar_dcn);
-                guardar.setText("Guardar");
                 Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar_dcn);
+
+                mensaje.setText("Editar Docente");
+                guardar.setText("Guardar");
+
 
                 dc = lista.get(pos);
 
+                setId(dc.getId());  /*Set de ID*/
+
+                /*Seteando Escuela desde Spinner*/
+
+                ArrayAdapter escuelaAdapter = new ArrayAdapter(v.getContext(), android.R.layout.simple_list_item_1, listaEscuelas);
+                sp_escuela.setAdapter(escuelaAdapter);
+
+                for (int i = 0; i < listaEscuelas.size(); i++) {
+                    if (dc.getId_escuela() == escuelas.get(i).getId()){
+                        sp_escuela.setSelection(i);
+                    }
+                }
+
+                sp_escuela.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (position != 0){
+                            id_escuela = escuelas.get(position).getId();
+                        } else {
+                            id_escuela = 1;
+                        }
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {}
+                });
+
+                carnet.setText(dc.getCarnet()); /*Set de Carnet*/
+
+                /*Seteando de Año de Titulación desde YearPicker*/
+
+                anio_titulo.setText(""+dc.getAnio_titulo());
                 btn_anio.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         final Dialog d = new Dialog(dialogo.getContext());
                         d.setTitle("Year Picker");
                         d.setContentView(R.layout.year_picker);
@@ -166,43 +261,15 @@ public class AdaptadorDocente extends BaseAdapter {
                             }
                         });
                         d.show();
-                        d.getWindow().setLayout(((getWidth(d.getContext()) / 100) * 75), ViewGroup.LayoutParams.WRAP_CONTENT);
+                        d.getWindow().setLayout(((getWidth(d.getContext()) / 100) * 85), ViewGroup.LayoutParams.WRAP_CONTENT);
                     }
                 });
 
-                setId(dc.getId());
-                carnet.setText(dc.getCarnet());
-                anio_titulo.setText(""+dc.getAnio_titulo());
-
-                ArrayAdapter adapterEs = new ArrayAdapter(v.getContext(), android.R.layout.simple_list_item_1, listaEscuelas);
-                sp_escuela.setAdapter(adapterEs);
-
-                for (int i = 0; i < listaEscuelas.size(); i++) {
-                    if (dc.getId_escuela() == escuelas.get(i).getId()){
-                        sp_escuela.setSelection(i);
-                    }
+                if(dc.getActivo()==1){
+                    activo.setChecked(true);
+                }else{
+                    activo.setChecked(false);
                 }
-
-                sp_escuela.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        if (position != 0){
-                            id_escuela = escuelas.get(position).getId();
-                        } else {
-                            id_escuela = 0;
-                        }
-                    }
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-                    }
-                });
-
-                    if(dc.getActivo()==1){
-                        activo.setChecked(true);
-                    }
-                    else{
-                        activo.setChecked(false);
-                    }
 
                 tipo_jornada.setText(""+dc.getTipo_jornada());
                 descripcion.setText(dc.getDescripcion());
@@ -210,11 +277,10 @@ public class AdaptadorDocente extends BaseAdapter {
                 cargo_secundario.setText(""+dc.getCargo_secundario());
                 nombre.setText(dc.getNombre());
 
-
-
                 guardar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         try {
                             int check;
                             if(activo.isChecked()){

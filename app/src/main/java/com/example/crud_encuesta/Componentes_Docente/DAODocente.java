@@ -4,9 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.example.crud_encuesta.DatabaseAccess;
-
 import java.util.ArrayList;
 
 public class DAODocente {
@@ -50,6 +48,7 @@ public class DAODocente {
         ContentValues contenedor = new ContentValues();
         contenedor.put("ID_ESCUELA",dc.getId_escuela());
         contenedor.put("CARNET_DCN",dc.getCarnet());
+        contenedor.put("ACTIVO",dc.getActivo());
         contenedor.put("ANIO_TITULO",dc.getAnio_titulo());
         contenedor.put("TIPOJORNADA",dc.getTipo_jornada());
         contenedor.put("DESCRIPCIONDOCENTE",dc.getDescripcion());
@@ -62,8 +61,6 @@ public class DAODocente {
             contenedor_alterno.put("ACTIVO",1);
             cx.update("PDG_DCN_DOCENTE",contenedor_alterno,null, null);
         }*/
-
-        contenedor.put("ACTIVO",dc.getActivo());
 
         return (cx.update("PDG_DCN_DOCENTE",contenedor,"ID_PDG_DCN="+dc.getId(), null)>0);
     }
