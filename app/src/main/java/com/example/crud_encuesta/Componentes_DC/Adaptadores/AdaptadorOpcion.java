@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.crud_encuesta.Componentes_DC.Activities.OpcionActivity;
 import com.example.crud_encuesta.Componentes_DC.Dao.DaoOpcion;
 import com.example.crud_encuesta.Componentes_DC.Objetos.Opcion;
 import com.example.crud_encuesta.R;
@@ -30,10 +32,12 @@ public class AdaptadorOpcion extends BaseAdapter {
     private int id;
     private int es_verdadero_falso;
     private int es_respuesta_corta;
+    private int id_tipo_item;
 
-    public AdaptadorOpcion(ArrayList<Opcion> lista_opciones, Activity a, DaoOpcion dao, int es_verdadero_falso, int es_respuesta_corta) {
+    public AdaptadorOpcion(ArrayList<Opcion> lista_opciones, Activity a, DaoOpcion dao, int es_verdadero_falso, int es_respuesta_corta, int id_tipo_item) {
         this.lista_opciones = lista_opciones;
         this.dao = dao;
+        this.id_tipo_item = id_tipo_item;
         this.a = a;
         this.es_verdadero_falso = es_verdadero_falso;
         this.es_respuesta_corta = es_respuesta_corta;
@@ -77,6 +81,8 @@ public class AdaptadorOpcion extends BaseAdapter {
         CheckBox cb_correcta = (CheckBox)v.findViewById(R.id.cb_correcta);
         Button editar = (Button)v.findViewById(R.id.btn_editar);
         Button eliminar = (Button)v.findViewById(R.id.btn_eliminar);
+
+        if(id_tipo_item==4)eliminar.setVisibility(View.GONE);
 
         texto_opcion.setText(opcion.getOpcion());
 
