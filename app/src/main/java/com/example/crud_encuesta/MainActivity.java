@@ -1,6 +1,5 @@
 package com.example.crud_encuesta;
 
-
 import android.content.Intent;
 
 import android.os.Build;
@@ -17,6 +16,7 @@ import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.TurnoActivity;
 import com.example.crud_encuesta.Componentes_DC.Activities.GpoEmpActivity;
 import com.example.crud_encuesta.Componentes_Docente.ActivityDocente;
+import com.example.crud_encuesta.Componentes_Estudiante.ActivityEstudiante;
 import com.example.crud_encuesta.Componentes_MT.AreaActivity;
 import com.example.crud_encuesta.Componentes_MT.ClaveActivity;
 import com.example.crud_encuesta.Componentes_MT.IntentoActivity;
@@ -26,10 +26,9 @@ import com.example.crud_encuesta.Componentes_R.EncuestaActivity;
 import com.example.crud_encuesta.Componentes_R.EscuelaActivity;
 import com.example.crud_encuesta.Componentes_R.MateriaActivity;
 
-
 public class MainActivity extends AppCompatActivity {
-    private ListView listView;
 
+    private ListView listView;
     private Toolbar myTopToolBar;
     private ImageView loggin;
 
@@ -49,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Login();
                 //intento();
+                clave();
                 //evaluacion();
-                pressed();
+                //pressed();
 
             }
         });
@@ -129,6 +129,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void activity_docente(View view){
         Intent i= new Intent(this, ActivityDocente.class);
+        startActivity(i);
+    }
+
+    public void activity_estudiante(View view){
+        Intent i= new Intent(this, ActivityEstudiante.class);
         startActivity(i);
     }
 }

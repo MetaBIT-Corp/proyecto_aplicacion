@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:gravity="center"
     android:orientation="vertical">
@@ -33,7 +33,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -57,7 +59,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="0.75"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
 
                 <CheckBox
                     android:id="@+id/cb_actividad"
@@ -89,7 +91,8 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="0.75"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textAlignment="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -112,7 +115,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="5dp"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textAlignment="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -137,7 +141,8 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="5dp"
                     android:hint="YYYY"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textAlignment="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -160,7 +165,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="5dp"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -183,7 +188,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="5dp"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textAlignment="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -206,7 +212,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="5dp"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textAlignment="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -229,7 +236,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="5dp"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textAlignment="center"/>
             </LinearLayout>
 
             <LinearLayout
@@ -241,6 +249,7 @@
                     android:id="@+id/btn_salir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_weight="1"
                     android:text="Salir" />
             </LinearLayout>

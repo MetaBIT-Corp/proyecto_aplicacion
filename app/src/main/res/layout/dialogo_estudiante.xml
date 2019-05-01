@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <TextView
-            android:id="@+id/toolbar_docente"
+            android:id="@+id/toolbar_std"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
@@ -32,22 +32,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <EditText
-                    android:id="@+id/editt_carnet"
+                    android:id="@+id/editt_carnet_estd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.75"
                     android:textSize="18sp"
                     android:hint="Carnet" />
                 <CheckBox
-                    android:id="@+id/cb_actividad"
+                    android:id="@+id/cb_actividad_estd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
@@ -65,7 +66,7 @@
                     android:textSize="18sp"
                     android:text="Nombre:"/>
                 <EditText
-                    android:id="@+id/editt_nombre"
+                    android:id="@+id/editt_nombre_estd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.75"
@@ -75,25 +76,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:text="Escuela:"/>
-                <Spinner
-                    android:id="@+id/sp_escuela"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </Spinner>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -104,7 +88,7 @@
                     android:layout_width="30dp"
                     android:layout_height="0dp" />
                 <EditText
-                    android:id="@+id/editt_anio_titulo"
+                    android:id="@+id/editt_anio_ingreso_estd"
                     android:layout_width="115dp"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
@@ -123,87 +107,16 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:text="Descripción:"/>
-                <EditText
-                    android:id="@+id/editt_descripcion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:inputType="textLongMessage" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:text="Tipo Jornada:"/>
-                <EditText
-                    android:id="@+id/editt_tipo_jornada"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:inputType="number" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:text="Cargo Actual:"/>
-                <EditText
-                    android:id="@+id/editt_cargo_actual"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:inputType="number" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:text="Cargo Secundario:"/>
-                <EditText
-                    android:id="@+id/editt_cargo_secundario"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:inputType="number" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <Button
-                    android:id="@+id/btn_agregar_dcn"
+                    android:id="@+id/btn_agregar_estd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Agregar" />
                 <Button
-                    android:id="@+id/btn_cancelar_dcn"
+                    android:id="@+id/btn_cancelar_estd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

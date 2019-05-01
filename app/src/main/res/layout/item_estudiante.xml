@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
@@ -14,18 +15,18 @@
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/txt_carnet"
+            android:id="@+id/txt_carnet_estd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Carnet"
-            android:textAlignment="center" />
+            android:textAlignment="center"/>
 
         <TextView
-            android:id="@+id/txt_nombre"
+            android:id="@+id/txt_nombre_estd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Estudiante"
-            android:textAlignment="center" />
+            android:textAlignment="center"/>
 
     </LinearLayout>
 
@@ -37,7 +38,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_ver_estud"
+            android:id="@+id/btn_ver_estd"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/infoazul" />
@@ -47,7 +48,7 @@
             android:layout_height="0dp" />
 
         <Button
-            android:id="@+id/btn_editar_estud"
+            android:id="@+id/btn_editar_estd"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/edit" />
@@ -57,7 +58,7 @@
             android:layout_height="0dp" />
 
         <Button
-            android:id="@+id/btn_eliminar_estud"
+            android:id="@+id/btn_eliminar_estd"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/bin" />
