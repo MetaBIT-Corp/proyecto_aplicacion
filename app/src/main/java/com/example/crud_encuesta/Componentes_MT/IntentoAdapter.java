@@ -6,10 +6,12 @@ import android.content.ClipData;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.net.Uri;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -42,10 +44,19 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
     private LayoutInflater inflater;
     private Tamanio tamanio= new Tamanio();
     private List<Pregunta> preguntas = new ArrayList<>();
+
     private List<RadioGroup> rg_lista = new ArrayList<>();
     private List<RadioButton> rb_lista = new ArrayList<>();
+
+    private List<RadioGroup> rg_lista_vf = new ArrayList<>();
+    private List<RadioGroup> rg_posicion_lista_vf = new ArrayList<>();
+
     private List<Spinner> sp_lista = new ArrayList<>();
     private List<Integer> idesGPO = new ArrayList<>();
+
+    private List<EditText> et_lista = new ArrayList<>();
+    private List<EditText> et_posicion_lista = new ArrayList<>();
+
     private Context context;
     private int id_intento;
 
@@ -87,8 +98,37 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
 
                     rg_lista.add(rg_pregunta);
                     ll_pregunta.addView(rg_pregunta);
+
+                    et_posicion_lista.add(null);
+                    rg_posicion_lista_vf.add(null);
                 }else {
                     RadioGroup rg_pregunta = rg_lista.get(position);
+                    if(rg_pregunta.getParent() != null) {
+                        ((ViewGroup)rg_pregunta.getParent()).removeView(rg_pregunta);
+                    }
+                    ll_pregunta.addView(rg_pregunta);
+                }
+                break;
+
+            case 2:
+                txt_pregrunta.setText(preguntas.get(position).preguntaPList.get(0).pregunta);
+
+                if(tamanio.getVerdadero_falso()>rg_lista_vf.size()){
+                    RadioGroup rg_pregunta = new RadioGroup(context);
+                    for (int i = 0; i < preguntas.get(position).preguntaPList.get(0).opciones.size(); i++) {
+                        RadioButton rb_pregunta = new RadioButton(context);
+                        rb_pregunta.setText( preguntas.get(position).preguntaPList.get(0).opciones.get(i));
+                        rb_pregunta.setId( preguntas.get(position).preguntaPList.get(0).ides.get(i));
+                        rg_pregunta.addView(rb_pregunta);
+                    }
+
+                    rg_lista_vf.add(rg_pregunta);
+                    rg_posicion_lista_vf.add(rg_pregunta);
+                    ll_pregunta.addView(rg_pregunta);
+
+                    et_posicion_lista.add(null);
+                }else {
+                    RadioGroup rg_pregunta = rg_posicion_lista_vf.get(position);
                     if(rg_pregunta.getParent() != null) {
                         ((ViewGroup)rg_pregunta.getParent()).removeView(rg_pregunta);
                     }
@@ -120,7 +160,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                         txt.setTextSize(15);
                         txt.setTextColor(Color.BLACK);
                         txt.setText(p.pregunta);
-                        txt.setPadding(0,30,0,20);
+                        txt.setPadding(0,40,0,40);
 
                         comboAdapter = new ArrayAdapter<>(context,android.R.layout.simple_spinner_item, opcionesGPO);
                         spGPO.setAdapter(comboAdapter);
@@ -130,6 +170,9 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                         ll_pregunta.addView(txt);
                         ll_pregunta.addView(spGPO);
                     }
+
+                    et_posicion_lista.add(null);
+                    rg_posicion_lista_vf.add(null);
                 }else{
                     for (int i =0; i<sp_lista.size(); i++) {
                         TextView txt = new TextView(context);
@@ -138,7 +181,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                         txt.setTextSize(15);
                         txt.setTextColor(Color.BLACK);
                         txt.setText(preguntas.get(position).preguntaPList.get(i).pregunta);
-                        txt.setPadding(0,30,0,20);
+                        txt.setPadding(0,40,0,40);
 
                         if(txt.getParent() != null) {
                             ((ViewGroup)txt.getParent()).removeView(txt);
@@ -156,11 +199,28 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
 
             case 4:
                 txt_pregrunta.setText(preguntas.get(position).preguntaPList.get(0).pregunta);
-                EditText et_respuesa = new EditText(context);
-                et_respuesa.setId(preguntas.get(position).preguntaPList.get(0).ides.get(0));
+                txt_pregrunta.setPadding(0,0,0,20);
 
-                et_respuesa.setInputType(View.TEXT_ALIGNMENT_CENTER);
-                ll_pregunta.addView(et_respuesa);
+                if(tamanio.getRespuesta_corta()>et_lista.size()){
+                    EditText et_respuesta = new EditText(context);
+                    et_respuesta.setId(preguntas.get(position).preguntaPList.get(0).ides.get(0));
+                    et_respuesta.setHint("Responda con una palabra");
+                    et_respuesta.setInputType(InputType.TYPE_CLASS_TEXT);
+
+                    et_lista.add(et_respuesta);
+                    et_posicion_lista.add(et_respuesta);
+
+                    ll_pregunta.addView(et_respuesta);
+                    rg_posicion_lista_vf.add(null);
+                }else{
+                    EditText et_respuesta = et_posicion_lista.get(position);
+                    et_respuesta.setHint("Responda con una palabra");
+                    et_respuesta.setInputType(5);
+                    if(et_respuesta.getParent() != null) {
+                        ((ViewGroup)et_respuesta.getParent()).removeView(et_respuesta);
+                    }
+                    ll_pregunta.addView(et_respuesta);
+                }
 
                 break;
 
@@ -191,7 +251,6 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                 return false;
             }
         });*/
-
         finalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -203,7 +262,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                 emergente.setPositiveButton("Finalizar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        modelo_respuesta(rg_lista, sp_lista);
+                        modelo_respuesta(rg_lista, sp_lista, et_lista, rg_lista_vf);
                         terminar_intento();
 
                         AlertDialog.Builder nota = new AlertDialog.Builder(context);
@@ -212,7 +271,8 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                         nota.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                Intent i = new Intent(context, VerIntentoActivity.class);
+                                context.startActivity(i);
                             }
                         });
                         nota.show();
@@ -257,7 +317,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
         registro.put("id_clave", id_clave);
         registro.put("id", id);
         registro.put("fecha_inicio_intento", fecha_actual());
-        registro.put("numero_intento", ultimo_intento(id_gen_est) + 1);
+        registro.put("numero_intento", IntentoConsultasDB.ultimo_intento(id_gen_est , db)+1);
 
         db.insert("intento", null, registro);
         Cursor cursor = db.rawQuery("SELECT ID_INTENTO FROM INTENTO ORDER BY ID_INTENTO DESC LIMIT 1", null);
@@ -290,58 +350,83 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
         return convertido;
     }
 
-    public int ultimo_intento(int id) {
-        int numero_intento = 0;
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
-        SQLiteDatabase db = databaseAccess.open();
-
-        Cursor cursor = db.rawQuery("SELECT NUMERO_INTENTO FROM INTENTO WHERE ID_GEN_EST="+id+" ORDER BY ID_INTENTO DESC LIMIT 1", null);
-        cursor.moveToFirst();
-
-        if (cursor.getCount() > 0) {
-            numero_intento = cursor.getInt(0);
-        }
-
-        return numero_intento;
-    }
-
-    public void modelo_respuesta(List<RadioGroup> rg_seleccion, List<Spinner> sp_seleccion) {
+    public void modelo_respuesta(List<RadioGroup> rg_seleccion, List<Spinner> sp_seleccion, List<EditText> et_seleccion, List<RadioGroup> rg_seleccion_vf) {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
         SQLiteDatabase db = databaseAccess.open();
         ContentValues registro = new ContentValues();
 
-        for (RadioGroup rg : rg_seleccion) {
-            registro.put("id_opcion", rg.getCheckedRadioButtonId());
-            registro.put("id_intento", id_intento);
-            db.insert("respuesta", null, registro);
+        if(rg_seleccion !=null || rg_seleccion.size()>0){
+            for (RadioGroup rg : rg_seleccion) {
+                registro.put("id_opcion", rg.getCheckedRadioButtonId());
+                registro.put("id_intento", id_intento);
+                db.insert("respuesta", null, registro);
+            }
         }
 
-        for (Spinner sp : sp_seleccion) {
-            registro.put("id_opcion", idesGPO.get(sp.getSelectedItemPosition()));
-            registro.put("id_intento", id_intento);
-            db.insert("respuesta", null, registro);
+        if(rg_seleccion_vf !=null || rg_seleccion_vf.size()>0){
+            for (RadioGroup rg : rg_seleccion_vf) {
+                registro.put("id_opcion", rg.getCheckedRadioButtonId());
+                registro.put("id_intento", id_intento);
+                db.insert("respuesta", null, registro);
+            }
         }
+
+        if(sp_seleccion !=null || sp_seleccion.size()>0){
+            for (Spinner sp : sp_seleccion) {
+                registro.put("id_opcion", idesGPO.get(sp.getSelectedItemPosition()));
+                registro.put("id_intento", id_intento);
+                db.insert("respuesta", null, registro);
+            }
+        }
+
+        if(et_seleccion !=null || et_seleccion.size()>0){
+            for (EditText et : et_seleccion) {
+                registro.put("id_opcion", et.getId());
+                registro.put("id_intento", id_intento);
+                registro.put("texto_respuesta", et.getText().toString());
+                db.insert("respuesta", null, registro);
+            }
+        }
+
         databaseAccess.close();
     }
 
     public float calcular_nota() {
         float nota = (float) 0.0;
+        float notaOM = (float) 0.0;
+        float notaEM = (float) 0.0;
+        float notaVF = (float) 0.0;
+        float notaRC = (float) 0.0;
         int i = 0;
-        List<Integer> elecciones = new ArrayList<>();
 
-        elecciones = getRespuestas();
         while (i < preguntas.size()) {
-            if(preguntas.get(i).modalidad==3){
+            if(preguntas.get(i).modalidad==1){
+                if (preguntas.get(i).preguntaPList.get(0).respuesta == rg_lista.get(i).getCheckedRadioButtonId()) {
+                    nota += preguntas.get(i).preguntaPList.get(0).ponderacion;
+                    notaOM += preguntas.get(i).preguntaPList.get(0).ponderacion;
+                }
+
+            }else if(preguntas.get(i).modalidad==2){
+                if (preguntas.get(i).preguntaPList.get(0).respuesta == rg_posicion_lista_vf.get(i).getCheckedRadioButtonId()) {
+                    nota += preguntas.get(i).preguntaPList.get(0).ponderacion;
+                    notaVF += preguntas.get(i).preguntaPList.get(0).ponderacion;
+                }
+            }else if(preguntas.get(i).modalidad==3){
                 for(int j=0; j<sp_lista.size();j++){
                     int re = sp_lista.get(j).getId();
                     int el = idesGPO.get(sp_lista.get(j).getSelectedItemPosition());
                     if(re==el){
                         nota +=preguntas.get(i).preguntaPList.get(j).ponderacion;
+                        notaEM +=preguntas.get(i).preguntaPList.get(j).ponderacion;
                     }
                 }
-            }else{
-                if (preguntas.get(i).preguntaPList.get(0).respuesta == elecciones.get(i)) {
+            }else if(preguntas.get(i).modalidad==4){
+                int id_respuesta = preguntas.get(i).preguntaPList.get(0).respuesta;
+                String valor_digitado = et_posicion_lista.get(i).getText().toString().toLowerCase();
+                String respuesta = rc_getOpcion(id_respuesta).toLowerCase();
+                if(respuesta.equals(valor_digitado)){
                     nota += preguntas.get(i).preguntaPList.get(0).ponderacion;
+                    notaRC += preguntas.get(i).preguntaPList.get(0).ponderacion;
                 }
             }
             i++;
@@ -353,18 +438,14 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
         return nota;
     }
 
-    public List<Integer> getRespuestas() {
+    public String rc_getOpcion(int id){
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
         SQLiteDatabase db = databaseAccess.open();
-        List<Integer> elecciones = new ArrayList<>();
 
-        Cursor cursor = db.rawQuery("SELECT ID_OPCION FROM RESPUESTA WHERE ID_INTENTO=" + id_intento, null);
+        Cursor cursor = db.rawQuery("SELECT OPCION FROM OPCION WHERE ID_OPCION="+id, null);
+        cursor.moveToFirst();
 
-        while (cursor.moveToNext()) {
-            elecciones.add(cursor.getInt(0));
-        }
-
-        return elecciones;
+        return  cursor.getString(0);
     }
 
     @Override
