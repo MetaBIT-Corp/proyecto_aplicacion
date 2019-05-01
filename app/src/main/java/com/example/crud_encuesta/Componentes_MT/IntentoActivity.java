@@ -73,14 +73,11 @@ public class IntentoActivity extends AppCompatActivity {
             pregunta = cursor_pregunta.getString(2);
             id_gpo = cursor_pregunta.getInt(1);
 
-            Log.d("ID modalidad","Aqui 1");
-            Log.d("ID modalidad",""+id_gpo);
-            ponderacion = getPonderacion(id);
-            modalidad = getModalidad(id);
-            descripcion = getDescripcion(id_gpo);
+            ponderacion = IntentoConsultasDB.getPonderacion(id, db);
+            modalidad = IntentoConsultasDB.getModalidad(id, db);
+            descripcion = IntentoConsultasDB.getDescripcion(id_gpo, db);
 
-
-            Log.d("ID modalidad",""+modalidad);
+            aumentarTamanio(modalidad);
 
             Cursor cursor_opcion = db.rawQuery(sentencia_opcion+id, null);
             while (cursor_opcion.moveToNext()){
@@ -93,193 +90,39 @@ public class IntentoActivity extends AppCompatActivity {
             if(modalidad==3){
                 emparejamiento=true;
                 preguntaPList.add(new PreguntaP(pregunta, id, respuesta, ponderacion, ides, opciones));
-                if(i==getCatidadPreguntasPorGrupo(id_gpo)){
+                if(i==IntentoConsultasDB.getCatidadPreguntasPorGrupo(id_gpo, db)){
                     preguntas.add(new Pregunta(descripcion, modalidad, preguntaPList));
                     emparejamiento=false;
                     i = 1;
                 }
-                tamanio.setEmparejamiento(tamanio.getEmparejamiento()+1);
             }else{
                 preguntaPList.add(new PreguntaP(pregunta, id, respuesta, ponderacion, ides, opciones));
                 preguntas.add(new Pregunta(descripcion, modalidad, preguntaPList));
+            }
+            cursor_opcion.close();
+        }
+
+        databaseAccess.close();
+        cursor_pregunta.close();
+
+        return preguntas;
+    }
+
+    public void aumentarTamanio(int modalidad){
+        switch (modalidad){
+            case 1:
                 tamanio.setOpcion_multiple(tamanio.getOpcion_multiple()+1);
-            }
-            cursor_opcion.close();
+                break;
+            case 2:
+                tamanio.setVerdadero_falso(tamanio.getVerdadero_falso()+1);
+                break;
+            case 3:
+                tamanio.setEmparejamiento(tamanio.getEmparejamiento()+1);
+                break;
+            case 4:
+                tamanio.setRespuesta_corta(tamanio.getRespuesta_corta()+1);
         }
-
-        databaseAccess.close();
-        cursor_pregunta.close();
-
-        return preguntas;
     }
 
-    public String getDescripcion(int id_gpo_emp){
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
-        SQLiteDatabase db = databaseAccess.open();
-
-        String descripcion;
-        String sentencia;
-
-        sentencia="SELECT DESCRIPCION_GRUPO_EMP FROM GRUPO_EMPAREJAMIENTO WHERE ID_GRUPO_EMP="+id_gpo_emp;
-
-        Cursor cursor = db.rawQuery(sentencia,null);
-        cursor.moveToFirst();
-
-        if(cursor != null){
-            descripcion = cursor.getString(0);
-        }else{
-            descripcion="";
-        }
-        return descripcion;
-    }
-
-    public int getCatidadPreguntasPorGrupo(int id_gpo_emp){
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
-        SQLiteDatabase db = databaseAccess.open();
-
-        String descripcion;
-        String sentencia;
-
-        sentencia="SELECT ID_PREGUNTA FROM PREGUNTA WHERE ID_GRUPO_EMP="+id_gpo_emp;
-
-        Cursor cursor = db.rawQuery(sentencia,null);
-
-        return cursor.getCount();
-    }
-
-    public float getPonderacion(int id_pregunta){
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
-        SQLiteDatabase db = databaseAccess.open();
-
-        float valor_pregunta;
-        String sentencia;
-        int peso;
-        int cantidad;
-
-        sentencia="SELECT NUMERO_PREGUNTAS, PESO FROM CLAVE_AREA WHERE ID_CLAVE_AREA IN\n" +
-                "(SELECT ID_CLAVE_AREA FROM CLAVE_AREA_PREGUNTA WHERE ID_PREGUNTA="+id_pregunta+")";
-
-        Cursor cursor = db.rawQuery(sentencia,null);
-        cursor.moveToFirst();
-
-        peso = cursor.getInt(1);
-        cantidad = cursor.getInt(0);
-
-        float peso_f = (float)peso;
-        float cantidad_f = (float)cantidad;
-
-        valor_pregunta = (peso_f/cantidad_f)/10;
-        return valor_pregunta;
-    }
-
-    public int getModalidad(int id_pregunta){
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
-        SQLiteDatabase db = databaseAccess.open();
-
-        int id_modalidad;
-        String sentencia;
-
-        sentencia="SELECT ID_TIPO_ITEM FROM AREA WHERE ID_AREA IN\n" +
-                "(SELECT ID_AREA FROM CLAVE_AREA WHERE ID_CLAVE_AREA IN\n" +
-                "(SELECT ID_CLAVE_AREA FROM CLAVE_AREA_PREGUNTA WHERE ID_PREGUNTA="+id_pregunta+"))";
-
-        Cursor cursor = db.rawQuery(sentencia,null);
-        cursor.moveToFirst();
-
-        id_modalidad= cursor.getInt(0);
-        return id_modalidad;
-    }
-
-
-    /*
-    public List<Pregunta> getPreguntas(){
-        List<Pregunta> preguntas = new ArrayList<>();
-        String pregunta;
-        float ponderacion;
-        int id;
-        int respuesta=0;
-        int modalidad;
-
-        String sentencia_pregunta = "SELECT ID_PREGUNTA, PREGUNTA FROM PREGUNTA WHERE ID_PREGUNTA IN\n" +
-                "(SELECT ID_PREGUNTA FROM CLAVE_AREA_PREGUNTA WHERE ID_CLAVE_AREA IN\n" +
-                "(SELECT ID_CLAVE_AREA FROM CLAVE_AREA WHERE ID_CLAVE ="+id_clave+"))";
-
-        String sentencia_opcion = "SELECT ID_OPCION, OPCION, CORRECTA FROM OPCION WHERE ID_PREGUNTA =";
-
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
-        SQLiteDatabase db = databaseAccess.open();
-
-        Cursor cursor_pregunta = db.rawQuery(sentencia_pregunta, null);
-
-        while (cursor_pregunta.moveToNext()){
-            List<String> opciones = new ArrayList<>();
-            List<Integer> ides = new ArrayList<>();
-
-            id = cursor_pregunta.getInt(0);
-            pregunta = cursor_pregunta.getString(1);
-            ponderacion = getPonderacion(id);
-            modalidad = getModalidad(id);
-
-            Cursor cursor_opcion = db.rawQuery(sentencia_opcion+id, null);
-            while (cursor_opcion.moveToNext()){
-                ides.add(cursor_opcion.getInt(0));
-                opciones.add(cursor_opcion.getString(1));
-
-                if(cursor_opcion.getInt(2)==1) respuesta=cursor_opcion.getInt(0);
-            }
-            preguntas.add(new Pregunta(pregunta, id, respuesta, ponderacion, modalidad, opciones, ides));
-            cursor_opcion.close();
-        }
-
-        databaseAccess.close();
-        cursor_pregunta.close();
-
-        return preguntas;
-    }
-
-    public float getPonderacion(int id_pregunta){
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
-        SQLiteDatabase db = databaseAccess.open();
-
-        float valor_pregunta;
-        String sentencia;
-        int peso;
-        int cantidad;
-
-        sentencia="SELECT NUMERO_PREGUNTAS, PESO FROM CLAVE_AREA WHERE ID_CLAVE_AREA IN\n" +
-                "(SELECT ID_CLAVE_AREA FROM CLAVE_AREA_PREGUNTA WHERE ID_PREGUNTA="+id_pregunta+")";
-
-        Cursor cursor = db.rawQuery(sentencia,null);
-        cursor.moveToFirst();
-
-        peso = cursor.getInt(1);
-        cantidad = cursor.getInt(0);
-
-        float peso_f = (float)peso;
-        float cantidad_f = (float)cantidad;
-
-        valor_pregunta = (peso_f/cantidad_f)/10;
-        return valor_pregunta;
-    }
-
-    public int getModalidad(int id_pregunta){
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
-        SQLiteDatabase db = databaseAccess.open();
-
-        int id_modalidad;
-        String sentencia;
-
-        sentencia="SELECT ID_TIPO_ITEM FROM AREA WHERE ID_AREA IN\n" +
-                "(SELECT ID_AREA FROM CLAVE_AREA WHERE ID_CLAVE_AREA IN\n" +
-                "(SELECT ID_CLAVE_AREA FROM CLAVE_AREA_PREGUNTA WHERE ID_PREGUNTA="+id_pregunta+"))";
-
-        Cursor cursor = db.rawQuery(sentencia,null);
-        cursor.moveToFirst();
-
-        id_modalidad= cursor.getInt(0);
-        Log.d("ID modalidad",String.valueOf(id_modalidad));
-        return id_modalidad;
-    }
-    */
 }
 
