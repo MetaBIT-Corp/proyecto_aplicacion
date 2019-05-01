@@ -1,6 +1,7 @@
 package com.example.crud_encuesta.Componentes_Docente;
 
 public class Docente {
+
     private int id;
     private String carnet, nombre, descripcion, anio_titulo;
     private int tipo_jornada, cargo_actual, cargo_secundario,activo;

@@ -42,7 +42,9 @@ public class DAODocente {
         return (cx.insert("PDG_DCN_DOCENTE",null,contenedor)>0);
     }
 
-    public boolean eliminar(int id){return (cx.delete("PDG_DCN_DOCENTE","ID_PDG_DCN="+id, null)>0);}
+    public boolean eliminar(int id){
+        return (cx.delete("PDG_DCN_DOCENTE","ID_PDG_DCN="+id, null)>0);
+    }
 
     public boolean editar(Docente dc){
         ContentValues contenedor = new ContentValues();
@@ -55,13 +57,6 @@ public class DAODocente {
         contenedor.put("ID_CARGO_ACTUAL",dc.getCargo_actual());
         contenedor.put("ID_SEGUNDO_CARGO",dc.getCargo_secundario());
         contenedor.put("NOMBRE_DOCENTE",dc.getNombre());
-
-        /*if (dc.getActivo()==1){
-            ContentValues contenedor_alterno = new ContentValues();
-            contenedor_alterno.put("ACTIVO",1);
-            cx.update("PDG_DCN_DOCENTE",contenedor_alterno,null, null);
-        }*/
-
         return (cx.update("PDG_DCN_DOCENTE",contenedor,"ID_PDG_DCN="+dc.getId(), null)>0);
     }
 
