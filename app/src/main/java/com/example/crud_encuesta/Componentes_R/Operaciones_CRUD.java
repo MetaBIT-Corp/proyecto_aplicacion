@@ -86,7 +86,6 @@ public class Operaciones_CRUD {
         return lista;
     }
 
-
     public static ArrayList<Pensum> todosPensum(SQLiteDatabase db) {
         ArrayList<Pensum> lista = new ArrayList<>();
         Cursor cu = db.rawQuery(" SELECT * FROM " + EstructuraTablas.PENSUM_TABLA_NAME, null);
@@ -100,6 +99,7 @@ public class Operaciones_CRUD {
         }while (cu.moveToNext());
         return lista;
     }
+
     public static ArrayList<Materia> todosMateria(SQLiteDatabase db, ArrayList<Carrera> c,ArrayList<Pensum> p) {
         ArrayList<Materia> lista = new ArrayList<>();
         Cursor cu = db.rawQuery(" SELECT * FROM " + EstructuraTablas.MATERIA_TABLA_NAME, null);

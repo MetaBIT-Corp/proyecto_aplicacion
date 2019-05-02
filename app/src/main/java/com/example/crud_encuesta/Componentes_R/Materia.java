@@ -71,7 +71,7 @@ public class Materia {
 
     public String toString(){
         String cadena;
-        if (electiva) cadena="Codigo: "+codigo_materia+"Nombre Materia: "+nombre+"\nElectiva : SI"+"\nAño Pesum: "+pensum+"\n\nPertenece a la Carrera\n"+carrera;
+        if (electiva) cadena="Codigo: "+codigo_materia+"\nNombre Materia: "+nombre+"\nElectiva : SI"+"\nAño Pesum: "+pensum+"\n\nPertenece a la Carrera\n"+carrera;
         else cadena="Codigo: "+codigo_materia+"\nNombre Materia: "+nombre+"\nElectiva : NO"+"\nAño Pesum: "+pensum+"\n\nPertenece a la Carrera\n"+carrera;
         return cadena;
     }
