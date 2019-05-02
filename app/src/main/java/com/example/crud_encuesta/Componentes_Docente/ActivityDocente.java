@@ -90,12 +90,12 @@ public class ActivityDocente extends AppCompatActivity {
                 final EditText nombre = (EditText) dialogo.findViewById(R.id.editt_nombre);
                 Button btn_anio = (Button) dialogo.findViewById(R.id.btn_agregar_anio);
                 final TextView mensaje = (TextView) dialogo.findViewById(R.id.toolbar_docente);
-                mensaje.setText("Agregar Nuevo Docente");
+                mensaje.setText("Registrar Nuevo Docente");
 
                 ArrayAdapter adapterEs = new ArrayAdapter(ActivityDocente.this, android.R.layout.simple_list_item_1, listaEscuelas);
                 sp_escuela.setAdapter(adapterEs);
 
-               sp_escuela.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                sp_escuela.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         if (position != 0){
