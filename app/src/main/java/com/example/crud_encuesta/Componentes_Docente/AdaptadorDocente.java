@@ -30,18 +30,17 @@ import java.util.Calendar;
 
 public class AdaptadorDocente extends BaseAdapter {
 
+    private Activity a;
+    private ArrayList<Docente> lista;
     private DAODocente dao;
     private Docente docente;
-    private Activity a;
     private int id = 0;
     private int id_escuela = 0;
     private SQLiteDatabase db;
     private DatabaseAccess access;
     private int anio = Calendar.getInstance().get(Calendar.YEAR);
-    private ArrayList<Docente> lista;
     private ArrayList<Escuela> escuelas = new ArrayList<>();
     private ArrayList<String> listaEscuelas = new ArrayList<>();
-
 
     public AdaptadorDocente(Activity a, ArrayList<Docente> lista, DAODocente dao){
         this.a = a;
@@ -65,7 +64,7 @@ public class AdaptadorDocente extends BaseAdapter {
     @Override
     public Docente getItem(int position) {
         docente = lista.get(position);
-        return null;
+        return docente;
     }
 
     @Override
@@ -86,13 +85,16 @@ public class AdaptadorDocente extends BaseAdapter {
 
         TextView nombre = (TextView) v.findViewById(R.id.txt_nombre);
         TextView carnet = (TextView) v.findViewById(R.id.txt_carnet);
+
         Button ver = (Button) v.findViewById(R.id.btn_ver_dcn);
         Button editar = (Button) v.findViewById(R.id.btn_editar_dcn);
         Button eliminar = (Button) v.findViewById(R.id.btn_eliminar_dcn);
 
         docente = lista.get(position);
+
         nombre.setText(docente.getNombre());
         carnet.setText(docente.getCarnet());
+
         ver.setTag(position);
         editar.setTag(position);
         eliminar.setTag(position);
@@ -109,6 +111,7 @@ public class AdaptadorDocente extends BaseAdapter {
 
                 int pos = Integer.parseInt(v.getTag().toString());
                 String e = "";
+
                 final Dialog dialogo = new Dialog(a);
                 dialogo.setTitle("Vista de Docente");
                 dialogo.setCancelable(true);
@@ -126,9 +129,11 @@ public class AdaptadorDocente extends BaseAdapter {
                 final TextView cargo_actual = (TextView) dialogo.findViewById(R.id.tv_cargo_actual);
                 final TextView cargo_secundario = (TextView) dialogo.findViewById(R.id.tv_cargo_secundario);
                 final TextView nombre = (TextView) dialogo.findViewById(R.id.tv_nombre);
+
                 Button salir = (Button) dialogo.findViewById(R.id.btn_salir);
 
                 docente = lista.get(pos);
+
                 mensaje.setText("Docente: "+docente.getCarnet());
 
                 for(int i=0;i<escuelas.size();i++){
@@ -197,7 +202,6 @@ public class AdaptadorDocente extends BaseAdapter {
                 setId(docente.getId());
 
                 /*Seteando Escuela desde Spinner*/
-
                 ArrayAdapter escuelaAdapter = new ArrayAdapter(v.getContext(), android.R.layout.simple_list_item_1, listaEscuelas);
                 sp_escuela.setAdapter(escuelaAdapter);
 
@@ -206,7 +210,6 @@ public class AdaptadorDocente extends BaseAdapter {
                         sp_escuela.setSelection(i);
                     }
                 }
-
                 sp_escuela.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -219,16 +222,15 @@ public class AdaptadorDocente extends BaseAdapter {
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {}
                 });
+                /*Fin de Seteo de Escuela*/
 
-                carnet.setText(docente.getCarnet()); /*Set de Carnet*/
+                carnet.setText(docente.getCarnet());
 
                 /*Seteando de Año de Titulación desde YearPicker*/
-
                 anio_titulo.setText(""+docente.getAnio_titulo());
                 btn_anio.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         final Dialog d = new Dialog(dialogo.getContext());
                         d.setTitle("Year Picker");
                         d.setContentView(R.layout.year_picker);
@@ -263,6 +265,7 @@ public class AdaptadorDocente extends BaseAdapter {
                         d.getWindow().setLayout(((getWidth(d.getContext()) / 100) * 85), ViewGroup.LayoutParams.WRAP_CONTENT);
                     }
                 });
+                /*Fin de Seteo de Anio*/
 
                 if(docente.getActivo()==1){
                     activo.setChecked(true);
@@ -282,11 +285,8 @@ public class AdaptadorDocente extends BaseAdapter {
 
                         try {
                             int check;
-                            if(activo.isChecked()){
-                                check = 1;
-                            }else{
-                                check = 0;
-                            }
+                            if(activo.isChecked()){check = 1;}
+                            else{check = 0;}
                             docente = new Docente(
                                     getId(),
                                     id_escuela,
@@ -299,13 +299,11 @@ public class AdaptadorDocente extends BaseAdapter {
                                     Integer.parseInt(cargo_secundario.getText().toString()),
                                     nombre.getText().toString());
                             dao.editar(docente);
-                            notifyDataSetChanged();
                             lista = dao.verTodos();
+                            notifyDataSetChanged();
                             dialogo.dismiss();
 
-                        } catch (Exception e){
-                            Toast.makeText(a, "¡Error!", Toast.LENGTH_SHORT).show();
-                        }
+                        } catch (Exception e){Toast.makeText(a, "¡Error!", Toast.LENGTH_SHORT).show();}
                     }
                 });
 
@@ -326,9 +324,9 @@ public class AdaptadorDocente extends BaseAdapter {
                 int pos = Integer.parseInt(v.getTag().toString());
                 docente = lista.get(pos);
                 setId(docente.getId());
-                final AlertDialog.Builder del = new AlertDialog.Builder(a);
 
-                del.setMessage("¿Quieres eliminar el Docente?");
+                final AlertDialog.Builder del = new AlertDialog.Builder(a);
+                del.setMessage("¿Quieres eliminar el Docente "+docente.getCarnet()+"?");
                 del.setCancelable(true);
 
                 del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
@@ -349,6 +347,7 @@ public class AdaptadorDocente extends BaseAdapter {
                 del.show();
             }
         });
+
         return v;
     }
 

@@ -31,12 +31,12 @@ public class ActivityDocente extends AppCompatActivity {
     private DAODocente dao;
     private AdaptadorDocente adapter;
     private ArrayList<Docente> lista;
-    private Docente dc;
+    private Docente docente;
     private SQLiteDatabase db;
     private DatabaseAccess access;
     private String tableName = "ESCUELA";
-    private ArrayList<Escuela> escuelas = new ArrayList<>();
-    private ArrayList<String> listaEscuelas = new ArrayList<>();
+    private ArrayList<Escuela> escuelas = new ArrayList<Escuela>();
+    private ArrayList<String> listaEscuelas = new ArrayList<String>();
     private int anio = Calendar.getInstance().get(Calendar.YEAR);
     private int id_escuela;
 
@@ -162,7 +162,7 @@ public class ActivityDocente extends AppCompatActivity {
                             }else{
                                 checki = 0;
                             }
-                            dc = new Docente(
+                            docente = new Docente(
                                     id_escuela,
                                     carnet.getText().toString(),
                                     anio_titulo.getText().toString(),
@@ -173,7 +173,7 @@ public class ActivityDocente extends AppCompatActivity {
                                     Integer.parseInt(cargo_secundario.getText().toString()),
                                     nombre.getText().toString());
 
-                            dao.insertar(dc);
+                            dao.insertar(docente);
                             adapter.notifyDataSetChanged();
                             lista = dao.verTodos();
                             dialogo.dismiss();
@@ -194,7 +194,7 @@ public class ActivityDocente extends AppCompatActivity {
     }
 
     public ArrayList<String> obtenerListaEscuelas() {
-        ArrayList<String> escuelasList = new ArrayList<>();
+        ArrayList<String> escuelasList = new ArrayList<String>();
         for (int i =0 ; i < escuelas.size(); i++) {
             escuelasList.add(escuelas.get(i).getNombre());
         }

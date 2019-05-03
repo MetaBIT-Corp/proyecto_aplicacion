@@ -4,12 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.example.crud_encuesta.DatabaseAccess;
-
 import java.util.ArrayList;
 
 public class DAOEstudiante {
+
     private SQLiteDatabase cx;
     private ArrayList<Estudiante> lista = new ArrayList<>();
     private Estudiante estd;

@@ -17,7 +17,6 @@ import android.widget.CheckBox;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 import java.util.ArrayList;
@@ -79,7 +78,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
         TextView carnet = (TextView) v.findViewById(R.id.txt_carnet_estd);
 
         Button ver = (Button) v.findViewById(R.id.btn_ver_estd);
-        final Button editar = (Button) v.findViewById(R.id.btn_editar_estd);
+        Button editar = (Button) v.findViewById(R.id.btn_editar_estd);
         Button eliminar = (Button) v.findViewById(R.id.btn_eliminar_estd);
 
         estudiante = lista.get(position);
@@ -99,6 +98,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
             public void onClick(View v) {
 
                 int pos = Integer.parseInt(v.getTag().toString());
+
                 final Dialog dialogo = new Dialog(a);
                 dialogo.setTitle("Ver Docente");
                 dialogo.setCancelable(true);
@@ -107,9 +107,9 @@ public class AdaptadorEstudiante extends BaseAdapter {
                 dialogo.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
                 final TextView mensaje = (TextView) dialogo.findViewById(R.id.toolbar_std);
-                final TextView carnet = (TextView) dialogo.findViewById(R.id.txt_carnet_estd);
+                final TextView carnet = (TextView) dialogo.findViewById(R.id.tv_carnet_estd);
                 final CheckBox activo = (CheckBox) dialogo.findViewById(R.id.cb_actividad_estd);
-                final TextView nombre = (TextView) dialogo.findViewById(R.id.txt_nombre_estd);
+                final TextView nombre = (TextView) dialogo.findViewById(R.id.tv_nombre_estd);
                 final TextView anio_ingreso = (TextView) dialogo.findViewById(R.id.tv_anio_ingreso_estd);
 
                 Button salir = (Button) dialogo.findViewById(R.id.btn_salir);
@@ -117,6 +117,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
                 estudiante = lista.get(pos);
 
                 mensaje.setText("Estudiante: "+estudiante.getCarnet());
+
                 carnet.setText(estudiante.getCarnet());
 
                 if(estudiante.getActivo()==1){
@@ -166,11 +167,13 @@ public class AdaptadorEstudiante extends BaseAdapter {
 
                 setId(estudiante.getId());
                 carnet.setText(estudiante.getCarnet());
+
                 if(estudiante.getActivo()==1){
                     activo.setChecked(true);
                 }else{
                     activo.setChecked(false);
                 }
+
                 nombre.setText(estudiante.getNombre());
                 anio_ingreso.setText(estudiante.getAnio_ingreso());
 
@@ -253,7 +256,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
                 setId(estudiante.getId());
 
                 final AlertDialog.Builder del = new AlertDialog.Builder(a);
-                del.setMessage("¿Quierés elimar el Estudiante?");
+                del.setMessage("¿Quierés elimar el Estudiante "+estudiante.getCarnet()+"?");
                 del.setCancelable(true);
 
                 del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
