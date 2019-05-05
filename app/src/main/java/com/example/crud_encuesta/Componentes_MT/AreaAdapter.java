@@ -29,14 +29,15 @@ import java.util.List;
 public class AreaAdapter extends BaseAdapter {
     private LayoutInflater inflater = null;
     Context context;
-    List<String> areas = new ArrayList<>();
-    List<String> ides = new ArrayList<>();
+    List<Area> areas = new ArrayList<>();
+    DAOArea daoArea;
+    Area area;
     int[] iconos;
 
-    public AreaAdapter(Context context, List<String> areas, List<String> ides, int[] iconos){
+    public AreaAdapter(Context context, List<Area> areas, DAOArea daoArea, int[] iconos){
         this.context = context;
         this.areas = areas;
-        this.ides = ides;
+        this.daoArea = daoArea;
         this.iconos = iconos;
 
         inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -51,7 +52,7 @@ public class AreaAdapter extends BaseAdapter {
         ImageView imgDelete = (ImageView)mView.findViewById(R.id.img_delete);
         Button btnAddGrupoEmp = (Button) mView.findViewById(R.id.btn_grupo_emp);
 
-        tituloArea.setText(areas.get(position));
+        tituloArea.setText(areas.get(position).titulo);
         imgEdit.setImageResource(iconos[0]);
         imgDelete.setImageResource(iconos[1]);
 
@@ -63,12 +64,11 @@ public class AreaAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 final int i = Integer.parseInt(v.getTag().toString());
-                int id = Integer.parseInt(ides.get(i));
+                int id = areas.get(i).id;
                 Intent in = new Intent(context, GpoEmpActivity.class);
                 in.putExtra("id_area",id);
 
                 //inicio
-
                 int id_tipo_item=obtener_tipo_item(id,v.getContext());
                 in.putExtra("id_tipo_item",id_tipo_item);
                 in.putExtra("accion",0);
@@ -88,13 +88,15 @@ public class AreaAdapter extends BaseAdapter {
 
                 TextView txt = mView.findViewById(R.id.msj);
                 txt.setText("Editar");
-                edt.setText(areas.get(i));
+                edt.setText(areas.get(i).titulo);
                 mBuilder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         editar_area(i, mView);
-                        Intent i = new Intent(context, AreaActivity.class);
-                        context.startActivity(i);
+                        areas = daoArea.getAreas();
+                        notifyDataSetChanged();
+                        /*Intent i = new Intent(context, AreaActivity.class);
+                        context.startActivity(i);*/
                     }
                 });
 
@@ -116,7 +118,6 @@ public class AreaAdapter extends BaseAdapter {
             public void onClick(final View v) {
                 final int i = Integer.parseInt(v.getTag().toString());
 
-
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
                 final View mView = inflater.inflate(R.layout.modal_area, null);
                 TextView msj = (TextView)mView.findViewById(R.id.msj);
@@ -128,9 +129,10 @@ public class AreaAdapter extends BaseAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         eliminar_area(i);
+                        areas = daoArea.getAreas();
+                        notifyDataSetChanged();
                         Toast.makeText(context, "Se ha eliminado con éxito", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(context, AreaActivity.class);
-                        context.startActivity(i);
+
 
                     }
                 });
@@ -185,20 +187,19 @@ public class AreaAdapter extends BaseAdapter {
         return 0;
     }
 
-    public void eliminar_area(int id){
+    public void eliminar_area(int i){
         DatabaseAccess database = DatabaseAccess.getInstance(context);
         SQLiteDatabase db = database.open();
 
-        int ide = Integer.parseInt(ides.get(id));
+        int ide = areas.get(i).id;
         db.delete("area","id_area="+ide, null);
-
 
         database.close();
     }
 
-    public void editar_area(int id, View v){
+    public void editar_area(int i, View v){
         EditText edt = (EditText)v.findViewById(R.id.etArea);
-        int ide = Integer.parseInt(ides.get(id));
+        int id = areas.get(i).id;
 
         DatabaseAccess database = DatabaseAccess.getInstance(context);
         SQLiteDatabase db = database.open();
@@ -208,7 +209,7 @@ public class AreaAdapter extends BaseAdapter {
 
         if(!titulo.isEmpty()){
             registro.put("titulo", titulo);
-            db.update("area", registro, "id_area="+ide, null);
+            db.update("area", registro, "id_area="+id, null);
         }else{
             Toast.makeText(context, "El area debe tener un titulo", Toast.LENGTH_SHORT).show();
         }
