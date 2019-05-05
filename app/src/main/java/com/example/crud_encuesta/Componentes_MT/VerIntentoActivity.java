@@ -46,27 +46,28 @@ public class VerIntentoActivity extends AppCompatActivity {
         int modalidad=0;
         int ultimo_intento;
         int id_opcion_eleccion;
+        int id_pregunta;
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         SQLiteDatabase db = databaseAccess.open();
 
         ultimo_intento = IntentoConsultasDB.ultimo_intento(id_usuario, db);
 
-        String sentencia_pregunta = "SELECT * FROM PREGUNTA WHERE ID_PREGUNTA =\n" +
-                "(SELECT ID_PREGUNTA FROM OPCION WHERE ID_OPCION=";
+        String sentencia_pregunta = "SELECT * FROM PREGUNTA WHERE ID_PREGUNTA =";
 
         String sentencia_opcion = "SELECT ID_OPCION, OPCION, CORRECTA FROM OPCION WHERE ID_PREGUNTA =";
 
-        Cursor cursor_eleccion = db.rawQuery("SELECT ID_OPCION, TEXTO_RESPUESTA FROM RESPUESTA WHERE ID_INTENTO ="+ultimo_intento, null);
+        Cursor cursor_eleccion = db.rawQuery("SELECT ID_OPCION, ID_PREGUNTA, TEXTO_RESPUESTA FROM RESPUESTA WHERE ID_INTENTO ="+ultimo_intento, null);
 
         while (cursor_eleccion.moveToNext()){
             List<String> opciones = new ArrayList<>();
             List<Integer> ides = new ArrayList<>();
 
             id_opcion_eleccion = cursor_eleccion.getInt(0);
-            texto_eleccion = cursor_eleccion.getString(1);
+            id_pregunta = cursor_eleccion.getInt(1);
+            texto_eleccion = cursor_eleccion.getString(2);
 
-            Cursor cursor_pregunta = db.rawQuery(sentencia_pregunta+id_opcion_eleccion+")", null);
+            Cursor cursor_pregunta = db.rawQuery(sentencia_pregunta+id_pregunta, null);
             cursor_pregunta.moveToFirst();
 
             id = cursor_pregunta.getInt(0);

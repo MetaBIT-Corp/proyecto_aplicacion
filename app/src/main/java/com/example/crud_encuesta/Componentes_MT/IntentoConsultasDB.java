@@ -27,7 +27,6 @@ public class IntentoConsultasDB {
     }
 
     public static int getCatidadPreguntasPorGrupo(int id_gpo_emp, SQLiteDatabase db){
-        String descripcion;
         String sentencia;
 
         sentencia="SELECT ID_PREGUNTA FROM PREGUNTA WHERE ID_GRUPO_EMP="+id_gpo_emp;
