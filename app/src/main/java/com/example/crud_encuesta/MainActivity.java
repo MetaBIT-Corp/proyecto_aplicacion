@@ -9,22 +9,20 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 import android.widget.ListView;
 
 import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.TurnoActivity;
-import com.example.crud_encuesta.Componentes_DC.Activities.GpoEmpActivity;
 import com.example.crud_encuesta.Componentes_Docente.ActivityDocente;
 import com.example.crud_encuesta.Componentes_Estudiante.ActivityEstudiante;
 import com.example.crud_encuesta.Componentes_MT.AreaActivity;
 import com.example.crud_encuesta.Componentes_MT.ClaveActivity;
 import com.example.crud_encuesta.Componentes_MT.IntentoActivity;
-import com.example.crud_encuesta.Componentes_R.CarreraActivity;
+import com.example.crud_encuesta.Componentes_EL.CarreraActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
-import com.example.crud_encuesta.Componentes_R.EncuestaActivity;
-import com.example.crud_encuesta.Componentes_R.EscuelaActivity;
-import com.example.crud_encuesta.Componentes_R.MateriaActivity;
+import com.example.crud_encuesta.Componentes_EL.EncuestaActivity;
+import com.example.crud_encuesta.Componentes_EL.EscuelaActivity;
+import com.example.crud_encuesta.Componentes_EL.MateriaActivity;
 
 public class MainActivity extends AppCompatActivity {
 
