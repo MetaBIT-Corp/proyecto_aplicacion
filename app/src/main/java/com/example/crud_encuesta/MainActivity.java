@@ -45,9 +45,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login();
-                area();
+                //area();
                 //evaluacion();
                 //pressed();
+                intento();
 
             }
         });
