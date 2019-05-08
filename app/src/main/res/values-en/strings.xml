@@ -12,7 +12,7 @@
     <string name="aceptar">Accept</string>
     <string name="lbl_borrar">Are you sure?</string>
 
-    <string name="title_borrar">Erase</string>
+    <string name="title_borrar">Delete</string>
     <string name="men_actualizar">Updated Successfully</string>
     <string name="men_guardar">Saved Successfully</string>
     <string name="men_camp_vacios">Empty Fields</string>
