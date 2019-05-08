@@ -44,6 +44,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
     private LayoutInflater inflater;
     private Tamanio tamanio= new Tamanio();
     private List<Pregunta> preguntas = new ArrayList<>();
+    private List<Integer> idPreguntaRC = new ArrayList<>();
 
     private List<RadioGroup> rg_lista = new ArrayList<>();
     private List<RadioButton> rb_lista = new ArrayList<>();
@@ -61,7 +62,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
     private int id_intento;
 
     //Datos de otros modelos
-    int id_gen_est = 1;
+    int id_est = 1;
     int id_clave = 1;
     int id = 1;
 
@@ -88,6 +89,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
 
                 if(tamanio.getOpcion_multiple()>rg_lista.size()){
                     RadioGroup rg_pregunta = new RadioGroup(context);
+                    rg_pregunta.setId(preguntas.get(position).preguntaPList.get(0).id);
                     for (int i = 0; i < preguntas.get(position).preguntaPList.get(0).opciones.size(); i++) {
                         RadioButton rb_pregunta = new RadioButton(context);
                         rb_pregunta.setText( preguntas.get(position).preguntaPList.get(0).opciones.get(i));
@@ -115,6 +117,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
 
                 if(tamanio.getVerdadero_falso()>rg_lista_vf.size()){
                     RadioGroup rg_pregunta = new RadioGroup(context);
+                    rg_pregunta.setId(preguntas.get(position).preguntaPList.get(0).id);
                     for (int i = 0; i < preguntas.get(position).preguntaPList.get(0).opciones.size(); i++) {
                         RadioButton rb_pregunta = new RadioButton(context);
                         rb_pregunta.setText( preguntas.get(position).preguntaPList.get(0).opciones.get(i));
@@ -153,7 +156,8 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                     for(PreguntaP p : preguntas.get(position).preguntaPList){
                         TextView txt = new TextView(context);
                         Spinner spGPO = new Spinner(context);
-                        spGPO.setId(p.respuesta);
+                        //spGPO.setId(p.respuesta);
+                        spGPO.setId(p.id);
 
                         spGPO.setOnItemSelectedListener(this);
 
@@ -200,6 +204,8 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
             case 4:
                 txt_pregrunta.setText(preguntas.get(position).preguntaPList.get(0).pregunta);
                 txt_pregrunta.setPadding(0,0,0,20);
+
+                idPreguntaRC.add(preguntas.get(position).preguntaPList.get(0).id);
 
                 if(tamanio.getRespuesta_corta()>et_lista.size()){
                     EditText et_respuesta = new EditText(context);
@@ -313,11 +319,11 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
         SQLiteDatabase db = databaseAccess.open();
 
         ContentValues registro = new ContentValues();
-        registro.put("id_gen_est", id_gen_est);
+        registro.put("id_est", id_est);
         registro.put("id_clave", id_clave);
         registro.put("id", id);
         registro.put("fecha_inicio_intento", fecha_actual());
-        registro.put("numero_intento", IntentoConsultasDB.ultimo_intento(id_gen_est , db)+1);
+        registro.put("numero_intento", IntentoConsultasDB.ultimo_intento(id_est , db)+1);
 
         db.insert("intento", null, registro);
         Cursor cursor = db.rawQuery("SELECT ID_INTENTO FROM INTENTO ORDER BY ID_INTENTO DESC LIMIT 1", null);
@@ -359,6 +365,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
             for (RadioGroup rg : rg_seleccion) {
                 registro.put("id_opcion", rg.getCheckedRadioButtonId());
                 registro.put("id_intento", id_intento);
+                registro.put("id_pregunta", rg.getId());
                 db.insert("respuesta", null, registro);
             }
         }
@@ -367,6 +374,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
             for (RadioGroup rg : rg_seleccion_vf) {
                 registro.put("id_opcion", rg.getCheckedRadioButtonId());
                 registro.put("id_intento", id_intento);
+                registro.put("id_pregunta", rg.getId());
                 db.insert("respuesta", null, registro);
             }
         }
@@ -375,16 +383,20 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
             for (Spinner sp : sp_seleccion) {
                 registro.put("id_opcion", idesGPO.get(sp.getSelectedItemPosition()));
                 registro.put("id_intento", id_intento);
+                registro.put("id_pregunta", sp.getId());
                 db.insert("respuesta", null, registro);
             }
         }
 
         if(et_seleccion !=null || et_seleccion.size()>0){
+            int i =0;
             for (EditText et : et_seleccion) {
                 registro.put("id_opcion", et.getId());
                 registro.put("id_intento", id_intento);
+                registro.put("id_pregunta", idPreguntaRC.get(i));
                 registro.put("texto_respuesta", et.getText().toString());
                 db.insert("respuesta", null, registro);
+                i++;
             }
         }
 
@@ -413,7 +425,8 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                 }
             }else if(preguntas.get(i).modalidad==3){
                 for(int j=0; j<sp_lista.size();j++){
-                    int re = sp_lista.get(j).getId();
+                    //int re = sp_lista.get(j).getId();
+                    int re = preguntas.get(i).preguntaPList.get(j).respuesta;
                     int el = idesGPO.get(sp_lista.get(j).getSelectedItemPosition());
                     if(re==el){
                         nota +=preguntas.get(i).preguntaPList.get(j).ponderacion;

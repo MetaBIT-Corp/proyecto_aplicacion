@@ -30,22 +30,21 @@ import java.util.Calendar;
 
 public class AdaptadorDocente extends BaseAdapter {
 
-    private DAODocente dao;
-    private Docente dc;
     private Activity a;
+    private ArrayList<Docente> lista;
+    private DAODocente dao;
+    private Docente docente;
     private int id = 0;
     private int id_escuela = 0;
     private SQLiteDatabase db;
     private DatabaseAccess access;
     private int anio = Calendar.getInstance().get(Calendar.YEAR);
-    private ArrayList<Docente> lista;
     private ArrayList<Escuela> escuelas = new ArrayList<>();
     private ArrayList<String> listaEscuelas = new ArrayList<>();
 
-
     public AdaptadorDocente(Activity a, ArrayList<Docente> lista, DAODocente dao){
-        this.lista = lista;
         this.a = a;
+        this.lista = lista;
         this.dao = dao;
     }
 
@@ -64,14 +63,14 @@ public class AdaptadorDocente extends BaseAdapter {
 
     @Override
     public Docente getItem(int position) {
-        dc = lista.get(position);
-        return null;
+        docente = lista.get(position);
+        return docente;
     }
 
     @Override
     public long getItemId(int position) {
-        dc = lista.get(position);
-        return dc.getId();
+        docente = lista.get(position);
+        return docente.getId();
     }
 
     @Override
@@ -86,13 +85,16 @@ public class AdaptadorDocente extends BaseAdapter {
 
         TextView nombre = (TextView) v.findViewById(R.id.txt_nombre);
         TextView carnet = (TextView) v.findViewById(R.id.txt_carnet);
+
         Button ver = (Button) v.findViewById(R.id.btn_ver_dcn);
         Button editar = (Button) v.findViewById(R.id.btn_editar_dcn);
         Button eliminar = (Button) v.findViewById(R.id.btn_eliminar_dcn);
 
-        dc = lista.get(position);
-        nombre.setText(dc.getNombre());
-        carnet.setText(dc.getCarnet());
+        docente = lista.get(position);
+
+        nombre.setText(docente.getNombre());
+        carnet.setText(docente.getCarnet());
+
         ver.setTag(position);
         editar.setTag(position);
         eliminar.setTag(position);
@@ -109,8 +111,9 @@ public class AdaptadorDocente extends BaseAdapter {
 
                 int pos = Integer.parseInt(v.getTag().toString());
                 String e = "";
+
                 final Dialog dialogo = new Dialog(a);
-                dialogo.setTitle("Edición de Docente");
+                dialogo.setTitle("Vista de Docente");
                 dialogo.setCancelable(true);
                 dialogo.setContentView(R.layout.vista_docente);
                 dialogo.show();
@@ -126,31 +129,33 @@ public class AdaptadorDocente extends BaseAdapter {
                 final TextView cargo_actual = (TextView) dialogo.findViewById(R.id.tv_cargo_actual);
                 final TextView cargo_secundario = (TextView) dialogo.findViewById(R.id.tv_cargo_secundario);
                 final TextView nombre = (TextView) dialogo.findViewById(R.id.tv_nombre);
+
                 Button salir = (Button) dialogo.findViewById(R.id.btn_salir);
 
-                dc = lista.get(pos);
-                mensaje.setText("Docente: "+dc.getCarnet());
+                docente = lista.get(pos);
+
+                mensaje.setText("Docente: "+docente.getCarnet());
 
                 for(int i=0;i<escuelas.size();i++){
-                    if(dc.getId_escuela()==escuelas.get(i).getId()){
+                    if(docente.getId_escuela()==escuelas.get(i).getId()){
                         e = escuelas.get(i).getNombre();
                     }
                 }
 
                 escuela.setText(""+e);
-                carnet.setText(dc.getCarnet());
-                anio_titulo.setText(dc.getAnio_titulo());
-                if(dc.getActivo()==1){
+                carnet.setText(docente.getCarnet());
+                anio_titulo.setText(docente.getAnio_titulo());
+                if(docente.getActivo()==1){
                     activo.setChecked(true);
                 }
                 else{
                     activo.setChecked(false);
                 }
-                tipo_jornada.setText(""+dc.getTipo_jornada());
-                descripcion.setText(""+dc.getDescripcion());
-                cargo_actual.setText(""+dc.getCargo_actual());
-                cargo_secundario.setText(""+dc.getCargo_secundario());
-                nombre.setText(dc.getNombre());
+                tipo_jornada.setText(""+docente.getTipo_jornada());
+                descripcion.setText(""+docente.getDescripcion());
+                cargo_actual.setText(""+docente.getCargo_actual());
+                cargo_secundario.setText(""+docente.getCargo_secundario());
+                nombre.setText(docente.getNombre());
 
                 salir.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -189,25 +194,22 @@ public class AdaptadorDocente extends BaseAdapter {
                 Button guardar =(Button) dialogo.findViewById(R.id.btn_agregar_dcn);
                 Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar_dcn);
 
-                mensaje.setText("Editar Docente");
+                docente = lista.get(pos);
+
+                mensaje.setText("Editar Docente: "+docente.getCarnet().toUpperCase());
                 guardar.setText("Guardar");
 
-
-                dc = lista.get(pos);
-
-                setId(dc.getId());  /*Set de ID*/
+                setId(docente.getId());
 
                 /*Seteando Escuela desde Spinner*/
-
                 ArrayAdapter escuelaAdapter = new ArrayAdapter(v.getContext(), android.R.layout.simple_list_item_1, listaEscuelas);
                 sp_escuela.setAdapter(escuelaAdapter);
 
                 for (int i = 0; i < listaEscuelas.size(); i++) {
-                    if (dc.getId_escuela() == escuelas.get(i).getId()){
+                    if (docente.getId_escuela() == escuelas.get(i).getId()){
                         sp_escuela.setSelection(i);
                     }
                 }
-
                 sp_escuela.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -220,16 +222,15 @@ public class AdaptadorDocente extends BaseAdapter {
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {}
                 });
+                /*Fin de Seteo de Escuela*/
 
-                carnet.setText(dc.getCarnet()); /*Set de Carnet*/
+                carnet.setText(docente.getCarnet());
 
                 /*Seteando de Año de Titulación desde YearPicker*/
-
-                anio_titulo.setText(""+dc.getAnio_titulo());
+                anio_titulo.setText(""+docente.getAnio_titulo());
                 btn_anio.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         final Dialog d = new Dialog(dialogo.getContext());
                         d.setTitle("Year Picker");
                         d.setContentView(R.layout.year_picker);
@@ -264,18 +265,19 @@ public class AdaptadorDocente extends BaseAdapter {
                         d.getWindow().setLayout(((getWidth(d.getContext()) / 100) * 85), ViewGroup.LayoutParams.WRAP_CONTENT);
                     }
                 });
+                /*Fin de Seteo de Anio*/
 
-                if(dc.getActivo()==1){
+                if(docente.getActivo()==1){
                     activo.setChecked(true);
                 }else{
                     activo.setChecked(false);
                 }
 
-                tipo_jornada.setText(""+dc.getTipo_jornada());
-                descripcion.setText(dc.getDescripcion());
-                cargo_actual.setText(""+dc.getCargo_actual());
-                cargo_secundario.setText(""+dc.getCargo_secundario());
-                nombre.setText(dc.getNombre());
+                tipo_jornada.setText(""+docente.getTipo_jornada());
+                descripcion.setText(docente.getDescripcion());
+                cargo_actual.setText(""+docente.getCargo_actual());
+                cargo_secundario.setText(""+docente.getCargo_secundario());
+                nombre.setText(docente.getNombre());
 
                 guardar.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -283,12 +285,9 @@ public class AdaptadorDocente extends BaseAdapter {
 
                         try {
                             int check;
-                            if(activo.isChecked()){
-                                check = 1;
-                            }else{
-                                check = 0;
-                            }
-                            dc = new Docente(
+                            if(activo.isChecked()){check = 1;}
+                            else{check = 0;}
+                            docente = new Docente(
                                     getId(),
                                     id_escuela,
                                     carnet.getText().toString(),
@@ -299,14 +298,12 @@ public class AdaptadorDocente extends BaseAdapter {
                                     Integer.parseInt(cargo_actual.getText().toString()),
                                     Integer.parseInt(cargo_secundario.getText().toString()),
                                     nombre.getText().toString());
-                            dao.editar(dc);
-                            notifyDataSetChanged();
+                            dao.editar(docente);
                             lista = dao.verTodos();
+                            notifyDataSetChanged();
                             dialogo.dismiss();
 
-                        } catch (Exception e){
-                            Toast.makeText(a, "¡Error!", Toast.LENGTH_SHORT).show();
-                        }
+                        } catch (Exception e){Toast.makeText(a, "¡Error!", Toast.LENGTH_SHORT).show();}
                     }
                 });
 
@@ -325,11 +322,11 @@ public class AdaptadorDocente extends BaseAdapter {
             public void onClick(View v) {
 
                 int pos = Integer.parseInt(v.getTag().toString());
-                dc = lista.get(pos);
-                setId(dc.getId());
-                final AlertDialog.Builder del = new AlertDialog.Builder(a);
+                docente = lista.get(pos);
+                setId(docente.getId());
 
-                del.setMessage("¿Quieres eliminar el Docente?");
+                final AlertDialog.Builder del = new AlertDialog.Builder(a);
+                del.setMessage("¿Quieres eliminar el Docente "+docente.getCarnet()+"?");
                 del.setCancelable(true);
 
                 del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
@@ -350,6 +347,7 @@ public class AdaptadorDocente extends BaseAdapter {
                 del.show();
             }
         });
+
         return v;
     }
 

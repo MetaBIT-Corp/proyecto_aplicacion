@@ -4,12 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.example.crud_encuesta.DatabaseAccess;
-
 import java.util.ArrayList;
 
 public class DAOEstudiante {
+
     private SQLiteDatabase cx;
     private ArrayList<Estudiante> lista = new ArrayList<>();
     private Estudiante estd;
@@ -31,7 +30,7 @@ public class DAOEstudiante {
 
     public boolean insertar(Estudiante estd){
         ContentValues contenedor = new ContentValues();
-        contenedor.put("ID_EST", estd.getId_est());
+        contenedor.put("ID_EST", estd.getId());
         contenedor.put("CARNET", estd.getCarnet());
         contenedor.put("NOMBRE", estd.getNombre());
         contenedor.put("ACTIVO", estd.getActivo());
@@ -45,12 +44,12 @@ public class DAOEstudiante {
 
     public boolean editar(Estudiante estd){
         ContentValues contenedor = new ContentValues();
-        contenedor.put("ID_EST", estd.getId_est());
+        contenedor.put("ID_EST", estd.getId());
         contenedor.put("CARNET", estd.getCarnet());
         contenedor.put("NOMBRE", estd.getNombre());
         contenedor.put("ACTIVO", estd.getActivo());
         contenedor.put("ANIO_INGRESO", estd.getAnio_ingreso());
-        return (cx.update("ESTUDIANTE", contenedor, "ID_EST="+estd.getId_est(), null)>0);
+        return (cx.update("ESTUDIANTE", contenedor, "ID_EST="+estd.getId(), null)>0);
     }
 
     public ArrayList<Estudiante> verTodos(){

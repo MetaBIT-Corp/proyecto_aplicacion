@@ -27,7 +27,6 @@ public class IntentoConsultasDB {
     }
 
     public static int getCatidadPreguntasPorGrupo(int id_gpo_emp, SQLiteDatabase db){
-        String descripcion;
         String sentencia;
 
         sentencia="SELECT ID_PREGUNTA FROM PREGUNTA WHERE ID_GRUPO_EMP="+id_gpo_emp;
@@ -78,7 +77,7 @@ public class IntentoConsultasDB {
     public static int ultimo_intento(int id_usuario, SQLiteDatabase db) {
         int numero_intento = 0;
 
-        Cursor cursor = db.rawQuery("SELECT NUMERO_INTENTO FROM INTENTO WHERE ID_GEN_EST="+id_usuario+" ORDER BY ID_INTENTO DESC LIMIT 1", null);
+        Cursor cursor = db.rawQuery("SELECT NUMERO_INTENTO FROM INTENTO WHERE ID_EST="+id_usuario+" ORDER BY ID_INTENTO DESC LIMIT 1", null);
         cursor.moveToFirst();
 
         if (cursor.getCount() > 0) {
@@ -99,7 +98,7 @@ public class IntentoConsultasDB {
     public static int id_ultimo_intento(int id_usuario, SQLiteDatabase db) {
         int id_numero_intento = 0;
 
-        Cursor cursor = db.rawQuery("SELECT ID_INTENTO FROM INTENTO WHERE ID_GEN_EST="+id_usuario+" ORDER BY ID_INTENTO DESC LIMIT 1", null);
+        Cursor cursor = db.rawQuery("SELECT ID_INTENTO FROM INTENTO WHERE ID_EST="+id_usuario+" ORDER BY ID_INTENTO DESC LIMIT 1", null);
         cursor.moveToFirst();
 
         if (cursor.getCount() > 0) {
