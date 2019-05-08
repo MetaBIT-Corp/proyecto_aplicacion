@@ -30,7 +30,6 @@ public class DAOEstudiante {
 
     public boolean insertar(Estudiante estd){
         ContentValues contenedor = new ContentValues();
-        contenedor.put("ID_EST", estd.getId());
         contenedor.put("CARNET", estd.getCarnet());
         contenedor.put("NOMBRE", estd.getNombre());
         contenedor.put("ACTIVO", estd.getActivo());

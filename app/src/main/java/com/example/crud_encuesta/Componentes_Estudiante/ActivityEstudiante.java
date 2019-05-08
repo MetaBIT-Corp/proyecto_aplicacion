@@ -17,10 +17,8 @@ import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -63,10 +61,10 @@ public class ActivityEstudiante extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final Dialog dialogo =new Dialog(ActivityEstudiante.this);
-                dialogo.setContentView(R.layout.dialogo_estudiante);
+                final Dialog dialogo =new Dialog(ActivityEstudiante.this);dialogo.setTitle("Registro de Estudiante");
                 dialogo.setTitle("Registro de Estudiante");
                 dialogo.setCancelable(true);
+                dialogo.setContentView(R.layout.dialogo_estudiante);
                 dialogo.show();
                 dialogo.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 

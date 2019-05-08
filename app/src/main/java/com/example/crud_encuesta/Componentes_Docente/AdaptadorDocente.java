@@ -364,4 +364,5 @@ public class AdaptadorDocente extends BaseAdapter {
         windowmanager.getDefaultDisplay().getMetrics(displayMetrics);
         return displayMetrics.widthPixels;
     }
+
 }

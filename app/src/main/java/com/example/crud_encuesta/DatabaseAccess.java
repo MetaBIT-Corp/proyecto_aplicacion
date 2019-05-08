@@ -67,7 +67,7 @@ public class DatabaseAccess {
         Cursor cursor = database.rawQuery("SELECT * FROM clave", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            list.add(cursor.getString(2));
+            list.add_(cursor.getString(2));
             cursor.moveToNext();
         }
         cursor.close();

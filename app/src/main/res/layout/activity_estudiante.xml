@@ -13,7 +13,7 @@
         android:layout_marginEnd="36dp"
         android:layout_marginRight="36dp"
         android:layout_marginBottom="36dp"
-        android:background="@drawable/plus"
+        android:background="@drawable/add_"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -48,10 +48,11 @@
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ListView
             android:id="@+id/lista_estudiante"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
