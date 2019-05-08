@@ -1,4 +1,4 @@
-package com.example.crud_encuesta.Componentes_R;
+package com.example.crud_encuesta.Componentes_EL;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -9,27 +9,34 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
 
-public class EscuelaAdapter extends BaseAdapter {
-
+public class CarreraAdapter extends BaseAdapter {
     Context context;
-    ArrayList<Escuela> l;
+    ArrayList<Carrera> l;
     SQLiteDatabase db;
     Activity activity;
+    ArrayList<Escuela> escuelas;
+    int id_escuela;
+    ArrayList<String> listSpinner;
 
-    public EscuelaAdapter(Context c, ArrayList<Escuela> lista, SQLiteDatabase db, Activity a) {
+    public CarreraAdapter(Context c, ArrayList<Carrera> lista, SQLiteDatabase db, Activity a, ArrayList<Escuela> e) {
         this.context = c;
         this.l = lista;
         this.db = db;
         this.activity = a;
+        this.escuelas = e;
     }
 
     @Override
@@ -38,7 +45,7 @@ public class EscuelaAdapter extends BaseAdapter {
     }
 
     @Override
-    public Escuela getItem(int position) {
+    public Carrera getItem(int position) {
         return l.get(position);
     }
 
@@ -54,8 +61,10 @@ public class EscuelaAdapter extends BaseAdapter {
         if (view == null) {
             view = inflater.inflate(R.layout.item_escuela, null);
         }
+
         Button btneditar = view.findViewById(R.id.btn_editar);
         Button btneliminar = view.findViewById(R.id.btn_eliminar);
+
         TextView textView = view.findViewById(R.id.txt_escuela_item);
         textView.setText(l.get(position).toString());
 
@@ -70,9 +79,9 @@ public class EscuelaAdapter extends BaseAdapter {
                 alert.setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Operaciones_CRUD.eliminar(db, context, EstructuraTablas.ESCUELA_TABLA_NAME, EstructuraTablas.COL_0, id);
+                        Operaciones_CRUD.eliminar(db, context, EstructuraTablas.CARRERA_TABLA_NAME, EstructuraTablas.COL_0_CARRERA, id);
                         l.clear();
-                        setL(Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME, db));
+                        setL(Operaciones_CRUD.todosCarrera(db, escuelas));
                     }
                 });
                 alert.setNegativeButton(R.string.cancelar_string, new DialogInterface.OnClickListener() {
@@ -88,24 +97,48 @@ public class EscuelaAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 final int id = (int) getItemId(position);
-                final Escuela e = getItem(position);
-                final AlertDialog.Builder d=new AlertDialog.Builder(context);
+                final Carrera c = getItem(position);
+                final AlertDialog.Builder d = new AlertDialog.Builder(context);
 
-                View view=inflater.inflate(R.layout.dialogo_escuela, null);
-                final EditText nom=view.findViewById(R.id.in_nom_escuela);
-                nom.setText(e.getNombre());
+                View view = inflater.inflate(R.layout.dialogo_carrera, null);
+                final EditText nom = view.findViewById(R.id.in_nom_carrera);
+                final Spinner s = view.findViewById(R.id.spinner_carrera);
+                nom.setText(c.getNombre());
+
+                listSpinner=obtenerLista();
+                ArrayAdapter adaptadorSpinner=new ArrayAdapter(context,android.R.layout.simple_list_item_1,listSpinner);
+                s.setAdapter(adaptadorSpinner);
+
+                for(int i=0;i<listSpinner.size();i++){
+                    if(c.getEscuela().getNombre()==listSpinner.get(i)) s.setSelection(i);
+                }
+                s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (position != 0) {
+                            id_escuela = escuelas.get(position - 1).getId();
+                        } else id_escuela = -1;
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
 
                 d.setPositiveButton(R.string.actualizar_string, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (nom.getText().toString().isEmpty())Toast.makeText(context,R.string.men_camp_vacios,Toast.LENGTH_SHORT).show();
-                        else{
-                            ContentValues contentValues=new ContentValues();
-                            contentValues.put(EstructuraTablas.COL_0,id);
-                            contentValues.put(EstructuraTablas.COL_1,nom.getText().toString());
-                            Operaciones_CRUD.actualizar(db,contentValues,context,EstructuraTablas.ESCUELA_TABLA_NAME,EstructuraTablas.COL_0,id);
+                        if (nom.getText().toString().isEmpty())
+                            Toast.makeText(context, R.string.men_camp_vacios, Toast.LENGTH_SHORT).show();
+                        else {
+                            ContentValues contentValues = new ContentValues();
+                            contentValues.put(EstructuraTablas.COL_0_CARRERA, id);
+                            contentValues.put(EstructuraTablas.COL_1_CARRERA, id_escuela);
+                            contentValues.put(EstructuraTablas.COL_2_CARRERA, nom.getText().toString());
+                            Operaciones_CRUD.actualizar(db, contentValues, context, EstructuraTablas.CARRERA_TABLA_NAME, EstructuraTablas.COL_0_CARRERA, id).show();
                             l.clear();
-                            setL(Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME, db));
+                            setL(Operaciones_CRUD.todosCarrera(db,escuelas));
                         }
                     }
                 });
@@ -122,10 +155,23 @@ public class EscuelaAdapter extends BaseAdapter {
             }
         });
 
+
         return view;
     }
-    public void setL(ArrayList<Escuela> l) {
+
+    public void setL(ArrayList<Carrera> l) {
         this.l = l;
         notifyDataSetChanged();
+    }
+
+    public ArrayList<String> obtenerLista(){
+        ArrayList<String> listaEs=new ArrayList<>();
+
+        listaEs.add("Seleccione");
+
+        for (int i=0;i<escuelas.size();i++){
+            listaEs.add(escuelas.get(i).getNombre());
+        }
+        return listaEs;
     }
 }

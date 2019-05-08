@@ -1,4 +1,4 @@
-package com.example.crud_encuesta.Componentes_R;
+package com.example.crud_encuesta.Componentes_EL;
 
 import android.app.Activity;
 import android.content.ContentValues;

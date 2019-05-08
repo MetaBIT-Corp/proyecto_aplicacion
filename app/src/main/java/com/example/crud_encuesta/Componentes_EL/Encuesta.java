@@ -1,7 +1,5 @@
-package com.example.crud_encuesta.Componentes_R;
+package com.example.crud_encuesta.Componentes_EL;
 import com.example.crud_encuesta.Componentes_Docente.Docente;
-
-import android.database.sqlite.SQLiteDatabase;
 
 public class Encuesta {
 

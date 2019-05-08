@@ -1,11 +1,10 @@
-package com.example.crud_encuesta.Componentes_R;
+package com.example.crud_encuesta.Componentes_EL;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -51,8 +50,8 @@ public class MateriaActivity extends AppCompatActivity {
         db = access.open();
 
         listaEscuelas = Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME, db);
-        listaCarreras = Operaciones_CRUD.todosCarrera(db, listaEscuelas);
-        listaPensum = Operaciones_CRUD.todosPensum(db);
+        //listaCarreras = Operaciones_CRUD.todosCarrera(db, listaEscuelas);
+        //listaPensum = Operaciones_CRUD.todosPensum(db);
         listaMateria = Operaciones_CRUD.todosMateria(db, listaCarreras, listaPensum);
 
         adapter = new MateriaAdapter(MateriaActivity.this, listaMateria, db, this, listaPensum, listaCarreras,listaEscuelas);

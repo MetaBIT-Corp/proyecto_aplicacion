@@ -13,11 +13,11 @@
         <activity android:name=".Componentes_MT.IntentoActivity" />
         <activity android:name=".Componentes_MT.VerAreasActivity" />
         <activity
-            android:name=".Componentes_R.EncuestaActivity"
+            android:name=".Componentes_EL.EncuestaActivity"
             android:label="@string/title_activity_encuesta"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Componentes_R.MateriaActivity"
+            android:name=".Componentes_EL.MateriaActivity"
             android:label="@string/title_activity_materia"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Componentes_MT.ClaveActivity" />
@@ -25,11 +25,11 @@
         <activity android:name=".Componentes_AP.Activities.EvaluacionActivity" />
         <activity android:name=".Componentes_AP.Activities.LoginActivity" />
         <activity
-            android:name=".Componentes_R.CarreraActivity"
+            android:name=".Componentes_EL.CarreraActivity"
             android:label="@string/title_activity_carrera"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Componentes_R.EscuelaActivity"
+            android:name=".Componentes_EL.EscuelaActivity"
             android:label="@string/title_activity_escuela"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Componentes_Docente.ActivityDocente" />
