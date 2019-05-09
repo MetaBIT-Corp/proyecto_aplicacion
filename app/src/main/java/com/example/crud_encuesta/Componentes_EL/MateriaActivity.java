@@ -11,8 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -45,21 +47,43 @@ public class MateriaActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ImageView btnBuscar=findViewById(R.id.el_find);
+        ImageView btnTodos=findViewById(R.id.el_all);
+        final EditText buscar=findViewById(R.id.find_nom);
+        buscar.setHint(R.string.el_buscarMat);
+
         listView = findViewById(R.id.list_view_base);
         access = DatabaseAccess.getInstance(MateriaActivity.this);
         db = access.open();
 
-        listaEscuelas = Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME, db);
+        //listaEscuelas = Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME, db);
         //listaCarreras = Operaciones_CRUD.todosCarrera(db, listaEscuelas);
         //listaPensum = Operaciones_CRUD.todosPensum(db);
-        listaMateria = Operaciones_CRUD.todosMateria(db, listaCarreras, listaPensum);
+        listaMateria = Operaciones_CRUD.todosMateria(db);
 
         adapter = new MateriaAdapter(MateriaActivity.this, listaMateria, db, this, listaPensum, listaCarreras,listaEscuelas);
 
         listView.setAdapter(adapter);
 
-        listPensumSpinner = obtenerListaPensum();
-        listCarreraSpinner = obtenerListaCarrera();
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listaMateria=Operaciones_CRUD.todosMateria(db,buscar.getText().toString());
+                adapter.setL(listaMateria);
+                buscar.setText("");
+            }
+        });
+        btnTodos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listaMateria=Operaciones_CRUD.todosMateria(db);
+                adapter.setL(listaMateria);
+                buscar.setText("");
+            }
+        });
+
+        /*listPensumSpinner = obtenerListaPensum();
+        listCarreraSpinner = obtenerListaCarrera();*/
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -70,19 +94,19 @@ public class MateriaActivity extends AppCompatActivity {
                 final AlertDialog.Builder d = new AlertDialog.Builder(MateriaActivity.this);
                 View v = getLayoutInflater().inflate(R.layout.dialogo_materia, null);
 
-                final Spinner spinnerC = v.findViewById(R.id.spinner_lista_carrera);
+                /*final Spinner spinnerC = v.findViewById(R.id.spinner_lista_carrera);
                 final Spinner spinnerP = v.findViewById(R.id.spinner_lista_pensum);
 
                 ArrayAdapter adapterCa = new ArrayAdapter(MateriaActivity.this, android.R.layout.simple_list_item_1, listCarreraSpinner);
                 ArrayAdapter adapterPe = new ArrayAdapter(MateriaActivity.this, android.R.layout.simple_list_item_1, listPensumSpinner);
 
                 spinnerC.setAdapter(adapterCa);
-                spinnerP.setAdapter(adapterPe);
+                spinnerP.setAdapter(adapterPe);*/
                 final EditText nom = v.findViewById(R.id.in_nom_mat);
                 final EditText cod = v.findViewById(R.id.in_cod_materia);
                 final EditText max = v.findViewById(R.id.in_max_preguntas);
                 final CheckBox elec = v.findViewById(R.id.check_electiva);
-
+/*
                 spinnerC.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -107,18 +131,17 @@ public class MateriaActivity extends AppCompatActivity {
                     public void onNothingSelected(AdapterView<?> parent) {
 
                     }
-                });
-
+                });*/
 
                 d.setPositiveButton(R.string.agregar_string, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (nom.getText().toString().isEmpty() || id_carrera == -1 || id_pensum == -1 || cod.getText().toString().isEmpty() || max.getText().toString().isEmpty())
+                        if (nom.getText().toString().isEmpty() || cod.getText().toString().isEmpty() || max.getText().toString().isEmpty())
                             Toast.makeText(MateriaActivity.this, R.string.men_camp_vacios, Toast.LENGTH_SHORT).show();
                         else {
                             contentValues = new ContentValues();
-                            contentValues.put(EstructuraTablas.COL_1_MATERIA, id_pensum);
-                            contentValues.put(EstructuraTablas.COL_2_MATERIA, id_carrera);
+                            //contentValues.put(EstructuraTablas.COL_1_MATERIA, id_pensum);
+                            //contentValues.put(EstructuraTablas.COL_2_MATERIA, id_carrera);
                             contentValues.put(EstructuraTablas.COL_3_MATERIA, cod.getText().toString());
                             contentValues.put(EstructuraTablas.COL_4_MATERIA, nom.getText().toString());
 
@@ -128,10 +151,10 @@ public class MateriaActivity extends AppCompatActivity {
                             contentValues.put(EstructuraTablas.COL_6_MATERIA, max.getText().toString());
 
                             Operaciones_CRUD.insertar(db, contentValues, MateriaActivity.this, EstructuraTablas.MATERIA_TABLA_NAME).show();
-                            listaMateria = Operaciones_CRUD.todosMateria(db, listaCarreras, listaPensum);
+                            listaMateria = Operaciones_CRUD.todosMateria(db);
                             adapter.setL(listaMateria);
-                            id_carrera = -1;
-                            id_pensum = -1;
+                            //id_carrera = -1;
+                            //id_pensum = -1;
                         }
                     }
                 });

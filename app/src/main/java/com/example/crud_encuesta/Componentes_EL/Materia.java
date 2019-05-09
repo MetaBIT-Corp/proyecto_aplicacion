@@ -2,8 +2,8 @@ package com.example.crud_encuesta.Componentes_EL;
 
 public class Materia {
     private int id;
-    private Pensum pensum;
-    private Carrera carrera;
+    /*private Pensum pensum;
+    private Carrera carrera;*/
     private String codigo_materia;
     private String nombre;
     private boolean electiva;
@@ -20,7 +20,7 @@ public class Materia {
         this.id = id;
     }
 
-    public Pensum getPensum() {
+    /*public Pensum getPensum() {
         return pensum;
     }
 
@@ -34,7 +34,7 @@ public class Materia {
 
     public void setCarrera(Carrera carrera) {
         this.carrera = carrera;
-    }
+    }*/
 
     public String getCodigo_materia() {
         return codigo_materia;
@@ -71,8 +71,7 @@ public class Materia {
 
     public String toString(){
         String cadena;
-        if (electiva) cadena="Codigo: "+codigo_materia+"\nNombre Materia: "+nombre+"\nElectiva : SI"+"\nAño Pesum: "+pensum+"\n\nPertenece a la Carrera\n"+carrera;
-        else cadena="Codigo: "+codigo_materia+"\nNombre Materia: "+nombre+"\nElectiva : NO"+"\nAño Pesum: "+pensum+"\n\nPertenece a la Carrera\n"+carrera;
+        cadena=nombre;
         return cadena;
     }
 }

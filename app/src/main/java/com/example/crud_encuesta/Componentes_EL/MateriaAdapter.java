@@ -74,6 +74,7 @@ public class MateriaAdapter extends BaseAdapter {
 
         Button btneditar = view.findViewById(R.id.btn_editar);
         Button btneliminar = view.findViewById(R.id.btn_eliminar);
+        Button btninfo=view.findViewById(R.id.btn_infor);
         TextView textView = view.findViewById(R.id.txt_escuela_item);
         textView.setText(l.get(position).toString());
 
@@ -90,7 +91,7 @@ public class MateriaAdapter extends BaseAdapter {
                     public void onClick(DialogInterface dialog, int which) {
                         Operaciones_CRUD.eliminar(db, context, EstructuraTablas.MATERIA_TABLA_NAME, EstructuraTablas.COL_0_MATERIA, id);
                         l.clear();
-                        setL(Operaciones_CRUD.todosMateria(db, listaCarreras, listaPensum));
+                        setL(Operaciones_CRUD.todosMateria(db));
                     }
                 });
                 alert.setNegativeButton(R.string.cancelar_string, new DialogInterface.OnClickListener() {
@@ -117,8 +118,11 @@ public class MateriaAdapter extends BaseAdapter {
                 final EditText cod = view.findViewById(R.id.in_cod_materia);
                 final EditText max = view.findViewById(R.id.in_max_preguntas);
                 final CheckBox elec = view.findViewById(R.id.check_electiva);
+                final TextView title=view.findViewById(R.id.title_dialog);
 
-                final Spinner spinnerC = view.findViewById(R.id.spinner_lista_carrera);
+                title.setText(R.string.title_activity_act);
+
+                /*final Spinner spinnerC = view.findViewById(R.id.spinner_lista_carrera);
                 final Spinner spinnerP = view.findViewById(R.id.spinner_lista_pensum);
 
                 listPensumSpinner = obtenerListaPensum();
@@ -128,7 +132,7 @@ public class MateriaAdapter extends BaseAdapter {
                 ArrayAdapter adapterPe = new ArrayAdapter(context, android.R.layout.simple_list_item_1, listPensumSpinner);
 
                 spinnerC.setAdapter(adapterCa);
-                spinnerP.setAdapter(adapterPe);
+                spinnerP.setAdapter(adapterPe);*/
 
 
                 nom.setText(m.getNombre());
@@ -137,7 +141,7 @@ public class MateriaAdapter extends BaseAdapter {
                 if(m.isElectiva())elec.setChecked(true);
                 else elec.setChecked(false);
 
-                for (int i = 0; i < listCarreraSpinner.size(); i++) {
+                /*for (int i = 0; i < listCarreraSpinner.size(); i++) {
                     if (m.getCarrera().getNombre() == listCarreraSpinner.get(i)) spinnerC.setSelection(i);
                 }
 
@@ -168,17 +172,17 @@ public class MateriaAdapter extends BaseAdapter {
                     public void onNothingSelected(AdapterView<?> parent) {
 
                     }
-                });
+                });*/
 
                 d.setPositiveButton(R.string.actualizar_string, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (nom.getText().toString().isEmpty() || id_carrera == -1 || id_pensum == -1 || cod.getText().toString().isEmpty() || max.getText().toString().isEmpty())
+                        if (nom.getText().toString().isEmpty() || cod.getText().toString().isEmpty() || max.getText().toString().isEmpty())
                             Toast.makeText(context, R.string.men_camp_vacios, Toast.LENGTH_SHORT).show();
                         else {
                             ContentValues contentValues = new ContentValues();
-                            contentValues.put(EstructuraTablas.COL_1_MATERIA, id_pensum);
-                            contentValues.put(EstructuraTablas.COL_2_MATERIA, id_carrera);
+                            //contentValues.put(EstructuraTablas.COL_1_MATERIA, id_pensum);
+                            //contentValues.put(EstructuraTablas.COL_2_MATERIA, id_carrera);
                             contentValues.put(EstructuraTablas.COL_3_MATERIA, cod.getText().toString());
                             contentValues.put(EstructuraTablas.COL_4_MATERIA, nom.getText().toString());
 
@@ -188,7 +192,7 @@ public class MateriaAdapter extends BaseAdapter {
                             contentValues.put(EstructuraTablas.COL_6_MATERIA, max.getText().toString());
 
                             Operaciones_CRUD.actualizar(db, contentValues, context, EstructuraTablas.MATERIA_TABLA_NAME,EstructuraTablas.COL_0_MATERIA,id).show();
-                            l = Operaciones_CRUD.todosMateria(db, listaCarreras, listaPensum);
+                            l = Operaciones_CRUD.todosMateria(db);
                             setL(l);
                             id_carrera = -1;
                             id_pensum = -1;
@@ -207,6 +211,46 @@ public class MateriaAdapter extends BaseAdapter {
             }
         });
 
+        btninfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Materia m = getItem(position);
+                final AlertDialog.Builder d = new AlertDialog.Builder(context);
+
+                View view = inflater.inflate(R.layout.dialogo_materia, null);
+
+                final EditText nom = view.findViewById(R.id.in_nom_mat);
+                final EditText cod = view.findViewById(R.id.in_cod_materia);
+                final EditText max = view.findViewById(R.id.in_max_preguntas);
+                final CheckBox elec = view.findViewById(R.id.check_electiva);
+                final TextView title=view.findViewById(R.id.title_dialog);
+
+                title.setText(R.string.title_activity_info);
+
+                nom.setEnabled(false);
+                cod.setEnabled(false);
+                max.setEnabled(false);
+                elec.setEnabled(false);
+
+                nom.setText(m.getNombre());
+                cod.setText(m.getCodigo_materia());
+                max.setText(m.getMaximo_preguntas()+"");
+                if(m.isElectiva())elec.setChecked(true);
+                else elec.setChecked(false);
+
+
+
+                d.setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                d.setView(view);
+                d.show();
+            }
+        });
 
         return view;
     }

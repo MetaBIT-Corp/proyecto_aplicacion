@@ -26,6 +26,7 @@
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1">
 
             <TextView
+                android:id="@+id/title_dialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_agregar_materia"
@@ -34,7 +35,7 @@
         </android.support.v7.widget.Toolbar>
 
     </LinearLayout>
-
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="47dp">
@@ -104,7 +105,7 @@
 
 
     </LinearLayout>
-
+-->
 
     <LinearLayout
         android:layout_width="match_parent"

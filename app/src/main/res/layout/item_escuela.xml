@@ -8,43 +8,43 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="5dp">
 
 
         <TextView
             android:id="@+id/txt_escuela_item"
-            android:layout_width="match_parent"
+            android:layout_width="189dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.6"
-            android:text="Item_Escuela"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_weight="2"
+            android:text="Item_Escuela" />
 
         <LinearLayout
-            android:layout_width="250dp"
+            android:layout_width="103dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/btn_infor"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="@drawable/read_" />
+
+            <Button
                 android:id="@+id/btn_editar"
-                android:layout_weight="1"
-                android:background="@drawable/ic_edit"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"/>
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_edit" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_weight="1"
                 android:id="@+id/btn_eliminar"
-                android:background="@drawable/ic_delete"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_delete" />
 
         </LinearLayout>
     </LinearLayout>

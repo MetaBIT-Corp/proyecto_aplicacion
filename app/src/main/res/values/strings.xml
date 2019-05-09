@@ -76,4 +76,7 @@
     <string name="ap_datefinal">Final</string>
     <string name="ap_edt_datefinal">Fecha</string>
     <string name="ap_qdt_timefinal">Hora</string>
+    <string name="title_activity_info">Informacion</string>
+    <string name="title_activity_act">Actualizar</string>
+    <string name="el_buscarMat">Buscar Materias</string>
 </resources>

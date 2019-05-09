@@ -94,28 +94,43 @@ public class Operaciones_CRUD {
         return lista;
     }
 
-    public static ArrayList<Materia> todosMateria(SQLiteDatabase db, ArrayList<Carrera> c, ArrayList<Pensum> p) {
+    public static ArrayList<Materia> todosMateria(SQLiteDatabase db) {
         ArrayList<Materia> lista = new ArrayList<>();
         Cursor cu = db.rawQuery(" SELECT * FROM " + EstructuraTablas.MATERIA_TABLA_NAME, null);
 
         if (cu.moveToFirst()) {
             Materia m;
-            while (cu.moveToNext()) {
+            do {
                 m = new Materia();
                 m.setId(cu.getInt(0));
-                for (int i = 0; i < p.size(); i++) {
-                    if (cu.getInt(1) == p.get(i).getId()) m.setPensum(p.get(i));
-                }
-                for (int i = 0; i < c.size(); i++) {
-                    if (cu.getInt(2) == c.get(i).getId()) m.setCarrera(c.get(i));
-                }
-                m.setCodigo_materia(cu.getString(3));
-                m.setNombre(cu.getString(4));
-                m.setElectiva(cu.getInt(5) == 1);
-                m.setMaximo_preguntas(cu.getInt(6));
+                m.setCodigo_materia(cu.getString(1));
+                m.setNombre(cu.getString(2));
+                m.setElectiva(cu.getInt(3) == 1);
+                m.setMaximo_preguntas(cu.getInt(4));
                 lista.add(m);
-            }
+            }while (cu.moveToNext());
         }
+
+        return lista;
+    }
+
+    public static ArrayList<Materia> todosMateria(SQLiteDatabase db,String parametro) {
+        ArrayList<Materia> lista = new ArrayList<>();
+        Cursor cu = db.rawQuery("SELECT *FROM "+EstructuraTablas.MATERIA_TABLA_NAME+" WHERE "+EstructuraTablas.COL_4_MATERIA+" LIKE '%"+parametro+"%'",null);
+
+        if (cu.moveToFirst()) {
+            Materia m;
+            do {
+                m = new Materia();
+                m.setId(cu.getInt(0));
+                m.setCodigo_materia(cu.getString(1));
+                m.setNombre(cu.getString(2));
+                m.setElectiva(cu.getInt(3) == 1);
+                m.setMaximo_preguntas(cu.getInt(4));
+                lista.add(m);
+            }while (cu.moveToNext());
+        }
+
         return lista;
     }
 
