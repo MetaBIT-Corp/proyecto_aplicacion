@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.crud_encuesta.Componentes_DC.Adaptadores.AdaptadorPregunta;
 import com.example.crud_encuesta.Componentes_DC.Dao.DaoPregunta;
 import com.example.crud_encuesta.Componentes_DC.Objetos.Pregunta;
-import com.example.crud_encuesta.Componentes_MT.AreaActivity;
+import com.example.crud_encuesta.Componentes_MT.Area.AreaActivity;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;

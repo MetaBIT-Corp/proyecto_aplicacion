@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 import com.example.crud_encuesta.Componentes_DC.Adaptadores.Adaptador;
 import com.example.crud_encuesta.Componentes_DC.Dao.DaoGrupoEmp;
 import com.example.crud_encuesta.Componentes_DC.Objetos.GrupoEmparejamiento;
-import com.example.crud_encuesta.Componentes_MT.AreaActivity;
+import com.example.crud_encuesta.Componentes_MT.Area.AreaActivity;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;

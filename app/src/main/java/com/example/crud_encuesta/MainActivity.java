@@ -15,9 +15,9 @@ import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.TurnoActivity;
 import com.example.crud_encuesta.Componentes_Docente.ActivityDocente;
 import com.example.crud_encuesta.Componentes_Estudiante.ActivityEstudiante;
-import com.example.crud_encuesta.Componentes_MT.AreaActivity;
-import com.example.crud_encuesta.Componentes_MT.ClaveActivity;
-import com.example.crud_encuesta.Componentes_MT.IntentoActivity;
+import com.example.crud_encuesta.Componentes_MT.Area.AreaActivity;
+import com.example.crud_encuesta.Componentes_MT.Clave.ClaveActivity;
+import com.example.crud_encuesta.Componentes_MT.Intento.IntentoActivity;
 import com.example.crud_encuesta.Componentes_EL.CarreraActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
 import com.example.crud_encuesta.Componentes_EL.EncuestaActivity;
@@ -45,10 +45,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login();
-                //area();
+                intento();
                 //evaluacion();
                 //pressed();
-                intento();
 
             }
         });

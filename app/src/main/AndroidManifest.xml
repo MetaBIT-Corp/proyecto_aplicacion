@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Componentes_MT.VerIntentoActivity"></activity>
-        <activity android:name=".Componentes_MT.IntentoActivity" />
-        <activity android:name=".Componentes_MT.VerAreasActivity" />
+        <activity android:name=".Componentes_MT.Intento.VerIntentoActivity"></activity>
+        <activity android:name=".Componentes_MT.Intento.IntentoActivity" />
+        <activity android:name=".Componentes_MT.ClaveArea.VerAreasActivity" />
         <activity
             android:name=".Componentes_EL.EncuestaActivity"
             android:label="@string/title_activity_encuesta"
@@ -20,7 +20,7 @@
             android:name=".Componentes_EL.MateriaActivity"
             android:label="@string/title_activity_materia"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Componentes_MT.ClaveActivity" />
+        <activity android:name=".Componentes_MT.Clave.ClaveActivity" />
         <activity android:name=".Componentes_AP.Activities.TurnoActivity" />
         <activity android:name=".Componentes_AP.Activities.EvaluacionActivity" />
         <activity android:name=".Componentes_AP.Activities.LoginActivity" />
@@ -34,7 +34,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Componentes_Docente.ActivityDocente" />
         <activity android:name=".Componentes_Estudiante.ActivityEstudiante" />
-        <activity android:name=".Componentes_MT.AreaActivity" />
+        <activity android:name=".Componentes_MT.Area.AreaActivity" />
         <activity android:name=".Componentes_DC.Activities.OpcionActivity" />
         <activity android:name=".Componentes_DC.Activities.PreguntaActivity" />
         <activity android:name=".Componentes_DC.Activities.GpoEmpActivity" />
