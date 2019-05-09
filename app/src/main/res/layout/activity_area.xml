@@ -18,82 +18,26 @@
         tools:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         tools:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:paddingTop="16dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="20dp">
-
-            <ImageView
-                android:id="@+id/add"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/add_" />
-
-        </LinearLayout>
-
     </android.support.v7.widget.Toolbar>
-
-    <TextView
-        android:id="@+id/mensaje"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="45dp"
-        android:layout_y="358dp"
-        android:text="@string/mensaje"
-        android:textColor="@color/primary_text"
-        android:textSize="24sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <Spinner
-        android:id="@+id/items"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginRight="29dp"
-        android:layout_x="196dp"
-        android:layout_y="73dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar7"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginLeft="31dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_x="28dp"
-        android:layout_y="88dp"
-        android:text="Seleccionar modalidad"
-        app:layout_constraintEnd_toStartOf="@+id/items"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/items" />
 
     <ListView
         android:id="@+id/list_areas"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="16dp"
-        android:layout_x="0dp"
-        android:layout_y="151dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="497dp"
+        android:layout_marginTop="56dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/items" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabArea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </android.support.constraint.ConstraintLayout>

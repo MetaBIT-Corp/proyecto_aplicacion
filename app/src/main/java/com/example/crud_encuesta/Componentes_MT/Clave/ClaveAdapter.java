@@ -278,36 +278,40 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
         int peso = 0;
         int cantidad = 0;
 
-        cantidad = Integer.parseInt(cant_preguntas.getText().toString());
-        peso = Integer.parseInt(peso_area.getText().toString());
-        int id = id_areas.get(id_area);
-        int idClave = claves.get(id_clave).id_clave;
-        if(aleatorio_cb.isChecked()) aleatorio=1;
+        if(!cant_preguntas.getText().toString().isEmpty() && !peso_area.getText().toString().isEmpty()) {
+            cantidad = Integer.parseInt(cant_preguntas.getText().toString());
+            peso = Integer.parseInt(peso_area.getText().toString());
+            int id = id_areas.get(id_area);
+            int idClave = claves.get(id_clave).id_clave;
+            if (aleatorio_cb.isChecked()) aleatorio = 1;
 
-        ContentValues registro = new ContentValues();
+            ContentValues registro = new ContentValues();
 
-        registro.put("id_area", id);
-        registro.put("id_clave", idClave);
-        registro.put("numero_preguntas", cantidad);
-        registro.put("aleatorio", aleatorio);
-        registro.put("peso", peso);
+            registro.put("id_area", id);
+            registro.put("id_clave", idClave);
+            registro.put("numero_preguntas", cantidad);
+            registro.put("aleatorio", aleatorio);
+            registro.put("peso", peso);
 
-        if(cantidad>0 && peso>0){
-            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
-            SQLiteDatabase db = databaseAccess.open();
+            if (cantidad > 0 && peso > 0) {
+                DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+                SQLiteDatabase db = databaseAccess.open();
 
-            db.insert("clave_area", null, registro);
-            Toast.makeText(context, "Registro insertado con éxito", Toast.LENGTH_SHORT).show();
-            Cursor cursor = db.rawQuery("SELECT id_clave_area FROM clave_area ORDER BY id_clave_area DESC LIMIT 1;", null);
-            cursor.moveToFirst();
+                db.insert("clave_area", null, registro);
+                Toast.makeText(context, "Registro insertado con éxito", Toast.LENGTH_SHORT).show();
+                Cursor cursor = db.rawQuery("SELECT id_clave_area FROM clave_area ORDER BY id_clave_area DESC LIMIT 1;", null);
+                cursor.moveToFirst();
 
-            Log.d("hey", cursor.getString(0));
+                Log.d("hey", cursor.getString(0));
 
-            agregar_relacion_clave_area_pregunta(cantidad, cursor.getInt(0));
-            cursor.close();
-            databaseAccess.close();
+                agregar_relacion_clave_area_pregunta(cantidad, cursor.getInt(0));
+                cursor.close();
+                databaseAccess.close();
+            } else {
+                Toast.makeText(context, "Las cantidades ingresadas deben ser mayores a cero", Toast.LENGTH_SHORT).show();
+            }
         }else{
-            Toast.makeText(context, "Debe completar todos los compos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Error, no se permiten campos vacios", Toast.LENGTH_SHORT).show();
         }
 
     }

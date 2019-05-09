@@ -3,6 +3,7 @@ package com.example.crud_encuesta.Componentes_MT.Clave;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,12 +23,13 @@ public class ClaveActivity extends AppCompatActivity {
     ClaveAdapter claveAdapter;
     List<Clave> claves = new ArrayList<>();
 
-    private ImageView add_area;
+    private FloatingActionButton fabClave;
     private ListView listView;
     private int[] iconos = {R.drawable.infoazul, R.drawable.addgris, R.drawable.edit1, R.drawable.ic_delete};
 
     //Datos de modelos
     private int id_encuesta = 1;
+    private int id_turno = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +43,8 @@ public class ClaveActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.list_claves);
         listView.setAdapter(claveAdapter);
 
-        add_area = (ImageView)findViewById(R.id.add_clave);
-        add_area.setOnClickListener(new View.OnClickListener(){
-
+        fabClave = (FloatingActionButton)findViewById(R.id.fabClave);
+        fabClave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 claveDialog();
@@ -68,6 +69,7 @@ public class ClaveActivity extends AppCompatActivity {
         ContentValues registro = new ContentValues();
 
         registro.put("id_encuesta", id_encuesta);
+        registro.put("id_turno", id_turno);
         registro.put("numero_clave", clave_nueva);
 
         db.insert("clave", null, registro);

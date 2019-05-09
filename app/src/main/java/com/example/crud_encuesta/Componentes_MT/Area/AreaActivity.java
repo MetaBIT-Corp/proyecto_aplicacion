@@ -3,6 +3,7 @@ package com.example.crud_encuesta.Componentes_MT.Area;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
     private List <String> items;
     private int[] iconos={R.drawable.edit1, R.drawable.ic_delete};
 
-    private ImageView add;
+    FloatingActionButton fabArea;
     private EditText mArea;
     private ListView listView;
 
@@ -49,11 +50,12 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
         areas = daoArea.getAreas();
         areaAdapter = new AreaAdapter(this, areas, daoArea, iconos);
 
-        cargarItems();
+        //cargarItems();
         listView = (ListView)findViewById(R.id.list_areas);
         listView.setAdapter(areaAdapter);
-        add = (ImageView)findViewById(R.id.add);
-        add.setOnClickListener(new View.OnClickListener() {
+
+        fabArea = (FloatingActionButton)findViewById(R.id.fabArea);
+        fabArea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 agregar_area();
@@ -62,13 +64,12 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    public void cargarItems(){
-        spItems = (Spinner) findViewById(R.id.items);
+    public void cargarItems(View v){
+        spItems = (Spinner) v.findViewById(R.id.spModalidad);
         spItems.setOnItemSelectedListener(this);
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         SQLiteDatabase db = databaseAccess.open();
-        //SQLiteDatabase db = databaseAccess.database();
 
         items = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT nombre_tipo_item FROM tipo_item", null);
@@ -88,6 +89,8 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(AreaActivity.this);
         final View mView = getLayoutInflater().inflate(R.layout.dialogo_area, null);
 
+        cargarItems(mView);
+
         mBuilder.setCancelable(false);
         mBuilder.setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
             @Override
@@ -104,7 +107,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
                     Toast.makeText(AreaActivity.this, "Area agregada con éxito", Toast.LENGTH_SHORT).show();
 
                 }else{
-                    Toast.makeText(AreaActivity.this, "Ingrese el título del área", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AreaActivity.this, "Error, ingrese el título del área", Toast.LENGTH_SHORT).show();
                 }
                 refresh();
             }
@@ -125,9 +128,8 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch (parent.getId()){
-            case R.id.items:
+            case R.id.spModalidad:
 
-                //Toast.makeText(this, "Modalidad: " + valorItem[position], Toast.LENGTH_SHORT).show();
                 seleccion_item = position+1;
                 break;
         }

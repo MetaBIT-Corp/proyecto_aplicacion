@@ -11,9 +11,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
+        android:paddingBottom="20dp"
         android:layout_marginTop="5dp"
         android:text="Area"
         android:textSize="25sp"/>
+
+    <Spinner
+        android:id="@+id/spModalidad"
+        android:layout_width="match_parent"
+        android:paddingBottom="20dp"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/etArea"

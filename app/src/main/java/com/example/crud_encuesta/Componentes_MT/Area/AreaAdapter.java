@@ -118,11 +118,10 @@ public class AreaAdapter extends BaseAdapter {
                 final int i = Integer.parseInt(v.getTag().toString());
 
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
-                final View mView = inflater.inflate(R.layout.dialogo_area, null);
-                TextView msj = (TextView)mView.findViewById(R.id.msj);
-                EditText edt = (EditText)mView.findViewById(R.id.etArea);
-                msj.setText("¿Desea eliminar este objeto?");
-                edt.setVisibility(View.INVISIBLE);
+
+                mBuilder.setMessage("¿Desea eliminar esta area?");
+                mBuilder.setIcon(R.drawable.ic_delete);
+                mBuilder.setTitle("Eliminar");
 
                 mBuilder.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
                     @Override
@@ -131,8 +130,6 @@ public class AreaAdapter extends BaseAdapter {
                         areas = daoArea.getAreas();
                         notifyDataSetChanged();
                         Toast.makeText(context, "Se ha eliminado con éxito", Toast.LENGTH_SHORT).show();
-
-
                     }
                 });
 
@@ -143,11 +140,8 @@ public class AreaAdapter extends BaseAdapter {
                     }
                 });
 
-                mBuilder.setView(mView);
                 AlertDialog dialog = mBuilder.create();
                 dialog.show();
-
-
 
             }
         });

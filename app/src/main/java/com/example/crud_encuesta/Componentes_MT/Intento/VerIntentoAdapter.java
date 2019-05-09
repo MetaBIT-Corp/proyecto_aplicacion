@@ -124,7 +124,6 @@ public class VerIntentoAdapter extends BaseAdapter implements AdapterView.OnItem
 
                 for (int i =0; i<idesGPO.size(); i++) {
                     if(idesGPO.get(i)==preguntas.get(position).eleccion){
-                        System.out.println("Eleccion: "+preguntas.get(position).eleccion+" Respuesta: "+preguntas.get(position).respuesta+" IDES: "+idesGPO.get(i));
                         spGPO.setSelection(i);
 
                         if(idesGPO.get(i)==preguntas.get(position).respuesta){

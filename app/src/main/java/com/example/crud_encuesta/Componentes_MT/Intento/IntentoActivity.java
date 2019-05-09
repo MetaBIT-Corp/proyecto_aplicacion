@@ -23,7 +23,7 @@ public class IntentoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intento);
 
         listView = (ListView)findViewById(R.id.lsPreguntas);
-        listView.setAdapter(new IntentoAdapter(getPreguntas(), this, tamanio));
+        listView.setAdapter(new IntentoAdapter(getPreguntas(), this, this, tamanio));
     }
 
     public List<Pregunta> getPreguntas(){

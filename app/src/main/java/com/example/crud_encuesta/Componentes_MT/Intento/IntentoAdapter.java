@@ -1,5 +1,6 @@
 package com.example.crud_encuesta.Componentes_MT.Intento;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -34,6 +35,8 @@ import java.util.List;
 
 public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSelectedListener {
     private LayoutInflater inflater;
+    private Context context;
+    private Activity activity;
     private Tamanio tamanio= new Tamanio();
     private List<Pregunta> preguntas = new ArrayList<>();
     private List<Integer> idPreguntaRC = new ArrayList<>();
@@ -50,7 +53,6 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
     private List<EditText> et_lista = new ArrayList<>();
     private List<EditText> et_posicion_lista = new ArrayList<>();
 
-    private Context context;
     private int id_intento;
 
     //Datos de otros modelos
@@ -58,9 +60,10 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
     int id_clave = 1;
     int id = 1;
 
-    public IntentoAdapter(List<Pregunta> preguntas, Context context, Tamanio tamanio) {
+    public IntentoAdapter(List<Pregunta> preguntas, Context context, Activity activity, Tamanio tamanio) {
         this.preguntas = preguntas;
         this.context = context;
+        this.activity = activity;
         this.tamanio = tamanio;
 
         inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -271,6 +274,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent i = new Intent(context, VerIntentoActivity.class);
                                 context.startActivity(i);
+                                activity.finish();
                             }
                         });
                         nota.show();
@@ -355,7 +359,15 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
 
         if(rg_seleccion !=null || rg_seleccion.size()>0){
             for (RadioGroup rg : rg_seleccion) {
-                registro.put("id_opcion", rg.getCheckedRadioButtonId());
+                int id_seleccion;
+
+                if(rg.getCheckedRadioButtonId() != -1){
+                    id_seleccion = rg.getCheckedRadioButtonId();
+                }else{
+                    id_seleccion = 0;
+                }
+
+                registro.put("id_opcion", id_seleccion);
                 registro.put("id_intento", id_intento);
                 registro.put("id_pregunta", rg.getId());
                 db.insert("respuesta", null, registro);
@@ -364,7 +376,15 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
 
         if(rg_seleccion_vf !=null || rg_seleccion_vf.size()>0){
             for (RadioGroup rg : rg_seleccion_vf) {
-                registro.put("id_opcion", rg.getCheckedRadioButtonId());
+                int id_seleccion;
+
+                if(rg.getCheckedRadioButtonId() != -1){
+                    id_seleccion = rg.getCheckedRadioButtonId();
+                }else{
+                    id_seleccion = 0;
+                }
+
+                registro.put("id_opcion", id_seleccion);
                 registro.put("id_intento", id_intento);
                 registro.put("id_pregunta", rg.getId());
                 db.insert("respuesta", null, registro);
@@ -397,23 +417,17 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
 
     public float calcular_nota() {
         float nota = (float) 0.0;
-        float notaOM = (float) 0.0;
-        float notaEM = (float) 0.0;
-        float notaVF = (float) 0.0;
-        float notaRC = (float) 0.0;
         int i = 0;
 
         while (i < preguntas.size()) {
             if(preguntas.get(i).modalidad==1){
                 if (preguntas.get(i).preguntaPList.get(0).respuesta == rg_lista.get(i).getCheckedRadioButtonId()) {
                     nota += preguntas.get(i).preguntaPList.get(0).ponderacion;
-                    notaOM += preguntas.get(i).preguntaPList.get(0).ponderacion;
                 }
 
             }else if(preguntas.get(i).modalidad==2){
                 if (preguntas.get(i).preguntaPList.get(0).respuesta == rg_posicion_lista_vf.get(i).getCheckedRadioButtonId()) {
                     nota += preguntas.get(i).preguntaPList.get(0).ponderacion;
-                    notaVF += preguntas.get(i).preguntaPList.get(0).ponderacion;
                 }
             }else if(preguntas.get(i).modalidad==3){
                 for(int j=0; j<sp_lista.size();j++){
@@ -422,7 +436,6 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                     int el = idesGPO.get(sp_lista.get(j).getSelectedItemPosition());
                     if(re==el){
                         nota +=preguntas.get(i).preguntaPList.get(j).ponderacion;
-                        notaEM +=preguntas.get(i).preguntaPList.get(j).ponderacion;
                     }
                 }
             }else if(preguntas.get(i).modalidad==4){
@@ -431,7 +444,6 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                 String respuesta = rc_getOpcion(id_respuesta).toLowerCase();
                 if(respuesta.equals(valor_digitado)){
                     nota += preguntas.get(i).preguntaPList.get(0).ponderacion;
-                    notaRC += preguntas.get(i).preguntaPList.get(0).ponderacion;
                 }
             }
             i++;

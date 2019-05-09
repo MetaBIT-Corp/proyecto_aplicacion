@@ -7,7 +7,6 @@
     <string name="title_activity_escuela">School</string>
     <string name="agregar_string">Insert</string>
     <string name="cancelar_string">Cancel</string>
-    <string name="mensaje">There are not areas in this matter</string>
 
     <string name="aceptar">Accept</string>
     <string name="lbl_borrar">Are you sure?</string>
