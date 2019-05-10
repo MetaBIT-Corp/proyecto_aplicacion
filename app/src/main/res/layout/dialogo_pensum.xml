@@ -37,8 +37,8 @@
                 android:id="@+id/ap_edt_anio_pensum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="@string/ap_anio_pensum"/>
+                android:inputType="number"
+                android:hint="@string/ap_anio_pensum" />
 
             <Spinner
                 android:id="@+id/spinner_carrera_pensum"

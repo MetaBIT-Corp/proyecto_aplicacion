@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
+import com.example.crud_encuesta.Componentes_AP.Activities.PensumActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.TurnoActivity;
 import com.example.crud_encuesta.Componentes_Docente.ActivityDocente;
 import com.example.crud_encuesta.Componentes_EL.Materia.MateriaUsersActivity;
@@ -92,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login();
-                clave();
+                //clave();
+                pensum();
                 //evaluacion();
                 //pressed();
 
@@ -163,6 +165,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void turno(){
         Intent i = new Intent(this, TurnoActivity.class);
+        startActivity(i);
+    }
+
+    public void pensum(){
+        Intent i = new Intent(this, PensumActivity.class);
         startActivity(i);
     }
 

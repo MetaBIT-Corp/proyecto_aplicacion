@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("id_user",usuarioLogueado.getIDUSUARIO());
                     intent.putExtra("rol_user",usuarioLogueado.getROL());
+                    intent.putExtra("username",usuarioLogueado.getNOMUSUARIO());
                     startActivity(intent);
                     Toast.makeText(v.getContext(),"Bienvenido " + usuario,Toast.LENGTH_LONG).show();
                 }else {

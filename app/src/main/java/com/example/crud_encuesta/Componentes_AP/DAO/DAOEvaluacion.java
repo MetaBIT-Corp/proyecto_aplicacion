@@ -83,7 +83,7 @@ public class DAOEvaluacion {
     //retorna la lista pero solo con el elemento buscado
     public ArrayList<Evaluacion> verUno(String nombre){
         evaluaciones.clear();
-        Cursor cursor  = baseDeDatos.rawQuery("Select * FROM EVALUACION WHERE NOMBRE_EVALUACION LIKE '" + nombre + "%'"  ,null);
+        Cursor cursor  = baseDeDatos.rawQuery("Select * FROM EVALUACION WHERE NOMBRE_EVALUACION LIKE '%" + nombre + "%'"  ,null);
         if(cursor.moveToFirst()){
             cursor.moveToFirst();
             do {
