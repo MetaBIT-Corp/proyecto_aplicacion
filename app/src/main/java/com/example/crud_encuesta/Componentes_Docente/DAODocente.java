@@ -11,7 +11,7 @@ public class DAODocente {
 
     private SQLiteDatabase cx;
     private ArrayList<Docente> lista = new ArrayList<>();
-    private Docente dc;
+    private Docente docente;
     private Context ct;
 
     public DAODocente(Context ct){
@@ -86,7 +86,7 @@ public class DAODocente {
     public Docente verUno(int id){
         Cursor cursor = cx.rawQuery("SELECT * FROM PDG_DCN_DOCENTE", null);
         cursor.moveToPosition(id);
-        dc = new Docente(
+        docente = new Docente(
                 cursor.getInt(0),
                 cursor.getInt(1),
                 cursor.getString(2),
@@ -97,6 +97,6 @@ public class DAODocente {
                 cursor.getInt(7),
                 cursor.getInt(8),
                 cursor.getString(9));
-        return dc;
+        return docente;
     }
 }

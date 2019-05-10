@@ -11,7 +11,7 @@ public class DAOEstudiante {
 
     private SQLiteDatabase cx;
     private ArrayList<Estudiante> lista = new ArrayList<>();
-    private Estudiante estd;
+    private Estudiante estudiante;
     private Context ct;
 
     public DAOEstudiante(Context ct){
@@ -72,12 +72,12 @@ public class DAOEstudiante {
     public Estudiante verUno(int id){
         Cursor cursor = cx.rawQuery("SELECT * FROM ESTUDIANTE", null);
         cursor.moveToPosition(id);
-        estd = new Estudiante(
+        estudiante = new Estudiante(
                 cursor.getInt(0),
                 cursor.getString(1),
                 cursor.getString(2),
                 cursor.getInt(3),
                 cursor.getString(4));
-        return estd;
+        return estudiante;
     }
 }

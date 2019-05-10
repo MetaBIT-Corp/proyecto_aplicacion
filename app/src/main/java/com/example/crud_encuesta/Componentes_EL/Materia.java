@@ -1,15 +1,31 @@
 package com.example.crud_encuesta.Componentes_EL;
 
 public class Materia {
+
+    //private Pensum pensum;
+    //private Carrera carrera;
+
     private int id;
-    /*private Pensum pensum;
-    private Carrera carrera;*/
-    private String codigo_materia;
     private String nombre;
-    private boolean electiva;
+    private String codigo_materia;
+    private int electiva;
     private int maximo_preguntas;
 
-    public Materia() {
+    public Materia(){}
+
+    public Materia(int id, String nombre, String codigo_materia, int electiva, int maximo_preguntas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.codigo_materia = codigo_materia;
+        this.electiva = electiva;
+        this.maximo_preguntas = maximo_preguntas;
+    }
+
+    public Materia(String nombre, String codigo_materia, int electiva, int maximo_preguntas) {
+        this.nombre = nombre;
+        this.codigo_materia = codigo_materia;
+        this.electiva = electiva;
+        this.maximo_preguntas = maximo_preguntas;
     }
 
     public int getId() {
@@ -20,22 +36,6 @@ public class Materia {
         this.id = id;
     }
 
-    /*public Pensum getPensum() {
-        return pensum;
-    }
-
-    public void setPensum(Pensum pensum) {
-        this.pensum = pensum;
-    }
-
-    public Carrera getCarrera() {
-        return carrera;
-    }
-
-    public void setCarrera(Carrera carrera) {
-        this.carrera = carrera;
-    }*/
-
     public String getCodigo_materia() {
         return codigo_materia;
     }
@@ -44,11 +44,11 @@ public class Materia {
         this.codigo_materia = codigo_materia;
     }
 
-    public boolean isElectiva() {
+    public int getElectiva() {
         return electiva;
     }
 
-    public void setElectiva(boolean electiva) {
+    public void setElectiva(int electiva) {
         this.electiva = electiva;
     }
 
@@ -67,6 +67,22 @@ public class Materia {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    /*public Pensum getPensum() {
+        return pensum;
+    }
+
+    public void setPensum(Pensum pensum) {
+        this.pensum = pensum;
+    }
+
+    public Carrera getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(Carrera carrera) {
+        this.carrera = carrera;
+    }*/
 
 
     public String toString(){
