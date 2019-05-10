@@ -23,6 +23,7 @@ import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
 import com.example.crud_encuesta.Componentes_EL.EncuestaActivity;
 import com.example.crud_encuesta.Componentes_EL.EscuelaActivity;
 import com.example.crud_encuesta.Componentes_EL.MateriaActivity;
+import com.example.crud_encuesta.Componentes_MateriaCiclo.ActivityMateriaCiclo;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -131,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void activity_estudiante(View view){
         Intent i= new Intent(this, ActivityEstudiante.class);
+        startActivity(i);
+    }
+
+    public void activity_materia_ciclo(View view){
+        Intent i= new Intent(this, ActivityMateriaCiclo.class);
         startActivity(i);
     }
 }

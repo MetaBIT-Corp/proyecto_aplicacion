@@ -34,6 +34,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Componentes_Docente.ActivityDocente" />
         <activity android:name=".Componentes_Estudiante.ActivityEstudiante" />
+        <activity android:name=".Componentes_MateriaCiclo.ActivityMateriaCiclo"/>
         <activity android:name=".Componentes_MT.Area.AreaActivity" />
         <activity android:name=".Componentes_DC.Activities.OpcionActivity" />
         <activity android:name=".Componentes_DC.Activities.PreguntaActivity" />
