@@ -46,11 +46,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ap_num_intento_eva" />
+        <!--
         <TextView
             android:id="@+id/ap_tv_retroceder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ap_retroceder" />
+        -->
 
         <Button
             android:id="@+id/ap_btn_cerrar_vista_eva"

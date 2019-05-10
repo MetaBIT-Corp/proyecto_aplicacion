@@ -8,30 +8,27 @@ public class Evaluacion {
     int cantIntento;
     String nombre;
     String descripcion;
-    int retroceder;
 
     //constructor con id
     public Evaluacion(int id, int idCargaAcad, int duracion, int cantIntento,
-                      String nombre, String descripcion, int retroceder) {
+                      String nombre, String descripcion) {
         this.id = id;
         this.idCargaAcad = idCargaAcad;
         this.duracion = duracion;
         this.cantIntento = cantIntento;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.retroceder = retroceder;
     }
 
     //constructor sin id
     //TODO: pendiente en ver si es necesario este metodo
     public Evaluacion(int idCargaAcad, int duracion, int cantIntento,
-                      String nombre, String descripcion, int retroceder) {
+                      String nombre, String descripcion) {
         this.idCargaAcad = idCargaAcad;
         this.duracion = duracion;
         this.cantIntento = cantIntento;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.retroceder = retroceder;
     }
 
     public int getId() {
@@ -82,11 +79,4 @@ public class Evaluacion {
         this.descripcion = descripcion;
     }
 
-    public int getRetroceder() {
-        return retroceder;
-    }
-
-    public void setRetroceder(int retroceder) {
-        this.retroceder = retroceder;
-    }
 }

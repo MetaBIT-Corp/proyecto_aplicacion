@@ -22,9 +22,12 @@ import com.example.crud_encuesta.Componentes_MT.Clave.ClaveActivity;
 import com.example.crud_encuesta.Componentes_MT.Intento.IntentoActivity;
 import com.example.crud_encuesta.Componentes_EL.Carrera.CarreraActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.LoginActivity;
+
 import com.example.crud_encuesta.Componentes_EL.Encuesta.EncuestaActivity;
 import com.example.crud_encuesta.Componentes_EL.Escuela.EscuelaActivity;
 import com.example.crud_encuesta.Componentes_EL.Materia.MateriaActivity;
+
+import com.example.crud_encuesta.Componentes_MateriaCiclo.ActivityMateriaCiclo;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -89,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login();
-                intento();
+                //intento();
                 //evaluacion();
-                //pressed();
+                pressed();
 
             }
         });
@@ -170,6 +173,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void activity_estudiante(View view){
         Intent i= new Intent(this, ActivityEstudiante.class);
+        startActivity(i);
+    }
+
+    public void activity_materia_ciclo(View view){
+        Intent i= new Intent(this, ActivityMateriaCiclo.class);
         startActivity(i);
     }
 }

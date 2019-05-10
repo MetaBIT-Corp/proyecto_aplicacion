@@ -97,6 +97,7 @@ public class AdapterEvaluacion extends BaseAdapter {
         ImageView editar = (ImageView) view.findViewById(R.id.ap_editar_item);
         ImageView eliminar = (ImageView) view.findViewById(R.id.ap_eliminar_item);
         ImageView info = (ImageView) view.findViewById(R.id.ap_info_item);
+        ImageView turnoi = (ImageView) view.findViewById(R.id.ap_turno_item);
 
         tv_item.setText(evaluacion.getNombre());
 
@@ -104,6 +105,7 @@ public class AdapterEvaluacion extends BaseAdapter {
         editar.setTag(position);
         eliminar.setTag(position);
         info.setTag(position);
+        turnoi.setVisibility(View.INVISIBLE);
 
         //TODO: OnCLICKLISTENER DE OPCIONES DE USUARIOS
 
@@ -126,6 +128,7 @@ public class AdapterEvaluacion extends BaseAdapter {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);//para quitar el titulo
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.dialogo_evaluacion);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.show();
 
                 //enlazamos edittext del dialogo
@@ -134,7 +137,7 @@ public class AdapterEvaluacion extends BaseAdapter {
                 final EditText duracion = (EditText) dialog.findViewById(R.id.ap_edt_duracion_eva);
                 final EditText intento = (EditText) dialog.findViewById(R.id.ap_edt_num_intento_eva);
                 final EditText desc = (EditText) dialog.findViewById(R.id.ap_edt_desc_eva);
-                final CheckBox retroceso = (CheckBox) dialog.findViewById(R.id.ap_cb_retroceder);
+                //final CheckBox retroceso = (CheckBox) dialog.findViewById(R.id.ap_cb_retroceder);
 
                 Button btCrear = (Button) dialog.findViewById(R.id.d_agregar_eva);
                 Button btCancelar = (Button) dialog.findViewById(R.id.d_cancelar_eva);
@@ -147,11 +150,11 @@ public class AdapterEvaluacion extends BaseAdapter {
                 duracion.setText("" + evaluacion.getDuracion());
                 intento.setText("" + evaluacion.getCantIntento());
                 desc.setText(evaluacion.getDescripcion());
-                if (evaluacion.getRetroceder() == 1) {
+                /*if (evaluacion.getRetroceder() == 1) {
                     retroceso.setChecked(true);
                 } else {
                     retroceso.setChecked(false);
-                }
+                }*/
 
                 //programamos botones de crear-guardar y cancelar
 
@@ -159,10 +162,10 @@ public class AdapterEvaluacion extends BaseAdapter {
 
                     @Override
                     public void onClick(View v) {
-                        int retro = 0;
+                        /*int retro = 0;
                         if (retroceso.isChecked()) {
                             retro = 1;
-                        }
+                        }*/
                         if (!duracion.getText().toString().isEmpty() && !intento.getText().toString().isEmpty()
                                 && !nombre.getText().toString().isEmpty()) {
                             try {
@@ -172,8 +175,7 @@ public class AdapterEvaluacion extends BaseAdapter {
                                         Integer.parseInt(duracion.getText().toString()),
                                         Integer.parseInt(intento.getText().toString()),
                                         nombre.getText().toString(),
-                                        desc.getText().toString(),
-                                        retro
+                                        desc.getText().toString()
                                 );
                                 //editamos registro
                                 daoEvaluacion.Editar(evaluacion);
@@ -273,6 +275,7 @@ public class AdapterEvaluacion extends BaseAdapter {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);//para quitar el titulo
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.vista_evaluacion);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.show();
 
                 //enlazamos edittext del dialogo
@@ -281,7 +284,7 @@ public class AdapterEvaluacion extends BaseAdapter {
                 final TextView duracion = (TextView) dialog.findViewById(R.id.ap_tv_duracion_eva);
                 final TextView intento = (TextView) dialog.findViewById(R.id.ap_tv_num_intentos);
                 final TextView desc = (TextView) dialog.findViewById(R.id.ap_tv_desc_eva);
-                final TextView retroceso = (TextView) dialog.findViewById(R.id.ap_tv_retroceder);
+                //final TextView retroceso = (TextView) dialog.findViewById(R.id.ap_tv_retroceder);
 
                 Button btOk = (Button) dialog.findViewById(R.id.ap_btn_cerrar_vista_eva);
 
@@ -290,11 +293,11 @@ public class AdapterEvaluacion extends BaseAdapter {
                 duracion.setText("Duracion: " + evaluacion.getDuracion());
                 intento.setText("Intento: " + evaluacion.getCantIntento());
                 desc.setText("Descripcion: " + evaluacion.getDescripcion());
-                if (evaluacion.getRetroceder() == 1) {
+                /*if (evaluacion.getRetroceder() == 1) {
                     retroceso.setText("Se puede retroceder: SI");
                 } else {
                     retroceso.setText("Se puede retroceder: NO");
-                }
+                }*/
 
                 btOk.setOnClickListener(new View.OnClickListener() {
                     @Override

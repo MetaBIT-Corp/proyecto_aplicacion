@@ -2,19 +2,19 @@ package com.example.crud_encuesta.Componentes_MateriaCiclo;
 
 public class MateriaCiclo {
     private int id;
-    private int id_materia;
-    private String ciclo,anio;
+    private int id_materia, ciclo;
+    private String anio;
 
     public MateriaCiclo() {}
 
-    public MateriaCiclo(int id_materia, String ciclo, String anio) {
+    public MateriaCiclo(int id, int id_materia, int ciclo, String anio) {
+        this.id = id;
         this.id_materia = id_materia;
         this.ciclo = ciclo;
         this.anio = anio;
     }
 
-    public MateriaCiclo(int id, int id_materia, String ciclo, String anio) {
-        this.id = id;
+    public MateriaCiclo(int id_materia, int ciclo, String anio) {
         this.id_materia = id_materia;
         this.ciclo = ciclo;
         this.anio = anio;
@@ -36,11 +36,11 @@ public class MateriaCiclo {
         this.id_materia = id_materia;
     }
 
-    public String getCiclo() {
+    public int getCiclo() {
         return ciclo;
     }
 
-    public void setCiclo(String ciclo) {
+    public void setCiclo(int ciclo) {
         this.ciclo = ciclo;
     }
 

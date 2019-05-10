@@ -166,7 +166,7 @@ public class Operaciones_CRUD {
                 m.setId(cu.getInt(0));
                 m.setCodigo_materia(cu.getString(1));
                 m.setNombre(cu.getString(2));
-                m.setElectiva(cu.getInt(3) == 1);
+                m.setElectiva(cu.getInt(3));
                 m.setMaximo_preguntas(cu.getInt(4));
                 lista.add(m);
             }while (cu.moveToNext());
@@ -186,7 +186,7 @@ public class Operaciones_CRUD {
                 m.setId(cu.getInt(0));
                 m.setCodigo_materia(cu.getString(1));
                 m.setNombre(cu.getString(2));
-                m.setElectiva(cu.getInt(3) == 1);
+                m.setElectiva(cu.getInt(3));
                 m.setMaximo_preguntas(cu.getInt(4));
                 lista.add(m);
             }while (cu.moveToNext());
@@ -207,7 +207,7 @@ public class Operaciones_CRUD {
                 m.setId(cu.getInt(0));
                 m.setCodigo_materia(cu.getString(1));
                 m.setNombre(cu.getString(2));
-                m.setElectiva(cu.getInt(3) == 1);
+                m.setElectiva(cu.getInt(3));
                 m.setMaximo_preguntas(cu.getInt(4));
                 lista.add(m);
             }while (cu.moveToNext());

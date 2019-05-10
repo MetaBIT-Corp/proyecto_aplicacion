@@ -81,4 +81,7 @@
     <string name="el_buscarMat">Buscar Materias</string>
     <string name="lbl_facu">Facultad</string>
     <string name="lbl_cod_escuela">Codigo Escuela</string>
+    <string name="ap_titlevista_turno_pass">Acceso a intento</string>
+    <string name="ap_indicaciones">Ingrese la contraseña para acceder al intento.</string>
+    <string name="ap_ingreso_contraseña">Contraseña</string>
 </resources>

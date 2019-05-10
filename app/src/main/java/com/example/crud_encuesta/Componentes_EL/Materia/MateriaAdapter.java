@@ -140,7 +140,7 @@ public class MateriaAdapter extends BaseAdapter {
                 nom.setText(m.getNombre());
                 cod.setText(m.getCodigo_materia());
                 max.setText(m.getMaximo_preguntas()+"");
-                if(m.isElectiva())elec.setChecked(true);
+                if(m.getElectiva()==1)elec.setChecked(true);
                 else elec.setChecked(false);
 
                 /*for (int i = 0; i < listCarreraSpinner.size(); i++) {
@@ -237,7 +237,7 @@ public class MateriaAdapter extends BaseAdapter {
                 nom.setText(m.getNombre());
                 cod.setText(m.getCodigo_materia());
                 max.setText(m.getMaximo_preguntas()+"");
-                if(m.isElectiva())elec.setChecked(true);
+                if(m.getElectiva()==1)elec.setChecked(true);
                 else elec.setChecked(false);
 
 
