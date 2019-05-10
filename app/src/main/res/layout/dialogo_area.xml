@@ -13,7 +13,7 @@
         android:textStyle="bold"
         android:paddingBottom="20dp"
         android:layout_marginTop="5dp"
-        android:text="Area"
+        android:text="@string/mt_area"
         android:textSize="25sp"/>
 
     <Spinner
@@ -26,7 +26,7 @@
         android:id="@+id/etArea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Titulo del area"
+        android:hint="@string/mt_titulo_del_area"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textEmailAddress" />

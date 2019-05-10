@@ -27,6 +27,8 @@ import android.widget.TextView;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -76,7 +78,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
         TextView txt_pregrunta = mView.findViewById(R.id.txtPregunta);
         LinearLayout ll_pregunta = mView.findViewById(R.id.llPregunta);
         Button finalizar = new Button(context);
-        finalizar.setText("Finalizar");
+        finalizar.setText(R.string.mt_finalizar);
 
         switch (preguntas.get(position).modalidad) {
             case 1:
@@ -256,11 +258,11 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder emergente = new AlertDialog.Builder(context);
-                emergente.setTitle("Finalizar");
-                emergente.setMessage("¿Desea finalizar la evaluacion?");
+                emergente.setTitle(R.string.mt_finalizar);
+                emergente.setMessage(R.string.mt_finalizar_evaluacion);
                 emergente.setIcon(R.drawable.infoazul);
 
-                emergente.setPositiveButton("Finalizar", new DialogInterface.OnClickListener() {
+                emergente.setPositiveButton(R.string.mt_finalizar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         modelo_respuesta(rg_lista, sp_lista, et_lista, rg_lista_vf);
@@ -269,7 +271,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                         AlertDialog.Builder nota = new AlertDialog.Builder(context);
                         nota.setTitle("Nombre evaluación");
                         nota.setMessage("Nota: " + calcular_nota());
-                        nota.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        nota.setPositiveButton(R.string.mt_aceptar, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent i = new Intent(context, VerIntentoActivity.class);
@@ -281,7 +283,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                     }
                 });
 
-                emergente.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                emergente.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -415,8 +417,8 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
         databaseAccess.close();
     }
 
-    public float calcular_nota() {
-        float nota = (float) 0.0;
+    public double calcular_nota() {
+        double nota = 0.0;
         int i = 0;
 
         while (i < preguntas.size()) {
@@ -450,7 +452,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
 
         }
 
-        nota = Float.valueOf(String.format("%.2f", nota));
+        nota = new BigDecimal(nota).setScale(2, RoundingMode.HALF_EVEN).doubleValue();
 
         return nota;
     }

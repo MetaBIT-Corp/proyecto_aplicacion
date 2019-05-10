@@ -30,7 +30,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
     private Spinner spItems;
     private ArrayAdapter<String> comboAdapter;
     private List <String> items;
-    private int[] iconos={R.drawable.edit1, R.drawable.ic_delete};
+    private int[] iconos={R.drawable.edit_, R.drawable.delete_};
 
     FloatingActionButton fabArea;
     private EditText mArea;
@@ -92,7 +92,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
         cargarItems(mView);
 
         mBuilder.setCancelable(false);
-        mBuilder.setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
+        mBuilder.setPositiveButton(R.string.mt_agregar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mArea = (EditText)mView.findViewById(R.id.etArea);
@@ -104,16 +104,16 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
                     daoArea.insertar(area);
                     areas = daoArea.getAreas();
                     areaAdapter.notifyDataSetChanged();
-                    Toast.makeText(AreaActivity.this, "Area agregada con éxito", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AreaActivity.this, getString(R.string.mt_area_agregada), Toast.LENGTH_SHORT).show();
 
                 }else{
-                    Toast.makeText(AreaActivity.this, "Error, ingrese el título del área", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AreaActivity.this, getString(R.string.mt_campos_vacios), Toast.LENGTH_SHORT).show();
                 }
                 refresh();
             }
         });
 
-        mBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        mBuilder.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 

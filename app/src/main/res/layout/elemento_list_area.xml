@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="left"
-            android:text="Area" />
+            android:text="@string/mt_area" />
 
         <Button
             android:layout_width="25dp"
@@ -37,7 +37,7 @@
             android:layout_weight="1"
             android:paddingLeft="10dp"
             android:paddingRight="5dp"
-            app:srcCompat="@drawable/edit1" />
+            app:srcCompat="@drawable/edit_" />
 
         <ImageView
             android:id="@+id/img_delete"
@@ -47,6 +47,6 @@
             android:layout_weight="1"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            app:srcCompat="@drawable/delete" />
+            app:srcCompat="@drawable/delete_" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

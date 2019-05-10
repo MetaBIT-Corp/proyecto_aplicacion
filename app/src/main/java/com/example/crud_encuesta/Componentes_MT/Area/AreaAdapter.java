@@ -86,9 +86,9 @@ public class AreaAdapter extends BaseAdapter {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
 
                 TextView txt = mView.findViewById(R.id.msj);
-                txt.setText("Editar");
+                txt.setText(R.string.mt_editar);
                 edt.setText(areas.get(i).titulo);
-                mBuilder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
+                mBuilder.setPositiveButton(R.string.mt_actualizar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         editar_area(i, mView);
@@ -99,7 +99,7 @@ public class AreaAdapter extends BaseAdapter {
                     }
                 });
 
-                mBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                mBuilder.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -119,21 +119,21 @@ public class AreaAdapter extends BaseAdapter {
 
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
 
-                mBuilder.setMessage("¿Desea eliminar esta area?");
+                mBuilder.setMessage(R.string.mt_eliminar_area);
                 mBuilder.setIcon(R.drawable.ic_delete);
-                mBuilder.setTitle("Eliminar");
+                mBuilder.setTitle(R.string.mt_eliminar);
 
-                mBuilder.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+                mBuilder.setPositiveButton(R.string.mt_eliminar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         eliminar_area(i);
                         areas = daoArea.getAreas();
                         notifyDataSetChanged();
-                        Toast.makeText(context, "Se ha eliminado con éxito", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, R.string.mt_eliminado_msj, Toast.LENGTH_SHORT).show();
                     }
                 });
 
-                mBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                mBuilder.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 

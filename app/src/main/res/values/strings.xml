@@ -84,4 +84,30 @@
     <string name="ap_titlevista_turno_pass">Acceso a intento</string>
     <string name="ap_indicaciones">Ingrese la contraseña para acceder al intento.</string>
     <string name="ap_ingreso_contraseña">Contraseña</string>
+
+    <string name="mt_titulo_del_area">Titulo del area</string>
+    <string name="mt_aleatorio">Aleatorio</string>
+    <string name="mt_cantidad_de_preguntas">Cantidad de preguntas</string>
+    <string name="mt_peso_del_rea">Peso del área</string>
+    <string name="mt_clave">Clave </string>
+    <string name="mt_area">Area</string>
+    <string name="mt_agregar">Agregar</string>
+    <string name="mt_cancelar">Cancelar</string>
+    <string name="mt_area_agregada">Area agregada con éxito</string>
+    <string name="mt_campos_vacios">Error, hay campos vacíos</string>
+    <string name="mt_editar">Editar</string>
+    <string name="mt_actualizar">Actualizar</string>
+    <string name="mt_eliminar">Eliminar</string>
+    <string name="mt_eliminar_area">¿Desea eliminar esta area?</string>
+    <string name="mt_eliminado_msj">Se ha eliminado con éxito</string>
+    <string name="mt_agregar_clave">¿Desea agregar una nueva clave?</string>
+    <string name="mt_aceptar">Aceptar</string>
+    <string name="mt_clave_agregada">Nueva clave agregada</string>
+    <string name="mt_registro_actualizado">Resgistro actualizado</string>
+    <string name="mt_eliminar_clave">¿Desea eliminar esta clave?</string>
+    <string name="mt_cantidad_positiva">Las cantidades ingresadas deben ser mayores a cero</string>
+    <string name="mt_registro_exito">Registro insertado con éxito</string>
+    <string name="mt_finalizar">Finalizar</string>
+    <string name="mt_finalizar_evaluacion">¿Desea finalizar la evaluacion?</string>
+    <string name="mt_ir_inicio">Regresar a Inicio</string>
 </resources>

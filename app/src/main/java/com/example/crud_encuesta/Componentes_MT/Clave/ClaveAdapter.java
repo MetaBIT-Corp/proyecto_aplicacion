@@ -52,6 +52,7 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         id_clave_seleccion=position;
+        String txtClave;
 
         final View mView = inflater.inflate(R.layout.elemento_list_clave, null);
         final TextView num_clave = (TextView)mView.findViewById(R.id.msj_clave);
@@ -60,7 +61,9 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
         ImageView editar = (ImageView)mView.findViewById(R.id.edit_clave);
         ImageView eliminar = (ImageView)mView.findViewById(R.id.delete_calve);
 
-        num_clave.setText("Clave "+claves.get(position).numero_clave);
+        txtClave = num_clave.getText().toString();
+
+        num_clave.setText(txtClave+" "+claves.get(position).numero_clave);
         informacion.setImageResource(incons[0]);
         agregar.setImageResource(incons[1]);
         editar.setImageResource(incons[2]);
@@ -104,14 +107,14 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
                 cargarAreas(mView);
 
                 mBuilder.setCancelable(false);
-                mBuilder.setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
+                mBuilder.setPositiveButton(R.string.mt_agregar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         agregar_relacion_clave_area(mView, id_seleccion);
                     }
                 });
 
-                mBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                mBuilder.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -135,19 +138,19 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
 
                 TextView txt = vEditar.findViewById(R.id.msj);
-                txt.setText("Editar");
+                txt.setText(R.string.mt_editar);
                 edt.setText(claves.get(i).numero_clave);
-                mBuilder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
+                mBuilder.setPositiveButton(R.string.mt_actualizar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         editar_clave(i, vEditar);
-                        Toast.makeText(context, "Resgistro actualizado", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, R.string.mt_registro_actualizado, Toast.LENGTH_SHORT).show();
                         claves = daoClave.getClaves();
                         notifyDataSetChanged();
                     }
                 });
 
-                mBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                mBuilder.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -167,22 +170,22 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
 
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
 
-                mBuilder.setMessage("¿Desea eliminar esta clave?");
+                mBuilder.setMessage(R.string.mt_eliminar_clave);
                 mBuilder.setIcon(R.drawable.ic_delete);
-                mBuilder.setTitle("Eliminar");
+                mBuilder.setTitle(R.string.mt_eliminar);
 
-                mBuilder.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+                mBuilder.setPositiveButton(R.string.mt_eliminar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         eliminar_clave(i);
-                        Toast.makeText(context, "Se ha eliminado con éxito", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, R.string.mt_eliminado_msj, Toast.LENGTH_SHORT).show();
                         claves = daoClave.getClaves();
                         notifyDataSetChanged();
 
                     }
                 });
 
-                mBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                mBuilder.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -298,20 +301,18 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
                 SQLiteDatabase db = databaseAccess.open();
 
                 db.insert("clave_area", null, registro);
-                Toast.makeText(context, "Registro insertado con éxito", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.mt_registro_exito, Toast.LENGTH_SHORT).show();
                 Cursor cursor = db.rawQuery("SELECT id_clave_area FROM clave_area ORDER BY id_clave_area DESC LIMIT 1;", null);
                 cursor.moveToFirst();
-
-                Log.d("hey", cursor.getString(0));
 
                 agregar_relacion_clave_area_pregunta(cantidad, cursor.getInt(0));
                 cursor.close();
                 databaseAccess.close();
             } else {
-                Toast.makeText(context, "Las cantidades ingresadas deben ser mayores a cero", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.mt_cantidad_positiva, Toast.LENGTH_SHORT).show();
             }
         }else{
-            Toast.makeText(context, "Error, no se permiten campos vacios", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.mt_campos_vacios, Toast.LENGTH_SHORT).show();
         }
 
     }

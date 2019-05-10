@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.crud_encuesta.Componentes_EL.Materia;
+import com.example.crud_encuesta.Componentes_EL.Materia.Materia;
 import com.example.crud_encuesta.DatabaseAccess;
 
 import java.util.ArrayList;

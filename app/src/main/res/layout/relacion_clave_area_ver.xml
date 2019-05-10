@@ -16,7 +16,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Clave"
+            android:text="@string/mt_clave"
             android:textColor="@color/primary_text" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/primary_text"
-            android:text="Area" />
+            android:text="@string/mt_area" />
 
         <TextView
             android:id="@+id/txtArea"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/primary_text"
-            android:text="Cantidad de preguntas" />
+            android:text="@string/mt_cantidad_de_preguntas" />
 
         <TextView
             android:id="@+id/txtNumeroPreguntas"
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/primary_text"
             android:layout_weight="1"
-            android:text="Peso" />
+            android:text="@string/mt_peso_del_rea" />
 
         <TextView
             android:id="@+id/txtPeso"
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/primary_text"
-            android:text="Aleatorio" />
+            android:text="@string/mt_aleatorio" />
 
         <TextView
             android:id="@+id/txtModalidad"

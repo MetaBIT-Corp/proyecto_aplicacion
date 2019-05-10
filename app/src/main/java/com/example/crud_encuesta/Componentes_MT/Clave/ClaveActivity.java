@@ -25,7 +25,7 @@ public class ClaveActivity extends AppCompatActivity {
 
     private FloatingActionButton fabClave;
     private ListView listView;
-    private int[] iconos = {R.drawable.infoazul, R.drawable.addgris, R.drawable.edit1, R.drawable.ic_delete};
+    private int[] iconos = {R.drawable.infoazul, R.drawable.addgris, R.drawable.edit_, R.drawable.delete_};
 
     //Datos de modelos
     private int id_encuesta = 1;
@@ -81,21 +81,21 @@ public class ClaveActivity extends AppCompatActivity {
         AlertDialog.Builder dialogo = new AlertDialog.Builder(this);
         dialogo.setCancelable(false);
         dialogo.setIcon(R.drawable.infoazul);
-        dialogo.setTitle("Agregar");
-        dialogo.setMessage("Desea agregar una nueva clave");
+        dialogo.setTitle(R.string.mt_agregar);
+        dialogo.setMessage(R.string.mt_agregar_clave);
 
-        dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+        dialogo.setPositiveButton(R.string.mt_aceptar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 agregar_clave();
                 claves = daoClave.getClaves();
                 claveAdapter.notifyDataSetChanged();
                 refresh();
-                Toast.makeText(ClaveActivity.this, "Nueva clave agregada", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ClaveActivity.this, getString(R.string.mt_clave_agregada), Toast.LENGTH_SHORT).show();
             }
         });
 
-        dialogo.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        dialogo.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 

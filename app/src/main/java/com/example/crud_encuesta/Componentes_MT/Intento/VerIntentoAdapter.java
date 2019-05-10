@@ -46,7 +46,7 @@ public class VerIntentoAdapter extends BaseAdapter implements AdapterView.OnItem
         TextView txt_pregrunta = mView.findViewById(R.id.txtPregunta);
         LinearLayout ll_pregunta = mView.findViewById(R.id.llPregunta);
         Button inicio = new Button(context);
-        inicio.setText("Regresar a Inicio");
+        inicio.setText(R.string.mt_ir_inicio);
 
         switch (preguntas.get(position).modalidad) {
             case 1:
