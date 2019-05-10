@@ -92,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
         loggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Login();
+                Login();
                 //clave();
-                pensum();
+                //pensum();
                 //evaluacion();
                 //pressed();
 
