@@ -30,13 +30,15 @@ public class AreaAdapter extends BaseAdapter {
     Context context;
     List<Area> areas = new ArrayList<>();
     DAOArea daoArea;
+    int id_materia;
     Area area;
     int[] iconos;
 
-    public AreaAdapter(Context context, List<Area> areas, DAOArea daoArea, int[] iconos){
+    public AreaAdapter(Context context, List<Area> areas, DAOArea daoArea, int id_materia, int[] iconos){
         this.context = context;
         this.areas = areas;
         this.daoArea = daoArea;
+        this.id_materia = id_materia;
         this.iconos = iconos;
 
         inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -92,7 +94,7 @@ public class AreaAdapter extends BaseAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         editar_area(i, mView);
-                        areas = daoArea.getAreas();
+                        areas = daoArea.getAreas(id_materia);
                         notifyDataSetChanged();
                         /*Intent i = new Intent(context, AreaActivity.class);
                         context.startActivity(i);*/
@@ -127,7 +129,7 @@ public class AreaAdapter extends BaseAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         eliminar_area(i);
-                        areas = daoArea.getAreas();
+                        areas = daoArea.getAreas(id_materia);
                         notifyDataSetChanged();
                         Toast.makeText(context, R.string.mt_eliminado_msj, Toast.LENGTH_SHORT).show();
                     }

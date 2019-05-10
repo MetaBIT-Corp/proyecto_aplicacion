@@ -47,8 +47,8 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_area);
 
         daoArea = new DAOArea(this);
-        areas = daoArea.getAreas();
-        areaAdapter = new AreaAdapter(this, areas, daoArea, iconos);
+        areas = daoArea.getAreas(id_cat_mat);
+        areaAdapter = new AreaAdapter(this, areas, daoArea, id_cat_mat, iconos);
 
         //cargarItems();
         listView = (ListView)findViewById(R.id.list_areas);
@@ -102,7 +102,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
                 if(!titulo_area.isEmpty()){
                     Area area = new Area(titulo_area, id_cat_mat, id_pdg_dcn, seleccion_item);
                     daoArea.insertar(area);
-                    areas = daoArea.getAreas();
+                    areas = daoArea.getAreas(id_cat_mat);
                     areaAdapter.notifyDataSetChanged();
                     Toast.makeText(AreaActivity.this, getString(R.string.mt_area_agregada), Toast.LENGTH_SHORT).show();
 
@@ -141,7 +141,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void refresh(){
-        listView.setAdapter(new AreaAdapter(this, areas, daoArea, iconos));
+        listView.setAdapter(new AreaAdapter(this, areas, daoArea, id_cat_mat, iconos));
     }
 
 

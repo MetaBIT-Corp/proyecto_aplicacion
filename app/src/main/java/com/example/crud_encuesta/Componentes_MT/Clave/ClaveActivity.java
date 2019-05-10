@@ -37,8 +37,8 @@ public class ClaveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_clave);
 
         daoClave = new DAOClave(this);
-        claves = daoClave.getClaves();
-        claveAdapter = new ClaveAdapter(this, claves, daoClave, iconos);
+        claves = daoClave.getClaves(id_turno);
+        claveAdapter = new ClaveAdapter(this, claves, daoClave, id_turno, iconos);
 
         listView = (ListView)findViewById(R.id.list_claves);
         listView.setAdapter(claveAdapter);
@@ -88,7 +88,7 @@ public class ClaveActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 agregar_clave();
-                claves = daoClave.getClaves();
+                claves = daoClave.getClaves(id_turno);
                 claveAdapter.notifyDataSetChanged();
                 refresh();
                 Toast.makeText(ClaveActivity.this, getString(R.string.mt_clave_agregada), Toast.LENGTH_SHORT).show();
@@ -108,7 +108,7 @@ public class ClaveActivity extends AppCompatActivity {
     }
 
     public void refresh(){
-        listView.setAdapter(new ClaveAdapter(this, claves, daoClave, iconos));
+        listView.setAdapter(new ClaveAdapter(this, claves, daoClave, id_turno, iconos));
     }
 
 /*public List<Clave> getClaves(){

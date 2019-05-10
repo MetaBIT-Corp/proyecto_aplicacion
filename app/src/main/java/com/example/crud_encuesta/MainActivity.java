@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login();
-                intento();
+                clave();
                 //evaluacion();
                 //pressed();
 
