@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.crud_encuesta.Componentes_EL.Materia;
+import com.example.crud_encuesta.Componentes_EL.Materia.Materia;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 

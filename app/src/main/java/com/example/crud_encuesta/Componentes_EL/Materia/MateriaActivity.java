@@ -69,14 +69,6 @@ public class MateriaActivity extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i=new Intent(MateriaActivity.this, SubMenuMateriaActivity.class);
-                i.putExtra("idMateria",id);
-                startActivity(i);
-            }
-        });
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override

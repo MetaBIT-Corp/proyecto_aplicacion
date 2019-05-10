@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.TurnoActivity;
@@ -34,7 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private Toolbar myTopToolBar;
     private ImageView loggin;
-    int usuario=2;
+
+    int id=5;
+    int rol=2;
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -45,13 +49,24 @@ public class MainActivity extends AppCompatActivity {
         myTopToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myTopToolBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        TextView bienvenida=findViewById(R.id.title_bienvenida);
+
+        switch (rol){
+            case 0: bienvenida.setText("Administrador");break;
+            case 1: bienvenida.setText("Docente: "+"nombreDocente");break;
+            case 2:bienvenida.setText("Estudiante: "+"nombre");break;
+        }
+
+        //Recuperando datos de usuario logueado
+        //id=getIntent().getExtras().getInt("id_user");
+        //rol=getIntent().getExtras().getInt("rol_user");
 
         ImageView materia=findViewById(R.id.el_btnMateria);
         ImageView carrera=findViewById(R.id.el_btnCarrera);
 
         CardView cardViewCarrera=findViewById(R.id.cardCarrera);
 
-        if(usuario==2){
+        if(rol==2){
             //Estudiante
             cardViewCarrera.setVisibility(View.GONE);
         }
@@ -61,16 +76,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i;
-                switch (usuario){
+                switch (rol){
                     //Admin
                     case 0:i=new Intent(MainActivity.this,MateriaActivity.class);
                         startActivity(i);
                     break;
                     //Docente
                     case 1: i= new Intent(MainActivity.this, MateriaUsersActivity.class);
+                        i.putExtra("id_user",id);
+                        i.putExtra("rol_user",rol);
                     startActivity(i);
                     //Estudiante
                     case 2: i=new Intent(MainActivity.this,MateriaUsersActivity.class);
+                        i.putExtra("id_user",id);
+                        i.putExtra("rol_user",rol);
                     startActivity(i);
                     break;
 
