@@ -106,7 +106,7 @@ public class DAOMateriaCiclo {
     public static ArrayList<String> listaMaterias(ArrayList<Materia> materias){
         ArrayList<String> listaMaterias = new ArrayList<>();
         for (int i=0; i<materias.size();i++){
-            listaMaterias.add(materias.get(i).getNombre());
+            listaMaterias.add(materias.get(i).getCodigo_materia());
         }
         return listaMaterias;
     }
