@@ -9,9 +9,13 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.crud_encuesta.R;
@@ -24,12 +28,16 @@ public class EscuelaAdapter extends BaseAdapter {
     ArrayList<Escuela> l;
     SQLiteDatabase db;
     Activity activity;
+    ArrayList<Facultad> facultades;
+    ArrayList<String> listafacultades;
+    int id_facu;
 
-    public EscuelaAdapter(Context c, ArrayList<Escuela> lista, SQLiteDatabase db, Activity a) {
+    public EscuelaAdapter(Context c, ArrayList<Escuela> lista, SQLiteDatabase db, Activity a, ArrayList<Facultad> f) {
         this.context = c;
         this.l = lista;
         this.db = db;
         this.activity = a;
+        this.facultades=f;
     }
 
     @Override
@@ -56,7 +64,8 @@ public class EscuelaAdapter extends BaseAdapter {
         }
         Button btneditar = view.findViewById(R.id.btn_editar);
         Button btneliminar = view.findViewById(R.id.btn_eliminar);
-        TextView textView = view.findViewById(R.id.txt_escuela_item);
+        Button btninfo=view.findViewById(R.id.btn_infor);
+        TextView textView=view.findViewById(R.id.txt_escuela_item);
         textView.setText(l.get(position).toString());
 
         btneliminar.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +102,32 @@ public class EscuelaAdapter extends BaseAdapter {
 
                 View view=inflater.inflate(R.layout.dialogo_escuela, null);
                 final EditText nom=view.findViewById(R.id.in_nom_escuela);
-                nom.setText(e.getNombre());
+                final EditText cod=view.findViewById(R.id.in_cod_escuela);
+                final Spinner facu=view.findViewById(R.id.spinner_lista_facultad);
+                TextView title=view.findViewById(R.id.title_escuela);
+                title.setText(R.string.title_activity_act);
+                listafacultades=obtenerListaFacultad();
+                ArrayAdapter adapterFa = new ArrayAdapter(context, android.R.layout.simple_list_item_1, listafacultades);
+                facu.setAdapter(adapterFa);
+
+                facu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (position != 0) id_facu = facultades.get(position - 1).getId();
+                        else id_facu= -1;
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                nom.setText(l.get(position).getNombre());
+                cod.setText(l.get(position).getCod());
+                for (int i = 0; i < facultades.size(); i++) {
+                    if (e.getFacultad() == facultades.get(i).getId()) facu.setSelection(i+1);
+                }
 
                 d.setPositiveButton(R.string.actualizar_string, new DialogInterface.OnClickListener() {
                     @Override
@@ -102,7 +136,10 @@ public class EscuelaAdapter extends BaseAdapter {
                         else{
                             ContentValues contentValues=new ContentValues();
                             contentValues.put(EstructuraTablas.COL_0,id);
-                            contentValues.put(EstructuraTablas.COL_1,nom.getText().toString());
+                            contentValues=new ContentValues();
+                            contentValues.put(EstructuraTablas.COL_2,nom.getText().toString());
+                            contentValues.put(EstructuraTablas.COL_1,id_facu);
+                            contentValues.put(EstructuraTablas.COL_3,cod.getText().toString());
                             Operaciones_CRUD.actualizar(db,contentValues,context,EstructuraTablas.ESCUELA_TABLA_NAME,EstructuraTablas.COL_0,id);
                             l.clear();
                             setL(Operaciones_CRUD.todosEscuela(EstructuraTablas.ESCUELA_TABLA_NAME, db));
@@ -121,11 +158,59 @@ public class EscuelaAdapter extends BaseAdapter {
 
             }
         });
+        btninfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Escuela e = getItem(position);
+                final AlertDialog.Builder d = new AlertDialog.Builder(context);
+
+                View view = inflater.inflate(R.layout.dialogo_escuela, null);
+
+                final EditText nom=view.findViewById(R.id.in_nom_escuela);
+                final EditText cod=view.findViewById(R.id.in_cod_escuela);
+                final Spinner facu=view.findViewById(R.id.spinner_lista_facultad);
+                final TextView title=view.findViewById(R.id.title_escuela);
+                title.setText(R.string.title_activity_info);
+                listafacultades=obtenerListaFacultad();
+                ArrayAdapter adapterFa = new ArrayAdapter(context, android.R.layout.simple_list_item_1, listafacultades);
+                facu.setAdapter(adapterFa);
+
+                nom.setEnabled(false);
+                cod.setEnabled(false);
+                facu.setEnabled(false);
+
+                nom.setText(l.get(position).getNombre());
+                cod.setText(l.get(position).getCod());
+                for (int i = 0; i < facultades.size(); i++) {
+                    if (e.getFacultad() == facultades.get(i).getId()) facu.setSelection(i+1);
+                }
+
+
+
+                d.setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                d.setView(view);
+                d.show();
+            }
+        });
 
         return view;
     }
     public void setL(ArrayList<Escuela> l) {
         this.l = l;
         notifyDataSetChanged();
+    }
+    public ArrayList<String> obtenerListaFacultad() {
+        ArrayList<String> listaca = new ArrayList<>();
+        listaca.add("Seleccione");
+        for (int i = 0; i < facultades.size(); i++) {
+            listaca.add(facultades.get(i).toString());
+        }
+        return listaca;
     }
 }

@@ -8,7 +8,9 @@ public class EstructuraTablas {
     //Constantes de nombres de tabla Escuela
     public static final String ESCUELA_TABLA_NAME = "ESCUELA";
     public static final String COL_0 = "ID_ESCUELA";
-    public static final String COL_1 = "NOMBRE_ESCUELA";
+    public static final String COL_1 = "ID_FACULTAD";
+    public static final String COL_2 = "NOMBRE_ESCUELA";
+    public static final String COL_3 = "CODIGO_ESCUELA";
 
     //Constantes de Tabla Carrera
     public static final String CARRERA_TABLA_NAME = "CARRERA";
@@ -41,6 +43,12 @@ public class EstructuraTablas {
     public static final String COL_5_ENCUESTA = "FECHA_FINAL_ENCUESTA";
 
     //Constante de Tabla de Docente
-    public static final String DOCENTE_TABLE_NAME="PDG_DCN_DOCENTE";
-    public static final String COL_0_DOCENTE="ID_PDG_DCN";
+    public static final String DOCENTE_TABLE_NAME = "PDG_DCN_DOCENTE";
+    public static final String COL_0_DOCENTE = "ID_PDG_DCN";
+
+    //Constantes de Tabla de Facultad
+    public static final String FACULTAD_TABLE_NAME = "FACULTAD";
+    public static final String COL_0_FACULTAD = "ID_FACULTAD";
+    public static final String COL_1_FACULTAD = "NOMBRE_FACULTAD";
+
 }

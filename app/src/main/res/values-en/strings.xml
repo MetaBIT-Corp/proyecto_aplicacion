@@ -79,4 +79,6 @@
     <string name="title_activity_info">Information</string>
     <string name="title_activity_act">Update</string>
     <string name="el_buscarMat">Searching Subjects</string>
+    <string name="lbl_facu">Faculty</string>
+    <string name="lbl_cod_escuela">Code of School</string>
 </resources>

@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.widget.Toast;
 
 import com.example.crud_encuesta.R;
@@ -43,7 +44,6 @@ public class Operaciones_CRUD {
         }
     }
 
-
     public static ArrayList<Escuela> todosEscuela(String table_name, SQLiteDatabase db) {
         ArrayList<Escuela> lista = new ArrayList<>();
         Cursor c = db.rawQuery(" SELECT * FROM " + table_name, null);
@@ -53,10 +53,47 @@ public class Operaciones_CRUD {
             do {
                 e = new Escuela();
                 e.setId(c.getInt(0));
-                e.setNombre(c.getString(1));
+                e.setFacultad(c.getInt(1));
+                e.setNombre(c.getString(2));
+                e.setCod(c.getString(3));
                 lista.add(e);
             } while (c.moveToNext());
         }
+        return lista;
+    }
+    public static ArrayList<Escuela> todosEscuela(String table_name,SQLiteDatabase db, String parametro){
+        ArrayList<Escuela> lista = new ArrayList<>();
+        Cursor c = db.rawQuery("SELECT *FROM "+table_name+" WHERE "+EstructuraTablas.COL_2+" LIKE '%"+parametro+"%'", null);
+
+        if (c.moveToFirst()) {
+            c.moveToFirst();
+            Escuela e;
+            do {
+                e = new Escuela();
+                e.setId(c.getInt(0));
+                e.setFacultad(c.getInt(1));
+                e.setNombre(c.getString(2));
+                e.setCod(c.getString(3));
+                lista.add(e);
+            } while (c.moveToNext());
+        }
+        return lista;
+    }
+
+    public static ArrayList<Facultad> todosFacultad(SQLiteDatabase db){
+        ArrayList<Facultad> lista = new ArrayList<>();
+        Cursor cu = db.rawQuery(" SELECT * FROM " + EstructuraTablas.FACULTAD_TABLE_NAME, null);
+
+        if (cu.moveToFirst()) {
+            Facultad f;
+            do {
+                f=new Facultad();
+                f.setId(cu.getInt(0));
+                f.setNombre(cu.getString(1));
+                lista.add(f);
+            }while (cu.moveToNext());
+        }
+
         return lista;
     }
 

@@ -3,6 +3,8 @@ package com.example.crud_encuesta.Componentes_EL;
 public class Escuela {
     private int id;
     private String nombre;
+    private String cod;
+    private int facultad;
 
     public Escuela(){
 
@@ -11,6 +13,22 @@ public class Escuela {
     public Escuela(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
+    }
+
+    public String getCod() {
+        return cod;
+    }
+
+    public void setCod(String cod) {
+        this.cod = cod;
+    }
+
+    public int getFacultad() {
+        return facultad;
+    }
+
+    public void setFacultad(int facultad) {
+        this.facultad = facultad;
     }
 
     public int getId() {
@@ -30,6 +48,6 @@ public class Escuela {
     }
 
     public String toString(){
-        return "ID: " + this.id + " - Nombre: " + this.nombre;
+        return this.nombre;
     }
 }
