@@ -41,8 +41,6 @@ public class DAOEvaluacion {
         contentValues.put("INTENTO",evaluacion.getCantIntento());
         contentValues.put("NOMBRE_EVALUACION",evaluacion.getNombre());
         contentValues.put("DESCRIPCION_EVALUACION",evaluacion.getDescripcion());
-        contentValues.put("RETROCEDER",evaluacion.getRetroceder());
-
 
         return (baseDeDatos.insert("EVALUACION",null,contentValues)>0);
     }
@@ -58,8 +56,6 @@ public class DAOEvaluacion {
         contentValues.put("INTENTO",evaluacion.getCantIntento());
         contentValues.put("NOMBRE_EVALUACION",evaluacion.getNombre());
         contentValues.put("DESCRIPCION_EVALUACION",evaluacion.getDescripcion());
-        contentValues.put("RETROCEDER",evaluacion.getRetroceder());
-
 
         return (baseDeDatos.update("EVALUACION",contentValues,"ID_EVALUACION =" + evaluacion.getId(),null)>0);
     }
@@ -76,8 +72,7 @@ public class DAOEvaluacion {
                         cursor.getInt(2),
                         cursor.getInt(3),
                         cursor.getString(4),
-                        cursor.getString(5),
-                        cursor.getInt(6)
+                        cursor.getString(5)
                 ));
 
             }while (cursor.moveToNext());
@@ -88,7 +83,7 @@ public class DAOEvaluacion {
     //retorna la lista pero solo con el elemento buscado
     public ArrayList<Evaluacion> verUno(String nombre){
         evaluaciones.clear();
-        Cursor cursor  = baseDeDatos.rawQuery("Select * FROM EVALUACION WHERE NOMBRE_EVALUACION = '" + nombre + "'"  ,null);
+        Cursor cursor  = baseDeDatos.rawQuery("Select * FROM EVALUACION WHERE NOMBRE_EVALUACION LIKE '" + nombre + "%'"  ,null);
         if(cursor.moveToFirst()){
             cursor.moveToFirst();
             do {
@@ -98,8 +93,7 @@ public class DAOEvaluacion {
                         cursor.getInt(2),
                         cursor.getInt(3),
                         cursor.getString(4),
-                        cursor.getString(5),
-                        cursor.getInt(6)
+                        cursor.getString(5)
                 ));
             }while (cursor.moveToNext());
         }

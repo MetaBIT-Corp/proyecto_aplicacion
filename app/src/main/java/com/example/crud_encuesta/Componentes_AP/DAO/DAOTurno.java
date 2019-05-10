@@ -60,9 +60,9 @@ public class DAOTurno {
         return (baseDeDatos.update("TURNO",contentValues,"ID_TURNO =" + turno.getId(),null)>0);
     }
 
-    public ArrayList<Turno> verTodos(){
+    public ArrayList<Turno> verTodos(Integer id_evaluacion){
         turnos.clear(); //limpiamos lista del adapter
-        Cursor cursor  = baseDeDatos.rawQuery("Select * FROM TURNO",null);
+        Cursor cursor  = baseDeDatos.rawQuery("Select * FROM TURNO WHERE ID_EVALUACION =" +id_evaluacion,null);
         if(cursor.moveToFirst()){
             cursor.moveToFirst();
             do{
@@ -81,9 +81,10 @@ public class DAOTurno {
     }
 
     //retorna la lista pero solo con el elemento buscado
-    public ArrayList<Turno> verUno(int id){
+    public ArrayList<Turno> verUno(int id, int id_evaluacion){
         turnos.clear();
-        Cursor cursor  = baseDeDatos.rawQuery("Select * FROM TURNO WHERE ID_TURNO = " + id  ,null);
+        Cursor cursor  = baseDeDatos.rawQuery("Select * FROM TURNO WHERE ID_TURNO = " + id + " AND ID_EVALUACION =" +id_evaluacion,
+                null);
         if(cursor.moveToFirst()){
             cursor.moveToFirst();
             turnos.add(new Turno(

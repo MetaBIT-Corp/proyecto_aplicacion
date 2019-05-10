@@ -1,12 +1,18 @@
 package com.example.crud_encuesta.Componentes_AP.Activities;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -25,6 +31,7 @@ import com.example.crud_encuesta.Componentes_AP.DAO.DAOEvaluacion;
 import com.example.crud_encuesta.Componentes_AP.DAO.DAOTurno;
 import com.example.crud_encuesta.Componentes_AP.Models.Evaluacion;
 import com.example.crud_encuesta.Componentes_AP.Models.Turno;
+import com.example.crud_encuesta.Componentes_MT.Intento.IntentoActivity;
 import com.example.crud_encuesta.R;
 
 import java.text.DateFormat;
@@ -40,17 +47,26 @@ public class TurnoActivity extends AppCompatActivity {
     ArrayList<Turno> turnos;
     Turno turno;
     private int anio, mes, dia, hora, minuto;
+    int id_evaluacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turno);
 
-        daoTurno = new DAOTurno(this);
-        turnos = daoTurno.verTodos();
-        adapterTurno = new AdapterTurno(turnos,daoTurno,this);
+        //recuperamos el id de la evaluación que nos mandan
+        Bundle bundle = this.getIntent().getExtras();
+        if(bundle != null){
+            id_evaluacion = bundle.getInt("id_evaluacion");
+        }
 
-        final ImageView agregar = (ImageView) findViewById(R.id.ap_imgv_agregar_turno);
+
+        daoTurno = new DAOTurno(this);
+        turnos = daoTurno.verTodos(id_evaluacion);
+        adapterTurno = new AdapterTurno(turnos,daoTurno,this, this);
+
+
+        FloatingActionButton add = (FloatingActionButton) findViewById(R.id.ap_fab_agregar_turno);
         ImageView buscar = (ImageView) findViewById(R.id.ap_imgv_buscar_turno);
         ImageView all = (ImageView) findViewById(R.id.ap_imgv_all_turno);
         final EditText edt_buscar = (EditText) findViewById(R.id.ap_edt_buscar_turno);
@@ -60,15 +76,61 @@ public class TurnoActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO:intent a claves
+            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                LayoutInflater inflater = (LayoutInflater) getApplication().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                turno = turnos.get(position);
+                final int id_turno_intento = turno.getId();
+
+                //creamos alert dialog
+                AlertDialog.Builder pass_emergente = new AlertDialog.Builder(TurnoActivity.this);
+                pass_emergente.setCancelable(true);
+                View v_pass = inflater.inflate(R.layout.contrasenia_layout, null);
+
+
+                //enlazamos views del dialogo
+                final TextView tv_dateinicial = (TextView) v_pass.findViewById(R.id.ap_tv_indicaciones);
+                final EditText pass_turno = (EditText) v_pass.findViewById(R.id.ap_edt_pass_intento);
+
+                pass_emergente.setPositiveButton("Ingresar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(!pass_turno.getText().toString().isEmpty()){
+                            if (pass_turno.getText().toString().equals(turno.getContrasenia())){
+                                Intent intent = new Intent(view.getContext(), IntentoActivity.class);
+                                intent.putExtra("id_turno_intento",id_turno_intento);
+                                startActivity(intent);
+                            }else {
+                                Toast.makeText(TurnoActivity.this,
+                                        "Contraseña no valida ",
+                                        Toast.LENGTH_SHORT).show();
+                                pass_turno.setText("");
+                            }
+                        } else {
+                            Toast.makeText(TurnoActivity.this,
+                                    "Debe de llenar los campos",
+                                    Toast.LENGTH_SHORT).show();
+                            pass_turno.setText("");
+                        }
+                    }
+                });
+
+                pass_emergente.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // no esperamos que haga nada al cerrar, solo se cierra
+                    }
+                });
+                pass_emergente.setView(v_pass);
+                pass_emergente.show();
+
+
             }
         });
 
         //TODO: Listeners
 
         //Inicio listener de agregar
-        agregar.setOnClickListener(new View.OnClickListener() {
+        add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -78,6 +140,8 @@ public class TurnoActivity extends AppCompatActivity {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);//para quitar el titulo
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.dialogo_turno);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                 dialog.show();
 
                 //enlazamos views del dialogo turno
@@ -151,7 +215,7 @@ public class TurnoActivity extends AppCompatActivity {
                                 && !contrasenia.getText().toString().isEmpty()) {
                             try {
                                 turno = new Turno(
-                                        1,
+                                        id_evaluacion,
                                         dateinicial.getText().toString() + " " + timeinicial.getText().toString(),
                                         datefinal.getText().toString() + " " + timefinal.getText().toString(),
                                         ver,
@@ -160,7 +224,7 @@ public class TurnoActivity extends AppCompatActivity {
                                 //creamos registro
                                 daoTurno.Insertar(turno);
                                 //refrescamos la lista
-                                turnos = daoTurno.verTodos();
+                                turnos = daoTurno.verTodos(id_evaluacion);
                                 //como ya estamos dentro de la clase adaptador simplemente ejecutamos el metodo
                                 adapterTurno.notifyDataSetChanged();
                                 //cerramos el dialogo
@@ -196,7 +260,7 @@ public class TurnoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!edt_buscar.getText().toString().isEmpty()){
-                    turnos = daoTurno.verUno(Integer.parseInt(edt_buscar.getText().toString()));
+                    turnos = daoTurno.verUno(Integer.parseInt(edt_buscar.getText().toString()),id_evaluacion);
                     adapterTurno.notifyDataSetChanged();
                 }else{
                     Toast.makeText(
@@ -213,7 +277,7 @@ public class TurnoActivity extends AppCompatActivity {
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                turnos = daoTurno.verTodos();
+                turnos = daoTurno.verTodos(id_evaluacion);
                 adapterTurno.notifyDataSetChanged();
             }
         });

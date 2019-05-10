@@ -7,6 +7,8 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_AP.DAO.DAOTurno;
 import com.example.crud_encuesta.Componentes_AP.Models.Turno;
+import com.example.crud_encuesta.Componentes_MT.Clave.ClaveActivity;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
@@ -36,6 +39,7 @@ public class AdapterTurno extends BaseAdapter {
     Turno turno;
     DAOTurno daoTurno;
     Activity activity; //la actividad donde va a mostrarse el listview
+    Context context;
 
 
     //variables que nos ayudara a manejar los id de turno y de valauacion
@@ -44,10 +48,11 @@ public class AdapterTurno extends BaseAdapter {
 
 
     //constructos del adapter
-    public AdapterTurno(ArrayList<Turno> turnos, DAOTurno daoTurno, Activity activity) {
+    public AdapterTurno(ArrayList<Turno> turnos, DAOTurno daoTurno, Activity activity,Context context) {
         this.turnos = turnos;
         this.daoTurno = daoTurno;
         this.activity = activity;
+        this.context = context;
     }
 
     //getter y setter
@@ -103,6 +108,7 @@ public class AdapterTurno extends BaseAdapter {
         ImageView editar = (ImageView) view.findViewById(R.id.ap_editar_item);
         ImageView eliminar = (ImageView) view.findViewById(R.id.ap_eliminar_item);
         ImageView info = (ImageView) view.findViewById(R.id.ap_info_item);
+        ImageView turnoi = (ImageView) view.findViewById(R.id.ap_turno_item);
 
         String fechainicial = turno.getDateInicial();
         String[] pfechainicial = fechainicial.split(" ");
@@ -117,6 +123,8 @@ public class AdapterTurno extends BaseAdapter {
         editar.setTag(position);
         eliminar.setTag(position);
         info.setTag(position);
+        turnoi.setTag(position);
+
 
         //TODO: OnCLICKLISTENER DE OPCIONES
         //inicio de listener editar
@@ -138,6 +146,8 @@ public class AdapterTurno extends BaseAdapter {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);//para quitar el titulo
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.dialogo_turno);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                 dialog.show();
 
                 //enlazamos views del dialogo turno
@@ -231,7 +241,7 @@ public class AdapterTurno extends BaseAdapter {
                                 //editamos registro
                                 daoTurno.Editar(turno);
                                 //refrescamos la lista
-                                turnos = daoTurno.verTodos();
+                                turnos = daoTurno.verTodos(getIdEvaluacion());
                                 //como ya estamos dentro de la clase adaptador simplemente ejecutamos el metodo
                                 notifyDataSetChanged();
                                 //cerramos el dialogo
@@ -291,7 +301,7 @@ public class AdapterTurno extends BaseAdapter {
                     public void onClick(DialogInterface dialog, int which) {
                         //elimina el registro, actualiza la lista y notifica el cambio al adaptador
                         daoTurno.Eliminar(getIdTurno());
-                        turnos = daoTurno.verTodos();
+                        turnos = daoTurno.verTodos(getIdEvaluacion());
                         notifyDataSetChanged();
 
                     }
@@ -328,6 +338,7 @@ public class AdapterTurno extends BaseAdapter {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);//para quitar el titulo
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.vista_turno);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.show();
 
                 //enlazamos views del dialogo turno
@@ -354,6 +365,20 @@ public class AdapterTurno extends BaseAdapter {
                         dialog.dismiss();
                     }
                 });
+            }
+        });
+
+        turnoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //recuperamos la posicion del registro
+                int pos = Integer.parseInt(v.getTag().toString());
+                int id_turno = turnos.get(pos).getId();
+
+                Intent intent = new Intent(context, ClaveActivity.class);
+                //enviamos parametro
+                intent.putExtra("id_turno",id_turno);
+                context.startActivity(intent);
             }
         });
         //final de listener info
