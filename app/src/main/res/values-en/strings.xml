@@ -110,4 +110,11 @@
     <string name="mt_finalizar">Finish</string>
     <string name="mt_finalizar_evaluacion">¿Do you want to finish the evaluation?</string>
     <string name="mt_ir_inicio">Go Home</string>
+    <string name="ap_evaluaciones">Pensum</string>
+    <string name="ap_buscar_pensum">Buscar pensum</string>
+    <string name="ap_title_dialogo_pensum">Nuevo</string>
+    <string name="ap_anio_pensum">Año de pensum</string>
+    <string name="ap_title_dialogo_pensum_materia">Añadir materia</string>
+    <string name="ap_titlevista_pensum">Materias de pensum</string>
+    <string name="ap_materias">Listado de materias</string>
 </resources>
