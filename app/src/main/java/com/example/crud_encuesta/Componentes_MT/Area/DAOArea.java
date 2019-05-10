@@ -36,14 +36,14 @@ public class DAOArea {
         databaseAccess.close();
     }
 
-    public List<Area> getAreas(){
+    public List<Area> getAreas(int id_materia){
         List<Area> areas = new ArrayList<>();
         int id;
         String titulo;
 
         db = databaseAccess.open();
 
-        Cursor cursor_area = db.rawQuery("SELECT id_area, titulo FROM area", null);
+        Cursor cursor_area = db.rawQuery("SELECT id_area, titulo FROM area WHERE id_cat_mat="+id_materia, null);
 
         while(cursor_area.moveToNext()){
             id = cursor_area.getInt(0);
