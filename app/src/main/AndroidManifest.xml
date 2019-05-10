@@ -9,15 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Componentes_MT.Intento.VerIntentoActivity"></activity>
+        <activity android:name=".Componentes_EL.Materia.MateriaUsersActivity"></activity>
+        <activity android:name=".SubMenuMateriaActivity" />
+        <activity android:name=".Componentes_MT.Intento.VerIntentoActivity" />
         <activity android:name=".Componentes_MT.Intento.IntentoActivity" />
         <activity android:name=".Componentes_MT.ClaveArea.VerAreasActivity" />
         <activity
-            android:name=".Componentes_EL.EncuestaActivity"
+            android:name=".Componentes_EL.Encuesta.EncuestaActivity"
             android:label="@string/title_activity_encuesta"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Componentes_EL.MateriaActivity"
+            android:name=".Componentes_EL.Materia.MateriaActivity"
             android:label="@string/title_activity_materia"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Componentes_MT.Clave.ClaveActivity" />
@@ -25,11 +27,11 @@
         <activity android:name=".Componentes_AP.Activities.EvaluacionActivity" />
         <activity android:name=".Componentes_AP.Activities.LoginActivity" />
         <activity
-            android:name=".Componentes_EL.CarreraActivity"
+            android:name=".Componentes_EL.Carrera.CarreraActivity"
             android:label="@string/title_activity_carrera"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Componentes_EL.EscuelaActivity"
+            android:name=".Componentes_EL.Escuela.EscuelaActivity"
             android:label="@string/title_activity_escuela"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Componentes_Docente.ActivityDocente" />

@@ -21,7 +21,7 @@ import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.crud_encuesta.Componentes_EL.Escuela;
+import com.example.crud_encuesta.Componentes_EL.Escuela.Escuela;
 import com.example.crud_encuesta.Componentes_EL.Operaciones_CRUD;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;

@@ -6,9 +6,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.widget.Toast;
 
+import com.example.crud_encuesta.Componentes_EL.Carrera.Carrera;
+import com.example.crud_encuesta.Componentes_EL.Encuesta.Encuesta;
+import com.example.crud_encuesta.Componentes_EL.Escuela.Escuela;
+import com.example.crud_encuesta.Componentes_EL.Materia.Materia;
+import com.example.crud_encuesta.Componentes_EL.ModelosAdicionales.Facultad;
+import com.example.crud_encuesta.Componentes_EL.ModelosAdicionales.Pensum;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
@@ -61,6 +66,7 @@ public class Operaciones_CRUD {
         }
         return lista;
     }
+
     public static ArrayList<Escuela> todosEscuela(String table_name,SQLiteDatabase db, String parametro){
         ArrayList<Escuela> lista = new ArrayList<>();
         Cursor c = db.rawQuery("SELECT *FROM "+table_name+" WHERE "+EstructuraTablas.COL_2+" LIKE '%"+parametro+"%'", null);
@@ -115,6 +121,24 @@ public class Operaciones_CRUD {
         return lista;
     }
 
+    public static ArrayList<Carrera> todosCarrera(SQLiteDatabase db, ArrayList<Escuela> escuelas,String parametro) {
+        ArrayList<Carrera> lista = new ArrayList<>();
+        Cursor cu = db.rawQuery("SELECT *FROM "+EstructuraTablas.CARRERA_TABLA_NAME+" WHERE "+EstructuraTablas.COL_2_CARRERA+" LIKE '%"+parametro+"%'", null);
+        if (cu.moveToFirst()) {
+            Carrera c;
+            do {
+                c = new Carrera();
+                c.setId(cu.getInt(0));
+                for (int i = 0; i < escuelas.size(); i++) {
+                    if (cu.getInt(1) == escuelas.get(i).getId()) c.setEscuela(escuelas.get(i));
+                }
+                c.setNombre(cu.getString(2));
+                lista.add(c);
+            } while (cu.moveToNext());
+        }
+        return lista;
+    }
+
     public static ArrayList<Pensum> todosPensum(SQLiteDatabase db) {
         ArrayList<Pensum> lista = new ArrayList<>();
         Cursor cu = db.rawQuery(" SELECT * FROM " + EstructuraTablas.PENSUM_TABLA_NAME, null);
@@ -153,6 +177,28 @@ public class Operaciones_CRUD {
 
     public static ArrayList<Materia> todosMateria(SQLiteDatabase db,String parametro) {
         ArrayList<Materia> lista = new ArrayList<>();
+        Cursor cu = db.rawQuery("SELECT *FROM "+EstructuraTablas.MATERIA_TABLA_NAME+" WHERE "+EstructuraTablas.COL_4_MATERIA+" LIKE '%"+parametro+"%'",null);
+
+        if (cu.moveToFirst()) {
+            Materia m;
+            do {
+                m = new Materia();
+                m.setId(cu.getInt(0));
+                m.setCodigo_materia(cu.getString(1));
+                m.setNombre(cu.getString(2));
+                m.setElectiva(cu.getInt(3) == 1);
+                m.setMaximo_preguntas(cu.getInt(4));
+                lista.add(m);
+            }while (cu.moveToNext());
+        }
+
+        return lista;
+    }
+
+    public static ArrayList<Materia> todosMateria(SQLiteDatabase db,String id, int tipo) {
+        ArrayList<Materia> lista = new ArrayList<>();
+
+        
         Cursor cu = db.rawQuery("SELECT *FROM "+EstructuraTablas.MATERIA_TABLA_NAME+" WHERE "+EstructuraTablas.COL_4_MATERIA+" LIKE '%"+parametro+"%'",null);
 
         if (cu.moveToFirst()) {

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Componentes_EL.EscuelaActivity"
+    tools:context=".Componentes_EL.Escuela.EscuelaActivity"
     tools:showIn="@layout/activity_escuela"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
@@ -15,13 +15,14 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/linearBusqueda"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="20dp"
+            android:background="@color/icons"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:background="@color/icons">
+            android:orientation="horizontal"
+            android:padding="20dp">
 
             <EditText
                 android:id="@+id/find_nom"
