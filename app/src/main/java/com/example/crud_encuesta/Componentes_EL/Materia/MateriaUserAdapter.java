@@ -27,12 +27,16 @@ public class MateriaUserAdapter extends BaseAdapter {
     ArrayList<Materia> l;
     SQLiteDatabase db;
     Activity activity;
+    int idUser;
+    int rol;
 
-    public MateriaUserAdapter(Context context, ArrayList<Materia> l, SQLiteDatabase db, Activity activity) {
+    public MateriaUserAdapter(Context context, ArrayList<Materia> l, SQLiteDatabase db, Activity activity,int user,int rol) {
         this.context = context;
         this.l = l;
         this.db = db;
         this.activity = activity;
+        this.idUser=user;
+        this.rol=rol;
     }
 
     @Override
@@ -63,8 +67,12 @@ public class MateriaUserAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(context, SubMenuMateriaActivity.class);
-                i.putExtra("id_materia",getItemId(position));
+                i.putExtra("id_materia",(int)getItemId(position));
+                i.putExtra("nom_materia",getItem(position).getNombre());
+                i.putExtra("id_user",idUser);
+                i.putExtra("rol_user",rol);
                 context.startActivity(i);
+                activity.finish();
             }
         });
 

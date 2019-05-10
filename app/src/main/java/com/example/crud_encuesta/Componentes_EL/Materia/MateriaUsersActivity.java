@@ -39,7 +39,7 @@ public class MateriaUsersActivity extends AppCompatActivity {
         access = DatabaseAccess.getInstance(MateriaUsersActivity.this);
         db = access.open();
         listaMateria= Operaciones_CRUD.todosMateria(db,rol,id);
-        adapter=new MateriaUserAdapter(MateriaUsersActivity.this,listaMateria,db,this);
+        adapter=new MateriaUserAdapter(MateriaUsersActivity.this,listaMateria,db,this,id,rol);
 
         listView.setAdapter(adapter);
 

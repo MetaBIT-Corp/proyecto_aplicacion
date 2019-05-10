@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.TurnoActivity;
 import com.example.crud_encuesta.Componentes_Docente.ActivityDocente;
+import com.example.crud_encuesta.Componentes_EL.Encuesta.Encuesta;
 import com.example.crud_encuesta.Componentes_EL.Materia.MateriaUsersActivity;
 import com.example.crud_encuesta.Componentes_Estudiante.ActivityEstudiante;
 import com.example.crud_encuesta.Componentes_MT.Area.AreaActivity;
@@ -51,21 +52,25 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         TextView bienvenida=findViewById(R.id.title_bienvenida);
 
+        //Recuperando datos de usuario logueado
+        //id=getIntent().getExtras().getInt("id_user");
+        //rol=getIntent().getExtras().getInt("rol_user");
+
         switch (rol){
             case 0: bienvenida.setText("Administrador");break;
             case 1: bienvenida.setText("Docente: "+"nombreDocente");break;
             case 2:bienvenida.setText("Estudiante: "+"nombre");break;
         }
 
-        //Recuperando datos de usuario logueado
-        //id=getIntent().getExtras().getInt("id_user");
-        //rol=getIntent().getExtras().getInt("rol_user");
+
 
         ImageView materia=findViewById(R.id.el_btnMateria);
         ImageView carrera=findViewById(R.id.el_btnCarrera);
 
         CardView cardViewCarrera=findViewById(R.id.cardCarrera);
 
+        //PARA OCULTARSELO AL ESTUDIANTE Y DOCENTE
+        //CUANDO
         if(rol==2){
             //Estudiante
             cardViewCarrera.setVisibility(View.GONE);
@@ -85,12 +90,12 @@ public class MainActivity extends AppCompatActivity {
                     case 1: i= new Intent(MainActivity.this, MateriaUsersActivity.class);
                         i.putExtra("id_user",id);
                         i.putExtra("rol_user",rol);
-                    startActivity(i);
+                        startActivity(i);
                     //Estudiante
                     case 2: i=new Intent(MainActivity.this,MateriaUsersActivity.class);
                         i.putExtra("id_user",id);
                         i.putExtra("rol_user",rol);
-                    startActivity(i);
+                        startActivity(i);
                     break;
 
 
@@ -101,7 +106,8 @@ public class MainActivity extends AppCompatActivity {
         carrera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(MainActivity.this,CarreraActivity.class);
+                //Intent i=new Intent(MainActivity.this,CarreraActivity.class);
+                Intent i=new Intent(MainActivity.this, EncuestaActivity.class);
                 startActivity(i);
             }
         });

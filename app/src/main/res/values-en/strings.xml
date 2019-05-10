@@ -84,4 +84,6 @@
     <string name="ap_titlevista_turno_pass">Acceso a intento</string>
     <string name="ap_indicaciones">Ingrese la contraseña para acceder al intento.</string>
     <string name="ap_ingreso_contraseña">Contraseña</string>
+    <string name="area">Area</string>
+    <string name="evaluacion">Evaluation</string>
 </resources>
