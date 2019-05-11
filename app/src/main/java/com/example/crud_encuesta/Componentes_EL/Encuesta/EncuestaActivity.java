@@ -1,6 +1,8 @@
 package com.example.crud_encuesta.Componentes_EL.Encuesta;
 
 import com.example.crud_encuesta.Componentes_Docente.Docente;
+
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
@@ -48,6 +50,7 @@ public class EncuestaActivity extends AppCompatActivity {
     int rol;
     int iduser;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +58,7 @@ public class EncuestaActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab= findViewById(R.id.fab);;
+        FloatingActionButton fab= findViewById(R.id.fab);
         listView=findViewById(R.id.list_view_base);
         access=DatabaseAccess.getInstance(EncuestaActivity.this);
         db=access.open();
