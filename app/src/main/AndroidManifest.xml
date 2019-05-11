@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Componentes_AP.Activities.PensumActivity"></activity>
+        <activity android:name=".Componentes_AP.Activities.PensumMateriaActivity"></activity>
+        <activity android:name=".Componentes_AP.Activities.PensumActivity" />
         <activity android:name=".Componentes_EL.Materia.MateriaUsersActivity" />
         <activity android:name=".SubMenuMateriaActivity" />
         <activity android:name=".Componentes_MT.Intento.VerIntentoActivity" />

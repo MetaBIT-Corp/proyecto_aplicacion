@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Componentes_AP.Activities.PensumMateriaActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ap_pensum_materia"
+                android:textColor="@color/icons"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="18dp" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:padding="20dp"
+            android:background="@color/icons">
+
+            <EditText
+                android:id="@+id/ap_edt_buscar_pensumm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:hint="@string/ap_buscar_pensum_materia"
+                android:textColor="@color/primary_text"/>
+
+            <ImageView
+                android:id="@+id/ap_imgv_buscar_pensumm"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_weight="0.1"
+                android:src="@drawable/searchgris" />
+
+            <ImageView
+                android:id="@+id/ap_imgv_all_pensumm"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_weight="0.1"
+                android:src="@drawable/allgris" />
+
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lista_pensum_materia"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:background="@color/icons">
+
+        </ListView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/ap_fab_agregar_pensumm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_input_add"
+            android:background="@color/icons"/>
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

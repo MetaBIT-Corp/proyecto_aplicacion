@@ -117,4 +117,6 @@
     <string name="ap_title_dialogo_pensum_materia">Añadir materia</string>
     <string name="ap_titlevista_pensum">Materias de pensum</string>
     <string name="ap_materias">Listado de materias</string>
+    <string name="ap_pensum_materia">Pensum Materia</string>
+    <string name="ap_buscar_pensum_materia">Buscar</string>
 </resources>
