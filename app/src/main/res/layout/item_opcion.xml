@@ -19,13 +19,13 @@
             android:id="@+id/txt_opcion"
             android:textAlignment="gravity"
             android:layout_weight="0.6"
-            android:text="Opcion"/>
+            android:text="@string/hint_opcion"/>
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cb_correcta"
-            android:text="Correcta"
+            android:text="@string/checkb_correcta"
             android:enabled="false"/>
 
         <LinearLayout

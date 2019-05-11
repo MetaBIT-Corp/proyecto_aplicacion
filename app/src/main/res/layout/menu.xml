@@ -50,7 +50,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="¡Bienvenido!"
+                android:text="@string/msg_bienvenida"
                 android:textColor="@android:color/black"
                 android:textSize="34sp" />
 
@@ -139,7 +139,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Escuela"
+                        android:text="@string/opc_escuela"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:textSize="15sp"
@@ -222,7 +222,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Docentes"
+                        android:text="@string/opc_docente"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:textSize="15sp"
@@ -260,7 +260,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Alumno"
+                        android:text="@string/opc_alumno"
                         android:layout_gravity="center"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
@@ -302,7 +302,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Encuesta"
+                        android:text="@string/opc_encuesta"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:textSize="15sp"

@@ -123,4 +123,21 @@
     <string name="ap_materias">Listado de materias</string>
     <string name="ap_pensum_materia">Pensum Materia</string>
     <string name="ap_buscar_pensum_materia">Buscar</string>
+    <!-- DC -->
+    <string name="msg_bienvenida">¡Bienvenido!</string>
+    <string name="opc_escuela">Escuela</string>
+    <string name="opc_docente">Docente</string>
+    <string name="opc_alumno">Estudiante</string>
+    <string name="opc_encuesta">Encuesta</string>
+    <string name="texto_opciones">Opciones</string>
+    <string name="texto_preguntas">Preguntas</string>
+    <string name="texto_descripcion">Descripción</string>
+    <string name="texto_titulo_dialogo_gpo_emp">Agregar Grupo Emparejamiento</string>
+    <string name="texto_titulo_dialogo_opcion">Agregar Opción</string>
+    <string name="hint_opcion">Opción</string>
+    <string name="checkb_correcta">Correcta</string>
+    <string name="texto_titulo_dialogo_pregunta">Agregar Pregunta</string>
+    <string name="hint_pregunta">Pregunta</string>
+    <string name="texto_gpo_emp">Grupos de emparejamiento</string>
+    <!-- END DC -->
 </resources>

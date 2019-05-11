@@ -21,7 +21,7 @@
             android:layout_gravity="left"
             android:paddingRight="10dp"
             android:textAlignment="center"
-            android:text="Agregar grupo emparejamiento"
+            android:text="@string/texto_titulo_dialogo_gpo_emp"
             android:textStyle="bold"
             android:textSize="12sp"/>
 
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/descripcion"
-        android:hint="Descripcion"/>
+        android:hint="@string/texto_descripcion"/>
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
@@ -49,14 +49,14 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Agregar"
+            android:text="@string/mt_agregar"
             android:id="@+id/btn_agregar"
             android:layout_weight="1"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancelar"
+            android:text="@string/mt_cancelar"
             android:id="@+id/btn_cancelar"
             android:layout_weight="1"/>
 
