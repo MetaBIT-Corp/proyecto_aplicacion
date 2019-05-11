@@ -80,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         CardView cv_escuela = (CardView)findViewById(R.id.cardEscuela);
         CardView cv_docente = (CardView)findViewById(R.id.cardDocente);
         CardView cv_alumno = (CardView)findViewById(R.id.cardAlumno);
+        CardView cv_materiaciclo = (CardView)findViewById(R.id.cardMateriaCiclo);
+        CardView cv_pensum = (CardView)findViewById(R.id.cardPensum);
+
         GridLayout grid_menu = (GridLayout)findViewById(R.id.grid_menu);
 
         //END
@@ -96,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
             grid_menu.removeView(cv_escuela);
             grid_menu.removeView(cv_docente);
             grid_menu.removeView(cv_alumno);
+            grid_menu.removeView(cv_materiaciclo);
+            grid_menu.removeView(cv_pensum);
 
             LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
                     GridLayout.LayoutParams.MATCH_PARENT,
