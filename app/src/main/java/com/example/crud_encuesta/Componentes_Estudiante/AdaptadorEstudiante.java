@@ -17,6 +17,8 @@ import android.widget.CheckBox;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
     private ArrayList<Estudiante> lista;
     private DAOEstudiante dao;
     private Estudiante estudiante;
+    private Usuario usuario;
     private int id = 0;
     private SQLiteDatabase db;
     private DatabaseAccess access;

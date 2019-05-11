@@ -268,7 +268,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="1"
-                                android:onClick="activity_materia_ciclo"
+                                android:onClick="activity_estudiante"
                                 android:src="@drawable/reading" />
 
                             <TextView
@@ -393,7 +393,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_weight="1"
-                                android:onClick="activity_encuesta"
+                                android:onClick="activity_materia_ciclo"
                                 android:src="@drawable/matciclo" />
 
                             <TextView

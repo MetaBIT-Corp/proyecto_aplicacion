@@ -5,7 +5,7 @@ public class Docente {
     private int id;
     private String carnet, nombre, descripcion, anio_titulo;
     private int tipo_jornada, cargo_actual, cargo_secundario,activo;
-    private int id_escuela;
+    private int id_escuela, id_usuario;
 
     public Docente(){}
 
@@ -22,7 +22,8 @@ public class Docente {
         this.nombre = nombre;
     }
 
-    public Docente(int id_escuela, String carnet, String anio_titulo, int activo, int tipo_jornada, String descripcion, int cargo_actual, int cargo_secundario,String nombre) {
+    public Docente(int id, int id_escuela, String carnet, String anio_titulo, int activo, int tipo_jornada, String descripcion, int cargo_actual, int cargo_secundario,String nombre, int id_usuario) {
+        this.id = id;
         this.id_escuela = id_escuela;
         this.carnet = carnet;
         this.anio_titulo = anio_titulo;
@@ -32,6 +33,20 @@ public class Docente {
         this.cargo_actual = cargo_actual;
         this.cargo_secundario = cargo_secundario;
         this.nombre = nombre;
+        this.id_usuario = id_usuario;
+    }
+
+    public Docente(int id_escuela, String carnet, String anio_titulo, int activo, int tipo_jornada, String descripcion, int cargo_actual, int cargo_secundario,String nombre,int id_usuario) {
+        this.id_escuela = id_escuela;
+        this.carnet = carnet;
+        this.anio_titulo = anio_titulo;
+        this.activo = activo;
+        this.tipo_jornada = tipo_jornada;
+        this.descripcion = descripcion;
+        this.cargo_actual = cargo_actual;
+        this.cargo_secundario = cargo_secundario;
+        this.nombre = nombre;
+        this.id_usuario = id_usuario;
     }
 
     public int getId() {
@@ -70,7 +85,7 @@ public class Docente {
         return anio_titulo;
     }
 
-    public void setAnio_titulacion(String anio_titulacion) {
+    public void setAnio_titulo(String anio_titulo) {
         this.anio_titulo = anio_titulo;
     }
 
@@ -112,6 +127,14 @@ public class Docente {
 
     public void setActivo(int activo) {
         this.activo = activo;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     @Override

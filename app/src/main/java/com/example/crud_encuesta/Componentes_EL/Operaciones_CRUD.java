@@ -343,7 +343,7 @@ public class Operaciones_CRUD {
                 d.setId(c.getInt(0));
                 d.setId_escuela(c.getInt(1));
                 d.setCarnet(c.getString(2));
-                d.setAnio_titulacion(c.getString(3));
+                d.setAnio_titulo(c.getString(3));
                 d.setActivo(c.getInt(4));
                 d.setTipo_jornada(c.getInt(5));
                 d.setDescripcion(c.getString(6));

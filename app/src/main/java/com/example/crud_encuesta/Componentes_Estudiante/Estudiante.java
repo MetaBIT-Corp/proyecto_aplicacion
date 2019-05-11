@@ -3,7 +3,7 @@ package com.example.crud_encuesta.Componentes_Estudiante;
 public class Estudiante {
     private int id;
     private String carnet, nombre, anio_ingreso;
-    private int activo;
+    private int activo, id_usuario;
 
     public Estudiante() {}
 
@@ -15,18 +15,28 @@ public class Estudiante {
         this.anio_ingreso = anio_ingreso;
     }
 
-    public Estudiante(String carnet, String nombre, int activo, String anio_ingreso) {
+    public Estudiante(int id, String carnet, String nombre, int activo, String anio_ingreso, int id_usuario) {
+        this.id = id;
         this.carnet = carnet;
         this.nombre = nombre;
         this.activo = activo;
         this.anio_ingreso = anio_ingreso;
+        this.id_usuario = id_usuario;
+    }
+
+    public Estudiante(String carnet, String nombre, int activo, String anio_ingreso,int id_usuario) {
+        this.carnet = carnet;
+        this.nombre = nombre;
+        this.activo = activo;
+        this.anio_ingreso = anio_ingreso;
+        this.id_usuario = id_usuario;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId_est(int id_est) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -60,6 +70,14 @@ public class Estudiante {
 
     public void setActivo(int activo) {
         this.activo = activo;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.DatabaseAccess;
 import java.util.ArrayList;
 
@@ -28,6 +29,14 @@ public class DAODocente {
         this.ct = ct;
     }
 
+    public boolean insertarUsuario(Usuario usuario){
+        ContentValues contenedor = new ContentValues();
+        contenedor.put("NOMUSUARIO",usuario.getNOMUSUARIO());
+        contenedor.put("CLAVE",usuario.getCLAVE());
+        contenedor.put("ROL",usuario.getROL());
+        return (cx.insert("USUARIO", null,contenedor)>0);
+    }
+
     public boolean insertar(Docente dc){
         ContentValues contenedor = new ContentValues();
         contenedor.put("ID_ESCUELA",dc.getId_escuela());
@@ -39,11 +48,20 @@ public class DAODocente {
         contenedor.put("ID_CARGO_ACTUAL",dc.getCargo_actual());
         contenedor.put("ID_SEGUNDO_CARGO",dc.getCargo_secundario());
         contenedor.put("NOMBRE_DOCENTE",dc.getNombre());
+        contenedor.put("IDUSUARIO",dc.getId_usuario());
         return (cx.insert("PDG_DCN_DOCENTE",null,contenedor)>0);
     }
 
     public boolean eliminar(int id){
         return (cx.delete("PDG_DCN_DOCENTE","ID_PDG_DCN="+id, null)>0);
+    }
+
+    public boolean editarUsuario(Usuario usuario){
+        ContentValues contenedor = new ContentValues();
+        contenedor.put("NOMUSUARIO",usuario.getNOMUSUARIO());
+        contenedor.put("CLAVE",usuario.getCLAVE());
+        contenedor.put("ROL",usuario.getROL());
+        return (cx.update("USUARIO", contenedor, "IDUSUARIO="+usuario.getIDUSUARIO(),null)>0);
     }
 
     public boolean editar(Docente dc){

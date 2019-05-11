@@ -1,7 +1,9 @@
 package com.example.crud_encuesta.Componentes_Estudiante;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 import java.util.ArrayList;
@@ -28,6 +31,7 @@ public class ActivityEstudiante extends AppCompatActivity {
     private AdaptadorEstudiante adapter;
     private ArrayList<Estudiante> lista;
     private Estudiante estudiante;
+    private Usuario usuario;
     private SQLiteDatabase db;
     private DatabaseAccess access;
     private int anio = Calendar.getInstance().get(Calendar.YEAR);
@@ -129,13 +133,38 @@ public class ActivityEstudiante extends AppCompatActivity {
                             if(activo.isChecked()){check = 1;}
                             else{check = 0;}
 
-                            estudiante = new Estudiante(
+                            usuario = new Usuario(
                                     carnet.getText().toString(),
+                                    carnet.getText().toString(),
+                                    2
+                            );
+
+                            estudiante = new Estudiante(
+                                    carnet.getText().toString().trim(),
                                     nombre.getText().toString(),
                                     check,
-                                    anio_ingreso.getText().toString());
+                                    anio_ingreso.getText().toString(),
+                                    usuario.getIDUSUARIO());
 
+                            dao.insertarUsuario(usuario);
                             dao.insertar(estudiante);
+
+                            final AlertDialog.Builder usrAlert= new AlertDialog.Builder(ActivityEstudiante.this);
+                            int clave_tamanio = usuario.getCLAVE().length();
+                            String astericos ="";
+                            for(int i=0;i<clave_tamanio-2;i++){
+                                astericos+="*";
+                            }
+                            String clave_formateada=(usuario.getCLAVE().substring(0,2)+astericos);
+                            usrAlert.setMessage("Usuario de Estudiante creado:\n\n"+"Usuario: "+usuario.getNOMUSUARIO()+"\nClave: "+clave_formateada);
+
+                            usrAlert.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {}
+                            });
+
+                            usrAlert.show();
+
                             adapter.notifyDataSetChanged();
                             lista = dao.verTodos();
                             dialogo.dismiss();
@@ -161,5 +190,4 @@ public class ActivityEstudiante extends AppCompatActivity {
         windowmanager.getDefaultDisplay().getMetrics(displayMetrics);
         return displayMetrics.widthPixels;
     }
-
 }
