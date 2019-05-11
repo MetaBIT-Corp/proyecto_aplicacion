@@ -7,6 +7,7 @@ import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_EL.EstructuraTablas;
 import com.example.crud_encuesta.Componentes_EL.Operaciones_CRUD;
+import com.example.crud_encuesta.Componentes_MT.Clave.ClaveActivity;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
@@ -40,12 +42,17 @@ public class EncuestaAdapter extends BaseAdapter {
     String cadenai = null;
     String cadenaf=null;
 
-    public EncuestaAdapter(Context c, ArrayList<Encuesta> lista, SQLiteDatabase db, Activity a, ArrayList<Docente> e) {
+    int rol;
+    int iduser;
+
+    public EncuestaAdapter(Context c, ArrayList<Encuesta> lista, SQLiteDatabase db, Activity a, ArrayList<Docente> e,int id,int rol) {
         this.context = c;
         this.l = lista;
         this.db = db;
         this.activity = a;
         this.listaDocentes = e;
+        this.rol=rol;
+        this.iduser=id;
     }
 
     @Override
@@ -64,7 +71,7 @@ public class EncuestaAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, ViewGroup parent) {
         final LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = convertView;
         if (view == null) {
@@ -73,10 +80,27 @@ public class EncuestaAdapter extends BaseAdapter {
 
         final Button btneditar = view.findViewById(R.id.btn_editar);
         Button btneliminar = view.findViewById(R.id.btn_eliminar);
+        Button btninfor=view.findViewById(R.id.btn_infor);
 
         TextView textView = view.findViewById(R.id.txt_escuela_item);
         textView.setText(l.get(position).toString());
 
+        if (rol==0||rol==2){
+            btneditar.setVisibility(View.GONE);
+            btneliminar.setVisibility(View.GONE);
+        }
+
+        if (rol==2||rol==1){
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i=new Intent(context, ClaveActivity.class);
+                    i.putExtra("id_encuesta",getItemId(position));
+                    context.startActivity(i);
+                    activity.finish();
+                }
+            });
+        }
 
 
 
@@ -93,7 +117,14 @@ public class EncuestaAdapter extends BaseAdapter {
                     public void onClick(DialogInterface dialog, int which) {
                         Operaciones_CRUD.eliminar(db, context, EstructuraTablas.ENCUESTA_TABLA_NAME, EstructuraTablas.COL_0_ENCUESTA, id);
                         l.clear();
-                        setL(Operaciones_CRUD.todosEncuesta(db, listaDocentes));
+                        if (rol==0||rol==2){
+                            setL(Operaciones_CRUD.todosEncuesta(db,listaDocentes));
+                        }
+
+                        if (rol==1){
+                            setL(Operaciones_CRUD.todosEncuesta(db, listaDocentes,iduser));
+                        }
+
                     }
                 });
                 alert.setNegativeButton(R.string.cancelar_string, new DialogInterface.OnClickListener() {
@@ -211,16 +242,20 @@ public class EncuestaAdapter extends BaseAdapter {
                             Toast.makeText(context,R.string.men_camp_vacios,Toast.LENGTH_SHORT).show();
                         else{
                             ContentValues contentValues=new ContentValues();
-
-                            /*OOOOOJOOOOO CAMBIAR CUANDO MANDEN EL ID DEL DOCENTE LOGUEADO*/
-                            contentValues.put(EstructuraTablas.COL_1_ENCUESTA,2);
-
+                            contentValues.put(EstructuraTablas.COL_1_ENCUESTA,Operaciones_CRUD.docenteEncuesta(db,iduser));
                             contentValues.put(EstructuraTablas.COL_2_ENCUESTA,nom.getText().toString());
                             contentValues.put(EstructuraTablas.COL_3_ENCUESTA,desc.getText().toString());
                             contentValues.put(EstructuraTablas.COL_4_ENCUESTA,infi.getText().toString());
                             contentValues.put(EstructuraTablas.COL_5_ENCUESTA,inff.getText().toString());
                             Operaciones_CRUD.actualizar(db,contentValues,context,EstructuraTablas.ENCUESTA_TABLA_NAME,EstructuraTablas.COL_0_ENCUESTA,id).show();
-                            l=Operaciones_CRUD.todosEncuesta(db,listaDocentes);
+                            if (rol==0||rol==2){
+                                l=Operaciones_CRUD.todosEncuesta(db,listaDocentes);
+                            }
+
+                            if (rol==1){
+                                l=Operaciones_CRUD.todosEncuesta(db, listaDocentes,iduser);
+                            }
+
                             setL(l);
                         }
                     }
@@ -234,6 +269,43 @@ public class EncuestaAdapter extends BaseAdapter {
                 d.setView(view);
                 d.show();
 
+            }
+        });
+
+        btninfor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final int id = (int) getItemId(position);
+                final Encuesta c = getItem(position);
+                final AlertDialog.Builder d = new AlertDialog.Builder(context);
+
+                View view = inflater.inflate(R.layout.dialogo_encuesta, null);
+
+                final EditText infi=view.findViewById(R.id.in_fecha_inicial);
+                final EditText inff=view.findViewById(R.id.in_fecha_final);
+                final EditText nom=view.findViewById(R.id.in_nom_encuesta);
+                final EditText desc=view.findViewById(R.id.in_descrip_encuesta);
+                Button btnfi=view.findViewById(R.id.btn_fecha_inicio);
+                Button btnff=view.findViewById(R.id.btn_fecha_final);
+
+                nom.setText(c.getTitulo());
+                desc.setText(c.getDescripcion());
+                infi.setText(c.getFecha_in());
+                inff.setText(c.getFecha_fin());
+                nom.setEnabled(false);
+                desc.setEnabled(false);
+                inff.setEnabled(false);
+                infi.setEnabled(false);
+
+                d.setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                d.setView(view);
+                d.show();
             }
         });
 

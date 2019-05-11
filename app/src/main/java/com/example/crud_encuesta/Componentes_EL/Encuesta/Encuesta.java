@@ -59,6 +59,6 @@ public class Encuesta {
     }
 
     public String toString(){
-        return "Titulo: "+titulo+"\nDescripcion: "+descripcion+"\nFecha Inicio: "+fecha_in+"\nFecha Fin: "+fecha_fin+"\nDocente que la Creo: "+id_docente;
+        return titulo;
     }
 }

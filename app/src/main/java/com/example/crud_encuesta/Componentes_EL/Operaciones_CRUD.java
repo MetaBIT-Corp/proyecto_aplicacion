@@ -277,6 +277,60 @@ public class Operaciones_CRUD {
         return lista;
     }
 
+    public static ArrayList<Encuesta> todosEncuesta(SQLiteDatabase db, ArrayList<Docente> d,String parametro) {
+        ArrayList<Encuesta> lista = new ArrayList<>();
+        Cursor c= db.rawQuery("SELECT *FROM "+EstructuraTablas.ENCUESTA_TABLA_NAME+" WHERE "+EstructuraTablas.COL_2_ENCUESTA+" LIKE '%"+parametro+"%'",null);
+
+        if (c.moveToFirst()) {
+            Encuesta e;
+            do {
+                e = new Encuesta();
+                e.setId(c.getInt(0));
+                for (int i = 0; i < d.size(); i++) {
+                    if (c.getInt(1) == d.get(i).getId()) e.setId_docente(d.get(i));
+                }
+                e.setTitulo(c.getString(2));
+                e.setDescripcion(c.getString(3));
+                e.setFecha_in(c.getString(4));
+                e.setFecha_fin(c.getString(5));
+                lista.add(e);
+            } while (c.moveToNext());
+        }
+        return lista;
+    }
+
+    public static ArrayList<Encuesta> todosEncuesta(SQLiteDatabase db, ArrayList<Docente> d, int id) {
+        ArrayList<Encuesta> lista = new ArrayList<>();
+        Cursor c = db.rawQuery("SELECT\n" +
+                "ENCUESTA.ID_ENCUESTA,\n" +
+                "ENCUESTA.ID_PDG_DCN,\n" +
+                "ENCUESTA.TITULO_ENCUESTA,\n" +
+                "ENCUESTA.DESCRIPCION_ENCUESTA,\n" +
+                "ENCUESTA.FECHA_INICIO_ENCUESTA,\n" +
+                "ENCUESTA.FECHA_FINAL_ENCUESTA\n" +
+                "FROM ENCUESTA\n" +
+                "INNER JOIN PDG_DCN_DOCENTE ON\n" +
+                "ENCUESTA.ID_PDG_DCN=PDG_DCN_DOCENTE.ID_PDG_DCN\n" +
+                "WHERE PDG_DCN_DOCENTE.IDUSUARIO=" +id, null);
+
+        if (c.moveToFirst()) {
+            Encuesta e;
+            do {
+                e = new Encuesta();
+                e.setId(c.getInt(0));
+                for (int i = 0; i < d.size(); i++) {
+                    if (c.getInt(1) == d.get(i).getId()) e.setId_docente(d.get(i));
+                }
+                e.setTitulo(c.getString(2));
+                e.setDescripcion(c.getString(3));
+                e.setFecha_in(c.getString(4));
+                e.setFecha_fin(c.getString(5));
+                lista.add(e);
+            } while (c.moveToNext());
+        }
+        return lista;
+    }
+
     public static ArrayList<Docente> todosDocente(SQLiteDatabase db) {
 
         ArrayList<Docente> lista = new ArrayList<>();
@@ -296,9 +350,16 @@ public class Operaciones_CRUD {
                 d.setCargo_actual(c.getInt(7));
                 d.setCargo_secundario(c.getInt(8));
                 d.setNombre(c.getString(9));
+                //d.setIdUser(c.getInt(10));
                 lista.add(d);
             } while (c.moveToNext());
         }
         return lista;
+    }
+
+    public static int docenteEncuesta(SQLiteDatabase db,int idusuario){
+        Cursor c = db.rawQuery(" SELECT * FROM " + EstructuraTablas.DOCENTE_TABLE_NAME+" WHERE IDUSUARIO= "+idusuario, null);
+        c.moveToFirst();
+        return c.getInt(0);
     }
 }

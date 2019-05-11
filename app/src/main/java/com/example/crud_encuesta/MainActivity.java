@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         //PARA OCULTARSELO AL ESTUDIANTE Y DOCENTE
         //CUANDO
-        if(rol==2){
+        if(rol==3){
             //Estudiante
             cardViewCarrera.setVisibility(View.GONE);
         }
@@ -107,7 +107,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Intent i=new Intent(MainActivity.this,CarreraActivity.class);
+
+                //TRASLADAR A ENCUESTA CUANDO ESTE BOTON
                 Intent i=new Intent(MainActivity.this, EncuestaActivity.class);
+                i.putExtra("rol_user",rol);
+                i.putExtra("id_user",id);
                 startActivity(i);
             }
         });
