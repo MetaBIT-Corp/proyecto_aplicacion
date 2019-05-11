@@ -139,5 +139,7 @@
     <string name="texto_titulo_dialogo_pregunta">Agregar Pregunta</string>
     <string name="hint_pregunta">Pregunta</string>
     <string name="texto_gpo_emp">Grupos de emparejamiento</string>
+    <string name="opc_matciclo">Materia Ciclo</string>
+    <string name="opc_pensum">Pensum</string>
     <!-- END DC -->
 </resources>

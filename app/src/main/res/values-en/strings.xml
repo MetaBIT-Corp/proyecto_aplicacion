@@ -138,6 +138,8 @@
     <string name="texto_titulo_dialogo_pregunta">Add Question</string>
     <string name="hint_pregunta">Question</string>
     <string name="texto_gpo_emp">Pairing groups</string>
+    <string name="opc_matciclo">Materia Ciclo</string>
+    <string name="opc_pensum">Pensum</string>
     <!-- END DC -->
 
 </resources>
