@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar myTopToolBar;
     private ImageView loggin;
 
-    int id=5;
-    int rol=2;
+    int id=0;
+    int rol=0;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -54,13 +54,13 @@ public class MainActivity extends AppCompatActivity {
         TextView bienvenida=findViewById(R.id.title_bienvenida);
 
         //Recuperando datos de usuario logueado
-        //id=getIntent().getExtras().getInt("id_user");
-        //rol=getIntent().getExtras().getInt("rol_user");
+        id=getIntent().getExtras().getInt("id_user");
+        rol=getIntent().getExtras().getInt("rol_user");
 
         switch (rol){
             case 0: bienvenida.setText("Administrador");break;
-            case 1: bienvenida.setText("Docente: "+"nombreDocente");break;
-            case 2:bienvenida.setText("Estudiante: "+"nombre");break;
+            case 1: bienvenida.setText("Docente: "+getIntent().getExtras().getString("username"));break;
+            case 2:bienvenida.setText("Estudiante: "+getIntent().getExtras().getString("username"));break;
         }
 
 
@@ -86,17 +86,20 @@ public class MainActivity extends AppCompatActivity {
                     //Admin
                     case 0:i=new Intent(MainActivity.this,MateriaActivity.class);
                         startActivity(i);
+                        finish();
                     break;
                     //Docente
                     case 1: i= new Intent(MainActivity.this, MateriaUsersActivity.class);
                         i.putExtra("id_user",id);
                         i.putExtra("rol_user",rol);
                         startActivity(i);
+                        finish();
                     //Estudiante
                     case 2: i=new Intent(MainActivity.this,MateriaUsersActivity.class);
                         i.putExtra("id_user",id);
                         i.putExtra("rol_user",rol);
                         startActivity(i);
+                        finish();
                     break;
 
 

@@ -17,8 +17,6 @@
 
         <activity android:name=".Componentes_AP.Activities.PensumMateriaActivity"></activity>
         <activity android:name=".Componentes_AP.Activities.PensumActivity" />
-        <activity android:name=".Componentes_EL.Materia.MateriaUsersActivity" />
-        <activity android:name=".SubMenuMateriaActivity" />
 
         <activity android:name=".Componentes_MT.Intento.VerIntentoActivity" />
         <activity android:name=".Componentes_MT.Intento.IntentoActivity" />
@@ -34,7 +32,13 @@
         <activity android:name=".Componentes_MT.Clave.ClaveActivity" />
         <activity android:name=".Componentes_AP.Activities.TurnoActivity" />
         <activity android:name=".Componentes_AP.Activities.EvaluacionActivity" />
-        <activity android:name=".Componentes_AP.Activities.LoginActivity" />
+        <activity android:name=".Componentes_AP.Activities.LoginActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Componentes_EL.Carrera.CarreraActivity"
             android:label="@string/title_activity_carrera"
@@ -51,11 +55,6 @@
         <activity android:name=".Componentes_DC.Activities.PreguntaActivity" />
         <activity android:name=".Componentes_DC.Activities.GpoEmpActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
