@@ -113,6 +113,9 @@
     <string name="mt_finalizar">Finish</string>
     <string name="mt_finalizar_evaluacion">¿Do you want to finish the evaluation?</string>
     <string name="mt_ir_inicio">Go Home</string>
+    <string name="mt_buscar_area">Search area</string>
+    <string name="mt_cant_preguntas_ingresadas">Error, the number of questions entered exceeds the amount in this area</string>
+
     <string name="ap_evaluaciones">Pensum</string>
     <string name="ap_buscar_pensum">Buscar pensum</string>
     <string name="ap_title_dialogo_pensum">Nuevo</string>

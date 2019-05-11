@@ -88,7 +88,6 @@
     <string name="area">Area</string>
     <string name="evaluacion">Evaluacion</string>
 
-
     <string name="mt_titulo_del_area">Titulo del area</string>
     <string name="mt_aleatorio">Aleatorio</string>
     <string name="mt_cantidad_de_preguntas">Cantidad de preguntas</string>
@@ -114,6 +113,9 @@
     <string name="mt_finalizar">Finalizar</string>
     <string name="mt_finalizar_evaluacion">¿Desea finalizar la evaluacion?</string>
     <string name="mt_ir_inicio">Regresar a Inicio</string>
+    <string name="mt_buscar_area">Buscar area</string>
+    <string name="mt_cant_preguntas_ingresadas">Error, la cantidad de preguntas ingresadas supera a la cantidad existente en esta area</string>
+
     <string name="ap_evaluaciones">Pensum</string>
     <string name="ap_buscar_pensum">Buscar pensum</string>
     <string name="ap_title_dialogo_pensum">Nuevo</string>

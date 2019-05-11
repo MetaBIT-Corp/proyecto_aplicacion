@@ -36,21 +36,28 @@ public class IntentoConsultasDB {
         return cursor.getCount();
     }
 
-    public static float getPonderacion(int id_pregunta, SQLiteDatabase db){
+    public static float getPonderacion(int id_pregunta, int id_clave, int id_emp, int modalidad, SQLiteDatabase db){
 
         float valor_pregunta;
         String sentencia;
         int peso;
         int cantidad;
 
-        sentencia="SELECT NUMERO_PREGUNTAS, PESO FROM CLAVE_AREA WHERE ID_CLAVE_AREA IN\n" +
+        sentencia="SELECT NUMERO_PREGUNTAS, PESO FROM CLAVE_AREA WHERE ID_CLAVE = "+id_clave+" AND ID_CLAVE_AREA =\n" +
                 "(SELECT ID_CLAVE_AREA FROM CLAVE_AREA_PREGUNTA WHERE ID_PREGUNTA="+id_pregunta+")";
 
         Cursor cursor = db.rawQuery(sentencia,null);
         cursor.moveToFirst();
 
+        Cursor cursor_emp = db.rawQuery("SELECT * FROM PREGUNTA WHERE ID_GRUPO_EMP ="+id_emp, null);
+
         peso = cursor.getInt(1);
-        cantidad = cursor.getInt(0);
+
+        if(modalidad==3){
+            cantidad = cursor_emp.getCount();
+        }else{
+            cantidad = cursor.getInt(0);
+        }
 
         float peso_f = (float)peso;
         float cantidad_f = (float)cantidad;
