@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -70,11 +72,36 @@ public class MainActivity extends AppCompatActivity {
 
         CardView cardViewCarrera=findViewById(R.id.cardCarrera);
 
+        //Nuevo codigo
+
+        CardView cv_carrera = (CardView)findViewById(R.id.cardCarrera);
+        CardView cv_escuela = (CardView)findViewById(R.id.cardEscuela);
+        CardView cv_docente = (CardView)findViewById(R.id.cardDocente);
+        CardView cv_alumno = (CardView)findViewById(R.id.cardAlumno);
+        GridLayout grid_menu = (GridLayout)findViewById(R.id.grid_menu);
+
+        //END
+
         //PARA OCULTARSELO AL ESTUDIANTE Y DOCENTE
         //CUANDO
         if(rol==3){
             //Estudiante
             cardViewCarrera.setVisibility(View.GONE);
+        }
+
+        if(rol!=0){
+            grid_menu.removeView(cv_carrera);
+            grid_menu.removeView(cv_escuela);
+            grid_menu.removeView(cv_docente);
+            grid_menu.removeView(cv_alumno);
+
+            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                    GridLayout.LayoutParams.MATCH_PARENT,
+                    GridLayout.LayoutParams.WRAP_CONTENT,
+                    4.0f
+            );
+
+            grid_menu.setLayoutParams(param);
         }
 
 
@@ -208,6 +235,16 @@ public class MainActivity extends AppCompatActivity {
     public void activity_docente(View view){
         Intent i= new Intent(this, ActivityDocente.class);
         startActivity(i);
+    }
+
+    public void activity_escuela(View view){
+        /*Intent i= new Intent(this, ActivityDocente.class);
+        startActivity(i);*/
+    }
+
+    public void activity_encuesta(View view){
+        /*Intent i= new Intent(this, ActivityDocente.class);
+        startActivity(i);*/
     }
 
     public void activity_estudiante(View view){

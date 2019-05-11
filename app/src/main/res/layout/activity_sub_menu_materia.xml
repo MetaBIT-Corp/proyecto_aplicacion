@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:src="@drawable/loggin"/>
+            android:background="@drawable/loggin"/>
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
@@ -92,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_weight="1"
-                        android:src="@drawable/ballot" />
+                        android:src="@drawable/area" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -132,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_weight="1"
-                        android:src="@drawable/goal" />
+                        android:src="@drawable/evaluacion" />
 
                     <TextView
                         android:layout_width="wrap_content"
