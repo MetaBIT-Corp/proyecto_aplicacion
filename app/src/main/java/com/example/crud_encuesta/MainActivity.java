@@ -163,11 +163,11 @@ public class MainActivity extends AppCompatActivity {
         loggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login();
+                //Login();
                 //clave();
                 //pensum();
                 //evaluacion();
-                //pressed();
+                pressed();
 
             }
         });

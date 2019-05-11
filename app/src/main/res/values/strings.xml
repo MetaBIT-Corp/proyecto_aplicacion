@@ -141,5 +141,6 @@
     <string name="texto_gpo_emp">Grupos de emparejamiento</string>
     <string name="opc_matciclo">Materia Ciclo</string>
     <string name="opc_pensum">Pensum</string>
+    <string name="buscar_preg">Buscar Pregunta</string>
     <!-- END DC -->
 </resources>
