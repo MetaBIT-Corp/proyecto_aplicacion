@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
+import com.example.crud_encuesta.Componentes_AP.Activities.PensumActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.TurnoActivity;
 import com.example.crud_encuesta.Componentes_Docente.ActivityDocente;
 import com.example.crud_encuesta.Componentes_EL.Encuesta.Encuesta;
@@ -120,10 +121,11 @@ public class MainActivity extends AppCompatActivity {
         loggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Login();
-                //intento();
+                Login();
+                //clave();
+                //pensum();
                 //evaluacion();
-                pressed();
+                //pressed();
 
             }
         });
@@ -192,6 +194,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void turno(){
         Intent i = new Intent(this, TurnoActivity.class);
+        startActivity(i);
+    }
+
+    public void pensum(){
+        Intent i = new Intent(this, PensumActivity.class);
         startActivity(i);
     }
 

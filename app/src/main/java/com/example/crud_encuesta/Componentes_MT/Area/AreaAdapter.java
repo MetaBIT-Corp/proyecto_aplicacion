@@ -30,13 +30,15 @@ public class AreaAdapter extends BaseAdapter {
     Context context;
     List<Area> areas = new ArrayList<>();
     DAOArea daoArea;
+    int id_materia;
     Area area;
     int[] iconos;
 
-    public AreaAdapter(Context context, List<Area> areas, DAOArea daoArea, int[] iconos){
+    public AreaAdapter(Context context, List<Area> areas, DAOArea daoArea, int id_materia, int[] iconos){
         this.context = context;
         this.areas = areas;
         this.daoArea = daoArea;
+        this.id_materia = id_materia;
         this.iconos = iconos;
 
         inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -86,20 +88,20 @@ public class AreaAdapter extends BaseAdapter {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
 
                 TextView txt = mView.findViewById(R.id.msj);
-                txt.setText("Editar");
+                txt.setText(R.string.mt_editar);
                 edt.setText(areas.get(i).titulo);
-                mBuilder.setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
+                mBuilder.setPositiveButton(R.string.mt_actualizar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         editar_area(i, mView);
-                        areas = daoArea.getAreas();
+                        areas = daoArea.getAreas(id_materia);
                         notifyDataSetChanged();
                         /*Intent i = new Intent(context, AreaActivity.class);
                         context.startActivity(i);*/
                     }
                 });
 
-                mBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                mBuilder.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -119,21 +121,21 @@ public class AreaAdapter extends BaseAdapter {
 
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
 
-                mBuilder.setMessage("¿Desea eliminar esta area?");
+                mBuilder.setMessage(R.string.mt_eliminar_area);
                 mBuilder.setIcon(R.drawable.ic_delete);
-                mBuilder.setTitle("Eliminar");
+                mBuilder.setTitle(R.string.mt_eliminar);
 
-                mBuilder.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+                mBuilder.setPositiveButton(R.string.mt_eliminar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         eliminar_area(i);
-                        areas = daoArea.getAreas();
+                        areas = daoArea.getAreas(id_materia);
                         notifyDataSetChanged();
-                        Toast.makeText(context, "Se ha eliminado con éxito", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, R.string.mt_eliminado_msj, Toast.LENGTH_SHORT).show();
                     }
                 });
 
-                mBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                mBuilder.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 

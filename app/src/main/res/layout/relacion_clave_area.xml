@@ -16,14 +16,14 @@
         android:layout_width="211dp"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="Aleatorio"/>
+        android:text="@string/mt_aleatorio"/>
 
     <EditText
         android:id="@+id/etPreguntas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Cantidad de preguntas"
+        android:hint="@string/mt_cantidad_de_preguntas"
         android:inputType="number" />
 
     <EditText
@@ -31,6 +31,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Peso del área"
+        android:hint="@string/mt_peso_del_rea"
         android:inputType="number" />
 </LinearLayout>

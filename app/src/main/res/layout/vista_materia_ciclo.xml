@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:paddingRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/toolbar_mat_cit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Vista Materia Ciclo"
+            android:textColor="@color/icons"
+            android:textSize="18sp"/>
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:text="Materia:"/>
+                <TextView
+                    android:id="@+id/tv_materia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:text="Ciclo:"/>
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <android.support.v4.widget.Space
+                        android:layout_width="30dp"
+                        android:layout_height="0dp" />
+                    <RadioButton
+                        android:id="@+id/rb_ciclo1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Ciclo I"
+                        android:enabled="false"/>
+                    <android.support.v4.widget.Space
+                        android:layout_width="30dp"
+                        android:layout_height="0dp" />
+                    <RadioButton
+                        android:id="@+id/rb_ciclo2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Ciclo II"
+                        android:enabled="false"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:text="Año:"/>
+                <android.support.v4.widget.Space
+                    android:layout_width="30dp"
+                    android:layout_height="0dp" />
+                <TextView
+                    android:id="@+id/tv_anio"
+                    android:layout_width="115dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_salir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_weight="1"
+                    android:text="Salir" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

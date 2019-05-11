@@ -9,10 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".Componentes_EL.Materia.MateriaUsersActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity android:name=".SubMenuMateriaActivity"/>
+
+        <activity android:name=".Componentes_AP.Activities.PensumMateriaActivity"></activity>
+        <activity android:name=".Componentes_AP.Activities.PensumActivity" />
+        <activity android:name=".Componentes_EL.Materia.MateriaUsersActivity" />
+        <activity android:name=".SubMenuMateriaActivity" />
+
         <activity android:name=".Componentes_MT.Intento.VerIntentoActivity" />
         <activity android:name=".Componentes_MT.Intento.IntentoActivity" />
         <activity android:name=".Componentes_MT.ClaveArea.VerAreasActivity" />
@@ -38,7 +45,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Componentes_Docente.ActivityDocente" />
         <activity android:name=".Componentes_Estudiante.ActivityEstudiante" />
-        <activity android:name=".Componentes_MateriaCiclo.ActivityMateriaCiclo"/>
+        <activity android:name=".Componentes_MateriaCiclo.ActivityMateriaCiclo" />
         <activity android:name=".Componentes_MT.Area.AreaActivity" />
         <activity android:name=".Componentes_DC.Activities.OpcionActivity" />
         <activity android:name=".Componentes_DC.Activities.PreguntaActivity" />

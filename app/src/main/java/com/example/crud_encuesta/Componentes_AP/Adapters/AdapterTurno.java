@@ -72,7 +72,6 @@ public class AdapterTurno extends BaseAdapter {
         this.idEvaluacion = idEvaluacion;
     }
 
-    //metodos para date picker y time picker
 
 
     //metodos

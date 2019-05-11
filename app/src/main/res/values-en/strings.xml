@@ -84,6 +84,42 @@
     <string name="ap_titlevista_turno_pass">Acceso a intento</string>
     <string name="ap_indicaciones">Ingrese la contraseña para acceder al intento.</string>
     <string name="ap_ingreso_contraseña">Contraseña</string>
+
     <string name="area">Area</string>
     <string name="evaluacion">Evaluation</string>
+
+    <string name="mt_titulo_del_area">Area\'s name</string>
+    <string name="mt_aleatorio">Radom</string>
+    <string name="mt_cantidad_de_preguntas">Number of questions</string>
+    <string name="mt_peso_del_rea">Area weight</string>
+    <string name="mt_clave">Key </string>
+    <string name="mt_area">Area</string>
+    <string name="mt_agregar">Add</string>
+    <string name="mt_cancelar">Cancel</string>
+    <string name="mt_area_agregada">Area added successfully</string>
+    <string name="mt_campos_vacios">Error, there are empty fields</string>
+    <string name="mt_editar">Edit</string>
+    <string name="mt_actualizar">Update</string>
+    <string name="mt_eliminar">Delete</string>
+    <string name="mt_eliminar_area">¿Do you want to delete this area?</string>
+    <string name="mt_eliminado_msj">It has been removed successfully</string>
+    <string name="mt_agregar_clave">¿Do you want to add a new key?</string>
+    <string name="mt_aceptar">Accept</string>
+    <string name="mt_clave_agregada">New key added</string>
+    <string name="mt_registro_actualizado">Updated registration</string>
+    <string name="mt_eliminar_clave">¿Do you want to delete this key?</string>
+    <string name="mt_cantidad_positiva">The numbers entered must be greater than zero</string>
+    <string name="mt_registro_exito">Registry inserted successfully</string>
+    <string name="mt_finalizar">Finish</string>
+    <string name="mt_finalizar_evaluacion">¿Do you want to finish the evaluation?</string>
+    <string name="mt_ir_inicio">Go Home</string>
+    <string name="ap_evaluaciones">Pensum</string>
+    <string name="ap_buscar_pensum">Buscar pensum</string>
+    <string name="ap_title_dialogo_pensum">Nuevo</string>
+    <string name="ap_anio_pensum">Año de pensum</string>
+    <string name="ap_title_dialogo_pensum_materia">Añadir materia</string>
+    <string name="ap_titlevista_pensum">Materias de pensum</string>
+    <string name="ap_materias">Listado de materias</string>
+    <string name="ap_pensum_materia">Pensum Materia</string>
+    <string name="ap_buscar_pensum_materia">Buscar</string>
 </resources>

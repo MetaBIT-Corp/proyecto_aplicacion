@@ -59,9 +59,11 @@ public class DAOUsuario {
                baseDeDatos.update("SESIONUSUARIO",contentValues,"IDSESION =" + id_sesion,null);
                login = true;
            }else{
-               Toast.makeText(contexto,
-                       "La sesión no existe",
-                       Toast.LENGTH_SHORT).show();
+               ContentValues contentValues = new ContentValues();
+               contentValues.put("INSESION", 1);
+               contentValues.put("IDUSUARIO",id_usuario);
+               baseDeDatos.insert("SESIONUSUARIO",null,contentValues);
+               login = true;
            }
         }else {
             Toast.makeText(contexto,
@@ -91,10 +93,6 @@ public class DAOUsuario {
                 contentValues.put("INSESION", 0);
                 baseDeDatos.update("SESIONUSUARIO",contentValues,"IDSESION =" + id_sesion,null);
                 logout = true;
-            }else{
-                Toast.makeText(contexto,
-                        "El usuario no tiene sesión",
-                        Toast.LENGTH_SHORT).show();
             }
         }else {
             Toast.makeText(contexto,

@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:gravity="left"
             android:layout_weight="3"
-            android:text="TextView" />
+            android:text="@string/mt_clave" />
 
         <ImageView
             android:id="@+id/info_clave"
@@ -52,7 +52,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/edit1" />
+            app:srcCompat="@drawable/edit_" />
 
         <ImageView
             android:id="@+id/delete_calve"
@@ -62,7 +62,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_delete" />
+            app:srcCompat="@drawable/delete_" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
