@@ -90,6 +90,10 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
         Button editar = (Button) v.findViewById(R.id.btn_editar);
         Button eliminar = (Button) v.findViewById(R.id.btn_eliminar);
 
+        access = DatabaseAccess.getInstance(v.getContext());
+        db=access.open();
+
+        materias = DAOMateriaCiclo.materias(db);
         materiaCiclo = lista.get(position);
 
         for(int i =0;i<materias.size();i++){
@@ -105,11 +109,6 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
         ver.setTag(position);
         editar.setTag(position);
         eliminar.setTag(position);
-
-        access = DatabaseAccess.getInstance(v.getContext());
-        db=access.open();
-
-        materias = DAOMateriaCiclo.materias(db);
 
         ver.setOnClickListener(new View.OnClickListener() {
             @Override

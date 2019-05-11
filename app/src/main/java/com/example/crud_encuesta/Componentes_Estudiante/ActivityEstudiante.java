@@ -65,7 +65,7 @@ public class ActivityEstudiante extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final Dialog dialogo =new Dialog(ActivityEstudiante.this);dialogo.setTitle("Registro de Estudiante");
+                final Dialog dialogo =new Dialog(ActivityEstudiante.this);
                 dialogo.setTitle("Registro de Estudiante");
                 dialogo.setCancelable(true);
                 dialogo.setContentView(R.layout.dialogo_estudiante);
