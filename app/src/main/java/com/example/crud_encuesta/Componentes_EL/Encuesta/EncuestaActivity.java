@@ -55,6 +55,7 @@ public class EncuestaActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        FloatingActionButton fab= findViewById(R.id.fab);;
         listView=findViewById(R.id.list_view_base);
         access=DatabaseAccess.getInstance(EncuestaActivity.this);
         db=access.open();
@@ -71,6 +72,8 @@ public class EncuestaActivity extends AppCompatActivity {
 
         if (rol==0||rol==2){
             listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes);
+            fab.setVisibility(View.GONE);
+
         }
 
         if (rol==1){
@@ -114,7 +117,6 @@ public class EncuestaActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
 
-        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

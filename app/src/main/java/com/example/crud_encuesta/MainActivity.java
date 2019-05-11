@@ -69,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView materia=findViewById(R.id.el_btnMateria);
         ImageView carrera=findViewById(R.id.el_btnCarrera);
+        ImageView encuesta=findViewById(R.id.el_btnEncuesta);
+        ImageView escuela=findViewById(R.id.el_btnEscuela);
 
         CardView cardViewCarrera=findViewById(R.id.cardCarrera);
 
@@ -113,20 +115,17 @@ public class MainActivity extends AppCompatActivity {
                     //Admin
                     case 0:i=new Intent(MainActivity.this,MateriaActivity.class);
                         startActivity(i);
-                        finish();
                     break;
                     //Docente
                     case 1: i= new Intent(MainActivity.this, MateriaUsersActivity.class);
                         i.putExtra("id_user",id);
                         i.putExtra("rol_user",rol);
                         startActivity(i);
-                        finish();
                     //Estudiante
                     case 2: i=new Intent(MainActivity.this,MateriaUsersActivity.class);
                         i.putExtra("id_user",id);
                         i.putExtra("rol_user",rol);
                         startActivity(i);
-                        finish();
                     break;
 
 
@@ -137,15 +136,28 @@ public class MainActivity extends AppCompatActivity {
         carrera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent i=new Intent(MainActivity.this,CarreraActivity.class);
+                Intent i=new Intent(MainActivity.this,CarreraActivity.class);
+                startActivity(i);
+            }
+        });
 
-                //TRASLADAR A ENCUESTA CUANDO ESTE BOTON
+        encuesta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent i=new Intent(MainActivity.this, EncuestaActivity.class);
                 i.putExtra("rol_user",rol);
                 i.putExtra("id_user",id);
                 startActivity(i);
             }
         });
+        escuela.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(MainActivity.this, EscuelaActivity.class);
+                startActivity(i);
+            }
+        });
+
 
         loggin = (ImageView) findViewById(R.id.log);
         loggin.setOnClickListener(new View.OnClickListener() {
@@ -197,21 +209,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void prueba_escuela(View view) {
-        Intent i = new Intent(this, EscuelaActivity.class);
-        startActivity(i);
-    }
 
-
-    public void prueba_carrera(View view) {
-        Intent i = new Intent(this, CarreraActivity.class);
-        startActivity(i);
-    }
-
-    public void prueba_encuesta(View view) {
-        Intent i = new Intent(this, EncuestaActivity.class);
-        startActivity(i);
-    }
 
     public void Login(){
         Intent i = new Intent(this, LoginActivity.class);
