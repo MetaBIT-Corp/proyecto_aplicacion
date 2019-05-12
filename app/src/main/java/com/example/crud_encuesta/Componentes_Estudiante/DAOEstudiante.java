@@ -87,6 +87,23 @@ public class DAOEstudiante {
         return lista;
     }
 
+    public ArrayList<Estudiante> verBusqueda(String parametro){
+        lista.clear();
+        Cursor cursor = cx.rawQuery("SELECT * FROM ESTUDIANTE WHERE NOMBRE LIKE '%"+parametro+"%'",null);
+        if (cursor != null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            do {
+                lista.add(new Estudiante(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getInt(3),
+                        cursor.getString(4)));
+            }while(cursor.moveToNext());
+        }
+        return lista;
+    }
+
     public Estudiante verUno(int id){
         Cursor cursor = cx.rawQuery("SELECT * FROM ESTUDIANTE", null);
         cursor.moveToPosition(id);

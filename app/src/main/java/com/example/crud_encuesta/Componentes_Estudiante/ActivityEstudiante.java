@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -49,8 +50,11 @@ public class ActivityEstudiante extends AppCompatActivity {
         access = DatabaseAccess.getInstance(ActivityEstudiante.this);
         db = access.open();
 
-        ListView list = (ListView) findViewById(R.id.lista_estudiante);
+        final ListView list = (ListView) findViewById(R.id.lista_estudiante);
         Button agregar = (Button) findViewById(R.id.btn_nuevo_estudiante);
+        ImageView btnBuscar=findViewById(R.id.el_find);
+        ImageView btnTodos=findViewById(R.id.el_all);
+        final EditText buscar=findViewById(R.id.find_nom);
 
         if((lista != null) && (lista.size() > 0)){
             list.setAdapter(adapter);
@@ -59,6 +63,26 @@ public class ActivityEstudiante extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {}
+        });
+
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lista = dao.verBusqueda(buscar.getText().toString());
+                if((lista != null) && (lista.size() > 0)){
+                    list.setAdapter(adapter);
+                }
+            }
+        });
+
+        btnTodos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lista = dao.verTodos();
+                if((lista != null) && (lista.size() > 0)){
+                    list.setAdapter(adapter);
+                }
+            }
         });
 
         agregar.setOnClickListener(new View.OnClickListener() {
