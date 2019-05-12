@@ -1,5 +1,6 @@
 package com.example.crud_encuesta.Componentes_AP.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -29,8 +30,10 @@ import com.example.crud_encuesta.Componentes_AP.Adapters.AdapterEvaluacion;
 import com.example.crud_encuesta.Componentes_AP.Adapters.AdapterTurno;
 import com.example.crud_encuesta.Componentes_AP.DAO.DAOEvaluacion;
 import com.example.crud_encuesta.Componentes_AP.DAO.DAOTurno;
+import com.example.crud_encuesta.Componentes_AP.DAO.DAOUsuario;
 import com.example.crud_encuesta.Componentes_AP.Models.Evaluacion;
 import com.example.crud_encuesta.Componentes_AP.Models.Turno;
+import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.Componentes_MT.Intento.IntentoActivity;
 import com.example.crud_encuesta.R;
 
@@ -43,12 +46,15 @@ import java.util.Date;
 public class TurnoActivity extends AppCompatActivity {
 
     DAOTurno daoTurno;
+    DAOUsuario daoUsuario;
+    Usuario usuario;
     AdapterTurno adapterTurno;
     ArrayList<Turno> turnos;
     Turno turno;
     private int anio, mes, dia, hora, minuto;
     int id_evaluacion;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +66,8 @@ public class TurnoActivity extends AppCompatActivity {
             id_evaluacion = bundle.getInt("id_evaluacion");
         }
 
+        daoUsuario = new DAOUsuario(this);
+        usuario = daoUsuario.getUsuarioLogueado();
 
         daoTurno = new DAOTurno(this);
         turnos = daoTurno.verTodos(id_evaluacion);
@@ -70,6 +78,10 @@ public class TurnoActivity extends AppCompatActivity {
         ImageView buscar = (ImageView) findViewById(R.id.ap_imgv_buscar_turno);
         ImageView all = (ImageView) findViewById(R.id.ap_imgv_all_turno);
         final EditText edt_buscar = (EditText) findViewById(R.id.ap_edt_buscar_turno);
+
+        if(usuario.getROL()==0 || usuario.getROL()==2){
+            add.setVisibility(View.INVISIBLE);
+        }
 
         ListView listView = (ListView) findViewById(R.id.lista_turno);
         listView.setAdapter(adapterTurno);

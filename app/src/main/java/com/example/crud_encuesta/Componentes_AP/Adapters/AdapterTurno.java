@@ -25,7 +25,9 @@ import android.widget.Toast;
 
 
 import com.example.crud_encuesta.Componentes_AP.DAO.DAOTurno;
+import com.example.crud_encuesta.Componentes_AP.DAO.DAOUsuario;
 import com.example.crud_encuesta.Componentes_AP.Models.Turno;
+import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.Componentes_MT.Clave.ClaveActivity;
 import com.example.crud_encuesta.R;
 
@@ -117,6 +119,16 @@ public class AdapterTurno extends BaseAdapter {
 
         tv_item.setText("Id: " + turno.getId() + "\r\nInicio:\r\n" + turno.getDateInicial() + " \r\nFinal:\r\n " + turno.getDateFinal());
 
+
+        //ocultados de acuerdo a rol
+        DAOUsuario daoUsuario = new DAOUsuario(context);
+        Usuario usuario = daoUsuario.getUsuarioLogueado();
+        if(usuario.getROL()== 0 || usuario.getROL()==2){
+            editar.setVisibility(View.INVISIBLE);
+            eliminar.setVisibility(View.INVISIBLE);
+            turnoi.setVisibility(View.INVISIBLE);
+            info.setVisibility(View.INVISIBLE);
+        }
 
         //utilizamos setTag para que al presionar editar o eliminar, android sepa cuál registro queremos afectar
         editar.setTag(position);

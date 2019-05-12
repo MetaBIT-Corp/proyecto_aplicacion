@@ -18,7 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_AP.DAO.DAOEvaluacion;
+import com.example.crud_encuesta.Componentes_AP.DAO.DAOUsuario;
 import com.example.crud_encuesta.Componentes_AP.Models.Evaluacion;
+import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class AdapterEvaluacion extends BaseAdapter {
     Evaluacion evaluacion;
     DAOEvaluacion daoEvaluacion;
     Activity activity; //la actividad donde va a mostrarse el listview
+    Context context;
 
 
     //variables que nos ayudara a manejar los id de evaluacion y carga academica
@@ -37,10 +40,11 @@ public class AdapterEvaluacion extends BaseAdapter {
 
     //constructos del adapter
 
-    public AdapterEvaluacion(ArrayList<Evaluacion> evaluaciones, DAOEvaluacion daoEvaluacion, Activity activity) {
+    public AdapterEvaluacion(ArrayList<Evaluacion> evaluaciones, DAOEvaluacion daoEvaluacion, Activity activity,Context context) {
         this.evaluaciones = evaluaciones;
         this.daoEvaluacion = daoEvaluacion;
         this.activity = activity;
+        this.context = context;
     }
 
 
@@ -93,6 +97,7 @@ public class AdapterEvaluacion extends BaseAdapter {
         //vinculamos el arraylist de contactos con el listview
         evaluacion = evaluaciones.get(position);
 
+
         TextView tv_item = (TextView) view.findViewById(R.id.ap_tv_item);
         ImageView editar = (ImageView) view.findViewById(R.id.ap_editar_item);
         ImageView eliminar = (ImageView) view.findViewById(R.id.ap_eliminar_item);
@@ -100,6 +105,15 @@ public class AdapterEvaluacion extends BaseAdapter {
         ImageView turnoi = (ImageView) view.findViewById(R.id.ap_turno_item);
 
         tv_item.setText(evaluacion.getNombre());
+
+        //ocultados de acuerdo a rol
+        DAOUsuario daoUsuario = new DAOUsuario(context);
+        Usuario usuario = daoUsuario.getUsuarioLogueado();
+        if(usuario.getROL()== 0 || usuario.getROL()==2){
+            editar.setVisibility(View.INVISIBLE);
+            eliminar.setVisibility(View.INVISIBLE);
+            turnoi.setVisibility(View.INVISIBLE);
+        }
 
         //utilizamos setTag para que al presionar editar o eliminar, android sepa cuál registro queremos afectar
         editar.setTag(position);
@@ -180,7 +194,7 @@ public class AdapterEvaluacion extends BaseAdapter {
                                 //editamos registro
                                 daoEvaluacion.Editar(evaluacion);
                                 //refrescamos la lista
-                                evaluaciones = daoEvaluacion.verTodos();
+                                evaluaciones = daoEvaluacion.verTodos(getIdCarga());
                                 //como ya estamos dentro de la clase adaptador simplemente ejecutamos el metodo
                                 notifyDataSetChanged();
                                 //cerramos el dialogo
@@ -237,7 +251,7 @@ public class AdapterEvaluacion extends BaseAdapter {
                     public void onClick(DialogInterface dialog, int which) {
                         //elimina el registro, actualiza la lista y notifica el cambio al adaptador
                         daoEvaluacion.Eliminar(getIdEvaluacion());
-                        evaluaciones = daoEvaluacion.verTodos();
+                        evaluaciones = daoEvaluacion.verTodos(getIdCarga());
                         notifyDataSetChanged();
 
                     }

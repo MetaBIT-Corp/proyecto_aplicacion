@@ -1,5 +1,6 @@
 package com.example.crud_encuesta.Componentes_AP.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -23,8 +24,10 @@ import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_AP.Adapters.AdapterEvaluacion;
 import com.example.crud_encuesta.Componentes_AP.DAO.DAOEvaluacion;
+import com.example.crud_encuesta.Componentes_AP.DAO.DAOUsuario;
 import com.example.crud_encuesta.Componentes_AP.Models.Evaluacion;
 import com.example.crud_encuesta.Componentes_AP.Models.Turno;
+import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.Componentes_MT.Intento.IntentoActivity;
 import com.example.crud_encuesta.R;
 
@@ -33,24 +36,54 @@ import java.util.ArrayList;
 public class EvaluacionActivity extends AppCompatActivity {
 
     DAOEvaluacion daoEvaluacion;
+    DAOUsuario daoUsuario;
     AdapterEvaluacion adapterEvaluacion;
     ArrayList<Evaluacion> evaluaciones;
     Evaluacion evaluacion;
+    int id_materia = 0;
+    int id_carga_academica =0;
+    Usuario usuario;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evaluacion);
 
+        //recuperamos el id de la evaluación que nos mandan
+        Bundle bundle = this.getIntent().getExtras();
+        if(bundle != null){
+            id_materia = bundle.getInt("id_materia");
+        }
+
+
+        daoUsuario = new DAOUsuario(this);
         daoEvaluacion = new DAOEvaluacion(this);
-        evaluaciones = daoEvaluacion.verTodos();
-        adapterEvaluacion = new AdapterEvaluacion(evaluaciones,daoEvaluacion,this);
+
+        usuario = daoUsuario.getUsuarioLogueado();
+
+        if(usuario.getROL()==1){
+            id_carga_academica = daoEvaluacion.getCargaAcademicaDocente(usuario.getIDUSUARIO(),id_materia);
+        }
+        if(usuario.getROL()==2){
+            id_carga_academica = daoEvaluacion.getCargaAcademicaEstudiante(usuario.getIDUSUARIO(),id_materia);
+        }
+        if(id_carga_academica==0){
+            Toast.makeText(this,"No posees carga acádemica",Toast.LENGTH_LONG).show();
+        }
+
+        evaluaciones = daoEvaluacion.verTodos(id_carga_academica);
+        adapterEvaluacion = new AdapterEvaluacion(evaluaciones,daoEvaluacion,this,this);
 
         //ImageView agregar = (ImageView) findViewById(R.id.ap_imgv_agregar_evaluacion);
         ImageView buscar = (ImageView) findViewById(R.id.ap_imgv_buscar_evaluacion);
         ImageView all = (ImageView) findViewById(R.id.ap_imgv_all_evaluacion);
         FloatingActionButton add = (FloatingActionButton) findViewById(R.id.ap_fab_agregar_evaluacion);
         final EditText edt_buscar = (EditText) findViewById(R.id.ap_edt_buscar_evaluacion);
+
+        if(usuario.getROL()==0 || usuario.getROL()==2){
+            add.setVisibility(View.INVISIBLE);
+        }
 
         ListView listView = (ListView) findViewById(R.id.lista_evaluacion);
         listView.setAdapter(adapterEvaluacion);
@@ -113,7 +146,7 @@ public class EvaluacionActivity extends AppCompatActivity {
 
                             try {
                                 evaluacion = new Evaluacion(
-                                        1,
+                                        id_carga_academica,
                                         Integer.parseInt(duracion.getText().toString()),
                                         Integer.parseInt(intento.getText().toString()),
                                         nombre.getText().toString(),
@@ -122,7 +155,7 @@ public class EvaluacionActivity extends AppCompatActivity {
                                 //editamos registro
                                 daoEvaluacion.Insertar(evaluacion);
                                 //refrescamos la lista
-                                evaluaciones = daoEvaluacion.verTodos();
+                                evaluaciones = daoEvaluacion.verTodos(id_carga_academica);
                                 //ejecutamos el metodo
                                 adapterEvaluacion.notifyDataSetChanged();
                                 //cerramos el dialogo
@@ -159,7 +192,7 @@ public class EvaluacionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!edt_buscar.getText().toString().isEmpty()){
-                    evaluaciones = daoEvaluacion.verUno(edt_buscar.getText().toString());
+                    evaluaciones = daoEvaluacion.verUno(edt_buscar.getText().toString(),id_carga_academica);
                     adapterEvaluacion.notifyDataSetChanged();
                 }else{
                     Toast.makeText(
@@ -177,7 +210,7 @@ public class EvaluacionActivity extends AppCompatActivity {
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                evaluaciones = daoEvaluacion.verTodos();
+                evaluaciones = daoEvaluacion.verTodos(id_carga_academica);
                 adapterEvaluacion.notifyDataSetChanged();
             }
         });
