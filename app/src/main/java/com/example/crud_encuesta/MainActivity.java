@@ -14,7 +14,9 @@ import android.widget.ListView;
 
 import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.PensumActivity;
+import com.example.crud_encuesta.Componentes_AP.Activities.PensumMateriaActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.TurnoActivity;
+import com.example.crud_encuesta.Componentes_AP.Models.PensumMateria;
 import com.example.crud_encuesta.Componentes_Docente.ActivityDocente;
 import com.example.crud_encuesta.Componentes_EL.Materia.MateriaUsersActivity;
 import com.example.crud_encuesta.Componentes_Estudiante.ActivityEstudiante;

@@ -119,4 +119,6 @@
     <string name="ap_materias">Listado de materias</string>
     <string name="ap_pensum_materia">Pensum Materia</string>
     <string name="ap_buscar_pensum_materia">Buscar</string>
+    <string name="ap_Turnos">Turno</string>
+    <string name="ap_Evaluaciones">Evaluaciones</string>
 </resources>

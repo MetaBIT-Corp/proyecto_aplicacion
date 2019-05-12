@@ -210,30 +210,44 @@ public class TurnoActivity extends AppCompatActivity {
                         if (visible.isChecked()) {
                             ver = 1;
                         }
+
                         if (!dateinicial.getText().toString().isEmpty() && !datefinal.getText().toString().isEmpty()
                                 && !timeinicial.getText().toString().isEmpty() && !timefinal.getText().toString().isEmpty()
                                 && !contrasenia.getText().toString().isEmpty()) {
-                            try {
-                                turno = new Turno(
-                                        id_evaluacion,
-                                        dateinicial.getText().toString() + " " + timeinicial.getText().toString(),
-                                        datefinal.getText().toString() + " " + timefinal.getText().toString(),
-                                        ver,
-                                        contrasenia.getText().toString()
-                                );
-                                //creamos registro
-                                daoTurno.Insertar(turno);
-                                //refrescamos la lista
-                                turnos = daoTurno.verTodos(id_evaluacion);
-                                //como ya estamos dentro de la clase adaptador simplemente ejecutamos el metodo
-                                adapterTurno.notifyDataSetChanged();
-                                //cerramos el dialogo
-                                dialog.dismiss();
+                            if(validarFecha(dateinicial.getText().toString(),
+                                    timeinicial.getText().toString(),
+                                    datefinal.getText().toString(),
+                                    timefinal.getText().toString())){
+                                try {
+                                    turno = new Turno(
+                                            id_evaluacion,
+                                            dateinicial.getText().toString() + " " + timeinicial.getText().toString(),
+                                            datefinal.getText().toString() + " " + timefinal.getText().toString(),
+                                            ver,
+                                            contrasenia.getText().toString()
+                                    );
+                                    //creamos registro
+                                    daoTurno.Insertar(turno);
+                                    //refrescamos la lista
+                                    turnos = daoTurno.verTodos(id_evaluacion);
+                                    //como ya estamos dentro de la clase adaptador simplemente ejecutamos el metodo
+                                    adapterTurno.notifyDataSetChanged();
+                                    //cerramos el dialogo
+                                    dialog.dismiss();
 
 
-                            } catch (Exception e) {
-                                Toast.makeText(getApplication(), "Error", Toast.LENGTH_SHORT).show();
+                                } catch (Exception e) {
+                                    Toast.makeText(getApplication(), "Error", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }else {
+                                Toast.makeText(
+                                        v.getContext(),
+                                        "Fecha no valida, por favor revisar",
+                                        Toast.LENGTH_SHORT).show();
                             }
+
+
                         } else {
                             Toast.makeText(
                                     v.getContext(),
@@ -296,6 +310,7 @@ public class TurnoActivity extends AppCompatActivity {
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
                         editText.setText(year+"/"+(month+1)+"/"+dayOfMonth);
                     }
                 },
@@ -324,5 +339,51 @@ public class TurnoActivity extends AppCompatActivity {
         );
         timePickerDialog.show();
 
+    }
+
+    public Boolean validarFecha(String di, String ti, String df, String tf){
+        Boolean validado = false;
+        int anioi,mesi,diai,horai,minutoi;
+        int aniof,mesf,diaf,horaf,minutof;
+
+        anioi = Integer.parseInt(di.split("/")[0]);
+        mesi = Integer.parseInt(di.split("/")[1]);
+        diai = Integer.parseInt(di.split("/")[2]);
+
+        aniof = Integer.parseInt(df.split("/")[0]);
+        mesf = Integer.parseInt(df.split("/")[1]);
+        diaf = Integer.parseInt(df.split("/")[2]);
+
+        horai = Integer.parseInt(ti.split(":")[0]);
+        minutoi =  Integer.parseInt(ti.split(":")[1]);
+
+        horaf = Integer.parseInt(tf.split(":")[0]);
+        minutof =  Integer.parseInt(tf.split(":")[1]);
+
+        if (aniof>anioi){
+            validado=true;
+        }
+        if (aniof==anioi){
+            if (mesf>mesi){
+                validado = true;
+            }
+            if (mesf==mesi){
+                if(diaf>diai){
+                    validado=true;
+                }
+                if(diaf==diai){
+                    if(horaf>horai){
+                        validado = true;
+                    }
+                    if(horaf==horai){
+                        if(minutof>=minutoi){
+                            validado = true;
+                        }
+                    }
+                }
+            }
+        }
+
+      return  validado;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.crud_encuesta.Componentes_AP.Activities;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.example.crud_encuesta.Componentes_AP.Adapters.AdapterTurno;
 import com.example.crud_encuesta.Componentes_AP.DAO.DAOPensum;
 import com.example.crud_encuesta.Componentes_AP.DAO.DAOTurno;
 import com.example.crud_encuesta.Componentes_AP.Models.Pensum;
+import com.example.crud_encuesta.Componentes_AP.Models.PensumMateria;
 import com.example.crud_encuesta.Componentes_AP.Models.Turno;
 import com.example.crud_encuesta.R;
 
@@ -55,7 +57,12 @@ public class PensumActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //enlace a materias
+                Intent intent = new Intent(view.getContext(), PensumMateriaActivity.class);
+                //enviamos parametro
+                Bundle bundle = new Bundle();
+                bundle.putInt("id_pensum",pensums.get(position).getIdPensum());
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 
