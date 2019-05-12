@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
@@ -39,8 +40,8 @@ public class ActivityDocente extends AppCompatActivity {
     private SQLiteDatabase db;
     private DatabaseAccess access;
     private String tableName = "ESCUELA";
-    private ArrayList<Escuela> escuelas = new ArrayList<Escuela>();
-    private ArrayList<String> listaEscuelas = new ArrayList<String>();
+    private ArrayList<Escuela> escuelas = new ArrayList<>();
+    private ArrayList<String> listaEscuelas = new ArrayList<>();
     private int anio = Calendar.getInstance().get(Calendar.YEAR);
     private int id_escuela;
 
@@ -60,8 +61,11 @@ public class ActivityDocente extends AppCompatActivity {
         escuelas=Operaciones_CRUD.todosEscuela(tableName,db);
         listaEscuelas = obtenerListaEscuelas();
 
-        ListView list = (ListView) findViewById(R.id.lista_docente);
+        final ListView list = (ListView) findViewById(R.id.lista_docente);
         Button agregar = (Button) findViewById(R.id.btn_nuevo_docente);
+        ImageView btnBuscar=findViewById(R.id.el_find);
+        ImageView btnTodos=findViewById(R.id.el_all);
+        final EditText buscar=findViewById(R.id.find_nom);
 
         if((lista != null) && (lista.size() > 0)){
             list.setAdapter(adapter);
@@ -70,6 +74,26 @@ public class ActivityDocente extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {}
+        });
+
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lista = dao.verBusqueda(buscar.getText().toString());
+                if((lista != null) && (lista.size() > 0)){
+                    list.setAdapter(adapter);
+                }
+            }
+        });
+
+        btnTodos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lista = dao.verTodos();
+                if((lista != null) && (lista.size() > 0)){
+                    list.setAdapter(adapter);
+                }
+            }
         });
 
         agregar.setOnClickListener(new View.OnClickListener() {

@@ -101,6 +101,28 @@ public class DAODocente {
         return lista;
     }
 
+    public ArrayList<Docente> verBusqueda(String parametro){
+        lista.clear();
+        Cursor cursor = cx.rawQuery("SELECT * FROM PDG_DCN_DOCENTE WHERE NOMBRE_DOCENTE LIKE '%"+parametro+"%'",null);
+        if (cursor != null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            do {
+                lista.add(new Docente(
+                        cursor.getInt(0),
+                        cursor.getInt(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getInt(4),
+                        cursor.getInt(5),
+                        cursor.getString(6),
+                        cursor.getInt(7),
+                        cursor.getInt(8),
+                        cursor.getString(9)));
+            }while(cursor.moveToNext());
+        }
+        return lista;
+    }
+
     public Docente verUno(int id){
         Cursor cursor = cx.rawQuery("SELECT * FROM PDG_DCN_DOCENTE", null);
         cursor.moveToPosition(id);
