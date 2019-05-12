@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra("username",usuarioLogueado.getNOMUSUARIO());
                     startActivity(intent);
                     Toast.makeText(v.getContext(),"Bienvenido " + usuario,Toast.LENGTH_LONG).show();
+                    finish();
                 }else {
                     Toast.makeText(v.getContext(),"Usuario y/o contraseña no válidos",Toast.LENGTH_SHORT).show();
                 }

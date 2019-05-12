@@ -57,4 +57,25 @@ public class DAOArea {
 
         return areas;
     }
+
+    //retorna la lista pero solo con el elemento buscado
+    public List<Area> buscarArea(int id_materia, String titulo){
+        List<Area> areas = new ArrayList<>();
+        int id;
+        String title;
+
+        db = databaseAccess.open();
+        Cursor cursor  = db.rawQuery("SELECT id_area, titulo FROM area WHERE id_cat_mat="+id_materia+" AND TITULO LIKE '%" + titulo + "%'"  ,null);
+
+        while (cursor.moveToNext()){
+            id = cursor.getInt(0);
+            title = cursor.getString(1);
+
+            areas.add(new Area(id, title));
+
+        }
+
+        return areas;
+    }
+
 }

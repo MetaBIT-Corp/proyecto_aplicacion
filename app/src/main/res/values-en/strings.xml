@@ -85,6 +85,9 @@
     <string name="ap_indicaciones">Ingrese la contraseña para acceder al intento.</string>
     <string name="ap_ingreso_contraseña">Contraseña</string>
 
+    <string name="area">Area</string>
+    <string name="evaluacion">Evaluation</string>
+
     <string name="mt_titulo_del_area">Area\'s name</string>
     <string name="mt_aleatorio">Radom</string>
     <string name="mt_cantidad_de_preguntas">Number of questions</string>
@@ -98,9 +101,9 @@
     <string name="mt_editar">Edit</string>
     <string name="mt_actualizar">Update</string>
     <string name="mt_eliminar">Delete</string>
-    <string name="mt_eliminar_area">¿Do you want to delete this area?</string>
+    <string name="mt_eliminar_area">Do you want to delete this area?</string>
     <string name="mt_eliminado_msj">It has been removed successfully</string>
-    <string name="mt_agregar_clave">¿Do you want to add a new key?</string>
+    <string name="mt_agregar_clave">Do you want to add a new key?</string>
     <string name="mt_aceptar">Accept</string>
     <string name="mt_clave_agregada">New key added</string>
     <string name="mt_registro_actualizado">Updated registration</string>
@@ -110,6 +113,9 @@
     <string name="mt_finalizar">Finish</string>
     <string name="mt_finalizar_evaluacion">¿Do you want to finish the evaluation?</string>
     <string name="mt_ir_inicio">Go Home</string>
+    <string name="mt_buscar_area">Search area</string>
+    <string name="mt_cant_preguntas_ingresadas">Error, the number of questions entered exceeds the amount in this area</string>
+
     <string name="ap_evaluaciones">Pensum</string>
     <string name="ap_buscar_pensum">Buscar pensum</string>
     <string name="ap_title_dialogo_pensum">Nuevo</string>
@@ -119,6 +125,87 @@
     <string name="ap_materias">Listado de materias</string>
     <string name="ap_pensum_materia">Pensum Materia</string>
     <string name="ap_buscar_pensum_materia">Buscar</string>
+<<<<<<< HEAD
     <string name="ap_Turnos">Turno</string>
     <string name="ap_Evaluaciones">Evaluaciones</string>
+=======
+    <!-- DC -->
+    <string name="msg_bienvenida">Welcome!</string>
+    <string name="opc_escuela">School</string>
+    <string name="opc_docente">Teacher</string>
+    <string name="opc_alumno">Student</string>
+    <string name="opc_encuesta">Poll</string>
+    <string name="texto_opciones">Options</string>
+    <string name="texto_preguntas">Questions</string>
+    <string name="texto_descripcion">Description</string>
+    <string name="texto_titulo_dialogo_gpo_emp">Add Pairing Group</string>
+    <string name="texto_titulo_dialogo_opcion">Add Option</string>
+    <string name="hint_opcion">Option</string>
+    <string name="checkb_correcta">Correct</string>
+    <string name="texto_titulo_dialogo_pregunta">Add Question</string>
+    <string name="hint_pregunta">Question</string>
+    <string name="texto_gpo_emp">Pairing groups</string>
+    <string name="opc_matciclo">Materia Ciclo</string>
+    <string name="opc_pensum">Pensum</string>
+    <string name="buscar_preg">Search Question</string>
+    <!-- END DC -->
+
+    <!-- Estudiante -->
+    <string name="est_titulo">Students</string>
+    <string name="est_titulo2">Student</string>
+    <string name="est_titulo3">Student: </string>
+    <string name="est_titulo_editar">Student Edit: </string>
+    <string name="est_titulo_registrar">New Student register</string>
+    <string name="est_edtx_carnet">Student\'s ID</string>
+    <string name="est_chck_activo">Active</string>
+    <string name="est_tv_nombre">Name: </string>
+    <string name="est_tv_anio">Ingress Year: </string>
+    <string name="est_borrar">Do you want to delete this Student?</string>
+    <!-- END Estudiante-->
+
+    <!-- Docente -->
+    <string name="dcn_titulo">Teachers</string>
+    <string name="dcn_titulo2">Teacher</string>
+    <string name="dcn_titulo3">Teacher: </string>
+    <string name="dcn_titulo_editar">Teacher Edit: </string>
+    <string name="dcn_titulo_registrar">New Teacher register</string>
+    <string name="dcn_edtx_carnet">Teacher\'s ID</string>
+    <string name="dcn_chck_activo">Active</string>
+    <string name="dcn_tv_nombre">Name: </string>
+    <string name="dcn_tv_escuela">School: </string>
+    <string name="dcn_tv_anio">Title Year: </string>
+    <string name="dcn_tv_descripcion">Description: </string>
+    <string name="dcn_tv_jornada">Journey Type: </string>
+    <string name="dcn_tv_cargo">Actual Charge: </string>
+    <string name="dcn_tv_cargo_sec">Secondary Charge: </string>
+    <string name="dcn_borrar">Do you want to delete this Teacher?</string>
+    <!-- END Docente -->
+
+    <!-- Materia_Ciclo -->
+    <string name="mtc_titulo">Semester Courses</string>
+    <string name="mtc_titulo2">Semester Course</string>
+    <string name="mtc_titulo3">Semester Course: </string>
+    <string name="mtc_titulo_registrar">New Semester Course register</string>
+    <string name="mtc_titulo_editar">Edit Semester Course: </string>
+    <string name="mtc_cicloi">Semester I</string>
+    <string name="mtc_cicloii">Semester II</string>
+    <string name="mtc_vista">Semester Course: </string>
+    <string name="mtc_materia">Course: </string>
+    <string name="mtc_ciclo">Semester: </string>
+    <string name="mtc_anio">Year: </string>
+    <string name="mtc_borrar">Do you want to delete this Semester Course?</string>
+    <!-- END Materia_Ciclo -->
+
+    <!-- Varios -->
+    <string name="btn_agregar">Add</string>
+    <string name="btn_registrar">Add</string>
+    <string name="btn_guardar">Save</string>
+    <string name="btn_cancelar">Cancel</string>
+    <string name="btn_salir">Exit</string>
+    <string name="edtx_buscar">Search</string>
+    <string name="si">Yes</string>
+    <string name="no">No</string>
+    <!-- END Varios -->
+
+>>>>>>> ff8077d728ca3c7a9635fbd7a716e120e165205d
 </resources>

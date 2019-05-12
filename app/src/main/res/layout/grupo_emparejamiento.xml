@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:paddingRight="10dp"
-                android:text="Grupos de emparejamiento"
+                android:text="@string/texto_gpo_emp"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
 

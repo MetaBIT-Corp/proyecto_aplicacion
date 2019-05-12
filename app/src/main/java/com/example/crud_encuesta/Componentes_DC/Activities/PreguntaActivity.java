@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,9 @@ public class PreguntaActivity extends AppCompatActivity {
     private String desc_gpo_emp;
     private  int id_area =0;
     private int id_tipo_item;
+    private ImageView btn_buscar;
+    private ImageView btn_todo;
+    private EditText texto_busqueda;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,9 @@ public class PreguntaActivity extends AppCompatActivity {
         ListView list = (ListView)findViewById(R.id.lista);
         FloatingActionButton agregar = findViewById(R.id.btn_nuevo);
         list.setAdapter(adaptador);
+        btn_buscar = (ImageView)findViewById(R.id.btn_buscar);
+        btn_todo = (ImageView)findViewById(R.id.btn_todo);
+        texto_busqueda = (EditText)findViewById(R.id.texto_busqueda);
        /* TextView texto_desc_emp = (TextView)findViewById(R.id.txt_desc_emp);
         texto_desc_emp.setText(desc_gpo_emp);
         Button editar_gpo_emp = (Button)findViewById(R.id.btn_editar_desc_emp);
@@ -110,6 +117,32 @@ public class PreguntaActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
+            }
+        });
+
+        btn_buscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!texto_busqueda.getText().toString().isEmpty()){
+
+                    lista_preguntas = dao.busqueda(texto_busqueda.getText().toString());
+                    adaptador.dataChange(lista_preguntas);
+                }else{
+                    Toast.makeText(
+                            v.getContext(),
+                            "Debes ingresar un nombre de consulta",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                }
+            }
+        });
+
+        btn_todo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lista_preguntas = dao.verTodos();
+                texto_busqueda.setText("");
+                adaptador.dataChange(lista_preguntas);
             }
         });
 

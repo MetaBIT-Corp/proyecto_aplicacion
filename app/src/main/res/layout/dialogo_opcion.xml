@@ -22,7 +22,7 @@
             android:layout_gravity="left"
             android:paddingRight="10dp"
             android:textAlignment="center"
-            android:text="Agregar opcion"
+            android:text="@string/texto_titulo_dialogo_opcion"
             android:textStyle="bold"
             android:textSize="12sp"/>
 
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/editt_opcion"
             android:layout_weight="0.8"
-            android:hint="Opcion"/>
+            android:hint="@string/hint_opcion"/>
 
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cb_correcta"
-            android:text="Correcta" />
+            android:text="@string/checkb_correcta" />
 
     </LinearLayout>
 
@@ -69,14 +69,14 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Agregar"
+            android:text="@string/mt_agregar"
             android:id="@+id/btn_agregar"
             android:layout_weight="1"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancelar"
+            android:text="@string/mt_cancelar"
             android:id="@+id/btn_cancelar"
             android:layout_weight="1"/>
 

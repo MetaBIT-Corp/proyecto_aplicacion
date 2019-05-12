@@ -290,6 +290,9 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
             int idClave = claves.get(id_clave).id_clave;
             if (aleatorio_cb.isChecked()) aleatorio = 1;
 
+            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+            SQLiteDatabase db = databaseAccess.open();
+
             ContentValues registro = new ContentValues();
 
             registro.put("id_area", id);
@@ -298,20 +301,23 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
             registro.put("aleatorio", aleatorio);
             registro.put("peso", peso);
 
-            if (cantidad > 0 && peso > 0) {
-                DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
-                SQLiteDatabase db = databaseAccess.open();
+            Cursor cantidad_preguntas = db.rawQuery("SELECT ID_GRUPO_EMP FROM GRUPO_EMPAREJAMIENTO WHERE ID_AREA="+id, null);
 
-                db.insert("clave_area", null, registro);
-                Toast.makeText(context, R.string.mt_registro_exito, Toast.LENGTH_SHORT).show();
-                Cursor cursor = db.rawQuery("SELECT id_clave_area FROM clave_area ORDER BY id_clave_area DESC LIMIT 1;", null);
-                cursor.moveToFirst();
+            if(cantidad_preguntas.getCount()>=cantidad){
+                if (cantidad > 0 && peso > 0) {
+                    db.insert("clave_area", null, registro);
+                    Toast.makeText(context, R.string.mt_registro_exito, Toast.LENGTH_SHORT).show();
+                    Cursor cursor = db.rawQuery("SELECT id_clave_area FROM clave_area ORDER BY id_clave_area DESC LIMIT 1;", null);
+                    cursor.moveToFirst();
 
-                agregar_relacion_clave_area_pregunta(cantidad, cursor.getInt(0));
-                cursor.close();
-                databaseAccess.close();
-            } else {
-                Toast.makeText(context, R.string.mt_cantidad_positiva, Toast.LENGTH_SHORT).show();
+                    agregar_relacion_clave_area_pregunta(cantidad, cursor.getInt(0), id);
+                    cursor.close();
+                    databaseAccess.close();
+                } else {
+                    Toast.makeText(context, R.string.mt_cantidad_positiva, Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(context, R.string.mt_cant_preguntas_ingresadas, Toast.LENGTH_SHORT).show();
             }
         }else{
             Toast.makeText(context, R.string.mt_campos_vacios, Toast.LENGTH_SHORT).show();
@@ -319,36 +325,45 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
 
     }
 
-    public void agregar_relacion_clave_area_pregunta(int cantidad, int id_clave_area){
+    public void agregar_relacion_clave_area_pregunta(int cantidad, int id_clave_area, int id_area){
         int aleatorio;
         int i=0;
         List<Integer> claves_areas=new ArrayList<>();
+        List<Integer> id_emp=new ArrayList<>();
         Set<Integer> generados = new HashSet<>();
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
         SQLiteDatabase db = databaseAccess.open();
-
-        Cursor cursor = db.rawQuery("SELECT id_pregunta FROM pregunta", null);
         ContentValues registro = new ContentValues();
 
-        while (cursor.moveToNext()){
-            claves_areas.add(cursor.getInt(0));
+        /*Cursor cursor = db.rawQuery("SELECT ID_PREGUNTA FROM PREGUNTA WHERE ID_GRUPO_EMP IN\n" +
+                                        "(SELECT ID_GRUPO_EMP FROM GRUPO_EMPAREJAMIENTO WHERE ID_AREA="+id_area+")", null);*/
+
+        Cursor cursor_emp = db.rawQuery("SELECT ID_GRUPO_EMP FROM GRUPO_EMPAREJAMIENTO WHERE ID_AREA="+id_area, null);
+        while (cursor_emp.moveToNext()){
+            id_emp.add(cursor_emp.getInt(0));
         }
 
         while (i<cantidad){
             aleatorio = -1;
             boolean generado = false;
             while (!generado) {
-                int posible = (int) (Math.random() * cantidad) + 1;
+                int posible = (int) (Math.random() * cantidad);
                 if (!generados.contains(posible)) {
                     generados.add(posible);
                     aleatorio = posible;
                     generado = true;
                 }
             }
-            registro.put("id_pregunta", claves_areas.get(aleatorio));
-            registro.put("id_clave_area", id_clave_area);
-            db.insert("clave_area_pregunta", null, registro );
+
+            Cursor cursor_pregunta = db.rawQuery("SELECT ID_PREGUNTA FROM PREGUNTA WHERE ID_GRUPO_EMP ="+id_emp.get(aleatorio), null);
+            while (cursor_pregunta.moveToNext()){
+                //claves_areas.add(cursor_pregunta.getInt(0));
+                registro.put("id_pregunta", cursor_pregunta.getString(0));
+                registro.put("id_clave_area", id_clave_area);
+                db.insert("clave_area_pregunta", null, registro );
+
+            }
             i++;
         }
 

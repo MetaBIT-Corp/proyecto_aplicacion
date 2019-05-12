@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
+import com.example.crud_encuesta.Componentes_AP.Models.Evaluacion;
 import com.example.crud_encuesta.Componentes_DC.Objetos.Pregunta;
 import com.example.crud_encuesta.DatabaseAccess;
 
@@ -119,6 +120,21 @@ public class DaoPregunta {
         cursor.moveToPosition(position);
         pregunta = new Pregunta(cursor.getInt(cursor.getColumnIndex("ID_PREGUNTA")),cursor.getInt(cursor.getColumnIndex("ID_GRUPO_EMP")),cursor.getString(cursor.getColumnIndex("PREGUNTA")));
         return pregunta;
+    }
+
+    public ArrayList<Pregunta> busqueda(String pregunta){
+
+        ArrayList<Pregunta> preguntas=new ArrayList<>();
+        Cursor cursor = cx.rawQuery("SELECT * FROM PREGUNTA WHERE PREGUNTA LIKE '%"+pregunta+"%'", null);
+
+        if(cursor.moveToFirst()){
+            cursor.moveToFirst();
+            do {
+                preguntas.add(new Pregunta(cursor.getInt(cursor.getColumnIndex("ID_PREGUNTA")),cursor.getInt(cursor.getColumnIndex("ID_GRUPO_EMP")),cursor.getString(cursor.getColumnIndex("PREGUNTA"))));
+            }while (cursor.moveToNext());
+        }
+
+        return preguntas;
     }
 
 }

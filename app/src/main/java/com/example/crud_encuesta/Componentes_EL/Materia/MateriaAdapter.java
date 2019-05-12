@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import com.example.crud_encuesta.Componentes_EL.EstructuraTablas;
 import com.example.crud_encuesta.Componentes_EL.Operaciones_CRUD;
 import com.example.crud_encuesta.Componentes_EL.ModelosAdicionales.Pensum;
 import com.example.crud_encuesta.R;
+import com.example.crud_encuesta.SubMenuMateriaActivity;
 
 import java.util.ArrayList;
 
@@ -72,7 +74,17 @@ public class MateriaAdapter extends BaseAdapter {
         View view = convertView;
         if (view == null) {
             view = inflater.inflate(R.layout.item_escuela, null);
+
         }
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(context, SubMenuMateriaActivity.class);
+                i.putExtra("id_materia",getItemId(position));
+                context.startActivity(i);
+            }
+        });
 
         Button btneditar = view.findViewById(R.id.btn_editar);
         Button btneliminar = view.findViewById(R.id.btn_eliminar);

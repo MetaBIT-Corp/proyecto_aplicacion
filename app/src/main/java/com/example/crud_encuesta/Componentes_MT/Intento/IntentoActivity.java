@@ -65,8 +65,8 @@ public class IntentoActivity extends AppCompatActivity {
             pregunta = cursor_pregunta.getString(2);
             id_gpo = cursor_pregunta.getInt(1);
 
-            ponderacion = IntentoConsultasDB.getPonderacion(id, db);
             modalidad = IntentoConsultasDB.getModalidad(id, db);
+            ponderacion = IntentoConsultasDB.getPonderacion(id, id_clave, id_gpo, modalidad, db);
             descripcion = IntentoConsultasDB.getDescripcion(id_gpo, db);
 
             aumentarTamanio(modalidad);

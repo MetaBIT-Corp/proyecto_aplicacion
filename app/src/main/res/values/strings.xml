@@ -85,6 +85,9 @@
     <string name="ap_indicaciones">Ingrese la contraseña para acceder al intento.</string>
     <string name="ap_ingreso_contraseña">Contraseña</string>
 
+    <string name="area">Area</string>
+    <string name="evaluacion">Evaluacion</string>
+
     <string name="mt_titulo_del_area">Titulo del area</string>
     <string name="mt_aleatorio">Aleatorio</string>
     <string name="mt_cantidad_de_preguntas">Cantidad de preguntas</string>
@@ -110,6 +113,9 @@
     <string name="mt_finalizar">Finalizar</string>
     <string name="mt_finalizar_evaluacion">¿Desea finalizar la evaluacion?</string>
     <string name="mt_ir_inicio">Regresar a Inicio</string>
+    <string name="mt_buscar_area">Buscar area</string>
+    <string name="mt_cant_preguntas_ingresadas">Error, la cantidad de preguntas ingresadas supera a la cantidad existente en esta area</string>
+
     <string name="ap_evaluaciones">Pensum</string>
     <string name="ap_buscar_pensum">Buscar pensum</string>
     <string name="ap_title_dialogo_pensum">Nuevo</string>
@@ -119,6 +125,86 @@
     <string name="ap_materias">Listado de materias</string>
     <string name="ap_pensum_materia">Pensum Materia</string>
     <string name="ap_buscar_pensum_materia">Buscar</string>
+<<<<<<< HEAD
     <string name="ap_Turnos">Turno</string>
     <string name="ap_Evaluaciones">Evaluaciones</string>
+=======
+    <!-- DC -->
+    <string name="msg_bienvenida">¡Bienvenido!</string>
+    <string name="opc_escuela">Escuela</string>
+    <string name="opc_docente">Docente</string>
+    <string name="opc_alumno">Estudiante</string>
+    <string name="opc_encuesta">Encuesta</string>
+    <string name="texto_opciones">Opciones</string>
+    <string name="texto_preguntas">Preguntas</string>
+    <string name="texto_descripcion">Descripción</string>
+    <string name="texto_titulo_dialogo_gpo_emp">Agregar Grupo Emparejamiento</string>
+    <string name="texto_titulo_dialogo_opcion">Agregar Opción</string>
+    <string name="hint_opcion">Opción</string>
+    <string name="checkb_correcta">Correcta</string>
+    <string name="texto_titulo_dialogo_pregunta">Agregar Pregunta</string>
+    <string name="hint_pregunta">Pregunta</string>
+    <string name="texto_gpo_emp">Grupos de emparejamiento</string>
+    <string name="opc_matciclo">Materia Ciclo</string>
+    <string name="opc_pensum">Pensum</string>
+    <string name="buscar_preg">Buscar Pregunta</string>
+    <!-- END DC -->
+
+    <!-- Estudiante -->
+    <string name="est_titulo">Estudiantes</string>
+    <string name="est_titulo2">Estudiante</string>
+    <string name="est_titulo3">Estudiante: </string>
+    <string name="est_titulo_editar">Editar Estudiante: </string>
+    <string name="est_titulo_registrar">Registro de nuevo Estudiante</string>
+    <string name="est_edtx_carnet">Carnet</string>
+    <string name="est_chck_activo">Activo</string>
+    <string name="est_tv_nombre">Nombre: </string>
+    <string name="est_tv_anio">Año Ingreso: </string>
+    <string name="est_borrar">¿Quieres eliminar al Estudiante?</string>
+    <!-- END Estudiante-->
+
+    <!-- Docente -->
+    <string name="dcn_titulo">Docentes</string>
+    <string name="dcn_titulo2">Docente</string>
+    <string name="dcn_titulo3">Docente: </string>
+    <string name="dcn_titulo_editar">Editar Docente: </string>
+    <string name="dcn_titulo_registrar">Registro de nuevo Docente</string>
+    <string name="dcn_edtx_carnet">Carnet</string>
+    <string name="dcn_chck_activo">Activo</string>
+    <string name="dcn_tv_nombre">Nombre: </string>
+    <string name="dcn_tv_escuela">Escuela: </string>
+    <string name="dcn_tv_anio">Año de Título: </string>
+    <string name="dcn_tv_descripcion">Descripción: </string>
+    <string name="dcn_tv_jornada">Tipo de Jornada: </string>
+    <string name="dcn_tv_cargo">Cargo Actual: </string>
+    <string name="dcn_tv_cargo_sec">Cargo Secundario: </string>
+    <string name="dcn_borrar">¿Quieres eliminar al Docente?</string>
+    <!-- END Docente -->
+
+    <!-- Materia_Ciclo -->
+    <string name="mtc_titulo">Materias de Ciclo</string>
+    <string name="mtc_titulo2">Materia Ciclo</string>
+    <string name="mtc_titulo3">Materia Ciclo: </string>
+    <string name="mtc_titulo_registrar">Registro de nueva Materia Ciclo</string>
+    <string name="mtc_titulo_editar">Editar Materia Ciclo: </string>
+    <string name="mtc_cicloi">Ciclo I</string>
+    <string name="mtc_cicloii">Ciclo II</string>
+    <string name="mtc_vista">Materia Ciclo: </string>
+    <string name="mtc_materia">Materia: </string>
+    <string name="mtc_ciclo">Ciclo: </string>
+    <string name="mtc_anio">Año: </string>
+    <string name="mtc_borrar">¿Quieres eliminar la Materia Ciclo?</string>
+    <!-- END Materia_Ciclo -->
+
+    <!-- Varios -->
+    <string name="btn_agregar">Agregar</string>
+    <string name="btn_registrar">Registrar</string>
+    <string name="btn_guardar">Guardar</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_salir">Salir</string>
+    <string name="edtx_buscar">Buscar</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <!-- END Varios -->
+>>>>>>> ff8077d728ca3c7a9635fbd7a716e120e165205d
 </resources>

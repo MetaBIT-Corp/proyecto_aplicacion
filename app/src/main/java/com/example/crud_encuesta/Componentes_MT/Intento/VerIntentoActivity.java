@@ -1,5 +1,6 @@
 package com.example.crud_encuesta.Componentes_MT.Intento;
 
+import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,7 @@ public class VerIntentoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ver_intento);
 
         listView = (ListView)findViewById(R.id.lsVerPreguntas);
-        listView.setAdapter(new VerIntentoAdapter(getPreguntas(), this));
+        listView.setAdapter(new VerIntentoAdapter(getPreguntas(), this, this));
 
     }
 

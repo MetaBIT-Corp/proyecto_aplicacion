@@ -18,6 +18,12 @@ public class Usuario {
         this.ROL = ROL;
     }
 
+    public Usuario(String NOMUSUARIO, String CLAVE, int ROL) {
+        this.NOMUSUARIO = NOMUSUARIO;
+        this.CLAVE = CLAVE;
+        this.ROL = ROL;
+    }
+
     public int getIDUSUARIO() {
         return IDUSUARIO;
     }
@@ -50,3 +56,4 @@ public class Usuario {
         this.ROL = ROL;
     }
 }
+

@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="Vista Materia Ciclo"
+            android:text="@string/mtc_vista"
             android:textColor="@color/icons"
             android:textSize="18sp"/>
     </android.support.v7.widget.Toolbar>
@@ -63,7 +63,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:text="Ciclo:"/>
+                    android:text="@string/mtc_ciclo"/>
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -75,7 +75,7 @@
                         android:id="@+id/rb_ciclo1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Ciclo I"
+                        android:text="@string/mtc_cicloi"
                         android:enabled="false"/>
                     <android.support.v4.widget.Space
                         android:layout_width="30dp"
@@ -84,7 +84,7 @@
                         android:id="@+id/rb_ciclo2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Ciclo II"
+                        android:text="@string/mtc_cicloii"
                         android:enabled="false"/>
                 </RadioGroup>
             </LinearLayout>
@@ -98,7 +98,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:text="Año:"/>
+                    android:text="@string/mtc_anio"/>
                 <android.support.v4.widget.Space
                     android:layout_width="30dp"
                     android:layout_height="0dp" />
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_weight="1"
-                    android:text="Salir" />
+                    android:text="@string/btn_salir" />
             </LinearLayout>
 
         </LinearLayout>

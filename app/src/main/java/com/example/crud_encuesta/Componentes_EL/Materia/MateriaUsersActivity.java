@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.example.crud_encuesta.Componentes_EL.Operaciones_CRUD;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 
@@ -18,15 +19,31 @@ public class MateriaUsersActivity extends AppCompatActivity {
     DatabaseAccess access;
     ContentValues contentValues;
     ListView listView;
-    MateriaAdapter adapter;
+    MateriaUserAdapter adapter;
     ArrayList<Materia> listaMateria = new ArrayList<>();
+    int id;
+    int rol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_materia_users);
 
+        rol=getIntent().getExtras().getInt("rol_user");
+        id=getIntent().getExtras().getInt("id_user");
+
         LinearLayout l=findViewById(R.id.linearBusqueda);
         l.setVisibility(View.GONE);
+
+        listView = findViewById(R.id.list_view_base);
+        access = DatabaseAccess.getInstance(MateriaUsersActivity.this);
+        db = access.open();
+        listaMateria= Operaciones_CRUD.todosMateria(db,rol,id);
+        adapter=new MateriaUserAdapter(MateriaUsersActivity.this,listaMateria,db,this,id,rol);
+
+        listView.setAdapter(adapter);
+
+
+
     }
 }

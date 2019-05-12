@@ -6,75 +6,36 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="warn" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="789efefe-5353-401c-9ae9-e4c75cb9dce3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/AdaptadorMateriaCiclo.java" afterDir="false" />
+    <list default="true" id="773ce9a5-f19e-455a-adc6-0c2b5566582a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cardview_v7_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cardview_v7_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/Otros_documentos/scriptUsuarios.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Otros_documentos/scriptUsuarios.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/databases/encuesta.db" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/databases/encuesta.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/PensumActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/PensumActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Adapters/AdapterPensum.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Adapters/AdapterPensum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Adapters/AdapterTurno.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Adapters/AdapterTurno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOEvaluacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOEvaluacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOPensum.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOPensum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialogo_pensum.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialogo_pensum.xml" afterDir="false" />
-=======
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Docente/ActivityDocente.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Docente/ActivityDocente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Docente/AdaptadorDocente.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Docente/AdaptadorDocente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Estudiante/ActivityEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Estudiante/ActivityEstudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Estudiante/AdaptadorEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Estudiante/AdaptadorEstudiante.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/ActivityMateriaCiclo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/ActivityMateriaCiclo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/DAOMateriaCiclo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/DAOMateriaCiclo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
-      <change beforePath="$PROJECT_DIR$/proyecto_aplicacion.iml" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto_aplicacion.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/AdaptadorMateriaCiclo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/AdaptadorMateriaCiclo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_docente.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_docente.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_estudiante.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_estudiante.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_materia_ciclo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_materia_ciclo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialogo_docente.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialogo_docente.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialogo_estudiante.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialogo_estudiante.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialogo_materia_ciclo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialogo_materia_ciclo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/vista_docente.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/vista_docente.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/vista_estudiante.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/vista_estudiante.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/vista_materia_ciclo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/vista_materia_ciclo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,129 +51,127 @@
     </system>
   </component>
   <component name="FUSProjectUsageTrigger">
-    <session id="1118575770">
+    <session id="1205556955">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.4" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="java" value="8" />
+          <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JAVA" value="8" />
+          <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="171" />
+          <entry key="java" value="2" />
+          <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="171" />
+          <entry key="JAVA" value="2" />
+          <entry key="XML" value="2" />
         </counts>
       </usages-collector>
     </session>
-<<<<<<< HEAD
-    <session id="-1912943314">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.40" value="1" />
-          <entry key="project.opened" value="5" />
-=======
     <session id="-1408078202">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.10" value="1" />
-          <entry key="project.opened" value="1" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
-        </counts>
-      </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-<<<<<<< HEAD
-          <entry key="java" value="44" />
-          <entry key="txt" value="2" />
-          <entry key="xml" value="2" />
-=======
-          <entry key="java" value="4" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
+          <entry key="java" value="49" />
+          <entry key="xml" value="56" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-<<<<<<< HEAD
-          <entry key="JAVA" value="44" />
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="XML" value="2" />
+          <entry key="JAVA" value="49" />
+          <entry key="XML" value="56" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2072" />
-          <entry key="txt" value="2" />
-          <entry key="xml" value="10" />
+          <entry key="java" value="920" />
+          <entry key="xml" value="2474" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2072" />
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="XML" value="10" />
-=======
-          <entry key="JAVA" value="4" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
+          <entry key="JAVA" value="920" />
+          <entry key="XML" value="2474" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.41" value="1" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-<<<<<<< HEAD
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/LoginActivity.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="49" column="80" selection-start-line="49" selection-start-column="80" selection-end-line="49" selection-end-column="80" />
+            <state relative-caret-position="195">
+              <caret line="158" column="4" selection-start-line="158" selection-start-column="4" selection-end-line="158" selection-end-column="71" />
             </state>
           </provider>
-=======
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/ActivityMateriaCiclo.java">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/AdaptadorMateriaCiclo.java">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values-en/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-369">
+              <caret line="158" column="64" selection-start-line="158" selection-start-column="64" selection-end-line="158" selection-end-column="64" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/DAOMateriaCiclo.java">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Estudiante/AdaptadorEstudiante.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1069">
+              <caret line="277" column="49" selection-start-line="277" selection-start-column="49" selection-end-line="277" selection-end-column="49" />
+              <folding>
+                <element signature="e#10566#10585#0" expanded="true" />
+                <element signature="e#10668#10679#0" expanded="true" />
+                <element signature="e#11052#11063#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/MateriaCiclo.java">
-          <provider selected="true" editor-type-id="text-editor" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Docente/AdaptadorDocente.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4692">
+              <caret line="345" column="49" selection-start-line="345" selection-start-column="49" selection-end-line="345" selection-end-column="49" />
+              <folding>
+                <element signature="e#14407#14426#0" expanded="true" />
+                <element signature="e#14509#14520#0" expanded="true" />
+                <element signature="e#14893#14904#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>putExtra(&quot;id_turno</find>
+      <find>verT</find>
+      <find>setTe</find>
+      <find>setT</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -221,21 +180,35 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Area/DAOArea.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Area/AreaAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Area/AreaActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Clave/DAOClave.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Clave/ClaveActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Area/DAOArea.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_area.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Clave/ClaveAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Adapters/AdapterTurno.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Intento/IntentoActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Intento/IntentoConsultasDB.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Intento/VerIntentoActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Intento/VerIntentoAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/dialogo_pensum.xml" />
-        <option value="$PROJECT_DIR$/Otros_documentos/scriptUsuarios.txt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/PensumActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOPensum.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOEvaluacion.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Adapters/AdapterPensum.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Docente/DAODocente.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Estudiante/DAOEstudiante.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_estudiante.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Estudiante/ActivityEstudiante.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_docente.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_docente.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Docente/ActivityDocente.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/vista_estudiante.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/vista_docente.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/dialogo_estudiante.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/dialogo_docente.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_materia_ciclo.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/dialogo_materia_ciclo.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/vista_materia_ciclo.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/ActivityMateriaCiclo.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/AdaptadorMateriaCiclo.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Estudiante/AdaptadorEstudiante.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Docente/AdaptadorDocente.java" />
       </list>
     </option>
   </component>
@@ -250,29 +223,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-<<<<<<< HEAD
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="proyecto_aplicacion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proyecto_aplicacion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="proyecto_aplicacion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proyecto_aplicacion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="Otros_documentos" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-=======
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -294,20 +247,40 @@
             <path>
               <item name="proyecto_aplicacion" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="crud_encuesta" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Componentes_Docente" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proyecto_aplicacion" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="crud_encuesta" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Componentes_Estudiante" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="proyecto_aplicacion" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
               <item name="proyecto_aplicacion" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-<<<<<<< HEAD
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="crud_encuesta" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="Componentes_AP" type="462c0819:PsiDirectoryNode" />
-              <item name="Activities" type="462c0819:PsiDirectoryNode" />
-=======
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
+            </path>
+            <path>
+              <item name="proyecto_aplicacion" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="proyecto_aplicacion" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="strings" type="c431d0b8:AndroidResGroupNode" />
             </path>
           </expand>
           <select />
@@ -317,20 +290,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-<<<<<<< HEAD
-    <property name="device.picker.selection" value="Galaxy_Nexus_API_22_Lollipop" />
+    <property name="device.picker.selection" value="Nexus_S_API_24" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-=======
-    <property name="device.picker.selection" value="ce10171a3066642d047e" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/PRUEBAS/MIO23/proyecto_aplicacion" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Carlos\Desktop\UES_2019\PDM115\proyecto_aplicacion\app\src\main\res\layout" />
-      <recent name="C:\Users\Carlos\Desktop\UES_2019\PDM115\proyecto_aplicacion\app\src\main\java\com\example\crud_encuesta" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -410,321 +372,419 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="789efefe-5353-401c-9ae9-e4c75cb9dce3" name="Default Changelist" comment="" />
-      <created>1557506323107</created>
+      <changelist id="773ce9a5-f19e-455a-adc6-0c2b5566582a" name="Default Changelist" comment="" />
+      <created>1557595283398</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1557506323107</updated>
+      <updated>1557595283398</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-<<<<<<< HEAD
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.22087745" />
-=======
-    <layout>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26626325" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
-      <window_info id="Structure" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.21709532" />
+      <window_info id="Structure" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Run" order="0" />
-<<<<<<< HEAD
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.66885245" />
-=======
-      <window_info anchor="bottom" id="Logcat" order="1" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
-      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Logcat" order="0" weight="0.3295082" />
+      <window_info anchor="bottom" id="TODO" order="1" />
+      <window_info anchor="bottom" id="Android Profiler" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="4" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.3295082" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-<<<<<<< HEAD
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.32786885" />
-      <window_info anchor="bottom" id="Find" order="8" />
-      <window_info anchor="bottom" id="Android Profiler" order="9" show_stripe_button="false" />
-=======
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.2409836" />
-      <window_info anchor="bottom" id="Find" order="8" />
-      <window_info anchor="bottom" id="Android Profiler" order="9" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
+      <window_info anchor="bottom" id="Build" order="7" weight="0.16557378" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
-<<<<<<< HEAD
-      <window_info anchor="right" id="Preview" order="5" weight="0.22617246" />
-=======
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
+      <window_info anchor="right" id="Preview" order="5" weight="0.32980332" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.21709532" />
+      <window_info id="Structure" order="3" side_tool="true" />
+      <window_info id="Build Variants" order="4" side_tool="true" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Designer" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Logcat" order="0" weight="0.3295082" />
+      <window_info anchor="bottom" id="TODO" order="1" />
+      <window_info anchor="bottom" id="Android Profiler" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.3295082" />
+      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="6" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.16557378" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Gradle" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.32980332" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Area/AreaActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="41" column="26" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Area/DAOArea.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="30" column="50" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Clave/DAOClave.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Adapters/AdapterTurno.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="128" column="36" lean-forward="true" selection-start-line="128" selection-start-column="36" selection-end-line="128" selection-end-column="36" />
+        <state relative-caret-position="538">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Area/AreaActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="41" column="26" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="26" />
+        <state relative-caret-position="-187">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_area.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1581">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
           <folding>
-            <element signature="method#cargarItems#0;class#AreaActivity#0" />
+            <element signature="e#1041#1058#0" expanded="true" />
+            <element signature="e#1528#1568#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
-          <caret line="94" column="24" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Area/DAOArea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="30" column="50" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="50" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Clave/ClaveActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="150">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="24" />
-=======
-        <state relative-caret-position="306">
-          <caret line="25" column="14" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="14" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Clave/ClaveAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="456">
+          <caret line="437" selection-start-line="437" selection-end-line="437" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Area/AreaAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Intento/IntentoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="133" column="59" selection-start-line="133" selection-start-column="59" selection-end-line="133" selection-end-column="59" />
+        <state relative-caret-position="408">
+          <caret line="120" selection-start-line="120" selection-end-line="120" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Carrera/CarreraActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Intento/IntentoConsultasDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        <state relative-caret-position="357">
+          <caret line="118" selection-start-line="118" selection-end-line="118" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Carrera/Carrera.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Intento/VerIntentoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="538">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Encuesta/EncuestaAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Intento/VerIntentoAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        <state relative-caret-position="538">
+          <caret line="220" selection-start-line="220" selection-end-line="220" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Encuesta/EncuestaActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_materia.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Operaciones_CRUD.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
+        <state relative-caret-position="238">
+          <caret line="178" column="53" lean-forward="true" selection-start-line="178" selection-start-column="53" selection-end-line="178" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Materia/MateriaAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
           <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Encuesta/Encuesta.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Materia/MateriaActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        <state relative-caret-position="-119">
+          <caret line="53" column="8" selection-start-line="53" selection-start-column="8" selection-end-line="56" selection-end-column="46" />
+          <folding>
+            <element signature="e#2197#2218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Carrera/CarreraAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Estudiante/DAOEstudiante.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-440">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        <state relative-caret-position="266">
+          <caret line="91" column="126" selection-start-line="91" selection-start-column="126" selection-end-line="91" selection-end-column="126" />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Docente/DAODocente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="111" column="41" selection-start-line="111" selection-start-column="41" selection-end-line="111" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_escuela.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Escuela/EscuelaAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="71" column="22" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Escuela/EscuelaActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="75" column="28" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_base.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="50" column="23" lean-forward="true" selection-start-line="16" selection-start-column="8" selection-end-line="50" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/menu.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-850" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/SubMenuMateriaActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-426">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="88" column="11" lean-forward="true" selection-start-line="88" selection-start-column="11" selection-end-line="88" selection-end-column="11" />
+        <state relative-caret-position="2057">
+          <caret line="165" lean-forward="true" selection-start-line="165" selection-end-line="165" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialogo_pensum.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="39" column="41" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialogo_escuela.xml">
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/TurnoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-577">
-          <caret line="211" column="25" lean-forward="true" selection-start-line="208" selection-start-column="24" selection-end-line="241" selection-end-column="25" />
+        <state relative-caret-position="255">
+          <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <folding>
+            <element signature="e#1384#1415#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_estudiante.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="65" column="49" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="49" />
+          <folding>
+            <element signature="e#1287#1307#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_estudiante.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_docente.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Estudiante/ActivityEstudiante.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="92" column="28" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Docente/ActivityDocente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1237">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        <state relative-caret-position="17">
+          <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Otros_documentos/scriptUsuarios.txt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialogo_estudiante.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="83" selection-start-line="12" selection-start-column="83" selection-end-line="12" selection-end-column="83" />
+        <state relative-caret-position="343">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/PensumActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/vista_docente.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="747">
-          <caret line="118" column="51" selection-start-line="118" selection-start-column="51" selection-end-line="118" selection-end-column="51" />
+        <state relative-caret-position="258">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/vista_estudiante.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_docente.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="65" column="49" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_materia_ciclo.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_materia_ciclo.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-643" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialogo_docente.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/vista_materia_ciclo.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="86" column="57" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
+          <folding>
+            <element signature="e#3329#3349#0" expanded="true" />
+            <element signature="e#5383#5402#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialogo_materia_ciclo.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="77" column="49" selection-start-line="77" selection-start-column="49" selection-end-line="77" selection-end-column="49" />
+          <folding>
+            <element signature="e#991#1012#0" expanded="true" />
+            <element signature="e#1949#1970#0" expanded="true" />
+            <element signature="e#2641#2660#0" expanded="true" />
+            <element signature="e#4190#4208#0" expanded="true" />
+            <element signature="e#5590#5611#0" expanded="true" />
+            <element signature="e#5882#5904#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/ActivityMateriaCiclo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="72" column="28" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="28" />
+          <folding>
+            <element signature="e#3631#3660#0" expanded="true" />
+            <element signature="e#3695#3717#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="158" column="4" selection-start-line="158" selection-start-column="4" selection-end-line="158" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/AdaptadorMateriaCiclo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="316" column="49" selection-start-line="316" selection-start-column="49" selection-end-line="316" selection-end-column="49" />
+          <folding>
+            <element signature="e#12477#12488#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-en/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-369">
+          <caret line="158" column="64" selection-start-line="158" selection-start-column="64" selection-end-line="158" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Estudiante/AdaptadorEstudiante.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1069">
+          <caret line="277" column="49" selection-start-line="277" selection-start-column="49" selection-end-line="277" selection-end-column="49" />
+          <folding>
+            <element signature="e#10566#10585#0" expanded="true" />
+            <element signature="e#10668#10679#0" expanded="true" />
+            <element signature="e#11052#11063#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_Docente/AdaptadorDocente.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1288">
-          <caret line="210" column="17" selection-start-line="207" selection-start-column="16" selection-end-line="211" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Models/Pensum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOTurno.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOPensum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="114" column="67" selection-start-line="114" selection-start-column="67" selection-end-line="114" selection-end-column="67" />
+        <state relative-caret-position="4692">
+          <caret line="345" column="49" selection-start-line="345" selection-start-column="49" selection-end-line="345" selection-end-column="49" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#14407#14426#0" expanded="true" />
+            <element signature="e#14509#14520#0" expanded="true" />
+            <element signature="e#14893#14904#0" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOEvaluacion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="85" column="103" selection-start-line="85" selection-start-column="103" selection-end-line="85" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Adapters/AdapterTurno.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="316" column="57" selection-start-line="280" selection-start-column="16" selection-end-line="316" selection-end-column="57" />
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Area/AreaAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="131" column="59" selection-start-line="131" selection-start-column="59" selection-end-line="131" selection-end-column="59" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Adapters/AdapterPensum.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="-2711">
-          <caret line="109" column="51" selection-start-line="109" selection-start-column="51" selection-end-line="109" selection-end-column="51" />
-=======
-        <state relative-caret-position="340">
-          <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8404#8594#0" expanded="true" />
-            <element signature="e#8593#8594#0" expanded="true" />
-            <element signature="e#8736#10404#0" expanded="true" />
-            <element signature="e#10403#10404#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="49" column="80" selection-start-line="49" selection-start-column="80" selection-end-line="49" selection-end-column="80" />
-        </state>
-      </provider>
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/ActivityMateriaCiclo.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/AdaptadorMateriaCiclo.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/DAOMateriaCiclo.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MateriaCiclo/MateriaCiclo.java">
-      <provider selected="true" editor-type-id="text-editor" />
->>>>>>> a420ba12b076d6bd5b3fd236fbead88206391711
     </entry>
   </component>
 </project>

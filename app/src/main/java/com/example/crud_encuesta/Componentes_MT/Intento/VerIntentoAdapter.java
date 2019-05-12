@@ -1,5 +1,6 @@
 package com.example.crud_encuesta.Componentes_MT.Intento;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -30,11 +31,13 @@ public class VerIntentoAdapter extends BaseAdapter implements AdapterView.OnItem
     private LayoutInflater inflater;
     private Context context;
     private List<PreguntaRevision> preguntas = new ArrayList<>();
+    private Activity activity;
 
     private List<Integer> idesGPO = new ArrayList<>();
 
-    public VerIntentoAdapter(List<PreguntaRevision> preguntas, Context context) {
+    public VerIntentoAdapter(List<PreguntaRevision> preguntas, Activity activity, Context context) {
         this.preguntas = preguntas;
+        this.activity = activity;
         this.context = context;
 
         inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -171,8 +174,9 @@ public class VerIntentoAdapter extends BaseAdapter implements AdapterView.OnItem
         inicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, MainActivity.class);
-                context.startActivity(i);
+                //Intent i = new Intent(context, MainActivity.class);
+                //context.startActivity(i);
+                activity.finish();
             }
         });
 

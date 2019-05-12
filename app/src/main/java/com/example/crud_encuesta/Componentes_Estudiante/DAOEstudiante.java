@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.DatabaseAccess;
 import java.util.ArrayList;
 
@@ -28,17 +29,34 @@ public class DAOEstudiante {
         this.ct = ct;
     }
 
+    public boolean insertarUsuario(Usuario usuario){
+        ContentValues contenedor = new ContentValues();
+        contenedor.put("NOMUSUARIO",usuario.getNOMUSUARIO());
+        contenedor.put("CLAVE",usuario.getCLAVE());
+        contenedor.put("ROL",usuario.getROL());
+        return (cx.insert("USUARIO", null,contenedor)>0);
+    }
+
     public boolean insertar(Estudiante estd){
         ContentValues contenedor = new ContentValues();
         contenedor.put("CARNET", estd.getCarnet());
         contenedor.put("NOMBRE", estd.getNombre());
         contenedor.put("ACTIVO", estd.getActivo());
         contenedor.put("ANIO_INGRESO", estd.getAnio_ingreso());
+        contenedor.put("IDUSUARIO",estd.getId_usuario());
         return (cx.insert("ESTUDIANTE", null, contenedor)>0);
     }
 
     public boolean eliminar(int id){
         return (cx.delete("ESTUDIANTE", "ID_EST="+id, null)>0);
+    }
+
+    public boolean editarUsuario(Usuario usuario){
+        ContentValues contenedor = new ContentValues();
+        contenedor.put("NOMUSUARIO",usuario.getNOMUSUARIO());
+        contenedor.put("CLAVE",usuario.getCLAVE());
+        contenedor.put("ROL",usuario.getROL());
+        return (cx.update("USUARIO", contenedor, "IDUSUARIO="+usuario.getIDUSUARIO(),null)>0);
     }
 
     public boolean editar(Estudiante estd){
@@ -65,6 +83,23 @@ public class DAOEstudiante {
                         cursor.getInt(3),
                         cursor.getString(4)));
             }while (cursor.moveToNext());
+        }
+        return lista;
+    }
+
+    public ArrayList<Estudiante> verBusqueda(String parametro){
+        lista.clear();
+        Cursor cursor = cx.rawQuery("SELECT * FROM ESTUDIANTE WHERE NOMBRE LIKE '%"+parametro+"%' OR CARNET LIKE'%"+parametro+"%'",null);
+        if (cursor != null && cursor.getCount()>0){
+            cursor.moveToFirst();
+            do {
+                lista.add(new Estudiante(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getInt(3),
+                        cursor.getString(4)));
+            }while(cursor.moveToNext());
         }
         return lista;
     }

@@ -1,6 +1,8 @@
 package com.example.crud_encuesta.Componentes_EL.Encuesta;
 
 import com.example.crud_encuesta.Componentes_Docente.Docente;
+
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TimePicker;
@@ -44,6 +47,10 @@ public class EncuestaActivity extends AppCompatActivity {
     ArrayList<Encuesta>listaEncuesta=new ArrayList<>();
     EncuestaAdapter adapter;
 
+    int rol;
+    int iduser;
+
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,22 +58,68 @@ public class EncuestaActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        FloatingActionButton fab= findViewById(R.id.fab);
         listView=findViewById(R.id.list_view_base);
         access=DatabaseAccess.getInstance(EncuestaActivity.this);
         db=access.open();
 
+        rol=getIntent().getExtras().getInt("rol_user");
+        iduser=getIntent().getExtras().getInt("id_user");
+
         listaDocentes= Operaciones_CRUD.todosDocente(db);
-        listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes);
+
 
         LinearLayout l=findViewById(R.id.linearBusqueda);
-        l.setVisibility(View.GONE);
 
-        adapter=new EncuestaAdapter(EncuestaActivity.this,listaEncuesta,db,this,listaDocentes);
+
+
+        if (rol==0||rol==2){
+            listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes);
+            fab.setVisibility(View.GONE);
+
+        }
+
+        if (rol==1){
+            l.setVisibility(View.GONE);
+            listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes,iduser);
+        }
+
+        ImageView btnBuscar=findViewById(R.id.el_find);
+        ImageView btnTodos=findViewById(R.id.el_all);
+        final EditText buscar=findViewById(R.id.find_nom);
+
+
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes,buscar.getText().toString());
+                adapter.setL(listaEncuesta);
+                buscar.setText("");
+            }
+        });
+        btnTodos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (rol==0||rol==2){
+                    listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes);
+                }
+
+                if (rol==1){
+                    listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes,iduser);
+                }
+                adapter.setL(listaEncuesta);
+                buscar.setText("");
+            }
+        });
+
+
+
+
+        adapter=new EncuestaAdapter(EncuestaActivity.this,listaEncuesta,db,this,listaDocentes,iduser,rol);
 
         listView.setAdapter(adapter);
 
 
-        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -166,15 +219,19 @@ public class EncuestaActivity extends AppCompatActivity {
                         else{
                             ContentValues contentValues=new ContentValues();
 
-                            /*OOOOOJOOOOO CAMBIAR CUANDO MANDEN EL ID DEL DOCENTE LOGUEADO*/
-                            contentValues.put(EstructuraTablas.COL_1_ENCUESTA,2);
-
+                            contentValues.put(EstructuraTablas.COL_1_ENCUESTA,Operaciones_CRUD.docenteEncuesta(db,iduser));
                             contentValues.put(EstructuraTablas.COL_2_ENCUESTA,nom.getText().toString());
                             contentValues.put(EstructuraTablas.COL_3_ENCUESTA,desc.getText().toString());
                             contentValues.put(EstructuraTablas.COL_4_ENCUESTA,infi.getText().toString());
                             contentValues.put(EstructuraTablas.COL_5_ENCUESTA,inff.getText().toString());
                             Operaciones_CRUD.insertar(db,contentValues,EncuestaActivity.this,EstructuraTablas.ENCUESTA_TABLA_NAME).show();
-                            listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes);
+                            if (rol==0||rol==2){
+                                listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes);
+                            }
+
+                            if (rol==1){
+                                listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes,iduser);
+                            }
                             adapter.setL(listaEncuesta);
                         }
                     }

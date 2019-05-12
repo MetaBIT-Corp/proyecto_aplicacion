@@ -86,8 +86,8 @@ public class ActivityMateriaCiclo extends AppCompatActivity {
                 Button guardar = (Button) dialogo.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar);
 
-                mensaje.setText("Registrar Materia Ciclo");
-                guardar.setText("Registrar");
+                mensaje.setText(R.string.mtc_titulo_registrar);
+                guardar.setText(R.string.btn_registrar);
 
                 ArrayAdapter materiaAdapter = new ArrayAdapter(v.getContext(),android.R.layout.simple_list_item_1,DAOMateriaCiclo.listaMaterias(materias));
                 sp_materia.setAdapter(materiaAdapter);
@@ -116,7 +116,7 @@ public class ActivityMateriaCiclo extends AppCompatActivity {
                         Button set = (Button) d.findViewById(R.id.button1);
                         Button cancel = (Button) d.findViewById(R.id.button2);
                         TextView year_text=(TextView)d.findViewById(R.id.year_text);
-                        year_text.setText(""+anio);
+                        year_text.setText(""+anio_actual);
                         final NumberPicker nopicker = (NumberPicker) d.findViewById(R.id.numberPicker1);
 
                         nopicker.setMaxValue(anio_actual+50);

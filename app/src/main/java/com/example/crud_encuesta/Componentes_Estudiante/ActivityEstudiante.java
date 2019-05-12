@@ -1,7 +1,9 @@
 package com.example.crud_encuesta.Componentes_Estudiante;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +15,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 import java.util.ArrayList;
@@ -28,6 +32,7 @@ public class ActivityEstudiante extends AppCompatActivity {
     private AdaptadorEstudiante adapter;
     private ArrayList<Estudiante> lista;
     private Estudiante estudiante;
+    private Usuario usuario;
     private SQLiteDatabase db;
     private DatabaseAccess access;
     private int anio = Calendar.getInstance().get(Calendar.YEAR);
@@ -45,8 +50,11 @@ public class ActivityEstudiante extends AppCompatActivity {
         access = DatabaseAccess.getInstance(ActivityEstudiante.this);
         db = access.open();
 
-        ListView list = (ListView) findViewById(R.id.lista_estudiante);
+        final ListView list = (ListView) findViewById(R.id.lista_estudiante);
         Button agregar = (Button) findViewById(R.id.btn_nuevo_estudiante);
+        ImageView btnBuscar=findViewById(R.id.el_find);
+        ImageView btnTodos=findViewById(R.id.el_all);
+        final EditText buscar=findViewById(R.id.find_nom);
 
         if((lista != null) && (lista.size() > 0)){
             list.setAdapter(adapter);
@@ -57,11 +65,31 @@ public class ActivityEstudiante extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {}
         });
 
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lista = dao.verBusqueda(buscar.getText().toString());
+                if((lista != null) && (lista.size() > 0)){
+                    list.setAdapter(adapter);
+                }
+            }
+        });
+
+        btnTodos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lista = dao.verTodos();
+                if((lista != null) && (lista.size() > 0)){
+                    list.setAdapter(adapter);
+                }
+            }
+        });
+
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                final Dialog dialogo =new Dialog(ActivityEstudiante.this);dialogo.setTitle("Registro de Estudiante");
+                final Dialog dialogo =new Dialog(ActivityEstudiante.this);
                 dialogo.setTitle("Registro de Estudiante");
                 dialogo.setCancelable(true);
                 dialogo.setContentView(R.layout.dialogo_estudiante);
@@ -78,9 +106,9 @@ public class ActivityEstudiante extends AppCompatActivity {
                 Button guardar = (Button) dialogo.findViewById(R.id.btn_agregar_estd);
                 Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar_estd);
 
-                mensaje.setText("Registrar Nuevo Estudiante");
-                guardar.setText("Registrar");
-                cancelar.setText("Cancelar");
+                mensaje.setText(R.string.est_titulo_registrar);
+                guardar.setText(R.string.btn_registrar);
+                cancelar.setText(R.string.btn_cancelar);
 
                 btn_anio.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -129,13 +157,38 @@ public class ActivityEstudiante extends AppCompatActivity {
                             if(activo.isChecked()){check = 1;}
                             else{check = 0;}
 
-                            estudiante = new Estudiante(
+                            usuario = new Usuario(
                                     carnet.getText().toString(),
+                                    carnet.getText().toString(),
+                                    2
+                            );
+
+                            estudiante = new Estudiante(
+                                    carnet.getText().toString().trim(),
                                     nombre.getText().toString(),
                                     check,
-                                    anio_ingreso.getText().toString());
+                                    anio_ingreso.getText().toString(),
+                                    usuario.getIDUSUARIO());
 
+                            dao.insertarUsuario(usuario);
                             dao.insertar(estudiante);
+
+                            final AlertDialog.Builder usrAlert= new AlertDialog.Builder(ActivityEstudiante.this);
+                            int clave_tamanio = usuario.getCLAVE().length();
+                            String astericos ="";
+                            for(int i=0;i<clave_tamanio-2;i++){
+                                astericos+="*";
+                            }
+                            String clave_formateada=(usuario.getCLAVE().substring(0,2)+astericos);
+                            usrAlert.setMessage("Usuario de Estudiante creado:\n\n"+"Usuario: "+usuario.getNOMUSUARIO()+"\nClave: "+clave_formateada);
+
+                            usrAlert.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {}
+                            });
+
+                            usrAlert.show();
+
                             adapter.notifyDataSetChanged();
                             lista = dao.verTodos();
                             dialogo.dismiss();
@@ -161,5 +214,4 @@ public class ActivityEstudiante extends AppCompatActivity {
         windowmanager.getDefaultDisplay().getMetrics(displayMetrics);
         return displayMetrics.widthPixels;
     }
-
 }

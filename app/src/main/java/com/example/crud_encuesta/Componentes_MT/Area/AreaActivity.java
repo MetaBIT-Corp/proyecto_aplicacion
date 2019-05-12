@@ -35,6 +35,9 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
     FloatingActionButton fabArea;
     private EditText mArea;
     private ListView listView;
+    private ImageView imgBuscar;
+    private ImageView imgTodos;
+    private EditText etBuscar;
 
     //Datos de otros modelos
     private int seleccion_item=0;
@@ -46,19 +49,43 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_area);
 
+        imgBuscar = (ImageView)findViewById(R.id.buscarArea);
+        imgTodos = (ImageView)findViewById(R.id.todosArea);
+        etBuscar = (EditText)findViewById(R.id.etBuscar);
+        fabArea = (FloatingActionButton)findViewById(R.id.fabArea);
+
         daoArea = new DAOArea(this);
         areas = daoArea.getAreas(id_cat_mat);
         areaAdapter = new AreaAdapter(this, areas, daoArea, id_cat_mat, iconos);
 
-        //cargarItems();
         listView = (ListView)findViewById(R.id.list_areas);
         listView.setAdapter(areaAdapter);
 
-        fabArea = (FloatingActionButton)findViewById(R.id.fabArea);
         fabArea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 agregar_area();
+            }
+        });
+
+        imgBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!etBuscar.getText().toString().isEmpty()){
+                    areas = daoArea.buscarArea(id_cat_mat, etBuscar.getText().toString());
+                    refresh();
+                }else{
+                    Toast.makeText(v.getContext(), R.string.mt_campos_vacios, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        imgTodos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                areas = daoArea.getAreas(id_cat_mat);
+                refresh();
             }
         });
 

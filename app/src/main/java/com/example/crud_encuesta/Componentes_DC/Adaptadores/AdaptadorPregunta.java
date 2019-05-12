@@ -186,4 +186,9 @@ public class AdaptadorPregunta extends BaseAdapter {
 
         return v;
     }
+
+    public void dataChange(ArrayList<Pregunta> lista_preguntas){
+        this.lista_preguntas = lista_preguntas;
+        notifyDataSetChanged();
+    }
 }
