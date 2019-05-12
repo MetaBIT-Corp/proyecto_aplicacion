@@ -89,7 +89,7 @@ public class DAOEstudiante {
 
     public ArrayList<Estudiante> verBusqueda(String parametro){
         lista.clear();
-        Cursor cursor = cx.rawQuery("SELECT * FROM ESTUDIANTE WHERE NOMBRE LIKE '%"+parametro+"%'",null);
+        Cursor cursor = cx.rawQuery("SELECT * FROM ESTUDIANTE WHERE NOMBRE LIKE '%"+parametro+"%' OR CARNET LIKE'%"+parametro+"%'",null);
         if (cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
             do {

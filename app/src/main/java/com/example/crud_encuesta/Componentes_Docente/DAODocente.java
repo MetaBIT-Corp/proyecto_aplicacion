@@ -103,7 +103,7 @@ public class DAODocente {
 
     public ArrayList<Docente> verBusqueda(String parametro){
         lista.clear();
-        Cursor cursor = cx.rawQuery("SELECT * FROM PDG_DCN_DOCENTE WHERE NOMBRE_DOCENTE LIKE '%"+parametro+"%'",null);
+        Cursor cursor = cx.rawQuery("SELECT * FROM PDG_DCN_DOCENTE WHERE NOMBRE_DOCENTE LIKE '%"+parametro+"%' OR CARNET_DCN LIKE'%"+parametro+"%'",null);
         if (cursor != null && cursor.getCount()>0){
             cursor.moveToFirst();
             do {
