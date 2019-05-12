@@ -1,5 +1,7 @@
 package com.example.crud_encuesta;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.os.Build;
@@ -14,12 +16,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.PensumActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.PensumMateriaActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.TurnoActivity;
+import com.example.crud_encuesta.Componentes_AP.DAO.DAOUsuario;
 import com.example.crud_encuesta.Componentes_AP.Models.PensumMateria;
+import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.Componentes_Docente.ActivityDocente;
 import com.example.crud_encuesta.Componentes_EL.Encuesta.Encuesta;
 import com.example.crud_encuesta.Componentes_EL.Materia.MateriaUsersActivity;
@@ -41,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private Toolbar myTopToolBar;
     private ImageView loggin;
+    DAOUsuario daoUsuario;
 
     int id=0;
     int rol=0;
@@ -51,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
+
+        daoUsuario = new DAOUsuario(this);
 
         myTopToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myTopToolBar);
@@ -73,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView carrera=findViewById(R.id.el_btnCarrera);
         ImageView encuesta=findViewById(R.id.el_btnEncuesta);
         ImageView escuela=findViewById(R.id.el_btnEscuela);
+        ImageView pensum = findViewById(R.id.ap_btnPensum);
 
         CardView cardViewCarrera=findViewById(R.id.cardCarrera);
 
@@ -113,6 +122,14 @@ public class MainActivity extends AppCompatActivity {
             grid_menu.setLayoutParams(param);
         }
 
+
+        pensum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, PensumActivity.class);
+                startActivity(i);
+            }
+        });
 
         materia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,11 +188,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Login();
-                intento();
-                //pensum();
+                //intento();
                 //evaluacion();
                 //pressed();
-
+                controlAcceso();
             }
         });
     }
@@ -232,10 +248,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void pensum(){
-        Intent i = new Intent(this, PensumActivity.class);
-        startActivity(i);
-    }
 
     public void activity_docente(View view){
         Intent i= new Intent(this, ActivityDocente.class);
@@ -260,5 +272,44 @@ public class MainActivity extends AppCompatActivity {
     public void activity_materia_ciclo(View view){
         Intent i= new Intent(this, ActivityMateriaCiclo.class);
         startActivity(i);
+    }
+    //metodo que permite direccionar al usuario al login, si ya está logueado le dice que si en verda desea salir
+    public void controlAcceso(){
+        final Usuario usuario = daoUsuario.getUsuarioLogueado();
+        if(usuario==null){
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+        }else{
+            AlertDialog.Builder delete_emergente = new AlertDialog.Builder(this);
+            delete_emergente.setMessage("¿Deseas salir de la aplicación: " + usuario.getNOMUSUARIO() + "?");
+            delete_emergente.setCancelable(true);
+
+            //Caso positivo
+
+            delete_emergente.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if(daoUsuario.logoutUsuario(usuario.getIDUSUARIO())){
+                        daoUsuario.logoutUsuario(usuario.getIDUSUARIO());
+                        Toast.makeText(MainActivity.this,"Vuelve pronto " + usuario.getNOMUSUARIO(),Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(i);
+                    }else {
+                        Toast.makeText(MainActivity.this,"Ups, algo falló, vueleve a intentar",Toast.LENGTH_LONG);
+                    }
+                }
+            });
+
+            //Caso negativo
+
+            delete_emergente.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // no esperamos que haga nada al cerrar, solo se cierra
+                }
+            });
+            delete_emergente.show(); //mostrar alerta
+
+        }
     }
 }

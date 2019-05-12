@@ -125,10 +125,9 @@
     <string name="ap_materias">Listado de materias</string>
     <string name="ap_pensum_materia">Pensum Materia</string>
     <string name="ap_buscar_pensum_materia">Buscar</string>
-<<<<<<< HEAD
     <string name="ap_Turnos">Turno</string>
     <string name="ap_Evaluaciones">Evaluaciones</string>
-=======
+
     <!-- DC -->
     <string name="msg_bienvenida">Welcome!</string>
     <string name="opc_escuela">School</string>
@@ -207,5 +206,4 @@
     <string name="no">No</string>
     <!-- END Varios -->
 
->>>>>>> ff8077d728ca3c7a9635fbd7a716e120e165205d
 </resources>

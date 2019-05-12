@@ -133,11 +133,13 @@ public class DAOUsuario {
                 usuario.setNOMUSUARIO(cursorUsuario.getString(1));
                 usuario.setCLAVE(cursorUsuario.getString(2));
                 usuario.setROL(cursorUsuario.getInt(3));
+                /*
                 Toast.makeText(
                         contexto,
                         "Usuario: " +usuario.getNOMUSUARIO()+" Rol: " + usuario.getROL(),
                         Toast.LENGTH_SHORT
                 ).show();
+                */
             }else {
                 usuario = null;
             }
