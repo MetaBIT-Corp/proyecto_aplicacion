@@ -122,6 +122,7 @@ public class AdaptadorDocente extends BaseAdapter {
                 dialogo.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
                 final TextView mensaje = (TextView) dialogo.findViewById(R.id.toolbar_docente);
+                final TextView mensaje2 = (TextView) dialogo.findViewById(R.id.toolbar2);
                 final TextView escuela = (TextView) dialogo.findViewById(R.id.tv_escuela);
                 final TextView carnet = (TextView) dialogo.findViewById(R.id.tv_carnet);
                 final TextView anio_titulo = (TextView) dialogo.findViewById(R.id.tv_anio_titulo);
@@ -136,7 +137,8 @@ public class AdaptadorDocente extends BaseAdapter {
 
                 docente = lista.get(pos);
 
-                mensaje.setText("Docente: "+docente.getCarnet());
+                mensaje.setText(R.string.est_titulo3);
+                mensaje2.setText(docente.getCarnet().toUpperCase());
 
                 for(int i=0;i<escuelas.size();i++){
                     if(docente.getId_escuela()==escuelas.get(i).getId()){
@@ -182,6 +184,7 @@ public class AdaptadorDocente extends BaseAdapter {
                 dialogo.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
                 final TextView mensaje = (TextView) dialogo.findViewById(R.id.toolbar_docente);
+                final TextView mensaje2 = (TextView) dialogo.findViewById(R.id.toolbar2);
                 final Spinner sp_escuela = (Spinner) dialogo.findViewById(R.id.sp_escuela);
                 final EditText carnet = (EditText) dialogo.findViewById(R.id.editt_carnet);
                 final EditText anio_titulo = (EditText) dialogo.findViewById(R.id.editt_anio_titulo);
@@ -198,8 +201,9 @@ public class AdaptadorDocente extends BaseAdapter {
 
                 docente = lista.get(pos);
 
-                mensaje.setText("Editar Docente: "+docente.getCarnet().toUpperCase());
-                guardar.setText("Guardar");
+                mensaje.setText(R.string.dcn_titulo_editar);
+                mensaje2.setText(docente.getCarnet().toUpperCase());
+                guardar.setText(R.string.btn_guardar);
 
                 setId(docente.getId());
 
@@ -327,10 +331,10 @@ public class AdaptadorDocente extends BaseAdapter {
                 setId(docente.getId());
 
                 final AlertDialog.Builder del = new AlertDialog.Builder(a);
-                del.setMessage("¿Quieres eliminar el Docente "+docente.getCarnet()+"?");
+                del.setMessage(R.string.dcn_borrar);
                 del.setCancelable(true);
 
-                del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                del.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dao.eliminar(getId());
@@ -339,7 +343,7 @@ public class AdaptadorDocente extends BaseAdapter {
                     }
                 });
 
-                del.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                del.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }

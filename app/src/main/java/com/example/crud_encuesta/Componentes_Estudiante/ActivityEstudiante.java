@@ -106,9 +106,9 @@ public class ActivityEstudiante extends AppCompatActivity {
                 Button guardar = (Button) dialogo.findViewById(R.id.btn_agregar_estd);
                 Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar_estd);
 
-                mensaje.setText("Registrar Nuevo Estudiante");
-                guardar.setText("Registrar");
-                cancelar.setText("Cancelar");
+                mensaje.setText(R.string.est_titulo_registrar);
+                guardar.setText(R.string.btn_registrar);
+                cancelar.setText(R.string.btn_cancelar);
 
                 btn_anio.setOnClickListener(new View.OnClickListener() {
                     @Override

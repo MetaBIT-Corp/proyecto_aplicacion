@@ -24,7 +24,18 @@
             android:gravity="center_vertical"
             android:textColor="@color/icons"
             android:textSize="18sp"
-            android:text="Docente"/>
+            android:text="@string/dcn_titulo2"/>
+        <android.support.v4.widget.Space
+            android:layout_width="10sp"
+            android:layout_height="0sp" />
+        <TextView
+            android:id="@+id/toolbar2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/icons"
+            android:textSize="18sp"
+            android:text=""/>
     </android.support.v7.widget.Toolbar>
 
     <ScrollView
@@ -47,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-                    android:text="Carnet:"
+                    android:text="@string/dcn_edtx_carnet"
                     android:textSize="18sp" />
                 <TextView
                     android:id="@+id/tv_carnet"
@@ -65,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
                     android:enabled="false"
-                    android:text="Activo" />
+                    android:text="@string/dcn_chck_activo" />
             </LinearLayout>
 
             <LinearLayout
@@ -78,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-                    android:text="Nombre:"
+                    android:text="@string/dcn_tv_nombre"
                     android:textSize="18sp" />
 
                 <TextView
@@ -103,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-                    android:text="Escuela:"
+                    android:text="@string/dcn_tv_escuela"
                     android:textSize="18sp" />
 
                 <TextView
@@ -127,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-                    android:text="Año Titulo:"
+                    android:text="@string/dcn_tv_anio"
                     android:textSize="18sp" />
                 <TextView
                     android:id="@+id/tv_anio_titulo"
@@ -151,7 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-                    android:text="Descripción:"
+                    android:text="@string/dcn_tv_descripcion"
                     android:textSize="18sp" />
 
                 <TextView
@@ -174,7 +185,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-                    android:text="Tipo Jornada:"
+                    android:text="@string/dcn_tv_jornada"
                     android:textSize="18sp" />
 
                 <TextView
@@ -198,7 +209,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-                    android:text="Cargo Actual:"
+                    android:text="@string/dcn_tv_cargo"
                     android:textSize="18sp" />
 
                 <TextView
@@ -222,7 +233,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-                    android:text="Cargo Secundario:"
+                    android:text="@string/dcn_tv_cargo_sec"
                     android:textSize="18sp" />
 
                 <TextView
@@ -247,7 +258,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_weight="1"
-                    android:text="Salir" />
+                    android:text="@string/btn_salir" />
             </LinearLayout>
 
         </LinearLayout>

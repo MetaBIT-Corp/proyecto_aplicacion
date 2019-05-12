@@ -133,7 +133,7 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
 
                 materiaCiclo = lista.get(pos);
 
-                mensaje.setText("Materia Ciclo");
+                mensaje.setText(R.string.mtc_titulo3);
 
                 for (int i=0; i<materias.size(); i++){
                     if(materiaCiclo.getId_materia()==materias.get(i).getId()){
@@ -183,8 +183,8 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
 
                 materiaCiclo = lista.get(pos);
 
-                mensaje.setText("Editar Materia Ciclo");
-                guardar.setText("Guardar");
+                mensaje.setText(R.string.mtc_titulo_editar);
+                guardar.setText(R.string.btn_guardar);
 
                 setId(materiaCiclo.getId());
 
@@ -302,10 +302,10 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
                 setId(materiaCiclo.getId());
 
                 final AlertDialog.Builder del = new AlertDialog.Builder(a);
-                del.setMessage("¿Quieres eliminar la Materia Ciclo?");
+                del.setMessage(R.string.mtc_borrar);
                 del.setCancelable(true);
 
-                del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                del.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dao.eliminar(getId());
@@ -314,7 +314,7 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
                     }
                 });
 
-                del.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                del.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {}
                 });

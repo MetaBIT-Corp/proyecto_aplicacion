@@ -24,7 +24,17 @@
             android:gravity="center_vertical"
             android:textColor="@color/icons"
             android:textSize="18sp"
-            android:text="Estudiante"/>
+            android:text="@string/est_titulo2"/><android.support.v4.widget.Space
+        android:layout_width="10sp"
+        android:layout_height="0sp" />
+        <TextView
+            android:id="@+id/toolbar2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="@color/icons"
+            android:textSize="18sp"
+            android:text=""/>
     </android.support.v7.widget.Toolbar>
 
     <ScrollView
@@ -47,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
-                    android:text="Carnet:"
+                    android:text="@string/est_edtx_carnet"
                     android:textSize="18sp" />
                 <TextView
                     android:id="@+id/tv_carnet_estd"
@@ -64,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.25"
                     android:textSize="18sp"
-                    android:text="Activo"
+                    android:text="@string/est_chck_activo"
                     android:enabled="false"/>
             </LinearLayout>
 
@@ -78,7 +88,7 @@
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:text="Nombre:"/>
+                    android:text="@string/est_tv_nombre"/>
                 <TextView
                     android:id="@+id/tv_nombre_estd"
                     android:layout_width="match_parent"
@@ -102,7 +112,7 @@
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:text="Año Titulo:"/>
+                    android:text="@string/est_tv_anio"/>
                 <TextView
                     android:id="@+id/tv_anio_ingreso_estd"
                     android:layout_width="match_parent"
@@ -126,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_weight="1"
-                    android:text="Salir" />
+                    android:text="@string/btn_salir" />
             </LinearLayout>
 
         </LinearLayout>

@@ -118,7 +118,7 @@ public class ActivityDocente extends AppCompatActivity {
                 final EditText nombre = (EditText) dialogo.findViewById(R.id.editt_nombre);
                 Button btn_anio = (Button) dialogo.findViewById(R.id.btn_agregar_anio);
                 final TextView mensaje = (TextView) dialogo.findViewById(R.id.toolbar_docente);
-                mensaje.setText("Registrar Nuevo Docente");
+                mensaje.setText(R.string.dcn_titulo_registrar);
 
                 ArrayAdapter adapterEs = new ArrayAdapter(ActivityDocente.this, android.R.layout.simple_list_item_1, listaEscuelas);
                 sp_escuela.setAdapter(adapterEs);
@@ -176,7 +176,7 @@ public class ActivityDocente extends AppCompatActivity {
                 });
 
                 Button guardar =(Button) dialogo.findViewById(R.id.btn_agregar_dcn);
-                guardar.setText("Registrar");
+                guardar.setText(R.string.btn_registrar);
                 Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar_dcn);
 
                 guardar.setOnClickListener(new View.OnClickListener() {

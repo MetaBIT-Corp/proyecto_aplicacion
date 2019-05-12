@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="Dialogo Materia Ciclo"
+            android:text="@string/mtc_titulo2"
             android:textColor="@color/icons"
             android:textSize="18sp"/>
     </android.support.v7.widget.Toolbar>
@@ -46,7 +46,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:text="Materia:"/>
+                    android:text="@string/mtc_materia"/>
                 <Spinner
                     android:id="@+id/sp_materia"
                     android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:text="Ciclo:"/>
+                    android:text="@string/mtc_ciclo"/>
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -94,7 +94,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:text="Año:"/>
+                    android:text="@string/mtc_anio"/>
                 <android.support.v4.widget.Space
                     android:layout_width="30dp"
                     android:layout_height="0dp" />
@@ -125,13 +125,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Agregar" />
+                    android:text="@string/btn_agregar" />
                 <Button
                     android:id="@+id/btn_cancelar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Cancelar" />
+                    android:text="@string/btn_cancelar" />
             </LinearLayout>
 
         </LinearLayout>

@@ -86,8 +86,8 @@ public class ActivityMateriaCiclo extends AppCompatActivity {
                 Button guardar = (Button) dialogo.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar);
 
-                mensaje.setText("Registrar Materia Ciclo");
-                guardar.setText("Registrar");
+                mensaje.setText(R.string.mtc_titulo_registrar);
+                guardar.setText(R.string.btn_registrar);
 
                 ArrayAdapter materiaAdapter = new ArrayAdapter(v.getContext(),android.R.layout.simple_list_item_1,DAOMateriaCiclo.listaMaterias(materias));
                 sp_materia.setAdapter(materiaAdapter);

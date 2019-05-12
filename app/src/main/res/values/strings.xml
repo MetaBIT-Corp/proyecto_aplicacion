@@ -145,4 +145,61 @@
     <string name="opc_pensum">Pensum</string>
     <string name="buscar_preg">Buscar Pregunta</string>
     <!-- END DC -->
+
+    <!-- Estudiante -->
+    <string name="est_titulo">Estudiantes</string>
+    <string name="est_titulo2">Estudiante</string>
+    <string name="est_titulo3">Estudiante: </string>
+    <string name="est_titulo_editar">Editar Estudiante: </string>
+    <string name="est_titulo_registrar">Registro de nuevo Estudiante</string>
+    <string name="est_edtx_carnet">Carnet</string>
+    <string name="est_chck_activo">Activo</string>
+    <string name="est_tv_nombre">Nombre: </string>
+    <string name="est_tv_anio">Año Ingreso: </string>
+    <string name="est_borrar">¿Quieres eliminar al Estudiante?</string>
+    <!-- END Estudiante-->
+
+    <!-- Docente -->
+    <string name="dcn_titulo">Docentes</string>
+    <string name="dcn_titulo2">Docente</string>
+    <string name="dcn_titulo3">Docente: </string>
+    <string name="dcn_titulo_editar">Editar Docente: </string>
+    <string name="dcn_titulo_registrar">Registro de nuevo Docente</string>
+    <string name="dcn_edtx_carnet">Carnet</string>
+    <string name="dcn_chck_activo">Activo</string>
+    <string name="dcn_tv_nombre">Nombre: </string>
+    <string name="dcn_tv_escuela">Escuela: </string>
+    <string name="dcn_tv_anio">Año de Título: </string>
+    <string name="dcn_tv_descripcion">Descripción: </string>
+    <string name="dcn_tv_jornada">Tipo de Jornada: </string>
+    <string name="dcn_tv_cargo">Cargo Actual: </string>
+    <string name="dcn_tv_cargo_sec">Cargo Secundario: </string>
+    <string name="dcn_borrar">¿Quieres eliminar al Docente?</string>
+    <!-- END Docente -->
+
+    <!-- Materia_Ciclo -->
+    <string name="mtc_titulo">Materias de Ciclo</string>
+    <string name="mtc_titulo2">Materia Ciclo</string>
+    <string name="mtc_titulo3">Materia Ciclo: </string>
+    <string name="mtc_titulo_registrar">Registro de nueva Materia Ciclo</string>
+    <string name="mtc_titulo_editar">Editar Materia Ciclo: </string>
+    <string name="mtc_cicloi">Ciclo I</string>
+    <string name="mtc_cicloii">Ciclo II</string>
+    <string name="mtc_vista">Materia Ciclo: </string>
+    <string name="mtc_materia">Materia: </string>
+    <string name="mtc_ciclo">Ciclo: </string>
+    <string name="mtc_anio">Año: </string>
+    <string name="mtc_borrar">¿Quieres eliminar la Materia Ciclo?</string>
+    <!-- END Materia_Ciclo -->
+
+    <!-- Varios -->
+    <string name="btn_agregar">Agregar</string>
+    <string name="btn_registrar">Registrar</string>
+    <string name="btn_guardar">Guardar</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_salir">Salir</string>
+    <string name="edtx_buscar">Buscar</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <!-- END Varios -->
 </resources>
