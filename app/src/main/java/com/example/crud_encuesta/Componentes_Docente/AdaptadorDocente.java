@@ -21,7 +21,6 @@ import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.Componentes_EL.Escuela.Escuela;
 import com.example.crud_encuesta.Componentes_EL.Operaciones_CRUD;
@@ -36,6 +35,7 @@ public class AdaptadorDocente extends BaseAdapter {
     private ArrayList<Docente> lista;
     private DAODocente dao;
     private Docente docente;
+    private Usuario usuario;
     private int id = 0;
     private int id_escuela = 0;
     private SQLiteDatabase db;
@@ -176,6 +176,7 @@ public class AdaptadorDocente extends BaseAdapter {
             public void onClick(View v) {
 
                 int pos = Integer.parseInt(v.getTag().toString());
+
                 final Dialog dialogo = new Dialog(a);
                 dialogo.setTitle("Edición de Docente");
                 dialogo.setCancelable(true);
@@ -200,6 +201,7 @@ public class AdaptadorDocente extends BaseAdapter {
                 Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar_dcn);
 
                 docente = lista.get(pos);
+                final int id_user = docente.getId_usuario();
 
                 mensaje.setText(R.string.dcn_titulo_editar);
                 mensaje2.setText(docente.getCarnet().toUpperCase());
@@ -289,9 +291,14 @@ public class AdaptadorDocente extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
                         try {
+
                             int check;
-                            if(activo.isChecked()){check = 1;}
-                            else{check = 0;}
+                            if(activo.isChecked()){
+                                check = 1;
+                            }else{
+                                check = 0;
+                            }
+
                             docente = new Docente(
                                     getId(),
                                     id_escuela,
@@ -302,13 +309,25 @@ public class AdaptadorDocente extends BaseAdapter {
                                     descripcion.getText().toString(),
                                     Integer.parseInt(cargo_actual.getText().toString()),
                                     Integer.parseInt(cargo_secundario.getText().toString()),
-                                    nombre.getText().toString());
-                            dao.editar(docente);
-                            lista = dao.verTodos();
-                            notifyDataSetChanged();
-                            dialogo.dismiss();
+                                    nombre.getText().toString(),
+                                    id_user);
 
-                        } catch (Exception e){Toast.makeText(a, "¡Error!", Toast.LENGTH_SHORT).show();}
+                            usuario = new Usuario(
+                                    id_user,
+                                    docente.getCarnet(),
+                                    docente.getCarnet(),
+                                    1
+                            );
+
+                            dao.editar(docente);
+                            dao.editarUsuario(usuario);
+
+                            notifyDataSetChanged();
+                            lista = dao.verTodos();
+                            dialogo.dismiss();
+                        } catch (Exception e){
+                            Toast.makeText(a, "¡Error!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 

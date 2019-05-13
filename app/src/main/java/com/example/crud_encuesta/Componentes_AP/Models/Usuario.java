@@ -55,5 +55,15 @@ public class Usuario {
     public void setROL(int ROL) {
         this.ROL = ROL;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "IDUSUARIO=" + IDUSUARIO +
+                ", NOMUSUARIO='" + NOMUSUARIO + '\'' +
+                ", CLAVE='" + CLAVE + '\'' +
+                ", ROL=" + ROL +
+                '}';
+    }
 }
 

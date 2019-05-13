@@ -88,6 +88,7 @@ public class Estudiante {
                 ", nombre='" + nombre + '\'' +
                 ", anio_ingreso='" + anio_ingreso + '\'' +
                 ", activo=" + activo +
+                ", id_usuario=" + id_usuario +
                 '}';
     }
 }

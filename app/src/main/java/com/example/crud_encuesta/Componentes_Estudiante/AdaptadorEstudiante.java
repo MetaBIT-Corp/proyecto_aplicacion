@@ -17,7 +17,6 @@ import android.widget.CheckBox;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
@@ -148,6 +147,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
             public void onClick(View v) {
 
                 int pos = Integer.parseInt(v.getTag().toString());
+
                 final Dialog dialogo = new Dialog(a);
                 dialogo.setTitle("Edición de Estudiante");
                 dialogo.setCancelable(true);
@@ -155,18 +155,19 @@ public class AdaptadorEstudiante extends BaseAdapter {
                 dialogo.show();
                 dialogo.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
+                final TextView mensaje = (TextView) dialogo.findViewById(R.id.toolbar_std);
+                final TextView mensaje2 = (TextView) dialogo.findViewById(R.id.toolbar2);
                 final TextView carnet = (TextView) dialogo.findViewById(R.id.editt_carnet_estd);
                 final TextView nombre = (TextView) dialogo.findViewById(R.id.editt_nombre_estd);
                 final CheckBox activo = (CheckBox) dialogo.findViewById(R.id.cb_actividad_estd);
                 final TextView anio_ingreso = (TextView) dialogo.findViewById(R.id.editt_anio_ingreso_estd);
-                final TextView mensaje = (TextView) dialogo.findViewById(R.id.toolbar_std);
-                final TextView mensaje2 = (TextView) dialogo.findViewById(R.id.toolbar2);
 
                 Button btn_anio = (Button) dialogo.findViewById(R.id.btn_agregar_anio);
                 Button guardar =(Button) dialogo.findViewById(R.id.btn_agregar_estd);
                 Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar_estd);
 
                 estudiante = lista.get(pos);
+                final int id_user=estudiante.getId_usuario();
 
                 mensaje.setText(R.string.est_titulo_editar);
                 mensaje2.setText(estudiante.getCarnet().toUpperCase());
@@ -174,28 +175,28 @@ public class AdaptadorEstudiante extends BaseAdapter {
 
                 setId(estudiante.getId());
                 carnet.setText(estudiante.getCarnet());
-
+                nombre.setText(estudiante.getNombre());
                 if(estudiante.getActivo()==1){
                     activo.setChecked(true);
                 }else{
                     activo.setChecked(false);
                 }
 
-                nombre.setText(estudiante.getNombre());
                 anio_ingreso.setText(estudiante.getAnio_ingreso());
-
                 btn_anio.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         final Dialog d = new Dialog(dialogo.getContext());
                         d.setTitle("Year Picker");
                         d.setContentView(R.layout.year_picker);
+
                         Button set = (Button) d.findViewById(R.id.button1);
                         Button cancel = (Button) d.findViewById(R.id.button2);
                         TextView year_text=(TextView)d.findViewById(R.id.year_text);
-                        year_text.setText(""+anio);
                         final NumberPicker nopicker = (NumberPicker) d.findViewById(R.id.numberPicker1);
 
+                        year_text.setText("Seleccione Año de Ingreso");
                         nopicker.setMaxValue(anio+50);
                         nopicker.setMinValue(anio-50);
                         nopicker.setWrapSelectorWheel(false);
@@ -210,6 +211,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
                                 d.dismiss();
                             }
                         });
+
                         cancel.setOnClickListener(new View.OnClickListener()
                         {
                             @Override
@@ -217,6 +219,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
                                 d.dismiss();
                             }
                         });
+
                         d.show();
                         d.getWindow().setLayout(((getWidth(d.getContext()) / 100) * 85), ViewGroup.LayoutParams.WRAP_CONTENT);
                     }
@@ -228,20 +231,36 @@ public class AdaptadorEstudiante extends BaseAdapter {
                         try {
 
                             int check;
-                            if(activo.isChecked()){check = 1;}
-                            else{check = 0;}
+                            if(activo.isChecked()){
+                                check = 1;
+                            }else{
+                                check = 0;
+                            }
+
                             estudiante = new Estudiante(
                                     getId(),
                                     carnet.getText().toString(),
                                     nombre.getText().toString(),
                                     check,
-                                    anio_ingreso.getText().toString());
+                                    anio_ingreso.getText().toString(),
+                                    id_user);
+
+                            usuario = new Usuario(
+                                    id_user,
+                                    estudiante.getCarnet(),
+                                    estudiante.getCarnet(),
+                                    2
+                            );
+
                             dao.editar(estudiante);
+                            dao.editarUsuario(usuario);
+
                             notifyDataSetChanged();
                             lista = dao.verTodos();
                             dialogo.dismiss();
-
-                        }catch (Exception e){Toast.makeText(a, "¡Error!", Toast.LENGTH_SHORT).show();}
+                        }catch (Exception e){
+                            Toast.makeText(a, "¡Error!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 

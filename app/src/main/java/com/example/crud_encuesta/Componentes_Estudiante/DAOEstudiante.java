@@ -13,20 +13,13 @@ public class DAOEstudiante {
     private SQLiteDatabase cx;
     private ArrayList<Estudiante> lista = new ArrayList<>();
     private Estudiante estudiante;
+    private Usuario usuario;
     private Context ct;
 
     public DAOEstudiante(Context ct){
         this.ct = ct;
         DatabaseAccess dba = DatabaseAccess.getInstance(ct);
         cx = dba.open();
-    }
-
-    public Context getCt() {
-        return ct;
-    }
-
-    public void setCt(Context ct) {
-        this.ct = ct;
     }
 
     public boolean insertarUsuario(Usuario usuario){
@@ -53,6 +46,7 @@ public class DAOEstudiante {
 
     public boolean editarUsuario(Usuario usuario){
         ContentValues contenedor = new ContentValues();
+        contenedor.put("IDUSUARIO",usuario.getIDUSUARIO());
         contenedor.put("NOMUSUARIO",usuario.getNOMUSUARIO());
         contenedor.put("CLAVE",usuario.getCLAVE());
         contenedor.put("ROL",usuario.getROL());
@@ -81,7 +75,8 @@ public class DAOEstudiante {
                         cursor.getString(1),
                         cursor.getString(2),
                         cursor.getInt(3),
-                        cursor.getString(4)));
+                        cursor.getString(4),
+                        cursor.getInt(5)));
             }while (cursor.moveToNext());
         }
         return lista;
@@ -98,7 +93,8 @@ public class DAOEstudiante {
                         cursor.getString(1),
                         cursor.getString(2),
                         cursor.getInt(3),
-                        cursor.getString(4)));
+                        cursor.getString(4),
+                        cursor.getInt(5)));
             }while(cursor.moveToNext());
         }
         return lista;
@@ -112,7 +108,19 @@ public class DAOEstudiante {
                 cursor.getString(1),
                 cursor.getString(2),
                 cursor.getInt(3),
-                cursor.getString(4));
+                cursor.getString(4),
+                cursor.getInt(5));
         return estudiante;
+    }
+
+    public Usuario usuarioNombre(String nombre){
+        Cursor cursor = cx.rawQuery("SELECT * FROM USUARIO WHERE NOMUSUARIO = '" +nombre+"'", null);
+        cursor.moveToPosition(0);
+        usuario = new Usuario(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getInt(3));
+        return usuario;
     }
 }

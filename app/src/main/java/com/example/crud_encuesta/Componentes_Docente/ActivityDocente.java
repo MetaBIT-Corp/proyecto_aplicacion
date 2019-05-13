@@ -196,6 +196,8 @@ public class ActivityDocente extends AppCompatActivity {
                                     carnet.getText().toString(),
                                     1
                             );
+                            dao.insertarUsuario(usuario);
+                            usuario = dao.usuarioNombre(usuario.getNOMUSUARIO());
 
                             docente = new Docente(
                                     id_escuela,
@@ -210,7 +212,6 @@ public class ActivityDocente extends AppCompatActivity {
                                     usuario.getIDUSUARIO());
 
                             dao.insertar(docente);
-                            dao.insertarUsuario(usuario);
 
                             final AlertDialog.Builder usrAlert= new AlertDialog.Builder(ActivityDocente.this);
                             int clave_tamanio = usuario.getCLAVE().length();

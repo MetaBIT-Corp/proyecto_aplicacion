@@ -45,7 +45,6 @@ public class ActivityEstudiante extends AppCompatActivity {
 
         dao = new DAOEstudiante(this);
         lista = dao.verTodos();
-
         adapter = new AdaptadorEstudiante(this,lista,dao);
         access = DatabaseAccess.getInstance(ActivityEstudiante.this);
         db = access.open();
@@ -96,11 +95,11 @@ public class ActivityEstudiante extends AppCompatActivity {
                 dialogo.show();
                 dialogo.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
+                final TextView mensaje = (TextView) dialogo.findViewById(R.id.toolbar_std);
                 final EditText carnet = (EditText) dialogo.findViewById(R.id.editt_carnet_estd);
                 final EditText nombre = (EditText) dialogo.findViewById(R.id.editt_nombre_estd);
                 final CheckBox activo = (CheckBox) dialogo.findViewById(R.id.cb_actividad_estd);
                 final EditText anio_ingreso = (EditText) dialogo.findViewById(R.id.editt_anio_ingreso_estd);
-                final TextView mensaje = (TextView) dialogo.findViewById(R.id.toolbar_std);
 
                 Button btn_anio = (Button) dialogo.findViewById(R.id.btn_agregar_anio);
                 Button guardar = (Button) dialogo.findViewById(R.id.btn_agregar_estd);
@@ -113,15 +112,17 @@ public class ActivityEstudiante extends AppCompatActivity {
                 btn_anio.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         final Dialog d = new Dialog(dialogo.getContext());
                         d.setTitle("Year Picker");
                         d.setContentView(R.layout.year_picker);
+
                         Button set = (Button) d.findViewById(R.id.button1);
                         Button cancel = (Button) d.findViewById(R.id.button2);
                         TextView year_text=(TextView)d.findViewById(R.id.year_text);
-                        year_text.setText(""+anio);
                         final NumberPicker nopicker = (NumberPicker) d.findViewById(R.id.numberPicker1);
 
+                        year_text.setText("Seleccione Año de Ingreso");
                         nopicker.setMaxValue(anio+50);
                         nopicker.setMinValue(anio-50);
                         nopicker.setWrapSelectorWheel(false);
@@ -136,6 +137,7 @@ public class ActivityEstudiante extends AppCompatActivity {
                                 d.dismiss();
                             }
                         });
+
                         cancel.setOnClickListener(new View.OnClickListener()
                         {
                             @Override
@@ -143,6 +145,7 @@ public class ActivityEstudiante extends AppCompatActivity {
                                 d.dismiss();
                             }
                         });
+
                         d.show();
                         d.getWindow().setLayout(((getWidth(d.getContext()) / 100) * 85), ViewGroup.LayoutParams.WRAP_CONTENT);
                     }
@@ -154,14 +157,19 @@ public class ActivityEstudiante extends AppCompatActivity {
                         try {
 
                             int check;
-                            if(activo.isChecked()){check = 1;}
-                            else{check = 0;}
+                            if(activo.isChecked()){
+                                check = 1;
+                            }else{
+                                check = 0;
+                            }
 
                             usuario = new Usuario(
                                     carnet.getText().toString(),
                                     carnet.getText().toString(),
                                     2
                             );
+                            dao.insertarUsuario(usuario);
+                            usuario = dao.usuarioNombre(usuario.getNOMUSUARIO());
 
                             estudiante = new Estudiante(
                                     carnet.getText().toString().trim(),
@@ -169,8 +177,6 @@ public class ActivityEstudiante extends AppCompatActivity {
                                     check,
                                     anio_ingreso.getText().toString(),
                                     usuario.getIDUSUARIO());
-
-                            dao.insertarUsuario(usuario);
                             dao.insertar(estudiante);
 
                             final AlertDialog.Builder usrAlert= new AlertDialog.Builder(ActivityEstudiante.this);
@@ -181,12 +187,10 @@ public class ActivityEstudiante extends AppCompatActivity {
                             }
                             String clave_formateada=(usuario.getCLAVE().substring(0,2)+astericos);
                             usrAlert.setMessage("Usuario de Estudiante creado:\n\n"+"Usuario: "+usuario.getNOMUSUARIO()+"\nClave: "+clave_formateada);
-
                             usrAlert.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {}
                             });
-
                             usrAlert.show();
 
                             adapter.notifyDataSetChanged();
@@ -194,7 +198,8 @@ public class ActivityEstudiante extends AppCompatActivity {
                             dialogo.dismiss();
 
                         }catch (Exception e){
-                            Toast.makeText(getApplicationContext(), "¡Error!", Toast.LENGTH_SHORT).show();}
+                            Toast.makeText(getApplicationContext(), "¡Error!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
