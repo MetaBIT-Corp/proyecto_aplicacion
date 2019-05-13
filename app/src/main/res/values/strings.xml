@@ -209,6 +209,9 @@
     <string name="edtx_buscar">Buscar</string>
     <string name="si">Si</string>
     <string name="no">No</string>
+    <string name="alertUser">Credenciales de Usuario: </string>
+    <string name="usuario">Usuario: </string>
+    <string name="clave">Clave: </string>
     <!-- END Varios -->
 
 </resources>
