@@ -115,6 +115,12 @@
     <string name="mt_ir_inicio">Go Home</string>
     <string name="mt_buscar_area">Search area</string>
     <string name="mt_cant_preguntas_ingresadas">Error, the number of questions entered exceeds the amount in this area</string>
+    <string name="mt_cargar_bd">Do you want to Load the database</string>
+    <string name="mt_cargar">Load</string>
+    <string name="mt_bd_cargada">The database has been loaded</string>
+    <string name="mt_vaciar_bd">Do you want to Empty the database</string>
+    <string name="mt_vaciar">Empty</string>
+    <string name="mt_bd_vaciada">The database has been emptied</string>
 
     <string name="ap_evaluaciones">Pensum</string>
     <string name="ap_buscar_pensum">Buscar pensum</string>

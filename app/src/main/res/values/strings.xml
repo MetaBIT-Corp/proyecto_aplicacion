@@ -115,6 +115,12 @@
     <string name="mt_ir_inicio">Regresar a Inicio</string>
     <string name="mt_buscar_area">Buscar area</string>
     <string name="mt_cant_preguntas_ingresadas">Error, la cantidad de preguntas ingresadas supera a la cantidad existente en esta area</string>
+    <string name="mt_cargar_bd">Desea Cargar la base de datos</string>
+    <string name="mt_cargar">Cargar</string>
+    <string name="mt_bd_cargada">La base de datos ha sido cargada</string>
+    <string name="mt_vaciar_bd">Desea Vaciar la base de datos</string>
+    <string name="mt_vaciar">Vaciar</string>
+    <string name="mt_bd_vaciada">La base de datos ha sido vaciada</string>
 
     <string name="ap_evaluaciones">Pensum</string>
     <string name="ap_buscar_pensum">Buscar pensum</string>
