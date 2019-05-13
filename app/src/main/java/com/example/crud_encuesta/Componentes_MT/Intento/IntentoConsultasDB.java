@@ -2,6 +2,8 @@ package com.example.crud_encuesta.Componentes_MT.Intento;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,6 +115,25 @@ public class IntentoConsultasDB {
         }
 
         return id_numero_intento;
+    }
+
+    public static int getClave(int id_turno, SQLiteDatabase db){
+        List<Integer> claves = new ArrayList<>();
+        int id_clave;
+
+        try {
+            Cursor cursor = db.rawQuery("SELECT ID_CLAVE FROM CLAVE WHERE ID_TURNO ="+id_turno, null);
+            while (cursor.moveToNext()){
+                claves.add(cursor.getInt(0));
+            }
+        } catch (Exception e) {
+            Log.d("Database", "Ocurrio un error");
+        }
+
+        int generado = (int) (Math.random() * claves.size());
+        id_clave = claves.get(generado);
+
+        return id_clave;
     }
 
 }

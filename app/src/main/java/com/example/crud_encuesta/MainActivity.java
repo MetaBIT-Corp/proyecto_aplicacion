@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private Toolbar myTopToolBar;
     private ImageView loggin;
+    private ImageView imgLlenarBD;
+    private ImageView imgVaciarBD;
     DAOUsuario daoUsuario;
 
     int id=0;
@@ -192,6 +195,74 @@ public class MainActivity extends AppCompatActivity {
                 //evaluacion();
                 //pressed();
                 controlAcceso();
+            }
+        });
+
+        //Llenar base de datos
+        imgLlenarBD = (ImageView)findViewById(R.id.db_a);
+        imgLlenarBD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setMessage(getString(R.string.mt_cargar_bd));
+                builder.setTitle(getString(R.string.mt_cargar));
+                builder.setIcon(R.drawable.infoazul);
+
+                builder.setPositiveButton(R.string.mt_aceptar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(MainActivity.this);
+                        SQLiteDatabase db = databaseAccess.open();
+                        LlenarBDEncuesta llenarBDEncuesta = new LlenarBDEncuesta();
+                        llenarBDEncuesta.llenarBD(db);
+                        //databaseAccess.close();
+
+                        Toast.makeText(MainActivity.this, getString(R.string.mt_bd_cargada), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                builder.show();
+            }
+        });
+
+        //Vaciar base de datos
+        imgVaciarBD = (ImageView)findViewById(R.id.db_x);
+        imgVaciarBD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setMessage(getString(R.string.mt_vaciar_bd));
+                builder.setTitle(getString(R.string.mt_vaciar));
+                builder.setIcon(R.drawable.warning);
+
+                builder.setPositiveButton(R.string.mt_aceptar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(MainActivity.this);
+                        SQLiteDatabase db = databaseAccess.open();
+                        LlenarBDEncuesta llenarBDEncuesta = new LlenarBDEncuesta();
+                        llenarBDEncuesta.vaciarBD(db);
+                        //databaseAccess.close();
+
+                        Toast.makeText(MainActivity.this, getString(R.string.mt_bd_vaciada), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                builder.show();
             }
         });
     }

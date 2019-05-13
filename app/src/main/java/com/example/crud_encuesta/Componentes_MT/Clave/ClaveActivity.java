@@ -2,6 +2,7 @@ package com.example.crud_encuesta.Componentes_MT.Clave;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -28,13 +29,16 @@ public class ClaveActivity extends AppCompatActivity {
     private int[] iconos = {R.drawable.infoazul, R.drawable.addgris, R.drawable.edit_, R.drawable.delete_};
 
     //Datos de modelos
-    private int id_encuesta = 1;
-    private int id_turno = 1;
+    private int id_encuesta;
+    private int id_turno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clave);
+
+        id_encuesta = getIntent().getIntExtra("id_encuesta", 0);
+        id_turno = getIntent().getIntExtra("id_encuesta", 0);
 
         daoClave = new DAOClave(this);
         claves = daoClave.getClaves(id_turno);

@@ -15,12 +15,17 @@ import java.util.List;
 public class IntentoActivity extends AppCompatActivity {
     private ListView listView;
     Tamanio tamanio;
-    private int id_clave = 1;
+    private int id_clave;
+    private int id_turno;
+    private int id_encuestado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intento);
+
+        id_turno = getIntent().getIntExtra("id_turno_intento", 0);
+        id_encuestado = getIntent().getIntExtra("id_encuesta_intento", 0);
 
         listView = (ListView)findViewById(R.id.lsPreguntas);
         listView.setAdapter(new IntentoAdapter(getPreguntas(), this, this, tamanio));
@@ -40,14 +45,16 @@ public class IntentoActivity extends AppCompatActivity {
         boolean emparejamiento=false;
         int i = 1;
 
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        SQLiteDatabase db = databaseAccess.open();
+
+        id_clave = IntentoConsultasDB.getClave(id_turno, db);
+
         String sentencia_pregunta = "SELECT ID_PREGUNTA, ID_GRUPO_EMP, PREGUNTA FROM PREGUNTA WHERE ID_PREGUNTA IN\n" +
                 "(SELECT ID_PREGUNTA FROM CLAVE_AREA_PREGUNTA WHERE ID_CLAVE_AREA IN\n" +
                 "(SELECT ID_CLAVE_AREA FROM CLAVE_AREA WHERE ID_CLAVE ="+id_clave+"))";
 
         String sentencia_opcion = "SELECT ID_OPCION, OPCION, CORRECTA FROM OPCION WHERE ID_PREGUNTA =";
-
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
-        SQLiteDatabase db = databaseAccess.open();
 
         Cursor cursor_pregunta = db.rawQuery(sentencia_pregunta, null);
 

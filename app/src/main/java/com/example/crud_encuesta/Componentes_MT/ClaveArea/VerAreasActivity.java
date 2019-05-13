@@ -45,7 +45,6 @@ public class VerAreasActivity extends AppCompatActivity {
         int id_area;
 
         Cursor cursor = db.rawQuery("SELECT * FROM clave_area WHERE id_clave="+ide,null);
-
         while (cursor.moveToNext()){
             id_area = cursor.getInt(1);
             Cursor cursor2 = db.rawQuery("SELECT titulo FROM area WHERE id_area="+id_area,null);
@@ -60,7 +59,6 @@ public class VerAreasActivity extends AppCompatActivity {
 
     public List<Integer> numero_preguntas(SQLiteDatabase db, int ide){
         List<Integer> cantidad = new ArrayList<>();
-
         Cursor cursor = db.rawQuery("SELECT numero_preguntas FROM clave_area WHERE id_clave="+ide,null);
 
         while (cursor.moveToNext()){
@@ -73,7 +71,6 @@ public class VerAreasActivity extends AppCompatActivity {
 
     public List<Integer> aleatorio(SQLiteDatabase db, int ide){
         List<Integer> aleatorio = new ArrayList<>();
-
         Cursor cursor = db.rawQuery("SELECT aleatorio FROM clave_area WHERE id_clave="+ide,null);
 
         while (cursor.moveToNext()){
