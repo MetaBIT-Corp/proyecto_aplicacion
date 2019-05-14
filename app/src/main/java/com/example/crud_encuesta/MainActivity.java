@@ -190,11 +190,11 @@ public class MainActivity extends AppCompatActivity {
         loggin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Login();
+                //Login();
                 //intento();
                 //evaluacion();
                 //pressed();
-                //controlAcceso();
+                controlAcceso();
             }
         });
 
@@ -365,6 +365,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,"Vuelve pronto " + usuario.getNOMUSUARIO(),Toast.LENGTH_LONG).show();
                         Intent i = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(i);
+                        finish();
                     }else {
                         Toast.makeText(MainActivity.this,"Ups, algo falló, vueleve a intentar",Toast.LENGTH_LONG);
                     }
@@ -382,5 +383,9 @@ public class MainActivity extends AppCompatActivity {
             delete_emergente.show(); //mostrar alerta
 
         }
+    }
+
+    public void onBackPressed(){
+        controlAcceso();
     }
 }
