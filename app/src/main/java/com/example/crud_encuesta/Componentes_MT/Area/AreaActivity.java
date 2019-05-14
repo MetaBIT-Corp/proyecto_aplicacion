@@ -1,6 +1,7 @@
 package com.example.crud_encuesta.Componentes_MT.Area;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
@@ -16,8 +17,12 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.crud_encuesta.Componentes_DC.Activities.GpoEmpActivity;
+import com.example.crud_encuesta.Componentes_DC.Activities.PreguntaActivity;
+import com.example.crud_encuesta.Componentes_EL.Materia.MateriaActivity;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
+import com.example.crud_encuesta.SubMenuMateriaActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -171,6 +176,12 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
         listView.setAdapter(new AreaAdapter(this, areas, daoArea, id_cat_mat, iconos));
     }
 
-
+    public void onBackPressed()
+    {
+        //do whatever you want the 'Back' button to do
+        //as an example the 'Back' button is set to start a new Activity named 'NewActivity'
+        startActivity(new Intent(AreaActivity.this, MateriaActivity.class));
+        finish();
+    }
 
 }

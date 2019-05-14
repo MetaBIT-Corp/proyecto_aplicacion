@@ -16,8 +16,10 @@ import android.widget.Toast;
 import com.example.crud_encuesta.Componentes_DC.Adaptadores.AdaptadorPregunta;
 import com.example.crud_encuesta.Componentes_DC.Dao.DaoPregunta;
 import com.example.crud_encuesta.Componentes_DC.Objetos.Pregunta;
+import com.example.crud_encuesta.Componentes_MT.Area.Area;
 import com.example.crud_encuesta.Componentes_MT.Area.AreaActivity;
 import com.example.crud_encuesta.R;
+import com.example.crud_encuesta.SubMenuMateriaActivity;
 
 import java.util.ArrayList;
 
@@ -152,8 +154,12 @@ public class PreguntaActivity extends AppCompatActivity {
     {
         //do whatever you want the 'Back' button to do
         //as an example the 'Back' button is set to start a new Activity named 'NewActivity'
-        this.startActivity(new Intent(PreguntaActivity.this, AreaActivity.class));
-
-        return;
+        if (id_tipo_item!=3) {
+            startActivity(new Intent(PreguntaActivity.this, AreaActivity.class));
+            finish();
+        }else{
+            startActivity(new Intent(PreguntaActivity.this, GpoEmpActivity.class));
+            finish();
+        }
     }
 }
