@@ -17,12 +17,16 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.crud_encuesta.Componentes_DC.Activities.GpoEmpActivity;
+import com.example.crud_encuesta.Componentes_DC.Activities.PreguntaActivity;
 import com.example.crud_encuesta.Componentes_EL.Carrera.Carrera;
 import com.example.crud_encuesta.Componentes_EL.Escuela.Escuela;
 import com.example.crud_encuesta.Componentes_EL.EstructuraTablas;
 import com.example.crud_encuesta.Componentes_EL.Operaciones_CRUD;
 import com.example.crud_encuesta.Componentes_EL.ModelosAdicionales.Pensum;
+import com.example.crud_encuesta.Componentes_MT.Area.AreaActivity;
 import com.example.crud_encuesta.DatabaseAccess;
+import com.example.crud_encuesta.MainActivity;
 import com.example.crud_encuesta.R;
 import com.example.crud_encuesta.SubMenuMateriaActivity;
 
@@ -195,5 +199,8 @@ public class MateriaActivity extends AppCompatActivity {
         }
         return listape;
     }
+
+
+
 
 }

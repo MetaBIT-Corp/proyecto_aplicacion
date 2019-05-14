@@ -61,7 +61,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
 
         daoArea = new DAOArea(this);
         areas = daoArea.getAreas(id_cat_mat);
-        areaAdapter = new AreaAdapter(this, areas, daoArea, id_cat_mat, iconos);
+        areaAdapter = new AreaAdapter(AreaActivity.this, areas, daoArea, id_cat_mat, iconos, this);
 
         listView = (ListView)findViewById(R.id.list_areas);
         listView.setAdapter(areaAdapter);
@@ -173,15 +173,15 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void refresh(){
-        listView.setAdapter(new AreaAdapter(this, areas, daoArea, id_cat_mat, iconos));
+        listView.setAdapter(new AreaAdapter(AreaActivity.this, areas, daoArea, id_cat_mat, iconos, this));
     }
 
-    public void onBackPressed()
+   /* public void onBackPressed()
     {
         //do whatever you want the 'Back' button to do
         //as an example the 'Back' button is set to start a new Activity named 'NewActivity'
         startActivity(new Intent(AreaActivity.this, MateriaActivity.class));
         finish();
-    }
+    }*/
 
 }

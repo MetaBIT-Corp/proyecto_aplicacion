@@ -1,5 +1,6 @@
 package com.example.crud_encuesta.Componentes_MT.Area;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,13 +34,15 @@ public class AreaAdapter extends BaseAdapter {
     int id_materia;
     Area area;
     int[] iconos;
+    Activity a;
 
-    public AreaAdapter(Context context, List<Area> areas, DAOArea daoArea, int id_materia, int[] iconos){
+    public AreaAdapter(Context context, List<Area> areas, DAOArea daoArea, int id_materia, int[] iconos, Activity a){
         this.context = context;
         this.areas = areas;
         this.daoArea = daoArea;
         this.id_materia = id_materia;
         this.iconos = iconos;
+        this.a = a;
 
         inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
     }
@@ -75,6 +78,7 @@ public class AreaAdapter extends BaseAdapter {
                 in.putExtra("accion",0);
                 //fin
                 context.startActivity(in);
+                a.finish();
             }
         });
 

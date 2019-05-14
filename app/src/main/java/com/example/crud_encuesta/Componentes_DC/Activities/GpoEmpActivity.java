@@ -144,6 +144,7 @@ public class GpoEmpActivity extends AppCompatActivity {
             in.putExtra("id_tipo_item",id_tipo_item);
             in.putExtra("id_area",id_area);
             startActivity(in);
+            finish();
         }
         //FIN
     }
