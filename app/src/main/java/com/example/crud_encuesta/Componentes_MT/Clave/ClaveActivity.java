@@ -23,6 +23,8 @@ public class ClaveActivity extends AppCompatActivity {
     DAOClave daoClave;
     ClaveAdapter claveAdapter;
     List<Clave> claves = new ArrayList<>();
+    int id_consulta;
+    boolean tipo;
 
     private FloatingActionButton fabClave;
     private ListView listView;
@@ -38,11 +40,14 @@ public class ClaveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_clave);
 
         id_encuesta = getIntent().getIntExtra("id_encuesta", 0);
-        id_turno = getIntent().getIntExtra("id_encuesta", 0);
+        id_turno = getIntent().getIntExtra("id_turno", 0);
+
+        if(id_turno!=0) id_consulta=id_turno; tipo=true;
+        if(id_encuesta!=0) id_consulta=id_encuesta; tipo=false;
 
         daoClave = new DAOClave(this);
-        claves = daoClave.getClaves(id_turno);
-        claveAdapter = new ClaveAdapter(this, claves, daoClave, id_turno, iconos);
+        claves = daoClave.getClaves(id_consulta, tipo);
+        claveAdapter = new ClaveAdapter(this, claves, daoClave, id_consulta, tipo, iconos);
 
         listView = (ListView)findViewById(R.id.list_claves);
         listView.setAdapter(claveAdapter);
@@ -92,7 +97,7 @@ public class ClaveActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 agregar_clave();
-                claves = daoClave.getClaves(id_turno);
+                claves = daoClave.getClaves(id_turno, tipo);
                 claveAdapter.notifyDataSetChanged();
                 refresh();
                 Toast.makeText(ClaveActivity.this, getString(R.string.mt_clave_agregada), Toast.LENGTH_SHORT).show();
@@ -112,7 +117,7 @@ public class ClaveActivity extends AppCompatActivity {
     }
 
     public void refresh(){
-        listView.setAdapter(new ClaveAdapter(this, claves, daoClave, id_turno, iconos));
+        listView.setAdapter(new ClaveAdapter(this, claves, daoClave, id_consulta, tipo, iconos));
     }
 
 /*public List<Clave> getClaves(){

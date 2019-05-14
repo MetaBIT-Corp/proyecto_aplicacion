@@ -21,14 +21,18 @@ public class DAOClave {
     }
 
 
-    public List<Clave> getClaves(int id_turno){
+    public List<Clave> getClaves(int id_consulta, boolean tipo){
         List<Clave> claves = new ArrayList<>();
         int id;
         String num_clave;
 
         db = databaseAccess.open();
-
-        Cursor cursor = db.rawQuery("SELECT id_clave, numero_clave FROM clave WHERE id_turno="+id_turno, null);
+        Cursor cursor;
+        if(tipo){
+            cursor = db.rawQuery("SELECT id_clave, numero_clave FROM clave WHERE id_turno="+id_consulta, null);
+        }else {
+            cursor = db.rawQuery("SELECT id_clave, numero_clave FROM clave WHERE id_encuesta="+id_consulta, null);
+        }
 
         while (cursor.moveToNext()){
             id = cursor.getInt(0);

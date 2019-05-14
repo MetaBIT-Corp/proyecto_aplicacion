@@ -15,7 +15,6 @@ import java.util.List;
 
 public class VerIntentoActivity extends AppCompatActivity {
     ListView listView;
-    int id_clave;
     int id_usuario=1;
 
     @Override
@@ -44,7 +43,7 @@ public class VerIntentoActivity extends AppCompatActivity {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         SQLiteDatabase db = databaseAccess.open();
 
-        ultimo_intento = IntentoConsultasDB.ultimo_intento(id_usuario, db);
+        ultimo_intento = IntentoConsultasDB.id_ultimo_intento(id_usuario, db);
 
         String sentencia_pregunta = "SELECT * FROM PREGUNTA WHERE ID_PREGUNTA =";
 

@@ -242,12 +242,12 @@ public class LlenarBDEncuesta {
     public void llenarBD(SQLiteDatabase db){
 
         //Tipo_item
-        ContentValues c_tipo_item = new ContentValues();
+        /*ContentValues c_tipo_item = new ContentValues();
         for (int i =0; i<nombre_tipo_item.length; i++) {
             c_tipo_item.put("id_tipo_item", id_tipo_item_pk[i]);
             c_tipo_item.put("nombre_tipo_item", nombre_tipo_item[i]);
             db.insert("tipo_item", null, c_tipo_item);
-        }
+        }*/
 
         //Grupo_carga
         ContentValues c_grupo_carga = new ContentValues();
@@ -513,8 +513,8 @@ public class LlenarBDEncuesta {
         db.execSQL("delete from pensum_materia");
         db.execSQL("delete from pregunta");
         db.execSQL("delete from respuesta");
-        db.execSQL("delete from tipo_item");
         db.execSQL("delete from turno");
+        //db.execSQL("delete from tipo_item");
         //db.execSQL("delete from sesionusuario");
         //db.execSQL("delete from usuario");
     }

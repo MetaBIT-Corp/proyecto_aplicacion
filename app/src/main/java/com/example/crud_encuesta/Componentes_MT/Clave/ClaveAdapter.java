@@ -39,13 +39,15 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
     int[] incons;
     List<Clave> claves = new ArrayList<>();
     DAOClave daoClave;
-    int id_turno;
+    int id_consulta;
+    boolean tipo;
 
-    public ClaveAdapter(Context context, List<Clave> claves, DAOClave daoClave, int id_turno, int[] incons) {
+    public ClaveAdapter(Context context, List<Clave> claves, DAOClave daoClave, int id_consulta, boolean tipo, int[] incons) {
         this.claves = claves;
         this.context = context;
         this.daoClave = daoClave;
-        this.id_turno = id_turno;
+        this.id_consulta = id_consulta;
+        this.tipo = tipo;
         this.incons = incons;
 
         inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -147,7 +149,7 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
                     public void onClick(DialogInterface dialog, int which) {
                         editar_clave(i, vEditar);
                         Toast.makeText(context, R.string.mt_registro_actualizado, Toast.LENGTH_SHORT).show();
-                        claves = daoClave.getClaves(id_turno);
+                        claves = daoClave.getClaves(id_consulta, tipo);
                         notifyDataSetChanged();
                     }
                 });
@@ -181,7 +183,7 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
                     public void onClick(DialogInterface dialog, int which) {
                         eliminar_clave(i);
                         Toast.makeText(context, R.string.mt_eliminado_msj, Toast.LENGTH_SHORT).show();
-                        claves = daoClave.getClaves(id_turno);
+                        claves = daoClave.getClaves(id_consulta, tipo);
                         notifyDataSetChanged();
 
                     }
