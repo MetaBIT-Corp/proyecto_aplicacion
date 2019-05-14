@@ -159,8 +159,9 @@ public class Adaptador extends BaseAdapter {
                 final int pos = Integer.parseInt(v.getTag().toString());
                 gpo_emp = lista_gpo_emp.get(pos);
                 setId(gpo_emp.getId());
+                int cant = dao.cantidad_eliminar_pregunta(getId());
                 AlertDialog.Builder del = new AlertDialog.Builder(a);
-                del.setMessage("Esta seguro de eliminar el grupo de emparejamiento?");
+                del.setMessage("¿Esta seguro de eliminar el grupo de emparejamiento?, se eliminaran "+cant+" preguntas en caso de aceptar!!");
                 del.setCancelable(false);
                 del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override

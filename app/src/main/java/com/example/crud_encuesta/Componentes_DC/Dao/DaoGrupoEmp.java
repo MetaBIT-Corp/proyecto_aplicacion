@@ -41,6 +41,11 @@ public class DaoGrupoEmp {
         return (cx.delete("GRUPO_EMPAREJAMIENTO","ID_GRUPO_EMP="+id, null)>0);
     }
 
+    public int cantidad_eliminar_pregunta(int id){
+        Cursor cursor = cx.rawQuery("SELECT * FROM PREGUNTA WHERE ID_GRUPO_EMP="+id, null);
+        return cursor.getCount();
+    }
+
     public boolean editar(GrupoEmparejamiento gpo_emp){
         ContentValues contenedor = new ContentValues();
         contenedor.put("ID_AREA",gpo_emp.getId_area());

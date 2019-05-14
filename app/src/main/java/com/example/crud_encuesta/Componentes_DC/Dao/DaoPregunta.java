@@ -60,6 +60,11 @@ public class DaoPregunta {
         return (cx.delete("PREGUNTA","ID_PREGUNTA="+id, null)>0);
     }
 
+    public int cantidad_eliminar_opciones(int id){
+        Cursor cursor = cx.rawQuery("SELECT * FROM OPCION WHERE ID_PREGUNTA="+id, null);
+        return cursor.getCount();
+    }
+
     public boolean editar(Pregunta pregunta){
         ContentValues contenedor = new ContentValues();
         contenedor.put("PREGUNTA",pregunta.getPregunta());

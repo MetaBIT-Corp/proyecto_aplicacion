@@ -183,7 +183,7 @@ public class AdaptadorOpcion extends BaseAdapter {
                     opcion = lista_opciones.get(pos);
                     setId(opcion.getId());
                     AlertDialog.Builder del = new AlertDialog.Builder(a);
-                    del.setMessage("Esta seguro de eliminar la opcion?");
+                    del.setMessage("¿Esta seguro de eliminar la opcion?");
                     del.setCancelable(false);
                     del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                         @Override

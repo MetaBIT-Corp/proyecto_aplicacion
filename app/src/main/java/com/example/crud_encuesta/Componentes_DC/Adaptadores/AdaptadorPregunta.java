@@ -161,8 +161,9 @@ public class AdaptadorPregunta extends BaseAdapter {
                 final int pos = Integer.parseInt(v.getTag().toString());
                 pregunta = lista_preguntas.get(pos);
                 setId(pregunta.getId());
+                int cant = dao.cantidad_eliminar_opciones(getId());
                 AlertDialog.Builder del = new AlertDialog.Builder(a);
-                del.setMessage("Esta seguro de eliminar la pregunta?");
+                del.setMessage("¿Esta seguro de eliminar la pregunta?, se eliminaran "+cant+" opciones en caso de aceptar!!");
                 del.setCancelable(false);
                 del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
