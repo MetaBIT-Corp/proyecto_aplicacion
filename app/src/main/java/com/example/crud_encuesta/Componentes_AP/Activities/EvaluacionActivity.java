@@ -42,6 +42,7 @@ public class EvaluacionActivity extends AppCompatActivity {
     Evaluacion evaluacion;
     int id_materia = 0;
     int id_carga_academica =0;
+    int id_estudiante =0;
     Usuario usuario;
 
     @SuppressLint("RestrictedApi")
@@ -67,6 +68,7 @@ public class EvaluacionActivity extends AppCompatActivity {
         }
         if(usuario.getROL()==2){
             id_carga_academica = daoEvaluacion.getCargaAcademicaEstudiante(usuario.getIDUSUARIO(),id_materia);
+            id_estudiante= daoEvaluacion.getIdEstudiante(usuario.getIDUSUARIO(),id_materia);
         }
         if(id_carga_academica==0){
             Toast.makeText(this,"No posees carga acádemica",Toast.LENGTH_LONG).show();
@@ -98,6 +100,7 @@ public class EvaluacionActivity extends AppCompatActivity {
                 //enviamos parametro
                 Bundle bundle = new Bundle();
                 bundle.putInt("id_evaluacion",id_evaluacion);
+                bundle.putInt("id_estudiante",id_estudiante);
                 i.putExtras(bundle);
                 startActivity(i);
             }

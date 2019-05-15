@@ -18,14 +18,15 @@ public class DAOPensumMateria {
     ArrayList<PensumMateria> pensumMaterias = new ArrayList<>();
     PensumMateria pensumMateria;
     Context contexto;
+    DatabaseAccess dba;
     String nombreBD = "proy_aplicacion";
 
     //constructor
     public DAOPensumMateria(Context context) {
         this.contexto = context;
 
-        DatabaseAccess dba = DatabaseAccess.getInstance(context);
-        baseDeDatos = dba.open();
+        this.dba = DatabaseAccess.getInstance(context);
+        baseDeDatos = this.dba.open();
 
         /*
          *Abrir base de datos
@@ -36,6 +37,7 @@ public class DAOPensumMateria {
     }
 
     public Boolean Insertar(PensumMateria pensumMateria) {
+        baseDeDatos = this.dba.open();
         ContentValues contentValues = new ContentValues();
         contentValues.put("ID_CAT_MAT", pensumMateria.getIdMateria());
         contentValues.put("ID_PENUM", pensumMateria.getIdPensum());
@@ -45,6 +47,7 @@ public class DAOPensumMateria {
     }
 
     public Boolean Eliminar(Integer id) {
+        baseDeDatos = this.dba.open();
         return (baseDeDatos.delete(
                 "PENSUM_MATERIA",
                 "ID_PENSUM_MATERIA=" + id,
@@ -52,6 +55,7 @@ public class DAOPensumMateria {
     }
 
     public Boolean Editar(PensumMateria pensumMateria) {
+        baseDeDatos = this.dba.open();
         ContentValues contentValues = new ContentValues();
         contentValues.put("ID_CAT_MAT", pensumMateria.getIdMateria());
         contentValues.put("ID_PENUM", pensumMateria.getIdPensum());
@@ -64,6 +68,7 @@ public class DAOPensumMateria {
     }
 
     public ArrayList<PensumMateria> verTodos(int id_pensum) {
+        baseDeDatos = this.dba.open();
         pensumMaterias.clear(); //limpiamos lista del adapter
         Cursor cursor = baseDeDatos.rawQuery(
                 "Select * FROM PENSUM_MATERIA WHERE ID_PENUM  = " + id_pensum,
@@ -84,6 +89,7 @@ public class DAOPensumMateria {
     }
 
     public ArrayList<String> SpinnerMaterias(int id_pensum) {
+        baseDeDatos = this.dba.open();
         int b1,b2;
         ArrayList<String> materias = new ArrayList<String>();
         materias.add("Seleccione");
@@ -145,6 +151,7 @@ public class DAOPensumMateria {
     }
 
     public ArrayList<String> SpinnerMateriasEditar(int id_pensum, int id_materia) {
+        baseDeDatos = this.dba.open();
         int b1;
         ArrayList<String> materias = new ArrayList<String>();
         materias.add("Seleccione");
@@ -206,6 +213,7 @@ public class DAOPensumMateria {
     }
 
     public String getNombreMateria(PensumMateria pensumMateria) {
+        baseDeDatos = this.dba.open();
         String nombreMateria = null;
         Cursor cursorMateria = baseDeDatos.rawQuery(
                 "SELECT * FROM CAT_MAT_MATERIA WHERE ID_CAT_MAT =" + pensumMateria.getIdMateria(),
@@ -220,6 +228,7 @@ public class DAOPensumMateria {
 
     //retorna la lista de materias de un pensumMateria
     public ArrayList<PensumMateria> verUno(String materia, int id_pensum) {
+        baseDeDatos = this.dba.open();
         pensumMaterias.clear();
         Cursor cursorMateria = baseDeDatos.rawQuery(
                 "Select * FROM CAT_MAT_MATERIA WHERE NOMBRE_MAR LIKE '%" + materia + "%'",

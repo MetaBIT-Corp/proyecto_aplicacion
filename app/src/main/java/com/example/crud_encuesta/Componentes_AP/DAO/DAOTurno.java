@@ -15,6 +15,7 @@ public class DAOTurno {
     ArrayList<Turno> turnos = new ArrayList<>();
     Turno turno;
     Context contexto;
+    DatabaseAccess dba;
     String nombreBD= "proy_aplicacion";
 
 
@@ -22,8 +23,8 @@ public class DAOTurno {
     public DAOTurno(Context context){
         this.contexto = context;
 
-        DatabaseAccess dba = DatabaseAccess.getInstance(context);
-        baseDeDatos = dba.open();
+        this.dba = DatabaseAccess.getInstance(context);
+        baseDeDatos = this.dba.open();
 
         /*
          *Abrir base de datos
@@ -35,6 +36,7 @@ public class DAOTurno {
 
 
     public Boolean Insertar(Turno turno){
+        baseDeDatos = this.dba.open();
         ContentValues contentValues = new ContentValues();
         contentValues.put("ID_EVALUACION", turno.getIdEvaluacion());
         contentValues.put("FECHA_INICIO_TURNO",turno.getDateInicial());
@@ -46,10 +48,12 @@ public class DAOTurno {
     }
 
     public Boolean Eliminar(Integer id){
+        baseDeDatos = this.dba.open();
         return (baseDeDatos.delete("TURNO","ID_TURNO="+id,null)>0);
     }
 
     public Boolean Editar(Turno turno){
+        baseDeDatos = this.dba.open();
         ContentValues contentValues = new ContentValues();
         contentValues.put("ID_EVALUACION", turno.getIdEvaluacion());
         contentValues.put("FECHA_INICIO_TURNO",turno.getDateInicial());
@@ -61,6 +65,7 @@ public class DAOTurno {
     }
 
     public ArrayList<Turno> verTodos(Integer id_evaluacion){
+        baseDeDatos = this.dba.open();
         turnos.clear(); //limpiamos lista del adapter
         Cursor cursor  = baseDeDatos.rawQuery("Select * FROM TURNO WHERE ID_EVALUACION =" +id_evaluacion,null);
         if(cursor.moveToFirst()){
@@ -82,6 +87,7 @@ public class DAOTurno {
 
     //retorna la lista pero solo con el elemento buscado
     public ArrayList<Turno> verUno(int id, int id_evaluacion){
+        baseDeDatos = this.dba.open();
         turnos.clear();
         Cursor cursor  = baseDeDatos.rawQuery("Select * FROM TURNO WHERE ID_TURNO = " + id + " AND ID_EVALUACION =" +id_evaluacion,
                 null);

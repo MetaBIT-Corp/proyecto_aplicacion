@@ -16,15 +16,15 @@ public class DAOPensum {
     ArrayList<Pensum> pensums = new ArrayList<>();
     Pensum pensum;
     Context contexto;
+    DatabaseAccess dba;
     String nombreBD= "proy_aplicacion";
-
 
     //constructor
     public DAOPensum(Context context){
         this.contexto = context;
 
-        DatabaseAccess dba = DatabaseAccess.getInstance(context);
-        baseDeDatos = dba.open();
+        this.dba = DatabaseAccess.getInstance(context);
+        baseDeDatos = this.dba.open();
 
         /*
          *Abrir base de datos
@@ -34,6 +34,7 @@ public class DAOPensum {
          * */
     }
     public Boolean Insertar(Pensum pensum){
+        baseDeDatos = this.dba.open();
         ContentValues contentValues = new ContentValues();
         contentValues.put("ID_CARRERA", pensum.getIdCarrera());
         contentValues.put("ANIO_PENSUM",pensum.getAnio());
@@ -41,6 +42,7 @@ public class DAOPensum {
         return (baseDeDatos.insert("PENSUM",null,contentValues)>0);
     }
     public Boolean Eliminar(Integer id){
+        baseDeDatos = this.dba.open();
         return (baseDeDatos.delete(
                 "PENSUM",
                 "ID_PENUM="+id,
@@ -48,6 +50,7 @@ public class DAOPensum {
     }
 
     public Boolean Editar(Pensum pensum){
+        baseDeDatos = this.dba.open();
         ContentValues contentValues = new ContentValues();
         contentValues.put("ID_CARRERA", pensum.getIdCarrera());
         contentValues.put("ANIO_PENSUM",pensum.getAnio());
@@ -60,6 +63,7 @@ public class DAOPensum {
     }
 
     public ArrayList<Pensum> verTodos(){
+        baseDeDatos = this.dba.open();
         pensums.clear(); //limpiamos lista del adapter
         Cursor cursor  = baseDeDatos.rawQuery(
                 "Select * FROM PENSUM",
@@ -80,6 +84,7 @@ public class DAOPensum {
     }
 
     public ArrayList<String> SpinnerCarreras(){
+        baseDeDatos = this.dba.open();
         ArrayList<String> carreras = new ArrayList<String>();
         carreras.add("Seleccione");
         Cursor cursor  = baseDeDatos.rawQuery(
@@ -96,6 +101,7 @@ public class DAOPensum {
     }
 
     public String getNombreCarrera(Pensum pensum){
+        baseDeDatos = this.dba.open();
         String nombreCarrera = null;
         Cursor cursor  = baseDeDatos.rawQuery(
                 "Select * FROM CARRERA WHERE ID_CARRERA = " +pensum.getIdCarrera(),
@@ -110,6 +116,7 @@ public class DAOPensum {
 
     //retorna la lista de pensum de una carrera
     public ArrayList<Pensum> verUno(String carrera){
+        baseDeDatos = this.dba.open();
         pensums.clear();
         Cursor cursorCarrrera  = baseDeDatos.rawQuery(
                 "Select * FROM CARRERA WHERE NOMBRE_CARRERA LIKE '%" + carrera + "%'",

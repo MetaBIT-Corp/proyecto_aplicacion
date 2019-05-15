@@ -53,6 +53,7 @@ public class TurnoActivity extends AppCompatActivity {
     Turno turno;
     private int anio, mes, dia, hora, minuto;
     int id_evaluacion;
+    int id_estudiante;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -64,6 +65,7 @@ public class TurnoActivity extends AppCompatActivity {
         Bundle bundle = this.getIntent().getExtras();
         if(bundle != null){
             id_evaluacion = bundle.getInt("id_evaluacion");
+            id_estudiante = bundle.getInt("id_estudiante");
         }
 
         daoUsuario = new DAOUsuario(this);
@@ -89,53 +91,55 @@ public class TurnoActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                LayoutInflater inflater = (LayoutInflater) getApplication().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                turno = turnos.get(position);
-                final int id_turno_intento = turno.getId();
+                if(usuario.getROL()==2) {
+                    LayoutInflater inflater = (LayoutInflater) getApplication().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    turno = turnos.get(position);
+                    final int id_turno_intento = turno.getId();
 
-                //creamos alert dialog
-                AlertDialog.Builder pass_emergente = new AlertDialog.Builder(TurnoActivity.this);
-                pass_emergente.setCancelable(true);
-                View v_pass = inflater.inflate(R.layout.contrasenia_layout, null);
+                    //creamos alert dialog
+                    AlertDialog.Builder pass_emergente = new AlertDialog.Builder(TurnoActivity.this);
+                    pass_emergente.setCancelable(true);
+                    View v_pass = inflater.inflate(R.layout.contrasenia_layout, null);
 
 
-                //enlazamos views del dialogo
-                final TextView tv_dateinicial = (TextView) v_pass.findViewById(R.id.ap_tv_indicaciones);
-                final EditText pass_turno = (EditText) v_pass.findViewById(R.id.ap_edt_pass_intento);
+                    //enlazamos views del dialogo
+                    final TextView tv_dateinicial = (TextView) v_pass.findViewById(R.id.ap_tv_indicaciones);
+                    final EditText pass_turno = (EditText) v_pass.findViewById(R.id.ap_edt_pass_intento);
 
-                pass_emergente.setPositiveButton("Ingresar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if(!pass_turno.getText().toString().isEmpty()){
-                            if (pass_turno.getText().toString().equals(turno.getContrasenia())){
-                                Intent intent = new Intent(view.getContext(), IntentoActivity.class);
-                                intent.putExtra("id_turno_intento",id_turno_intento);
-                                startActivity(intent);
-                            }else {
+                    pass_emergente.setPositiveButton("Ingresar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (!pass_turno.getText().toString().isEmpty()) {
+                                if (pass_turno.getText().toString().equals(turno.getContrasenia())) {
+                                    Intent intent = new Intent(view.getContext(), IntentoActivity.class);
+                                    intent.putExtra("id_turno_intento", id_turno_intento);
+                                    intent.putExtra("id_estudiante",id_estudiante);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(TurnoActivity.this,
+                                            "Contraseña no valida ",
+                                            Toast.LENGTH_SHORT).show();
+                                    pass_turno.setText("");
+                                }
+                            } else {
                                 Toast.makeText(TurnoActivity.this,
-                                        "Contraseña no valida ",
+                                        "Debe de llenar los campos",
                                         Toast.LENGTH_SHORT).show();
                                 pass_turno.setText("");
                             }
-                        } else {
-                            Toast.makeText(TurnoActivity.this,
-                                    "Debe de llenar los campos",
-                                    Toast.LENGTH_SHORT).show();
-                            pass_turno.setText("");
                         }
-                    }
-                });
+                    });
 
-                pass_emergente.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // no esperamos que haga nada al cerrar, solo se cierra
-                    }
-                });
-                pass_emergente.setView(v_pass);
-                pass_emergente.show();
+                    pass_emergente.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // no esperamos que haga nada al cerrar, solo se cierra
+                        }
+                    });
+                    pass_emergente.setView(v_pass);
+                    pass_emergente.show();
 
-
+                }
             }
         });
 

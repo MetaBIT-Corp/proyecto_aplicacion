@@ -16,14 +16,15 @@ public class DAOUsuario {
     SQLiteDatabase baseDeDatos;
     Usuario usuario;
     Context contexto;
+    DatabaseAccess dba;
     String nombreBD= "proy_aplicacion";
 
     //constructor
     public DAOUsuario(Context context){
         this.contexto = context;
 
-        DatabaseAccess dba = DatabaseAccess.getInstance(context);
-        baseDeDatos = dba.open();
+        this.dba = DatabaseAccess.getInstance(context);
+        baseDeDatos = this.dba.open();
 
         /*
          *Abrir base de datos
@@ -38,6 +39,7 @@ public class DAOUsuario {
 
     //retorna true si se realiza el login con éxito
     public Boolean loginUsuario(String pass, String user){
+        baseDeDatos = this.dba.open();
         provisional();
         Boolean login = false;
         int id_usuario;
@@ -74,6 +76,7 @@ public class DAOUsuario {
     }
 
     public Boolean logoutUsuario(int id_user){
+        baseDeDatos = this.dba.open();
         Boolean logout = false;
         int id_usuario;
         int id_sesion;
@@ -104,6 +107,7 @@ public class DAOUsuario {
 
     //provisional
     public void provisional(){
+        baseDeDatos = this.dba.open();
         Cursor cursor = baseDeDatos.rawQuery(
                 "Select * FROM USUARIO",
                 null
@@ -117,6 +121,7 @@ public class DAOUsuario {
     }
 
     public Usuario getUsuarioLogueado(){
+        baseDeDatos = this.dba.open();
         Usuario usuario = new Usuario();
 
         Cursor cursorSesion = baseDeDatos.rawQuery(
