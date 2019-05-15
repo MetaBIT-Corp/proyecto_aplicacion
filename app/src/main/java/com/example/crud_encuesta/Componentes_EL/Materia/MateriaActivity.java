@@ -47,6 +47,7 @@ public class MateriaActivity extends AppCompatActivity {
 
     int id_carrera;
     int id_pensum;
+    int rol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,8 @@ public class MateriaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_materia);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        rol=getIntent().getExtras().getInt("rol_user");
 
         ImageView btnBuscar=findViewById(R.id.el_find);
         ImageView btnTodos=findViewById(R.id.el_all);
@@ -69,7 +72,7 @@ public class MateriaActivity extends AppCompatActivity {
         //listaPensum = Operaciones_CRUD.todosPensum(db);
         listaMateria = Operaciones_CRUD.todosMateria(db);
 
-        adapter = new MateriaAdapter(MateriaActivity.this, listaMateria, db, this, listaPensum, listaCarreras,listaEscuelas);
+        adapter = new MateriaAdapter(MateriaActivity.this, listaMateria, db, this, listaPensum, listaCarreras,listaEscuelas,rol);
 
         listView.setAdapter(adapter);
 

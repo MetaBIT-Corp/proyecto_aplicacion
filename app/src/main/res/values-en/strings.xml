@@ -10,6 +10,7 @@
 
     <string name="aceptar">Accept</string>
     <string name="lbl_borrar">Are you sure?</string>
+    <string name="lbl_borrar_escuela">Are you sure?</string>
 
     <string name="title_borrar">Delete</string>
     <string name="men_actualizar">Updated Successfully</string>

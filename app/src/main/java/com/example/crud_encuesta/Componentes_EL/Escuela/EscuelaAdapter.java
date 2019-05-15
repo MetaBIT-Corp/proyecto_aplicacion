@@ -78,7 +78,7 @@ public class EscuelaAdapter extends BaseAdapter {
                 final int id = (int) getItemId(position);
                 AlertDialog.Builder alert = new AlertDialog.Builder(context);
                 alert.setTitle(R.string.title_borrar);
-                alert.setMessage(R.string.lbl_borrar);
+                alert.setMessage(R.string.lbl_borrar_escuela);
                 alert.setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

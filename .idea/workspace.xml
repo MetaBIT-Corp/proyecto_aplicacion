@@ -20,6 +20,18 @@
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/databases/encuesta.db" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/databases/encuesta.db" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Encuesta/EncuestaAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Encuesta/EncuestaAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Escuela/EscuelaAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Escuela/EscuelaAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/SubMenuEncuestaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/SubMenuEncuestaActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_sub_menu_encuesta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sub_menu_encuesta.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+=======
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/EvaluacionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/EvaluacionActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/LoginActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/PensumActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/PensumActivity.java" afterDir="false" />
@@ -27,10 +39,20 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/TurnoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/TurnoActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOPensumMateria.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOPensumMateria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/DAO/DAOUsuario.java" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_area.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_area.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_evaluacion.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_evaluacion.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_pensum.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pensum.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_pensum_materia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pensum_materia.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_pregunta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pregunta.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_turno.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_turno.xml" afterDir="false" />
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -130,28 +152,106 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="490238186">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.13" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="6" />
+          <entry key="xml" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="6" />
+          <entry key="XML" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="376" />
+          <entry key="txt" value="5" />
+          <entry key="xml" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="376" />
+          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="XML" value="9" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values-en/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="488">
               <caret line="151" column="43" selection-start-line="151" selection-start-column="43" selection-end-line="151" selection-end-column="43" />
+=======
+<<<<<<< HEAD
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1751">
+              <caret line="143" column="51" selection-start-line="143" selection-start-column="51" selection-end-line="143" selection-end-column="51" />
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
               <caret line="151" column="4" selection-start-line="151" selection-start-column="4" selection-end-line="151" selection-end-column="52" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Encuesta/EncuestaActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Encuesta/EncuestaAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="99" column="71" selection-start-line="99" selection-start-column="71" selection-end-line="99" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/SubMenuEncuestaActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+              <folding>
+                <element signature="e#803#1061#0" expanded="true" />
+                <element signature="e#1060#1061#0" expanded="true" />
+                <element signature="e#1100#1358#0" expanded="true" />
+                <element signature="e#1357#1358#0" expanded="true" />
+              </folding>
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="452">
@@ -160,12 +260,60 @@
                 <element signature="e#12899#12940#0" expanded="true" />
                 <element signature="e#13107#13142#0" expanded="true" />
                 <element signature="e#13452#13494#0" expanded="true" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Escuela/EscuelaAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="80" column="60" selection-start-line="80" selection-start-column="60" selection-end-line="80" selection-end-column="60" />
+              <folding>
+                <element signature="e#2697#2724#0" expanded="true" />
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
     </leaf>
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sub_menu_encuesta.xml">
+          <provider editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Materia/MateriaAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Materia/MateriaActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="74" column="127" selection-start-line="74" selection-start-column="127" selection-end-line="74" selection-end-column="127" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+=======
+    <leaf />
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -178,9 +326,21 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Clave/DAOClave.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Intento/VerIntentoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_DC/Activities/GpoEmpActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Materia/MateriaActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Area/AreaAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Area/AreaActivity.java" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Materia/MateriaAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Materia/MateriaActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Encuesta/EncuestaAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sub_menu_encuesta.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/SubMenuEncuestaActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Escuela/EscuelaAdapter.java" />
+=======
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_evaluacion.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_pregunta.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_area.xml" />
@@ -196,25 +356,45 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/PensumActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/PensumMateriaActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/TurnoActivity.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_AP/Activities/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java" />
+=======
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+<<<<<<< HEAD
+    <option name="x" value="-1374" />
+    <option name="y" value="35" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+=======
     <option name="x" value="726" />
     <option name="y" value="20" />
     <option name="width" value="766" />
     <option name="height" value="688" />
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+<<<<<<< HEAD
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+=======
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -238,23 +418,61 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="crud_encuesta" type="cbb59c9e:AndroidPsiDirectoryNode" />
+<<<<<<< HEAD
+              <item name="Componentes_EL" type="462c0819:PsiDirectoryNode" />
+=======
               <item name="Componentes_AP" type="462c0819:PsiDirectoryNode" />
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
             </path>
             <path>
               <item name="proyecto_aplicacion" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="crud_encuesta" type="cbb59c9e:AndroidPsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="Componentes_MT" type="462c0819:PsiDirectoryNode" />
+=======
+<<<<<<< HEAD
+              <item name="Componentes_EL" type="462c0819:PsiDirectoryNode" />
+              <item name="Escuela" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="Componentes_AP" type="462c0819:PsiDirectoryNode" />
+              <item name="Activities" type="462c0819:PsiDirectoryNode" />
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
             </path>
             <path>
               <item name="proyecto_aplicacion" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+<<<<<<< HEAD
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+=======
+<<<<<<< HEAD
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
               <item name="proyecto_aplicacion" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="proyecto_aplicacion" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+=======
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="crud_encuesta" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Componentes_AP" type="462c0819:PsiDirectoryNode" />
+              <item name="DAO" type="462c0819:PsiDirectoryNode" />
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
+            </path>
+            <path>
+              <item name="proyecto_aplicacion" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+<<<<<<< HEAD
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
@@ -264,18 +482,36 @@
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
               <item name="strings" type="c431d0b8:AndroidResGroupNode" />
+=======
+<<<<<<< HEAD
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="strings" type="c431d0b8:AndroidResGroupNode" />
+=======
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="crud_encuesta" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Componentes_MT" type="462c0819:PsiDirectoryNode" />
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
       <pane id="PackagesPane" />
       <pane id="ProjectPane" />
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="device.picker.selection" value="YD8L6P8LIBBIAM69" />
+    <property name="device.picker.selection" value="ZY3234FHJ7" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
@@ -375,28 +611,52 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
+    <frame x="-1374" y="35" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+=======
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+<<<<<<< HEAD
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" weight="0.19742814" />
+=======
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
+    <layout>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.22541603" />
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
+<<<<<<< HEAD
+      <window_info anchor="bottom" id="Run" order="0" weight="0.6704918" />
+      <window_info anchor="bottom" id="Logcat" order="1" />
+      <window_info anchor="bottom" id="TODO" order="2" />
+=======
       <window_info anchor="bottom" id="Run" order="0" weight="0.3295082" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.80491805" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3295082" />
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.3295082" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
+<<<<<<< HEAD
+      <window_info anchor="bottom" id="Version Control" order="6" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.38688526" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" weight="0.3295082" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+=======
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.3295082" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.45081967" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="bottom" id="Find" order="9" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.48638427" />
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -429,13 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Encuesta/EncuestaAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="97" column="45" selection-start-line="97" selection-start-column="45" selection-end-line="97" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_MT/Clave/ClaveAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4994">
@@ -450,6 +703,8 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Materia/MateriaActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3784">
@@ -457,6 +712,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_DC/Activities/PreguntaActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2948">
@@ -492,6 +748,81 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="1751">
+          <caret line="143" column="51" selection-start-line="143" selection-start-column="51" selection-end-line="143" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Encuesta/EncuestaActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Materia/MateriaAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Materia/MateriaActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="74" column="127" selection-start-line="74" selection-start-column="127" selection-end-line="74" selection-end-column="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Encuesta/EncuestaAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="99" column="71" selection-start-line="99" selection-start-column="71" selection-end-line="99" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sub_menu_encuesta.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/SubMenuEncuestaActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+          <folding>
+            <element signature="e#803#1061#0" expanded="true" />
+            <element signature="e#1060#1061#0" expanded="true" />
+            <element signature="e#1100#1358#0" expanded="true" />
+            <element signature="e#1357#1358#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/crud_encuesta/Componentes_EL/Escuela/EscuelaAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="80" column="60" selection-start-line="80" selection-start-column="60" selection-end-line="80" selection-end-column="60" />
+          <folding>
+            <element signature="e#2697#2724#0" expanded="true" />
+=======
+        <state relative-caret-position="515">
+          <caret line="388" column="24" selection-start-line="388" selection-start-column="24" selection-end-line="388" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_encuesta.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
@@ -651,12 +982,24 @@
         <state relative-caret-position="140">
           <caret line="405" selection-start-line="405" selection-end-line="405" />
           <folding>
+<<<<<<< HEAD
             <element signature="e#5243#5300#0" expanded="true" />
             <element signature="e#5611#5663#0" expanded="true" />
             <element signature="e#5923#5967#0" expanded="true" />
             <element signature="e#12456#12507#0" expanded="true" />
             <element signature="e#12774#12826#0" expanded="true" />
             <element signature="e#13798#13850#0" expanded="true" />
+=======
+            <element signature="e#3339#6218#0" expanded="true" />
+            <element signature="e#6217#6218#0" expanded="true" />
+            <element signature="e#6317#13012#0" expanded="true" />
+            <element signature="e#13011#13012#0" expanded="true" />
+            <element signature="e#13128#13737#0" expanded="true" />
+            <element signature="e#13736#13737#0" expanded="true" />
+            <element signature="e#13843#14071#0" expanded="true" />
+            <element signature="e#14070#14071#0" expanded="true" />
+>>>>>>> fc1f021eda46f22b6859195aba27a690b692152c
+>>>>>>> ad0ae065c3803d3c0f9dfd8387fe40122ad2df7e
           </folding>
         </state>
       </provider>

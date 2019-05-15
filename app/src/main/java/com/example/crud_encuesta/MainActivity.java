@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (rol){
                     //Admin
                     case 0:i=new Intent(MainActivity.this,MateriaActivity.class);
+                        i.putExtra("rol_user",rol);
                         startActivity(i);
                     break;
                     //Docente
