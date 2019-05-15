@@ -46,6 +46,23 @@ public class DaoGrupoEmp {
         return cursor.getCount();
     }
 
+    public int cantidad_eliminar_opciones(int id){
+        int cant_opcs=0;
+        Cursor cursor = cx.rawQuery("SELECT * FROM PREGUNTA WHERE ID_GRUPO_EMP="+id, null);
+        cursor.moveToFirst();
+        do{
+            int id_pregunta = cursor.getInt(cursor.getColumnIndex("ID_PREGUNTA"));
+            cant_opcs += cantidad_eliminar_opciones_por_pregunta(id_pregunta);
+        }while (cursor.moveToNext());
+
+        return cant_opcs;
+    }
+
+    public int cantidad_eliminar_opciones_por_pregunta(int id){
+        Cursor cursor = cx.rawQuery("SELECT * FROM OPCION WHERE ID_PREGUNTA="+id, null);
+        return cursor.getCount();
+    }
+
     public boolean editar(GrupoEmparejamiento gpo_emp){
         ContentValues contenedor = new ContentValues();
         contenedor.put("ID_AREA",gpo_emp.getId_area());

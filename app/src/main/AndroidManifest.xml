@@ -9,15 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".Componentes_EL.Materia.MateriaUsersActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity android:name=".SubMenuMateriaActivity"/>
-
-        <activity android:name=".Componentes_AP.Activities.PensumMateriaActivity"></activity>
+        <activity android:name=".SubMenuEncuestaActivity"></activity>
+        <activity
+            android:name=".Componentes_EL.Materia.MateriaUsersActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SubMenuMateriaActivity" />
+        <activity android:name=".Componentes_AP.Activities.PensumMateriaActivity" />
         <activity android:name=".Componentes_AP.Activities.PensumActivity" />
-
         <activity android:name=".Componentes_MT.Intento.VerIntentoActivity" />
         <activity android:name=".Componentes_MT.Intento.IntentoActivity" />
         <activity android:name=".Componentes_MT.ClaveArea.VerAreasActivity" />
@@ -32,7 +30,7 @@
         <activity android:name=".Componentes_MT.Clave.ClaveActivity" />
         <activity android:name=".Componentes_AP.Activities.TurnoActivity" />
         <activity android:name=".Componentes_AP.Activities.EvaluacionActivity" />
-        <activity android:name=".Componentes_AP.Activities.LoginActivity" >
+        <activity android:name=".Componentes_AP.Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,8 +52,7 @@
         <activity android:name=".Componentes_DC.Activities.OpcionActivity" />
         <activity android:name=".Componentes_DC.Activities.PreguntaActivity" />
         <activity android:name=".Componentes_DC.Activities.GpoEmpActivity" />
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
