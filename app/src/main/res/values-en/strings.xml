@@ -153,6 +153,7 @@
     <string name="opc_matciclo">Materia Ciclo</string>
     <string name="opc_pensum">Pensum</string>
     <string name="buscar_preg">Search Question</string>
+    <string name="opc_clave">Key</string>
     <!-- END DC -->
 
     <!-- Estudiante -->
