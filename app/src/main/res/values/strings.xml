@@ -133,6 +133,24 @@
     <string name="ap_buscar_pensum_materia">Buscar</string>
     <string name="ap_Turnos">Turno</string>
     <string name="ap_Evaluaciones">Evaluaciones</string>
+    <string name="ap_el_usuario_no_existe">El usuario no existe</string>
+    <string name="ap_error">Error!</string>
+    <string name="ap_no_posee_carga">No posees carga acádemica</string>
+    <string name="ap_debes_de_llenar">Debes llenar los campos de nombre, intento y duración</string>
+    <string name="ap_debes_ingresar">Debes ingresar un nombre de consulta</string>
+    <string name="ap_bienvenido">Bienvenido </string>
+    <string name="ap_usuario">Usuario y/o contraseña no válidos</string>
+    <string name="ap_nuevo">Nuevo</string>
+    <string name="ap_agregar">Agregar</string>
+    <string name="ap_llena_todos_los_campos">Debes llenar y seleccionar todos los campos</string>
+    <string name="ap_debes_seleccionar">Debes seleccionar una materia</string>
+    <string name="ap_contrasenia_no_valida">Contraseña no valida </string>
+    <string name="ap_llena_los_campos">Debe de llenar los campos</string>
+    <string name="ap_cancelar">Cancelar</string>
+    <string name="ap_fecha_no_valida">Fecha no valida, por favor revisar</string>
+    <string name="ap_salir">¿Deseas salir de la aplicación: </string>
+    <string name="ap_vuelve">Vuelve pronto </string>
+
     <!-- DC -->
     <string name="msg_bienvenida">¡Bienvenido!</string>
     <string name="opc_escuela">Escuela</string>

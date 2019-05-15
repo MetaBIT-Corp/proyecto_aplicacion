@@ -132,7 +132,6 @@ public class DAOPensumMateria {
                     if(listam.get(j).getId() == listapm.get(i).getIdMateria()){
                         b1=1;
                     }
-                    //Toast.makeText(contexto,""+listapm.get(i).getIdMateria(),Toast.LENGTH_SHORT).show();
                 }
                 if (b1==0){
                     materias.add(listam.get(j).getId()+ " - " + listam.get(j).getCodigo_materia());

@@ -90,7 +90,7 @@ public class PensumActivity extends AppCompatActivity {
                 Button btCrear = (Button) dialog.findViewById(R.id.d_agregar_pensum);
                 Button btCancelar = (Button) dialog.findViewById(R.id.d_cancelar_pensum);
 
-                titulo.setText("Nuevo");
+                titulo.setText(getResources().getText(R.string.ap_nuevo));
 
                 //llenamos el spinner
                 ArrayAdapter<CharSequence> adaptadorSpinner = new ArrayAdapter(
@@ -135,12 +135,12 @@ public class PensumActivity extends AppCompatActivity {
                                 //cerramos el dialogo
                                 dialog.dismiss();
                             } catch (Exception e) {
-                                Toast.makeText(getApplication(), "Error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplication(), getResources().getText(R.string.ap_error), Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             Toast.makeText(
                                     v.getContext(),
-                                    "Debes llenar y seleccionar todos los campos",
+                                    getResources().getText(R.string.ap_llena_todos_los_campos),
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -167,7 +167,7 @@ public class PensumActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(
                             v.getContext(),
-                            "Campo vacío",
+                            getResources().getText(R.string.ap_debes_ingresar),
                             Toast.LENGTH_SHORT
                     ).show();
                 }

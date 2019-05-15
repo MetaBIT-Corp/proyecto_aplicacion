@@ -71,7 +71,7 @@ public class EvaluacionActivity extends AppCompatActivity {
             id_estudiante= daoEvaluacion.getIdEstudiante(usuario.getIDUSUARIO(),id_materia);
         }
         if(id_carga_academica==0){
-            Toast.makeText(this,"No posees carga acádemica",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getResources().getText(R.string.ap_no_posee_carga),Toast.LENGTH_LONG).show();
         }
 
         evaluaciones = daoEvaluacion.verTodos(id_carga_academica);
@@ -132,8 +132,8 @@ public class EvaluacionActivity extends AppCompatActivity {
                 Button btCrear = (Button) dialog.findViewById(R.id.d_agregar_eva);
                 Button btCancelar = (Button) dialog.findViewById(R.id.d_cancelar_eva);
 
-                btCrear.setText("Agregar");
-                titulo.setText("Nuevo");
+                btCrear.setText(getResources().getText(R.string.ap_agregar));
+                titulo.setText(getResources().getText(R.string.ap_nuevo));
 
                 //programamos botones de crear-guardar y cancelar
 
@@ -165,12 +165,12 @@ public class EvaluacionActivity extends AppCompatActivity {
                                 dialog.dismiss();
 
                             } catch (Exception e) {
-                                Toast.makeText(getApplication(), "Error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplication(), getResources().getText(R.string.ap_error), Toast.LENGTH_SHORT).show();
                             }
                         }else {
                             Toast.makeText(
                                     v.getContext(),
-                                    "Debes llenar los campos de nombre, intento y duración",
+                                    getResources().getText(R.string.ap_debes_de_llenar),
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -200,7 +200,7 @@ public class EvaluacionActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(
                             v.getContext(),
-                            "Debes ingresar un nombre de consulta",
+                            getResources().getText(R.string.ap_debes_ingresar),
                             Toast.LENGTH_SHORT
                     ).show();
                 }

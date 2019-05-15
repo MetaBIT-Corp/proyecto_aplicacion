@@ -49,10 +49,10 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra("rol_user",usuarioLogueado.getROL());
                     intent.putExtra("username",usuarioLogueado.getNOMUSUARIO());
                     startActivity(intent);
-                    Toast.makeText(v.getContext(),"Bienvenido " + usuario,Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), getResources().getText(R.string.ap_bienvenido) + " "+usuario,Toast.LENGTH_LONG).show();
                     finish();
                 }else {
-                    Toast.makeText(v.getContext(),"Usuario y/o contraseña no válidos",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(v.getContext(),getResources().getText(R.string.ap_usuario),Toast.LENGTH_SHORT).show();
                 }
             }
         });

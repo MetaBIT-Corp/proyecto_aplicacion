@@ -352,29 +352,29 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
         }else{
             AlertDialog.Builder delete_emergente = new AlertDialog.Builder(this);
-            delete_emergente.setMessage("¿Deseas salir de la aplicación: " + usuario.getNOMUSUARIO() + "?");
+            delete_emergente.setMessage(getResources().getText(R.string.ap_salir) + " "+ usuario.getNOMUSUARIO() + "?");
             delete_emergente.setCancelable(true);
 
             //Caso positivo
 
-            delete_emergente.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            delete_emergente.setPositiveButton(getResources().getText(R.string.si), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     if(daoUsuario.logoutUsuario(usuario.getIDUSUARIO())){
                         daoUsuario.logoutUsuario(usuario.getIDUSUARIO());
-                        Toast.makeText(MainActivity.this,"Vuelve pronto " + usuario.getNOMUSUARIO(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this,getResources().getText(R.string.ap_vuelve)+" " + usuario.getNOMUSUARIO(),Toast.LENGTH_LONG).show();
                         Intent i = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(i);
                         finish();
                     }else {
-                        Toast.makeText(MainActivity.this,"Ups, algo falló, vueleve a intentar",Toast.LENGTH_LONG);
+                        Toast.makeText(MainActivity.this,"Ups, algo falló, vuelve a intentar",Toast.LENGTH_LONG);
                     }
                 }
             });
 
             //Caso negativo
 
-            delete_emergente.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            delete_emergente.setNegativeButton(getResources().getText(R.string.no), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // no esperamos que haga nada al cerrar, solo se cierra
