@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.example.crud_encuesta.Componentes_EL.EstructuraTablas;
 import com.example.crud_encuesta.Componentes_EL.Operaciones_CRUD;
 import com.example.crud_encuesta.Componentes_MT.Clave.ClaveActivity;
+import com.example.crud_encuesta.Componentes_MT.Intento.IntentoActivity;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
@@ -90,14 +91,25 @@ public class EncuestaAdapter extends BaseAdapter {
             btneliminar.setVisibility(View.GONE);
         }
 
-        if (rol==2||rol==1){
+        if (rol==1){
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i=new Intent(context, ClaveActivity.class);
-                    i.putExtra("id_encuesta",getItemId(position));
+                    i.putExtra("id_encuesta",(int)getItemId(position));
                     context.startActivity(i);
-                    activity.finish();
+                }
+            });
+        }
+
+        if(rol==2){
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i=new Intent(context, IntentoActivity.class);
+                    i.putExtra("id_encuesta",(int)getItemId(position));
+                    context.startActivity(i);
+
                 }
             });
         }

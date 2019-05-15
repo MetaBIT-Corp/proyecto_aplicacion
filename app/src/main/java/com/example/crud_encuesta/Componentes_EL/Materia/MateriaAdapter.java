@@ -42,8 +42,9 @@ public class MateriaAdapter extends BaseAdapter {
 
     int id_carrera;
     int id_pensum;
+    int rol;
 
-    public MateriaAdapter(Context c, ArrayList<Materia> lista, SQLiteDatabase db, Activity a, ArrayList<Pensum> p, ArrayList<Carrera> ca, ArrayList<Escuela> e) {
+    public MateriaAdapter(Context c, ArrayList<Materia> lista, SQLiteDatabase db, Activity a, ArrayList<Pensum> p, ArrayList<Carrera> ca, ArrayList<Escuela> e,int rol) {
         this.context = c;
         this.l = lista;
         this.db = db;
@@ -51,6 +52,7 @@ public class MateriaAdapter extends BaseAdapter {
         this.listaPensum = p;
         this.listaCarreras = ca;
         this.listaEscuelas = e;
+        this.rol=rol;
     }
 
     @Override
@@ -77,14 +79,16 @@ public class MateriaAdapter extends BaseAdapter {
 
         }
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(context, SubMenuMateriaActivity.class);
-                i.putExtra("id_materia",getItemId(position));
-                context.startActivity(i);
-            }
-        });
+        if (rol!=0){
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i=new Intent(context, SubMenuMateriaActivity.class);
+                    i.putExtra("id_materia",getItemId(position));
+                    context.startActivity(i);
+                }
+            });
+        }
 
         Button btneditar = view.findViewById(R.id.btn_editar);
         Button btneliminar = view.findViewById(R.id.btn_eliminar);
