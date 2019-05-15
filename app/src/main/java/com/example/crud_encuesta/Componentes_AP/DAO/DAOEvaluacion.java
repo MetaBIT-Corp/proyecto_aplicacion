@@ -16,14 +16,15 @@ public class DAOEvaluacion {
     ArrayList<Evaluacion> evaluaciones = new ArrayList<>();
     Evaluacion evaluacion;
     Context contexto;
+    DatabaseAccess dba;
     String nombreBD= "proy_aplicacion";
 
     //constructor
     public DAOEvaluacion(Context context){
         this.contexto = context;
 
-        DatabaseAccess dba = DatabaseAccess.getInstance(context);
-        baseDeDatos = dba.open();
+        this.dba = DatabaseAccess.getInstance(context);
+        baseDeDatos = this.dba.open();
 
         /*
          *Abrir base de datos
@@ -35,6 +36,7 @@ public class DAOEvaluacion {
 
 
     public Boolean Insertar(Evaluacion evaluacion){
+        baseDeDatos = this.dba.open();
         ContentValues contentValues = new ContentValues();
         contentValues.put("ID_CARG_ACA", evaluacion.getIdCargaAcad() );
         contentValues.put("DURACION",evaluacion.getDuracion());
@@ -46,10 +48,12 @@ public class DAOEvaluacion {
     }
 
     public Boolean Eliminar(Integer id){
+        baseDeDatos = this.dba.open();
         return (baseDeDatos.delete("EVALUACION","ID_EVALUACION="+id,null)>0);
     }
 
     public Boolean Editar(Evaluacion evaluacion){
+        baseDeDatos = this.dba.open();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put("DURACION",evaluacion.getDuracion());
@@ -61,6 +65,7 @@ public class DAOEvaluacion {
     }
 
     public ArrayList<Evaluacion> verTodos(int id_carga_academica){
+        baseDeDatos = this.dba.open();
         evaluaciones.clear(); //limpiamos lista del adapter
         Cursor cursor  = baseDeDatos.rawQuery(
                 "Select * FROM EVALUACION WHERE ID_CARG_ACA ="+id_carga_academica,
@@ -84,6 +89,7 @@ public class DAOEvaluacion {
 
     //retorna la lista pero solo con el elemento buscado
     public ArrayList<Evaluacion> verUno(String nombre, int id_carga_academica){
+        baseDeDatos = this.dba.open();
         evaluaciones.clear();
         Cursor cursor  = baseDeDatos.rawQuery(
                 "Select * FROM EVALUACION WHERE NOMBRE_EVALUACION LIKE '%" + nombre + "%' AND ID_CARG_ACA="+id_carga_academica  ,
@@ -105,6 +111,7 @@ public class DAOEvaluacion {
     }
 
     public int getCargaAcademicaEstudiante(int id_usuario, int id_materia){
+        baseDeDatos = this.dba.open();
         int carga=0;
         Cursor cursor  = baseDeDatos.rawQuery(
                 "SELECT\n" +
@@ -131,7 +138,35 @@ public class DAOEvaluacion {
         return carga;
     }
 
+    public int getIdEstudiante(int id_usuario, int id_materia){
+        baseDeDatos = this.dba.open();
+        int id=0;
+        Cursor cursor  = baseDeDatos.rawQuery(
+                "SELECT\n" +
+                        "ESTUDIANTE.ID_EST\n" +
+                        "FROM ESTUDIANTE\n" +
+                        "INNER JOIN DETALLEINSCEST ON\n" +
+                        "ESTUDIANTE.ID_EST=DETALLEINSCEST.ID_EST\n" +
+                        "INNER JOIN CARGA_ACADEMICA ON\n" +
+                        "DETALLEINSCEST.ID_CARG_ACA=CARGA_ACADEMICA.ID_CARG_ACA\n" +
+                        "INNER JOIN MATERIA_CICLO ON\n" +
+                        "MATERIA_CICLO.ID_MAT_CI=CARGA_ACADEMICA.ID_MAT_CI\n" +
+                        "INNER JOIN CAT_MAT_MATERIA ON\n" +
+                        "CAT_MAT_MATERIA.ID_CAT_MAT=MATERIA_CICLO.ID_CAT_MAT\n" +
+                        "WHERE ESTUDIANTE.IDUSUARIO=" + id_usuario+
+                        " AND CAT_MAT_MATERIA.ID_CAT_MAT =" + id_materia,
+                null);
+        if(cursor.moveToFirst()){
+            cursor.moveToFirst();
+            do {
+                id = cursor.getInt(0);
+            }while (cursor.moveToNext());
+        }
+        return id;
+    }
+
     public int getCargaAcademicaDocente(int id_usuario, int id_materia){
+        baseDeDatos = this.dba.open();
         int carga=0;
         Cursor cursor  = baseDeDatos.rawQuery(
                 "SELECT\n" +
