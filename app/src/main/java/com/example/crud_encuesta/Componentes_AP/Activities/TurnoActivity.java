@@ -117,20 +117,20 @@ public class TurnoActivity extends AppCompatActivity {
                                     startActivity(intent);
                                 } else {
                                     Toast.makeText(TurnoActivity.this,
-                                            "Contraseña no valida ",
+                                            getResources().getText(R.string.ap_contrasenia_no_valida),
                                             Toast.LENGTH_SHORT).show();
                                     pass_turno.setText("");
                                 }
                             } else {
                                 Toast.makeText(TurnoActivity.this,
-                                        "Debe de llenar los campos",
+                                        getResources().getText(R.string.ap_llena_los_campos),
                                         Toast.LENGTH_SHORT).show();
                                 pass_turno.setText("");
                             }
                         }
                     });
 
-                    pass_emergente.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    pass_emergente.setNegativeButton(getResources().getText(R.string.ap_cancelar), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             // no esperamos que haga nada al cerrar, solo se cierra
@@ -259,7 +259,7 @@ public class TurnoActivity extends AppCompatActivity {
                             }else {
                                 Toast.makeText(
                                         v.getContext(),
-                                        "Fecha no valida, por favor revisar",
+                                        getResources().getText(R.string.ap_fecha_no_valida),
                                         Toast.LENGTH_SHORT).show();
                             }
 
@@ -267,7 +267,7 @@ public class TurnoActivity extends AppCompatActivity {
                         } else {
                             Toast.makeText(
                                     v.getContext(),
-                                    "Debes llenar todos los campos",
+                                    getResources().getText(R.string.ap_llena_los_campos),
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -295,7 +295,7 @@ public class TurnoActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(
                             v.getContext(),
-                            "Debes ingresar un Id del turno",
+                            getResources().getText(R.string.ap_llena_los_campos),
                             Toast.LENGTH_SHORT
                     ).show();
                 }

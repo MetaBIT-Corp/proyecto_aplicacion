@@ -87,7 +87,7 @@ public class PensumMateriaActivity extends AppCompatActivity {
                 Button btCrear = (Button) dialog.findViewById(R.id.d_agregar_pensum_materia);
                 Button btCancelar = (Button) dialog.findViewById(R.id.d_cancelar_pensum_materia);
 
-                titulo.setText("Nuevo");
+                titulo.setText(getResources().getText(R.string.ap_nuevo));
 
                 //llenamos el spinner
                 ArrayAdapter<CharSequence> adaptadorSpinner = new ArrayAdapter(
@@ -136,7 +136,7 @@ public class PensumMateriaActivity extends AppCompatActivity {
                         } else {
                             Toast.makeText(
                                     v.getContext(),
-                                    "Debes seleccionar una materia",
+                                    getResources().getText(R.string.ap_debes_seleccionar),
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -162,7 +162,7 @@ public class PensumMateriaActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(
                             v.getContext(),
-                            "Campo vacío",
+                            getResources().getText(R.string.ap_debes_ingresar),
                             Toast.LENGTH_SHORT
                     ).show();
                 }

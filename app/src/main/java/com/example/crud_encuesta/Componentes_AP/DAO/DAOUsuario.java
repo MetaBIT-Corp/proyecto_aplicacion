@@ -68,9 +68,9 @@ public class DAOUsuario {
                login = true;
            }
         }else {
-            Toast.makeText(contexto,
+            /*Toast.makeText(contexto,
                     "El usuario no existe",
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_SHORT).show();*/
         }
         return login;
     }
@@ -98,9 +98,10 @@ public class DAOUsuario {
                 logout = true;
             }
         }else {
+            /*
             Toast.makeText(contexto,
                     "Id de usuario no valido",
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_SHORT).show();*/
         }
         return logout;
     }
