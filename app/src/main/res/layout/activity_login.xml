@@ -52,7 +52,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/ap_hint_username"
-                        android:text="aa16002"/>
+                        android:text="admin" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -68,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/ap_hint_password"
                         android:inputType="textPassword"
-                        android:text="35tud"/>
+                        android:text="adm1n" />
                 </android.support.design.widget.TextInputLayout>
 
                 <Button

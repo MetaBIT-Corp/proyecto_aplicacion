@@ -13,8 +13,8 @@
     <string name="aceptar">Aceptar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="lbl_borrar">¿Esta seguro? Se eliminaran todas las carreras asociadas a la Escuela.</string>
-    <string name="lbl_borrar_escuela">¿Esta seguro? </string>
+    <string name="lbl_borrar">¿Esta seguro?</string>
+    <string name="lbl_borrar_escuela">¿Esta seguro? Se eliminaran todas las carreras asociadas a la Escuela.</string>
     <string name="title_borrar">Eliminar</string>
     <string name="men_actualizar">Se Actualizo Correctamente</string>
     <string name="men_guardar">Se Guardo Correctamente</string>
