@@ -21,15 +21,12 @@ import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_AP.Activities.EvaluacionActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.PensumActivity;
-import com.example.crud_encuesta.Componentes_AP.Activities.PensumMateriaActivity;
 import com.example.crud_encuesta.Componentes_AP.Activities.TurnoActivity;
 import com.example.crud_encuesta.Componentes_AP.DAO.DAOUsuario;
-import com.example.crud_encuesta.Componentes_AP.Models.PensumMateria;
 import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
-import com.example.crud_encuesta.Componentes_Docente.ActivityDocente;
-import com.example.crud_encuesta.Componentes_EL.Encuesta.Encuesta;
+import com.example.crud_encuesta.Componentes_MR.Docente.ActivityDocente;
 import com.example.crud_encuesta.Componentes_EL.Materia.MateriaUsersActivity;
-import com.example.crud_encuesta.Componentes_Estudiante.ActivityEstudiante;
+import com.example.crud_encuesta.Componentes_MR.Estudiante.ActivityEstudiante;
 import com.example.crud_encuesta.Componentes_MT.Area.AreaActivity;
 import com.example.crud_encuesta.Componentes_MT.Clave.ClaveActivity;
 import com.example.crud_encuesta.Componentes_MT.Intento.IntentoActivity;
@@ -40,7 +37,7 @@ import com.example.crud_encuesta.Componentes_EL.Encuesta.EncuestaActivity;
 import com.example.crud_encuesta.Componentes_EL.Escuela.EscuelaActivity;
 import com.example.crud_encuesta.Componentes_EL.Materia.MateriaActivity;
 
-import com.example.crud_encuesta.Componentes_MateriaCiclo.ActivityMateriaCiclo;
+import com.example.crud_encuesta.Componentes_MR.MateriaCiclo.ActivityMateriaCiclo;
 
 public class MainActivity extends AppCompatActivity {
 

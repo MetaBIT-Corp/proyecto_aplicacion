@@ -1,6 +1,6 @@
 package com.example.crud_encuesta.Componentes_EL.Encuesta;
 
-import com.example.crud_encuesta.Componentes_Docente.Docente;
+import com.example.crud_encuesta.Componentes_MR.Docente.Docente;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;

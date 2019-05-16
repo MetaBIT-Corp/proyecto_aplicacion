@@ -232,6 +232,7 @@
     <string name="alertUser">User\'s Credentials</string>
     <string name="usuario">User: </string>
     <string name="clave">Pass: </string>
+    <string name="set_anio">Pick a Year</string>
     <!-- END Varios -->
 
 </resources>

@@ -1,6 +1,6 @@
 package com.example.crud_encuesta.Componentes_EL.Encuesta;
 
-import com.example.crud_encuesta.Componentes_Docente.Docente;
+import com.example.crud_encuesta.Componentes_MR.Docente.Docente;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -23,7 +23,6 @@ import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_EL.EstructuraTablas;
 import com.example.crud_encuesta.Componentes_EL.Operaciones_CRUD;
-import com.example.crud_encuesta.Componentes_MT.Clave.ClaveActivity;
 import com.example.crud_encuesta.Componentes_MT.Intento.IntentoActivity;
 import com.example.crud_encuesta.R;
 import com.example.crud_encuesta.SubMenuEncuestaActivity;
