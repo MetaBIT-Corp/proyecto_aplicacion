@@ -63,7 +63,7 @@ public class GpoEmpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(GpoEmpActivity.this);
-                dialog.setTitle("Nuevo Grupo Emparejamiento");
+                dialog.setTitle(R.string.nuevo_gpo_emp);
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.dialogo_gpo_emp);
                 dialog.show();
@@ -72,8 +72,8 @@ public class GpoEmpActivity extends AppCompatActivity {
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
                 TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
-                texto_titulo.setText("Agregar grupo emparejamiento");
-                agregar.setText("Agregar");
+                texto_titulo.setText(R.string.agregar_gpo_emp);
+                agregar.setText(R.string.btn_agregar);
                 agregar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -92,13 +92,13 @@ public class GpoEmpActivity extends AppCompatActivity {
                                 //FIN
 
                             }else{
-                                Toast.makeText(v.getContext(), "¡Ingrese la descripción del grupo de emparejamiento!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(v.getContext(), R.string.msg_falta_desc_gpo_emp, Toast.LENGTH_SHORT).show();
                                 descripcion.setFocusable(true);
                             }
 
 
                         }catch (Exception e){
-                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);
+                            //Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);
                         }
                     }
                 });

@@ -106,7 +106,7 @@ public class AdaptadorPregunta extends BaseAdapter {
 
                 final int pos = Integer.parseInt(v.getTag().toString());
                 final Dialog dialog = new Dialog(a);
-                dialog.setTitle("Editar Pregunta");
+                dialog.setTitle(R.string.edit_preg);
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.dialogo_pregunta);
                 dialog.show();
@@ -115,8 +115,8 @@ public class AdaptadorPregunta extends BaseAdapter {
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
                 TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
-                texto_titulo.setText("Editar pregunta");
-                agregar.setText("Guardar");
+                texto_titulo.setText(R.string.edit_preg);
+                agregar.setText(R.string.btn_guardar);
                 pregunta = lista_preguntas.get(pos);
                 setId(pregunta.getId());
                 final int id_grupo_emp = pregunta.getId_grupo_emp();
@@ -136,12 +136,12 @@ public class AdaptadorPregunta extends BaseAdapter {
                                 dialog.dismiss();
 
                             }else{
-                                Toast.makeText(v.getContext(), "¡No se permite dejar vacio el texto de pregunta!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(v.getContext(), R.string.msg_falta_texto_preg, Toast.LENGTH_SHORT).show();
                                 texto_pregunta.setFocusable(true);
                             }
 
                         }catch (Exception e){
-                            Toast.makeText(a, "Error", Toast.LENGTH_SHORT);
+                            //Toast.makeText(a, "Error", Toast.LENGTH_SHORT);
                         }
                     }
                 });
@@ -163,9 +163,13 @@ public class AdaptadorPregunta extends BaseAdapter {
                 setId(pregunta.getId());
                 int cant = dao.cantidad_eliminar_opciones(getId());
                 AlertDialog.Builder del = new AlertDialog.Builder(a);
-                del.setMessage("¿Esta seguro de eliminar la pregunta?, se eliminaran "+cant+" opciones en caso de aceptar!!");
+
+                String del_preg_1 = v.getResources().getString(R.string.del_preg_1);
+                String del_preg_2 = v.getResources().getString(R.string.del_preg_2);
+
+                del.setMessage(del_preg_1+" "+cant+" "+del_preg_2);
                 del.setCancelable(false);
-                del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                del.setPositiveButton(R.string.positivo, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dao.eliminar(getId());
@@ -174,7 +178,7 @@ public class AdaptadorPregunta extends BaseAdapter {
                     }
                 });
 
-                del.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                del.setNegativeButton(R.string.negativo, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 

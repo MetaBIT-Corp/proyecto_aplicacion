@@ -20,17 +20,18 @@ public class DaoOpcion {
     private String nombreBD = "proy_aplicacion.db";
     private int id_pregunta;
     private int es_respuesta_corta;
+    private DatabaseAccess dba;
 
     public DaoOpcion(Context ct, int id_pregunta, int es_verdadero_falso, int es_respuesta_corta){
         this.ct = ct;
         this.id_pregunta = id_pregunta;
-        DatabaseAccess dba = DatabaseAccess.getInstance(ct);
-        cx = dba.open();
+        this.dba = DatabaseAccess.getInstance(ct);
         this.es_respuesta_corta = es_respuesta_corta;
         if (es_verdadero_falso==1)insertar_automatico();
     }
 
     private void insertar_automatico(){
+        cx = dba.open();
         Cursor cursor = cx.rawQuery("SELECT*FROM OPCION WHERE ID_PREGUNTA="+id_pregunta,null);
      if(cursor.getCount()==0){
          Opcion opcion_verdadero = new Opcion(id_pregunta, "Verdadero",1);
@@ -41,6 +42,7 @@ public class DaoOpcion {
     }
 
     public void cambiar(){
+        cx = dba.open();
         Cursor cursor = cx.rawQuery("SELECT*FROM OPCION WHERE ID_PREGUNTA="+id_pregunta+" AND CORRECTA="+0,null);
         if (cursor.getCount()==1){
             cursor.moveToFirst();
@@ -50,7 +52,7 @@ public class DaoOpcion {
     }
 
     public boolean insertar(Opcion opcion){
-
+        cx = dba.open();
         ContentValues contenedor = new ContentValues();
         contenedor.put("ID_PREGUNTA ",opcion.getId_pregunta());
         contenedor.put("OPCION",opcion.getOpcion());
@@ -68,11 +70,12 @@ public class DaoOpcion {
     }
 
     public boolean eliminar(int id){
-
+        cx = dba.open();
         return (cx.delete("OPCION","ID_OPCION="+id, null)>0);
     }
 
     public boolean editar(Opcion opcion){
+        cx = dba.open();
         ContentValues contenedor = new ContentValues();
         contenedor.put("OPCION",opcion.getOpcion());
 
@@ -86,6 +89,7 @@ public class DaoOpcion {
     }
 
     public ArrayList<Opcion> verTodos(){
+        cx = dba.open();
         lista_opciones.clear();
 
         try{
@@ -105,7 +109,7 @@ public class DaoOpcion {
     }
 
     public Opcion verUno(int position){
-
+        cx = dba.open();
         Cursor cursor = cx.rawQuery("SELECT * FROM OPCION", null);
         cursor.moveToPosition(position);
         opcion = new Opcion(cursor.getInt(cursor.getColumnIndex("ID_OPCION")), cursor.getInt(cursor.getColumnIndex("ID_PREGUNTA")),cursor.getString(cursor.getColumnIndex("OPCION")),cursor.getInt(cursor.getColumnIndex("CORRECTA")));

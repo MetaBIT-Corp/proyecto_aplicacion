@@ -79,7 +79,7 @@ public class PreguntaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(PreguntaActivity.this);
-                dialog.setTitle("Nueva Pregunta");
+                dialog.setTitle(R.string.nueva_preg);
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.dialogo_pregunta);
                 dialog.show();
@@ -88,8 +88,8 @@ public class PreguntaActivity extends AppCompatActivity {
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
                 TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
-                texto_titulo.setText("Agregar pregunta");
-                agregar.setText("Agregar");
+                texto_titulo.setText(R.string.agregar_preg);
+                agregar.setText(R.string.btn_agregar);
                 agregar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -103,12 +103,12 @@ public class PreguntaActivity extends AppCompatActivity {
                                 dialog.dismiss();
 
                             }else{
-                                Toast.makeText(v.getContext(), "¡Ingrese el texto de la pregunta!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(v.getContext(), R.string.msg_falta_texto_preg, Toast.LENGTH_SHORT).show();
                                 texto_pregunta.setFocusable(true);
                             }
 
                         }catch (Exception e){
-                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);
+                            //Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);
                         }
                     }
                 });
@@ -132,7 +132,7 @@ public class PreguntaActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(
                             v.getContext(),
-                            "Debes ingresar un nombre de consulta",
+                            R.string.msg_consulta_nula,
                             Toast.LENGTH_SHORT
                     ).show();
                 }
