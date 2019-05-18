@@ -83,7 +83,7 @@ public class ActivityEstudiante extends AppCompatActivity {
             }
         });
 
-        /*Boton para Nuevo Estudiante*/
+        /*Botón para Nuevo Estudiante*/
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +119,15 @@ public class ActivityEstudiante extends AppCompatActivity {
                 guardar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        try {
+
+                        String errores="";
+
+                        errores += Funciones.comprobarCampo(carnet,"Carnet",ActivityEstudiante.this);
+                        errores += Funciones.comprobarCampo(nombre,"Nombre",ActivityEstudiante.this);
+                        errores += Funciones.comprobarCampo(anio_ingreso,"Año de Ingreso",ActivityEstudiante.this);
+                        errores += Funciones.comprobarAnio(anio_ingreso,ActivityEstudiante.this);
+
+                        if (errores.isEmpty()){
 
                             int check;
                             if(activo.isChecked()){
@@ -159,11 +167,12 @@ public class ActivityEstudiante extends AppCompatActivity {
                             });
                             usrAlert.show();
 
-                            adapter.notifyDataSetChanged();
                             lista = dao.verTodos();
+                            adapter.notifyDataSetChanged();
                             dialogo.dismiss();
-                        }catch (Exception e){
-                            Toast.makeText(getApplicationContext(), "¡Error!", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Toast.makeText(getApplicationContext(),errores+"\n"+getResources().getString(R.string.rellene_v), Toast.LENGTH_LONG).show();
                         }
                     }
                 });

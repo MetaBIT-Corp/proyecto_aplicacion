@@ -104,7 +104,7 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
         editar.setTag(position);
         eliminar.setTag(position);
 
-        /*Boton de Información*/
+        /*Botón de Información*/
         ver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,7 +163,7 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
             }
         });
 
-        /*Boton de Edición*/
+        /*Botón de Edición*/
         editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -241,7 +241,11 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
 
-                        try {
+                        String errores="";
+                        errores += Funciones.comprobarCampo(anio,"Año",a);
+                        errores += Funciones.comprobarAnio(anio,a);
+
+                        if (errores.isEmpty()){
 
                             int ciclo_seleccionado;
                             if (rb1.isChecked()) {
@@ -260,8 +264,8 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
                             lista = dao.verTodos();
                             notifyDataSetChanged();
                             dialogo.dismiss();
-                        } catch (Exception e) {
-                            Toast.makeText(a, "¡Error!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(a,errores+"\n"+a.getResources().getString(R.string.rellene_v), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -276,7 +280,7 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
             }
         });
 
-        /*Boton de Eliminación*/
+        /*Botón de Eliminación*/
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -291,7 +295,7 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
                 del.setMessage(R.string.mtc_borrar);
                 del.setCancelable(true);
 
-                /*Boton de Si*/
+                /*Botón de Si*/
                 del.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -301,7 +305,7 @@ public class AdaptadorMateriaCiclo extends BaseAdapter {
                     }
                 });
 
-                /*Boton de No*/
+                /*Botón de No*/
                 del.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

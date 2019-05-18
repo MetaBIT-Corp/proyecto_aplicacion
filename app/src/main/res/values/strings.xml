@@ -235,4 +235,11 @@
     <string name="set_anio">Seleccione el Año</string>
     <!-- END Varios -->
 
+    <!-- Validaciones -->
+    <string name="campo_v">El campo </string>
+    <string name="vacio_v"> está vacío.</string>
+    <string name="rellene_v">Por favor, llene los campos.</string>
+    <string name="anio_v">El año ingresado no es válido</string>
+    <!-- END Validaciones -->
+
 </resources>

@@ -1,33 +1,26 @@
 package com.example.crud_encuesta.Componentes_MR.MateriaCiclo;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.crud_encuesta.Componentes_EL.Materia.Materia;
 import com.example.crud_encuesta.Componentes_MR.Funciones;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
-
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class ActivityMateriaCiclo extends AppCompatActivity {
 
@@ -38,7 +31,6 @@ public class ActivityMateriaCiclo extends AppCompatActivity {
     private DAOMateriaCiclo dao;
     private AdaptadorMateriaCiclo adapter;
     private int id_materia;
-    private int anio_actual = Calendar.getInstance().get(Calendar.YEAR);
     private MateriaCiclo materiaCiclo;
 
     @Override
@@ -67,7 +59,7 @@ public class ActivityMateriaCiclo extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {}
         });
 
-        /*Boton Agregar nueva MateriaCiclo*/
+        /*Botón Agregar nueva MateriaCiclo*/
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +115,11 @@ public class ActivityMateriaCiclo extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        try{
+                        String errores="";
+                        errores += Funciones.comprobarCampo(anio,"Año",ActivityMateriaCiclo.this);
+                        errores += Funciones.comprobarAnio(anio,ActivityMateriaCiclo.this);
+
+                        if (errores.isEmpty()){
                             int ciclo_seleccionado;
                             if(rb1.isChecked()){
                                 ciclo_seleccionado =1;
@@ -138,8 +134,8 @@ public class ActivityMateriaCiclo extends AppCompatActivity {
                             adapter.notifyDataSetChanged();
                             lista = dao.verTodos();
                             dialogo.dismiss();
-                        }catch (Exception e){
-                            Toast.makeText(getApplicationContext(), "¡Error!", Toast.LENGTH_SHORT).show();}
+                        }else{
+                            Toast.makeText(getApplicationContext(),errores+"\n"+getResources().getString(R.string.rellene_v), Toast.LENGTH_LONG).show();}
                     }
                 });
 

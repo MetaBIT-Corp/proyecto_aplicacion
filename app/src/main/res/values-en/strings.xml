@@ -235,4 +235,13 @@
     <string name="set_anio">Pick a Year</string>
     <!-- END Varios -->
 
+    <!-- Validaciones -->
+    <string name="campo_v">The field</string>
+    <string name="vacio_v">it\'s empty.</string>
+    <string name="rellene_v">Please fill the form.</string>
+    <string name="anio_v">Invalid Year</string>
+    <!-- END Validaciones -->
+
+
+
 </resources>

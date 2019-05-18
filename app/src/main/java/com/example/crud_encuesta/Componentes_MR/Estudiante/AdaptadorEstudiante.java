@@ -202,7 +202,15 @@ public class AdaptadorEstudiante extends BaseAdapter {
                 guardar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        try {
+
+                        String errores="";
+
+                        errores += Funciones.comprobarCampo(carnet,"Carnet",a);
+                        errores += Funciones.comprobarCampo(nombre,"Nombre",a);
+                        errores += Funciones.comprobarCampo(anio_ingreso,"Año de Ingreso",a);
+                        errores += Funciones.comprobarAnio(anio_ingreso,a);
+
+                        if(errores.isEmpty()){
 
                             int check;
                             if(activo.isChecked()){
@@ -223,8 +231,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
                                     id_user,
                                     estudiante.getCarnet(),
                                     estudiante.getCarnet(),
-                                    2
-                            );
+                                    2);
 
                             dao.editar(estudiante);
                             dao.editarUsuario(usuario);
@@ -232,8 +239,8 @@ public class AdaptadorEstudiante extends BaseAdapter {
                             notifyDataSetChanged();
                             lista = dao.verTodos();
                             dialogo.dismiss();
-                        }catch (Exception e){
-                            Toast.makeText(a, "¡Error!", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(a, errores+"\n"+a.getResources().getString(R.string.rellene_v), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -248,7 +255,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
             }
         });
 
-        /*Boton de Eliminación*/
+        /*Botón de Eliminación*/
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -263,7 +270,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
                 del.setMessage(R.string.est_borrar);
                 del.setCancelable(true);
 
-                /*Boton de Si*/
+                /*Botón de Si*/
                 del.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -273,7 +280,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
                     }
                 });
 
-                /*Boton de No*/
+                /*Botón de No*/
                 del.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

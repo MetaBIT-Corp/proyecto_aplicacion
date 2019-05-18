@@ -27,7 +27,7 @@ public class DAOEstudiante {
         contenedor.put("NOMUSUARIO",usuario.getNOMUSUARIO());
         contenedor.put("CLAVE",usuario.getCLAVE());
         contenedor.put("ROL",usuario.getROL());
-        return (cx.insert("USUARIO", null,contenedor)>0);
+        return (cx.insert("USUARIO", null,contenedor))>0;
     }
 
     public boolean insertar(Estudiante estd){
@@ -37,11 +37,11 @@ public class DAOEstudiante {
         contenedor.put("ACTIVO", estd.getActivo());
         contenedor.put("ANIO_INGRESO", estd.getAnio_ingreso());
         contenedor.put("IDUSUARIO",estd.getId_usuario());
-        return (cx.insert("ESTUDIANTE", null, contenedor)>0);
+        return (cx.insert("ESTUDIANTE", null, contenedor))>0;
     }
 
     public boolean eliminar(int id){
-        return (cx.delete("ESTUDIANTE", "ID_EST="+id, null)>0);
+        return (cx.delete("ESTUDIANTE", "ID_EST="+id, null))>0;
     }
 
     public boolean editarUsuario(Usuario usuario){
@@ -50,7 +50,7 @@ public class DAOEstudiante {
         contenedor.put("NOMUSUARIO",usuario.getNOMUSUARIO());
         contenedor.put("CLAVE",usuario.getCLAVE());
         contenedor.put("ROL",usuario.getROL());
-        return (cx.update("USUARIO", contenedor, "IDUSUARIO="+usuario.getIDUSUARIO(),null)>0);
+        return (cx.update("USUARIO", contenedor, "IDUSUARIO="+usuario.getIDUSUARIO(),null))>0;
     }
 
     public boolean editar(Estudiante estd){
@@ -60,7 +60,7 @@ public class DAOEstudiante {
         contenedor.put("NOMBRE", estd.getNombre());
         contenedor.put("ACTIVO", estd.getActivo());
         contenedor.put("ANIO_INGRESO", estd.getAnio_ingreso());
-        return (cx.update("ESTUDIANTE", contenedor, "ID_EST="+estd.getId(), null)>0);
+        return (cx.update("ESTUDIANTE", contenedor, "ID_EST="+estd.getId(), null))>0;
     }
 
     public ArrayList<Estudiante> verTodos(){

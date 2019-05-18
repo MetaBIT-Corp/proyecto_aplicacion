@@ -95,7 +95,7 @@ public class ActivityDocente extends AppCompatActivity {
         });
 
 
-        /*Boton para Nuevo Docente*/
+        /*Botón para Nuevo Docente*/
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,7 +155,16 @@ public class ActivityDocente extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        try {
+                        String errores="";
+                        errores += Funciones.comprobarCampo(carnet,"Carnet",ActivityDocente.this);
+                        errores += Funciones.comprobarCampo(anio_titulo,"Año de Título",ActivityDocente.this);
+                        errores += Funciones.comprobarAnio(anio_titulo,ActivityDocente.this);
+                        errores += Funciones.comprobarCampo(tipo_jornada,"Tipo de Jornada",ActivityDocente.this);
+                        errores += Funciones.comprobarCampo(cargo_actual,"Cargo Actual",ActivityDocente.this);
+                        errores += Funciones.comprobarCampo(cargo_secundario,"Cargo Secundario",ActivityDocente.this);
+                        errores += Funciones.comprobarCampo(nombre,"Nombre",ActivityDocente.this);
+
+                        if(errores.isEmpty()) {
                             int checki;
                             if(activo.isChecked()){
                                 checki = 1;
@@ -203,8 +212,8 @@ public class ActivityDocente extends AppCompatActivity {
                             adapter.notifyDataSetChanged();
                             lista = dao.verTodos();
                             dialogo.dismiss();
-                        }catch (Exception e){
-                            Toast.makeText(getApplicationContext(), "¡Error!", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getApplicationContext(), errores+"\n"+getResources().getString(R.string.rellene_v), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

@@ -6,18 +6,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +25,6 @@ import com.example.crud_encuesta.Componentes_MR.Funciones;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class AdaptadorDocente extends BaseAdapter {
 
@@ -273,7 +269,17 @@ public class AdaptadorDocente extends BaseAdapter {
                 guardar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        try {
+
+                        String errores="";
+                        errores += Funciones.comprobarCampo(carnet,"Carnet", a);
+                        errores += Funciones.comprobarCampo(anio_titulo,"Año de Título", a);
+                        errores += Funciones.comprobarAnio(anio_titulo, a);
+                        errores += Funciones.comprobarCampo(tipo_jornada,"Tipo de Jornada", a);
+                        errores += Funciones.comprobarCampo(cargo_actual,"Cargo Actual", a);
+                        errores += Funciones.comprobarCampo(cargo_secundario,"Cargo Secundario", a);
+                        errores += Funciones.comprobarCampo(nombre,"Nombre", a);
+
+                        if(errores.isEmpty()) {
 
                             int check;
                             if(activo.isChecked()){
@@ -308,8 +314,8 @@ public class AdaptadorDocente extends BaseAdapter {
                             notifyDataSetChanged();
                             lista = dao.verTodos();
                             dialogo.dismiss();
-                        } catch (Exception e){
-                            Toast.makeText(a, "¡Error!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(a, errores+"\n"+a.getResources().getString(R.string.rellene_v), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -341,7 +347,7 @@ public class AdaptadorDocente extends BaseAdapter {
                 del.setMessage(R.string.dcn_borrar);
                 del.setCancelable(true);
 
-                /*Boton de Si*/
+                /*Botón de Si*/
                 del.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -351,7 +357,7 @@ public class AdaptadorDocente extends BaseAdapter {
                     }
                 });
 
-                /*Boton de No*/
+                /*Botón de No*/
                 del.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

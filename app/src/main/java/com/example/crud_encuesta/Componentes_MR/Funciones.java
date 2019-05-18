@@ -1,7 +1,9 @@
 package com.example.crud_encuesta.Componentes_MR;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.text.SpannableStringBuilder;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,24 +12,43 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-
 import com.example.crud_encuesta.Componentes_EL.Escuela.Escuela;
 import com.example.crud_encuesta.R;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import static java.lang.Integer.parseInt;
+
 public class Funciones {
 
-    public static int getWidth(Context context) {
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        WindowManager windowmanager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        windowmanager.getDefaultDisplay().getMetrics(displayMetrics);
-        return displayMetrics.widthPixels;
+    public Activity a;
+
+    public static String comprobarCampo(EditText campo, String nombre, Activity a){
+        String cadena = "";
+        if(campo.getText().toString().isEmpty()){
+            cadena = "\n"+a.getResources().getString(R.string.campo_v)+" "+nombre+" "+a.getResources().getString(R.string.vacio_v);
+        }
+        return cadena;
+    }
+
+    public static String comprobarAnio(EditText campo, Activity a){
+
+        String cadena = "";
+        if(campo.getText().toString().isEmpty()){
+            cadena="";
+        }else{
+
+            int anio_ingresado = Integer.parseInt(campo.getText().toString());
+            int anio_actual = Calendar.getInstance().get(Calendar.YEAR);
+
+            if( anio_ingresado>anio_actual+50 || anio_ingresado<anio_actual-50 ){
+                cadena = a.getResources().getString(R.string.anio_v);
+            }
+        }
+        return cadena;
     }
 
     public static void setBtnAnio(final Dialog dialogo, Button btn_anio, final EditText anio_edt){
-
 
         btn_anio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +94,6 @@ public class Funciones {
         });
     }
 
-
-
     public static ArrayList<String> obtenerListaEscuelas(ArrayList<Escuela> escuelas) {
         ArrayList<String> escuelasList = new ArrayList<String>();
         for (int i =0 ; i < escuelas.size(); i++) {
@@ -83,4 +102,10 @@ public class Funciones {
         return escuelasList;
     }
 
+    public static int getWidth(Context context) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        WindowManager windowmanager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        windowmanager.getDefaultDisplay().getMetrics(displayMetrics);
+        return displayMetrics.widthPixels;
+    }
 }
