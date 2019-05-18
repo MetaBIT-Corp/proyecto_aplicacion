@@ -19,16 +19,18 @@ public class DaoGrupoEmp {
     private Context ct;
     private String nombreBD = "proy_aplicacion.db";
     private int id_area;
+    private DatabaseAccess dba;
 
     public DaoGrupoEmp(Context ct, int id_area){
         this.ct = ct;
         this.id_area = id_area;
-        DatabaseAccess dba = DatabaseAccess.getInstance(ct);
-        cx = dba.open();
+        this.dba = DatabaseAccess.getInstance(ct);
 
     }
 
     public boolean insertar(GrupoEmparejamiento gpo_emp){
+
+        cx = dba.open();
 
         ContentValues contenedor = new ContentValues();
         contenedor.put("ID_AREA",id_area);
@@ -37,33 +39,41 @@ public class DaoGrupoEmp {
     }
 
     public boolean eliminar(int id){
-
+        cx = dba.open();
         return (cx.delete("GRUPO_EMPAREJAMIENTO","ID_GRUPO_EMP="+id, null)>0);
     }
 
     public int cantidad_eliminar_pregunta(int id){
+        cx = dba.open();
         Cursor cursor = cx.rawQuery("SELECT * FROM PREGUNTA WHERE ID_GRUPO_EMP="+id, null);
         return cursor.getCount();
     }
 
     public int cantidad_eliminar_opciones(int id){
+        cx = dba.open();
         int cant_opcs=0;
         Cursor cursor = cx.rawQuery("SELECT * FROM PREGUNTA WHERE ID_GRUPO_EMP="+id, null);
-        cursor.moveToFirst();
-        do{
-            int id_pregunta = cursor.getInt(cursor.getColumnIndex("ID_PREGUNTA"));
-            cant_opcs += cantidad_eliminar_opciones_por_pregunta(id_pregunta);
-        }while (cursor.moveToNext());
+
+        if (cursor.moveToFirst()){
+
+            do{
+                int id_pregunta = cursor.getInt(cursor.getColumnIndex("ID_PREGUNTA"));
+                cant_opcs += cantidad_eliminar_opciones_por_pregunta(id_pregunta);
+            }while (cursor.moveToNext());
+
+        }
 
         return cant_opcs;
     }
 
     public int cantidad_eliminar_opciones_por_pregunta(int id){
+        cx = dba.open();
         Cursor cursor = cx.rawQuery("SELECT * FROM OPCION WHERE ID_PREGUNTA="+id, null);
         return cursor.getCount();
     }
 
     public boolean editar(GrupoEmparejamiento gpo_emp){
+        cx = dba.open();
         ContentValues contenedor = new ContentValues();
         contenedor.put("ID_AREA",gpo_emp.getId_area());
         contenedor.put("DESCRIPCION_GRUPO_EMP",gpo_emp.getDescripcion());
@@ -72,6 +82,7 @@ public class DaoGrupoEmp {
     }
 
     public ArrayList<GrupoEmparejamiento> verTodos(){
+        cx = dba.open();
         lista_gpo_emp.clear();
 
         try{
@@ -91,7 +102,7 @@ public class DaoGrupoEmp {
     }
 
     public GrupoEmparejamiento verUno(int position){
-
+        cx = dba.open();
         Cursor cursor = cx.rawQuery("SELECT * FROM GRUPO_EMPAREJAMIENTO WHERE ID_AREA="+id_area, null);
 
         cursor.moveToPosition(position);

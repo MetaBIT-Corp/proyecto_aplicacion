@@ -172,6 +172,27 @@
     <string name="opc_pensum">Pensum</string>
     <string name="buscar_preg">Buscar Pregunta</string>
     <string name="opc_clave">Clave</string>
+    <string name="msg_falta_desc_gpo_emp">¡Ingrese la descripción del grupo de emparejamiento!</string>
+    <string name="msg_falta_texto_opc">¡Ingrese el texto de la opción!</string>
+    <string name="msg_falta_texto_preg">¡Ingrese el texto de la pregunta!</string>
+    <string name="msg_consulta_nula">Debes ingresar un nombre de consulta</string>
+    <string name="positivo">Si</string>
+    <string name="negativo">No</string>
+    <string name="edit_preg">Editar Pregunta</string>
+    <string name="del_preg_1">¿Esta seguro de eliminar la pregunta?, se eliminaran</string>
+    <string name="del_preg_2">opciones en caso de aceptar!!</string>
+    <string name="edit_gpo_emp">Editar Grupo Emparejamiento</string>
+    <string name="edit_opc">Editar Opcion</string>
+    <string name="del_opc">¿Esta seguro de eliminar la opcion?</string>
+    <string name="del_gpo_emp_1">¿Esta seguro de eliminar el grupo de emparejamiento?, se eliminaran</string>
+    <string name="del_gpo_emp_2">pregunta(s) y</string>
+    <string name="del_gpo_emp_3">opcion(es) en caso de aceptar!!</string>
+    <string name="nuevo_gpo_emp">Nuevo Grupo Emparejamiento</string>
+    <string name="agregar_gpo_emp">Agregar grupo emparejamiento</string>
+    <string name="nueva_opc">Nueva Opcion</string>
+    <string name="agregar_opc">Agregar opción</string>
+    <string name="nueva_preg">Nueva Pregunta</string>
+    <string name="agregar_preg">Agregar pregunta</string>
     <!-- END DC -->
 
     <!-- Estudiante -->

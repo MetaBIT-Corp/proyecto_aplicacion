@@ -79,7 +79,7 @@ public class OpcionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(OpcionActivity.this);
-                dialog.setTitle("Nueva Opcion");
+                dialog.setTitle(R.string.nueva_opc);
                 dialog.setCancelable(true);
                 if(es_resp_corta_final!=1) dialog.setContentView(R.layout.dialogo_opcion);
                 else dialog.setContentView(R.layout.dialogo_opcion_resp_corta);
@@ -92,8 +92,8 @@ public class OpcionActivity extends AppCompatActivity {
                 final Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
                 TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
-                texto_titulo.setText("Agregar opción");
-                agregar.setText("Agregar");
+                texto_titulo.setText(R.string.agregar_opc);
+                agregar.setText(R.string.btn_agregar);
                 agregar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -128,7 +128,7 @@ public class OpcionActivity extends AppCompatActivity {
                                 }
 
                             }else{
-                                Toast.makeText(v.getContext(), "¡Ingrese el texto de la opción!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(v.getContext(), R.string.msg_falta_texto_opc, Toast.LENGTH_SHORT).show();
                                 texto_opcion.setFocusable(true);
                             }
 

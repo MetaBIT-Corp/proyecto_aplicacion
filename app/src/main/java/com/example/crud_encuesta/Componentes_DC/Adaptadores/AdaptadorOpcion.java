@@ -106,7 +106,7 @@ public class AdaptadorOpcion extends BaseAdapter {
 
                     final int pos = Integer.parseInt(v.getTag().toString());
                     final Dialog dialog = new Dialog(a);
-                    dialog.setTitle("Editar Opcion");
+                    dialog.setTitle(R.string.edit_opc);
                     dialog.setCancelable(true);
 
                     if(es_resp_corta_final!=1) dialog.setContentView(R.layout.dialogo_opcion);
@@ -119,8 +119,8 @@ public class AdaptadorOpcion extends BaseAdapter {
                     Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                     Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
                     TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
-                    texto_titulo.setText("Editar opción");
-                    agregar.setText("Guardar");
+                    texto_titulo.setText(R.string.edit_opc);
+                    agregar.setText(R.string.btn_guardar);
                     opcion = lista_opciones.get(pos);
                     setId(opcion.getId());
                     final int id_pregunta = opcion.getId_pregunta();
@@ -157,12 +157,12 @@ public class AdaptadorOpcion extends BaseAdapter {
                                     dialog.dismiss();
 
                                 }else{
-                                    Toast.makeText(v.getContext(), "¡No se permite dejar vacio el texto de opción!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(v.getContext(), R.string.msg_falta_texto_opc, Toast.LENGTH_SHORT).show();
                                     texto_opcion.setFocusable(true);
                                 }
 
                             }catch (Exception e){
-                                Toast.makeText(a, "Error", Toast.LENGTH_SHORT);
+                                //Toast.makeText(a, "Error", Toast.LENGTH_SHORT);
                             }
                         }
                     });
@@ -183,9 +183,9 @@ public class AdaptadorOpcion extends BaseAdapter {
                     opcion = lista_opciones.get(pos);
                     setId(opcion.getId());
                     AlertDialog.Builder del = new AlertDialog.Builder(a);
-                    del.setMessage("¿Esta seguro de eliminar la opcion?");
+                    del.setMessage(R.string.del_opc);
                     del.setCancelable(false);
-                    del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    del.setPositiveButton(R.string.positivo, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dao.eliminar(getId());
@@ -194,7 +194,7 @@ public class AdaptadorOpcion extends BaseAdapter {
                         }
                     });
 
-                    del.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    del.setNegativeButton(R.string.negativo, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 

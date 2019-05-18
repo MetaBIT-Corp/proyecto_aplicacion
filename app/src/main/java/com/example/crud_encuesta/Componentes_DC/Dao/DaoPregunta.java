@@ -21,18 +21,17 @@ public class DaoPregunta {
     private String nombreBD = "proy_aplicacion.db";
     private int id_grupo_emp=0;
     private int id_area;
+    private DatabaseAccess dba;
 
     public DaoPregunta(Context ct, int id_grupo_emp, int id_area){
         this.ct = ct;
         this.id_area = id_area;
         this.id_grupo_emp = id_grupo_emp;
-        DatabaseAccess dba = DatabaseAccess.getInstance(ct);
-        cx = dba.open();
-
+        this.dba = DatabaseAccess.getInstance(ct);
     }
 
     public boolean insertar(Pregunta pregunta){
-
+        cx = dba.open();
         ContentValues contenedor = new ContentValues();
 
         if(id_grupo_emp!=0){
@@ -45,6 +44,7 @@ public class DaoPregunta {
     }
 
     private int id_grupo_emp(){
+        cx = dba.open();
         int id_grupo_emp=0;
         ContentValues contenedor = new ContentValues();
         contenedor.put("ID_AREA",id_area);
@@ -56,22 +56,25 @@ public class DaoPregunta {
     }
 
     public boolean eliminar(int id){
-
+        cx = dba.open();
         return (cx.delete("PREGUNTA","ID_PREGUNTA="+id, null)>0);
     }
 
     public int cantidad_eliminar_opciones(int id){
+        cx = dba.open();
         Cursor cursor = cx.rawQuery("SELECT * FROM OPCION WHERE ID_PREGUNTA="+id, null);
         return cursor.getCount();
     }
 
     public boolean editar(Pregunta pregunta){
+        cx = dba.open();
         ContentValues contenedor = new ContentValues();
         contenedor.put("PREGUNTA",pregunta.getPregunta());
         return (cx.update("PREGUNTA",contenedor,"ID_PREGUNTA="+pregunta.getId(), null)>0);
     }
 
     public ArrayList<Pregunta> verTodos(){
+        cx = dba.open();
         lista_preguntas.clear();
 
         if(id_grupo_emp != 0){
@@ -120,7 +123,7 @@ public class DaoPregunta {
     }
 
     public Pregunta verUno(int position){
-
+        cx = dba.open();
         Cursor cursor = cx.rawQuery("SELECT * FROM PREGUNTA", null);
         cursor.moveToPosition(position);
         pregunta = new Pregunta(cursor.getInt(cursor.getColumnIndex("ID_PREGUNTA")),cursor.getInt(cursor.getColumnIndex("ID_GRUPO_EMP")),cursor.getString(cursor.getColumnIndex("PREGUNTA")));
@@ -128,7 +131,7 @@ public class DaoPregunta {
     }
 
     public ArrayList<Pregunta> busqueda(String pregunta){
-
+        cx = dba.open();
         ArrayList<Pregunta> preguntas=new ArrayList<>();
         Cursor cursor = cx.rawQuery("SELECT * FROM PREGUNTA WHERE PREGUNTA LIKE '%"+pregunta+"%'", null);
 

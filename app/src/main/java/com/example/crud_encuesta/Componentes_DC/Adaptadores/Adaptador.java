@@ -105,7 +105,7 @@ public class Adaptador extends BaseAdapter {
 
                 final int pos = Integer.parseInt(v.getTag().toString());
                 final Dialog dialog = new Dialog(a);
-                dialog.setTitle("Editar Grupo Emparejamiento");
+                dialog.setTitle(R.string.edit_gpo_emp);
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.dialogo_gpo_emp);
                 dialog.show();
@@ -114,8 +114,8 @@ public class Adaptador extends BaseAdapter {
                 Button agregar = (Button)dialog.findViewById(R.id.btn_agregar);
                 Button cancelar = (Button)dialog.findViewById(R.id.btn_cancelar);
                 TextView texto_titulo = (TextView)dialog.findViewById(R.id.texto_titulo);
-                texto_titulo.setText("Editar grupo emparejamiento");
-                agregar.setText("Guardar");
+                texto_titulo.setText(R.string.edit_gpo_emp);
+                agregar.setText(R.string.btn_guardar);
                 gpo_emp = lista_gpo_emp.get(pos);
                 final int id_area = gpo_emp.getId_area();
                 setId(gpo_emp.getId());
@@ -134,12 +134,12 @@ public class Adaptador extends BaseAdapter {
                                 dialog.dismiss();
 
                             }else{
-                                Toast.makeText(v.getContext(), "¡No se permite dejar vacia la descripción del grupo de emparejamiento!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(v.getContext(), R.string.msg_falta_desc_gpo_emp, Toast.LENGTH_SHORT).show();
                                 descripcion.setFocusable(true);
                             }
 
                         }catch (Exception e){
-                            Toast.makeText(a, "Error", Toast.LENGTH_SHORT);
+                            //Toast.makeText(a, "Error", Toast.LENGTH_SHORT);
                         }
                     }
                 });
@@ -162,9 +162,14 @@ public class Adaptador extends BaseAdapter {
                 int cant = dao.cantidad_eliminar_pregunta(getId());
                 int cant_opciones = dao.cantidad_eliminar_opciones(getId());
                 AlertDialog.Builder del = new AlertDialog.Builder(a);
-                del.setMessage("¿Esta seguro de eliminar el grupo de emparejamiento?, se eliminaran "+cant+" pregunta(s) y "+cant_opciones+" opcion(es) en caso de aceptar!!");
+
+                String del_gpo_emp_1 = v.getResources().getString(R.string.del_gpo_emp_1);
+                String del_gpo_emp_2 = v.getResources().getString(R.string.del_gpo_emp_2);
+                String del_gpo_emp_3 = v.getResources().getString(R.string.del_gpo_emp_3);
+
+                del.setMessage(del_gpo_emp_1+" "+cant+" "+del_gpo_emp_2+" "+cant_opciones+" "+del_gpo_emp_3);
                 del.setCancelable(false);
-                del.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                del.setPositiveButton(R.string.positivo, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dao.eliminar(getId());
@@ -173,7 +178,7 @@ public class Adaptador extends BaseAdapter {
                     }
                 });
 
-                del.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                del.setNegativeButton(R.string.negativo, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 

@@ -172,6 +172,27 @@
     <string name="opc_pensum">Pensum</string>
     <string name="buscar_preg">Search Question</string>
     <string name="opc_clave">Key</string>
+    <string name="msg_falta_desc_gpo_emp">Enter the description of the pairing group!</string>
+    <string name="msg_falta_texto_opc">Enter the text of the option!</string>
+    <string name="msg_falta_texto_preg">Enter the text of the question!</string>
+    <string name="msg_consulta_nula">You must not left empty the Text field for search!</string>
+    <string name="positivo">Yes</string>
+    <string name="negativo">No</string>
+    <string name="edit_preg">Edit Question</string>
+    <string name="del_preg_1">Are you sure of delete the question?, it will delete</string>
+    <string name="del_preg_2">options in case of accept!!</string>
+    <string name="edit_gpo_emp">Edit Pairing Group</string>
+    <string name="edit_opc">Edit Option</string>
+    <string name="del_opc">Are you sure of delete the option?</string>
+    <string name="del_gpo_emp_1">Are you sure of delete the pairing group?, it will delete</string>
+    <string name="del_gpo_emp_2">question(s) and</string>
+    <string name="del_gpo_emp_3">option(s) in case of accept!!</string>
+    <string name="nuevo_gpo_emp">New Pairing Group</string>
+    <string name="agregar_gpo_emp">Add Pairing Group</string>
+    <string name="nueva_opc">New Option</string>
+    <string name="agregar_opc">Add option</string>
+    <string name="nueva_preg">New Question</string>
+    <string name="agregar_preg">Add question</string>
     <!-- END DC -->
 
     <!-- Estudiante -->
