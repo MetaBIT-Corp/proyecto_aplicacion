@@ -3,11 +3,14 @@ package com.example.crud_encuesta.Componentes_MT.ClaveArea;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -22,14 +25,23 @@ import com.example.crud_encuesta.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VerAreasAdapter extends BaseAdapter {
+public class VerAreasAdapter extends BaseAdapter implements AdapterView.OnItemSelectedListener{
     private LayoutInflater inflater = null;
     private Context context;
     List<ClaveArea> areasClave = new ArrayList<>();
+    DAOClaveArea daoClaveArea;
+    int id_clave;
+    String clave;
 
-    public VerAreasAdapter(Context context, List<ClaveArea> areasClave) {
+    private int pos_area;
+    private List<Integer> id_areas = new ArrayList<>();
+
+    public VerAreasAdapter(Context context, List<ClaveArea> areasClave, DAOClaveArea daoClaveArea, int id_clave, String clave) {
         this.context = context;
         this.areasClave = areasClave;
+        this.daoClaveArea = daoClaveArea;
+        this. id_clave = id_clave;
+        this.clave = clave;
 
         inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
     }
@@ -62,29 +74,18 @@ public class VerAreasAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                final int i = Integer.parseInt(v.getTag().toString());
-
-                System.out.println("-------------1");
-                final View vEditar = inflater.inflate(R.layout.relacion_clave_area, null);
-                System.out.println("-------------2");
-                EditText et_numero_preguntas = (EditText)vEditar.findViewById(R.id.etPreguntas);
-                EditText et_peso_area = (EditText)vEditar.findViewById(R.id.etPeso);
-                Spinner sp_areas = vEditar.findViewById(R.id.spAreas);
-                CheckBox cb_aleatorio = vEditar.findViewById(R.id.cbAleatorio);
-
+                final int id_seleccion = Integer.parseInt(v.getTag().toString());
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
-
-                //TextView txt = vEditar.findViewById(R.id.msj);
-                //txt.setText(R.string.mt_editar);
-                et_numero_preguntas.setText(areasClave.get(position).numero_preguntas);
-                et_peso_area.setText(areasClave.get(position).peso);
-                cb_aleatorio.setChecked(true);
+                final View mView = inflater.inflate(R.layout.relacion_clave_area, null);
+                cargarAreas(mView);
 
                 mBuilder.setCancelable(false);
-                mBuilder.setPositiveButton(R.string.mt_agregar, new DialogInterface.OnClickListener() {
+                mBuilder.setPositiveButton(R.string.mt_actualizar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //agregar_relacion_clave_area(mView, id_seleccion);
+                        editar_relacion_clave_area(id_seleccion, mView);
+                        areasClave = daoClaveArea.getAreasClave(id_clave, clave);
+                        notifyDataSetChanged();
                     }
                 });
 
@@ -95,7 +96,7 @@ public class VerAreasAdapter extends BaseAdapter {
                     }
                 });
 
-                mBuilder.setView(vEditar);
+                mBuilder.setView(mView);
                 AlertDialog dialog = mBuilder.create();
                 dialog.show();
             }
@@ -104,7 +105,34 @@ public class VerAreasAdapter extends BaseAdapter {
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Presionaste eliminar", Toast.LENGTH_SHORT).show();
+                final int i = Integer.parseInt(v.getTag().toString());
+
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
+
+                mBuilder.setMessage(R.string.mt_eliminar_clave);
+                mBuilder.setIcon(R.drawable.ic_delete);
+                mBuilder.setTitle(R.string.mt_eliminar);
+
+                mBuilder.setPositiveButton(R.string.mt_eliminar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        eliminar_clave_area(i);
+                        Toast.makeText(context, R.string.mt_eliminado_msj, Toast.LENGTH_SHORT).show();
+                        areasClave = daoClaveArea.getAreasClave(id_clave, clave);
+                        notifyDataSetChanged();
+
+                    }
+                });
+
+                mBuilder.setNegativeButton(R.string.mt_cancelar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
             }
         });
 
@@ -126,17 +154,92 @@ public class VerAreasAdapter extends BaseAdapter {
         return 0;
     }
 
-    public void editar_claveArea(int pos, EditText num_p, EditText peso_a, Spinner sp_areas, CheckBox cb_aleatorio){
+    public void editar_relacion_clave_area(int pos, View v){
         int ide = areasClave.get(pos).id_ca;
 
-        if(!num_p.getText().toString().isEmpty() && !peso_a.getText().toString().isEmpty()){
-            DatabaseAccess database = DatabaseAccess.getInstance(context);
-            SQLiteDatabase db = database.open();
+        EditText cant_preguntas = v.findViewById(R.id.etPreguntas);
+        EditText peso_area = v.findViewById(R.id.etPeso);
+        CheckBox aleatorio_cb = v.findViewById(R.id.cbAleatorio);
 
+        int aleatorio=0;
+        int peso = 0;
+        int cantidad = 0;
 
-            database.close();
+        if(!cant_preguntas.getText().toString().isEmpty() && !peso_area.getText().toString().isEmpty()) {
+            cantidad = Integer.parseInt(cant_preguntas.getText().toString());
+            peso = Integer.parseInt(peso_area.getText().toString());
+            int id_area = id_areas.get(pos_area);
+            if (aleatorio_cb.isChecked()) aleatorio = 1;
+
+            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+            SQLiteDatabase db = databaseAccess.open();
+
+            ContentValues registro = new ContentValues();
+
+            registro.put("id_area", id_area);
+            registro.put("numero_preguntas", cantidad);
+            registro.put("aleatorio", aleatorio);
+            registro.put("peso", peso);
+
+            Cursor cantidad_preguntas = db.rawQuery("SELECT ID_GRUPO_EMP FROM GRUPO_EMPAREJAMIENTO WHERE ID_AREA="+id_area, null);
+
+            if(cantidad_preguntas.getCount()>=cantidad){
+                if (cantidad > 0 && peso > 0) {
+
+                    db.update("clave_area", registro, "id_clave_area="+ide, null);
+                    Toast.makeText(context, R.string.mt_registro_actualizado, Toast.LENGTH_SHORT).show();
+                    databaseAccess.close();
+
+                } else {
+                    Toast.makeText(context, R.string.mt_cantidad_positiva, Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(context, R.string.mt_cant_preguntas_ingresadas, Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(context, R.string.mt_campos_vacios, Toast.LENGTH_SHORT).show();
         }
-
     }
 
+    public void eliminar_clave_area(int id){
+        int ide = areasClave.get(id).id_ca;
+        DatabaseAccess database = DatabaseAccess.getInstance(context);
+        SQLiteDatabase db = database.open();
+
+        db.delete("CLAVE_AREA","ID_CLAVE_AREA="+ide, null);
+        database.close();
+    }
+
+    public void cargarAreas(View va){
+        ArrayAdapter<String> comboAdapter;
+        Spinner spAreas = (Spinner)va.findViewById(R.id.spAreas);
+        spAreas.setOnItemSelectedListener(this);
+
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
+        SQLiteDatabase db = databaseAccess.open();
+
+        List<String> clave_area = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT id_area, titulo FROM area", null);
+
+        while (cursor.moveToNext()) {
+            id_areas.add(cursor.getInt(0));
+            clave_area.add(cursor.getString(1));
+        }
+        cursor.close();
+
+        databaseAccess.close();
+
+        comboAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, clave_area);
+        spAreas.setAdapter(comboAdapter);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        pos_area=position;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

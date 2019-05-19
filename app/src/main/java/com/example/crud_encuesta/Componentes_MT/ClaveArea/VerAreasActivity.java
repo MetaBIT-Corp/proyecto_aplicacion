@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VerAreasActivity extends AppCompatActivity {
+    DAOClaveArea daoClaveArea;
+    List<ClaveArea> claveAreas = new ArrayList<>();
+    VerAreasAdapter verAreasAdapter;
+
     private int id_clave;
     private String clave;
     private ListView listView;
@@ -28,8 +32,20 @@ public class VerAreasActivity extends AppCompatActivity {
         id_clave = getIntent().getIntExtra("id", 0);
         clave = getIntent().getStringExtra("clave");
 
+
+        daoClaveArea = new DAOClaveArea(this);
+        claveAreas = daoClaveArea.getAreasClave(id_clave, clave);
+        verAreasAdapter = new VerAreasAdapter(this, claveAreas, daoClaveArea, id_clave, clave);
+
         listView = (ListView)findViewById(R.id.lsVerAreas);
-        listView.setAdapter(new VerAreasAdapter(this, getAreasClave()));
+        listView.setAdapter(verAreasAdapter);
+
+
+
+
+
+        //listView = (ListView)findViewById(R.id.lsVerAreas);
+        //listView.setAdapter(new VerAreasAdapter(this, getAreasClave()));
 
         back = (ImageView)findViewById(R.id.back_area);
         back.setOnClickListener(new View.OnClickListener() {

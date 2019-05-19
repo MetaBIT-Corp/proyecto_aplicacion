@@ -278,6 +278,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent i = new Intent(context, VerIntentoActivity.class);
+                                i.putExtra("id_estudiante", id_estudiante);
                                 context.startActivity(i);
                                 activity.finish();
                             }

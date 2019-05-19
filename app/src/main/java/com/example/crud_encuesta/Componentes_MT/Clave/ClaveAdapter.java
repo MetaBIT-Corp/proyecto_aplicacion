@@ -139,6 +139,8 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
                 final int i = Integer.parseInt(v.getTag().toString());
                 final View vEditar = inflater.inflate(R.layout.dialogo_area, null);
                 EditText edt = (EditText)vEditar.findViewById(R.id.etArea);
+                Spinner sp = vEditar.findViewById(R.id.spModalidad);
+                sp.setVisibility(View.GONE);
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
 
                 TextView txt = vEditar.findViewById(R.id.msj);
