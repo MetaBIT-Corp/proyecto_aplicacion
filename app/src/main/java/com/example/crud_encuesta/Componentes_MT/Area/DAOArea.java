@@ -33,7 +33,7 @@ public class DAOArea {
 
         db.insert("area", null, registro);
 
-        databaseAccess.close();
+
     }
 
     public List<Area> getAreas(int id_materia){
@@ -53,7 +53,6 @@ public class DAOArea {
         }
 
         cursor_area.close();
-        databaseAccess.close();
 
         return areas;
     }

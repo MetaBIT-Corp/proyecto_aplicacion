@@ -193,7 +193,6 @@ public class AreaAdapter extends BaseAdapter {
         int ide = areas.get(i).id;
         db.delete("area","id_area="+ide, null);
 
-        database.close();
     }
 
     public void editar_area(int i, View v){
@@ -212,7 +211,6 @@ public class AreaAdapter extends BaseAdapter {
         }else{
             Toast.makeText(context, "El area debe tener un titulo", Toast.LENGTH_SHORT).show();
         }
-        database.close();
     }
 
 }

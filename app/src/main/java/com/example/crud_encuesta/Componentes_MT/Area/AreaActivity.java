@@ -111,7 +111,6 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         cursor.close();
 
-        databaseAccess.close();
 
         comboAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, items);
         spItems.setAdapter(comboAdapter);

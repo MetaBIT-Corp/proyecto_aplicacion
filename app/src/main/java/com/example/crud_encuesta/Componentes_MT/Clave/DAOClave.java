@@ -41,7 +41,6 @@ public class DAOClave {
             claves.add(new Clave(id, num_clave));
         }
 
-        databaseAccess.close();
 
         return claves;
     }

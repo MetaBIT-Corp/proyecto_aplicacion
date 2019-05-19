@@ -82,7 +82,6 @@ public class ClaveActivity extends AppCompatActivity {
         registro.put("numero_clave", clave_nueva);
 
         db.insert("clave", null, registro);
-        databaseAccess.close();
 
     }
 

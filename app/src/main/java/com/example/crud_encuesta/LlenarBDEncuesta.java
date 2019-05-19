@@ -508,14 +508,14 @@ public class LlenarBDEncuesta {
         db.execSQL("delete from intento");
         db.execSQL("delete from materia_ciclo");
         db.execSQL("delete from opcion");
-        db.execSQL("delete from pdg_dcn_docente");
+        //db.execSQL("delete from pdg_dcn_docente");
         db.execSQL("delete from pensum");
         db.execSQL("delete from pensum_materia");
         db.execSQL("delete from pregunta");
         db.execSQL("delete from respuesta");
         db.execSQL("delete from turno");
         //db.execSQL("delete from tipo_item");
-        db.execSQL("delete from sesionusuario");
-        db.execSQL("delete from usuario");
+        //db.execSQL("delete from sesionusuario");
+        //db.execSQL("delete from usuario");
     }
 }

@@ -105,7 +105,6 @@ public class IntentoActivity extends AppCompatActivity {
             cursor_opcion.close();
         }
 
-        databaseAccess.close();
         cursor_pregunta.close();
 
         return preguntas;

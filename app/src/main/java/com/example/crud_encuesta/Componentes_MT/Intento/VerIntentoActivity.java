@@ -85,7 +85,6 @@ public class VerIntentoActivity extends AppCompatActivity {
         }
 
         cursor_eleccion.close();
-        databaseAccess.close();
 
         return preguntas;
     }

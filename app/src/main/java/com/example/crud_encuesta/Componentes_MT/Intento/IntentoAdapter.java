@@ -333,7 +333,6 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
 
         id_intento = cursor.getInt(0);
 
-        databaseAccess.close();
     }
 
     public void terminar_intento() {
@@ -347,7 +346,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
 
         db.update("intento", reg, "id_intento=" + id_intento, null);
 
-        databaseAccess.close();
+
     }
 
     public String fecha_actual() {
@@ -418,7 +417,6 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
             }
         }
 
-        databaseAccess.close();
     }
 
     public double calcular_nota() {

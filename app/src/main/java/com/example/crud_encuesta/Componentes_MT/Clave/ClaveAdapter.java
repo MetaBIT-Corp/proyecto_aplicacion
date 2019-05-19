@@ -235,7 +235,6 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
             }
         }
         cursor.close();
-        databaseAccess.close();
 
         return areas;
     }
@@ -257,7 +256,6 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
         }
         cursor.close();
 
-        databaseAccess.close();
 
         comboAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, areas);
         spAreas.setAdapter(comboAdapter);
@@ -316,7 +314,6 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
 
                     agregar_relacion_clave_area_pregunta(cantidad, cursor.getInt(0), id);
                     cursor.close();
-                    databaseAccess.close();
                 } else {
                     Toast.makeText(context, R.string.mt_cantidad_positiva, Toast.LENGTH_SHORT).show();
                 }
@@ -371,7 +368,6 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
             i++;
         }
 
-        databaseAccess.close();
     }
 
     public void editar_clave(int id, View v){
@@ -414,7 +410,6 @@ public class ClaveAdapter extends BaseAdapter implements AdapterView.OnItemSelec
             db.delete("clave_area", "id_clave="+ide, null);
         }
 
-        database.close();
         cursor.close();
         cursor2.close();
 
