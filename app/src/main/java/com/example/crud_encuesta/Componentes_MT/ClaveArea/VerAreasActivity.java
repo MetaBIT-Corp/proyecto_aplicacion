@@ -93,17 +93,31 @@ public class VerAreasActivity extends AppCompatActivity {
         return pesos;
     }
 
+    public List<Integer> id_ca(SQLiteDatabase db, int ide){
+        List<Integer> ids_ca = new ArrayList<>();
+
+        Cursor cursor = db.rawQuery("SELECT id_clave_area FROM clave_area WHERE id_clave="+ide,null);
+
+        while (cursor.moveToNext()){
+            ids_ca.add(cursor.getInt(0));
+        }
+        cursor.close();
+        return ids_ca;
+    }
+
     public List<ClaveArea> getAreasClave(){
         List<ClaveArea> areasClave = new ArrayList<>();
         List<String> areas = new ArrayList<>();
         List<Integer> numero_preguntas = new ArrayList<>();
         List<Integer> aleatorios = new ArrayList<>();
         List<Integer> pesos = new ArrayList<>();
+        List<Integer> ids_ca = new ArrayList<>();
 
         String area;
         int num_p;
         int aleat;
         int peso;
+        int id_ca;
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         SQLiteDatabase db = databaseAccess.open();
@@ -112,14 +126,16 @@ public class VerAreasActivity extends AppCompatActivity {
         numero_preguntas = numero_preguntas(db, id_clave);
         aleatorios = aleatorio(db, id_clave);
         pesos = peso(db, id_clave);
+        ids_ca = id_ca(db, id_clave);
 
         for (int i = 0; i<areas.size(); i++) {
             area = areas.get(i);
             num_p = numero_preguntas.get(i);
             aleat = aleatorios.get(i);
             peso = pesos.get(i);
+            id_ca = ids_ca.get(i);
 
-            areasClave.add(new ClaveArea(area, clave, aleat, num_p, peso));
+            areasClave.add(new ClaveArea(area, clave, id_ca, aleat, num_p, peso));
         }
 
         databaseAccess.close();

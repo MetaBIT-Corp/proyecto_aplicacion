@@ -214,7 +214,7 @@ public class LlenarBDEncuesta {
     final int[] id_clave_area_pk = {1, 2, 3, 4};
     final int[] id_area_ca = {1, 3, 4, 2 };
     final int[] id_clave_ca = {1, 1, 1, 1};
-    final int[] numero_preguntas = {5, 1, 3, 3};
+    final int[] numero_preguntas = {6, 1, 3, 3};
     final int[] aleatorio = {1, 1, 1, 1};
     final int[] peso = {35, 30, 15, 20};
 
@@ -305,14 +305,14 @@ public class LlenarBDEncuesta {
         }
 
         //Usuario
-        /*ContentValues c_usuario = new ContentValues();
+        ContentValues c_usuario = new ContentValues();
         for (int i =0; i<nomusuario.length; i++) {
             c_usuario.put("idusuario", id_usuario_pk[i]);
             c_usuario.put("nomusuario", nomusuario[i]);
             c_usuario.put("clave", clave[i]);
             c_usuario.put("rol", rol[i]);
             db.insert("usuario", null, c_usuario);
-        }*/
+        }
 
         //Docente
         ContentValues c_docente = new ContentValues();
@@ -515,7 +515,7 @@ public class LlenarBDEncuesta {
         db.execSQL("delete from respuesta");
         db.execSQL("delete from turno");
         //db.execSQL("delete from tipo_item");
-        //db.execSQL("delete from sesionusuario");
-        //db.execSQL("delete from usuario");
+        db.execSQL("delete from sesionusuario");
+        db.execSQL("delete from usuario");
     }
 }

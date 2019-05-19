@@ -15,9 +15,12 @@ import java.util.List;
 public class IntentoActivity extends AppCompatActivity {
     private ListView listView;
     Tamanio tamanio;
+
+    //Datos de otros modelos
     private int id_clave;
     private int id_turno;
     private int id_encuestado;
+    private int id_estudiante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +29,10 @@ public class IntentoActivity extends AppCompatActivity {
 
         id_turno = getIntent().getIntExtra("id_turno_intento", 0);
         id_encuestado = getIntent().getIntExtra("id_encuesta_intento", 0);
+        id_estudiante = getIntent().getIntExtra("id_estudiante", 0);
 
         listView = (ListView)findViewById(R.id.lsPreguntas);
-        listView.setAdapter(new IntentoAdapter(getPreguntas(), this, this, tamanio));
+        listView.setAdapter(new IntentoAdapter(getPreguntas(), id_estudiante, id_clave, id_encuestado, this, this, tamanio));
     }
 
     public List<Pregunta> getPreguntas(){

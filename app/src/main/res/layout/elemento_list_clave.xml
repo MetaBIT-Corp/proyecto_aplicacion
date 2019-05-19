@@ -19,15 +19,15 @@
         <TextView
             android:id="@+id/msj_clave"
             android:layout_width="210dp"
-            android:layout_height="wrap_content"
-            android:gravity="left"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
             android:layout_weight="3"
             android:text="@string/mt_clave" />
 
         <ImageView
             android:id="@+id/info_clave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="right"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
@@ -36,8 +36,8 @@
 
         <ImageView
             android:id="@+id/add_clave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="right"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
@@ -46,8 +46,8 @@
 
         <ImageView
             android:id="@+id/edit_clave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="right"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
@@ -56,8 +56,8 @@
 
         <ImageView
             android:id="@+id/delete_calve"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="right"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"

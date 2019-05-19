@@ -58,12 +58,15 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
     private int id_intento;
 
     //Datos de otros modelos
-    int id_est = 1;
-    int id_clave = 1;
-    int id = 1;
+    int id_estudiante;
+    int id_clave;
+    int id_encuestado;
 
-    public IntentoAdapter(List<Pregunta> preguntas, Context context, Activity activity, Tamanio tamanio) {
+    public IntentoAdapter(List<Pregunta> preguntas, int id_estudiante, int id_clave, int id_encuestado, Context context, Activity activity, Tamanio tamanio) {
         this.preguntas = preguntas;
+        this.id_estudiante = id_estudiante;
+        this.id_clave = id_clave;
+        this. id_encuestado = id_encuestado;
         this.context = context;
         this.activity = activity;
         this.tamanio = tamanio;
@@ -317,11 +320,11 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
         SQLiteDatabase db = databaseAccess.open();
 
         ContentValues registro = new ContentValues();
-        registro.put("id_est", id_est);
+        registro.put("id_est", id_estudiante);
         registro.put("id_clave", id_clave);
-        registro.put("id", id);
+        registro.put("id", id_encuestado);
         registro.put("fecha_inicio_intento", fecha_actual());
-        registro.put("numero_intento", IntentoConsultasDB.ultimo_intento(id_est , db)+1);
+        registro.put("numero_intento", IntentoConsultasDB.ultimo_intento(id_estudiante , db)+1);
 
         db.insert("intento", null, registro);
         Cursor cursor = db.rawQuery("SELECT ID_INTENTO FROM INTENTO ORDER BY ID_INTENTO DESC LIMIT 1", null);
