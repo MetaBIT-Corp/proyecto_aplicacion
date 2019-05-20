@@ -117,7 +117,7 @@ public class AdapterTurno extends BaseAdapter {
         String fechafinal = turno.getDateFinal();
         String[] pfechafinal = fechafinal.split(" ");
 
-        tv_item.setText("Id: " + turno.getId() + "\r\nInicio:\r\n" + turno.getDateInicial() + " \r\nFinal:\r\n " + turno.getDateFinal());
+        tv_item.setText("Id: " + turno.getId() + "\r\n"+ R.string.ap_dateinit+"\r\n" + turno.getDateInicial() + " \r\n"+R.string.ap_datefinish+"\r\n " + turno.getDateFinal());
 
 
         //ocultados de acuerdo a rol
@@ -185,8 +185,8 @@ public class AdapterTurno extends BaseAdapter {
                 String[] pfechafinal = fechafinal.split(" ");
 
                 //seteamos valores de views
-                btCrear.setText("Guardar");
-                titulo.setText("Editar");
+                btCrear.setText(R.string.btn_guardar);
+                titulo.setText(R.string.mt_editar);
                 dateinicial.setText(pfechainicial[0]);
                 datefinal.setText(pfechafinal[0]);
                 timeinicial.setText(pfechainicial[1]);
@@ -240,32 +240,42 @@ public class AdapterTurno extends BaseAdapter {
                         if (!dateinicial.getText().toString().isEmpty() && !datefinal.getText().toString().isEmpty()
                                 && !timeinicial.getText().toString().isEmpty() && !timefinal.getText().toString().isEmpty()
                                 && !contrasenia.getText().toString().isEmpty()) {
-                            try {
-                                turno = new Turno(
-                                        getIdTurno(),
-                                        getIdEvaluacion(),
-                                        dateinicial.getText().toString() + " " + timeinicial.getText().toString(),
-                                        datefinal.getText().toString() + " " + timefinal.getText().toString(),
-                                        ver,
-                                        contrasenia.getText().toString()
-                                );
-                                //editamos registro
-                                daoTurno.Editar(turno);
-                                //refrescamos la lista
-                                turnos = daoTurno.verTodos(getIdEvaluacion());
-                                //como ya estamos dentro de la clase adaptador simplemente ejecutamos el metodo
-                                notifyDataSetChanged();
-                                //cerramos el dialogo
-                                dialog.dismiss();
+                            if(validarFecha(dateinicial.getText().toString(),
+                                    timeinicial.getText().toString(),
+                                    datefinal.getText().toString(),
+                                    timefinal.getText().toString())) {
+                                try {
+                                    turno = new Turno(
+                                            getIdTurno(),
+                                            getIdEvaluacion(),
+                                            dateinicial.getText().toString() + " " + timeinicial.getText().toString(),
+                                            datefinal.getText().toString() + " " + timefinal.getText().toString(),
+                                            ver,
+                                            contrasenia.getText().toString()
+                                    );
+                                    //editamos registro
+                                    daoTurno.Editar(turno);
+                                    //refrescamos la lista
+                                    turnos = daoTurno.verTodos(getIdEvaluacion());
+                                    //como ya estamos dentro de la clase adaptador simplemente ejecutamos el metodo
+                                    notifyDataSetChanged();
+                                    //cerramos el dialogo
+                                    dialog.dismiss();
 
 
-                            } catch (Exception e) {
-                                Toast.makeText(activity, "Error", Toast.LENGTH_SHORT).show();
+                                } catch (Exception e) {
+                                    Toast.makeText(activity, "Error", Toast.LENGTH_SHORT).show();
+                                }
+                            }else {
+                                Toast.makeText(
+                                        v.getContext(),
+                                        R.string.ap_fecha_no_valida,
+                                        Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             Toast.makeText(
                                     v.getContext(),
-                                    "Debes llenar todos los campos",
+                                    R.string.rellene_v,
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -302,12 +312,12 @@ public class AdapterTurno extends BaseAdapter {
                 //creamos Alertdialogo
 
                 AlertDialog.Builder delete_emergente = new AlertDialog.Builder(activity);
-                delete_emergente.setMessage("¿Desea eliminar el registro?");
+                delete_emergente.setMessage(R.string.ap_delete_turno);
                 delete_emergente.setCancelable(true);
 
                 //Caso positivo
 
-                delete_emergente.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                delete_emergente.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //elimina el registro, actualiza la lista y notifica el cambio al adaptador
@@ -361,13 +371,13 @@ public class AdapterTurno extends BaseAdapter {
                 Button btn_OK = (Button) dialog.findViewById(R.id.ap_btn_cerrar_vista_turno);
 
                 //seteamos views con los valores que tiene el registro
-                tv_dateinicial.setText("Inicio: " + turno.getDateInicial());
-                tv_datefinal.setText("Final: " + turno.getDateFinal());
-                tv_pass.setText("Contraseña: " + turno.getContrasenia());
+                tv_dateinicial.setText(R.string.ap_dateinit + " " +turno.getDateInicial());
+                tv_datefinal.setText(R.string.ap_datefinish +" "+ turno.getDateFinal());
+                tv_pass.setText(R.string.ap_hint_password+ " " + turno.getContrasenia());
                 if (turno.getVisible() == 1) {
-                    tv_visible.setText("Visible: SI");
+                    tv_visible.setText("Visible: "+ R.string.si);
                 } else {
-                    tv_visible.setText("Visible: NO");
+                    tv_visible.setText("Visible: "+ R.string.no);
                 }
 
                 btn_OK.setOnClickListener(new View.OnClickListener() {
@@ -439,6 +449,52 @@ public class AdapterTurno extends BaseAdapter {
         );
         timePickerDialog.show();
 
+    }
+
+    public Boolean validarFecha(String di, String ti, String df, String tf){
+        Boolean validado = false;
+        int anioi,mesi,diai,horai,minutoi;
+        int aniof,mesf,diaf,horaf,minutof;
+
+        anioi = Integer.parseInt(di.split("/")[0]);
+        mesi = Integer.parseInt(di.split("/")[1]);
+        diai = Integer.parseInt(di.split("/")[2]);
+
+        aniof = Integer.parseInt(df.split("/")[0]);
+        mesf = Integer.parseInt(df.split("/")[1]);
+        diaf = Integer.parseInt(df.split("/")[2]);
+
+        horai = Integer.parseInt(ti.split(":")[0]);
+        minutoi =  Integer.parseInt(ti.split(":")[1]);
+
+        horaf = Integer.parseInt(tf.split(":")[0]);
+        minutof =  Integer.parseInt(tf.split(":")[1]);
+
+        if (aniof>anioi){
+            validado=true;
+        }
+        if (aniof==anioi){
+            if (mesf>mesi){
+                validado = true;
+            }
+            if (mesf==mesi){
+                if(diaf>diai){
+                    validado=true;
+                }
+                if(diaf==diai){
+                    if(horaf>horai){
+                        validado = true;
+                    }
+                    if(horaf==horai){
+                        if(minutof>=minutoi){
+                            validado = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        return  validado;
     }
 
 }

@@ -138,7 +138,7 @@ public class AdapterPensum  extends BaseAdapter {
                 Button btCrear = (Button) dialog.findViewById(R.id.d_agregar_pensum);
                 Button btCancelar = (Button) dialog.findViewById(R.id.d_cancelar_pensum);
 
-                titulo.setText("Editar");
+                titulo.setText(R.string.mt_editar);
                 anio.setText(""+pensum.getAnio());
 
                 //llenamos el spinner
@@ -185,11 +185,12 @@ public class AdapterPensum  extends BaseAdapter {
 
                                 );
                                 //creamos registro
+                                /*
                                 if (daoPensum.Editar(pensum)){
                                     Toast.makeText(v.getContext(),"Se guardó con éxito",Toast.LENGTH_SHORT).show();
                                 }else {
                                     Toast.makeText(v.getContext(),"Fallo al guardar, intente de nuevo",Toast.LENGTH_SHORT).show();
-                                }
+                                }*/
                                 daoPensum.Editar(pensum);
                                 //refrescamos la lista
                                 pensums = daoPensum.verTodos();
@@ -202,7 +203,7 @@ public class AdapterPensum  extends BaseAdapter {
                         } else {
                             Toast.makeText(
                                     v.getContext(),
-                                    "Debes llenar y seleccionar todos los campos",
+                                    R.string.ap_llena_todos_los_campos,
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -235,12 +236,12 @@ public class AdapterPensum  extends BaseAdapter {
                 //creamos Alertdialogo
 
                 AlertDialog.Builder delete_emergente = new AlertDialog.Builder(activity);
-                delete_emergente.setMessage("¿Desea eliminar el registro?");
+                delete_emergente.setMessage(R.string.ap_delete_pensum);
                 delete_emergente.setCancelable(true);
 
                 //Caso positivo
 
-                delete_emergente.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                delete_emergente.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //elimina el registro, actualiza la lista y notifica el cambio al adaptador

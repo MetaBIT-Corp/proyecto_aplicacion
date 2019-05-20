@@ -85,6 +85,7 @@
     <string name="ap_titlevista_turno_pass">Acceso a intento</string>
     <string name="ap_indicaciones">Ingrese la contraseña para acceder al intento.</string>
     <string name="ap_ingreso_contraseña">Contraseña</string>
+    <string name="ap_visible_si">Visible: SI</string>
 
     <string name="area">Area</string>
     <string name="evaluacion">Evaluacion</string>
@@ -151,6 +152,12 @@
     <string name="ap_fecha_no_valida">Fecha no valida, por favor revisar</string>
     <string name="ap_salir">¿Deseas salir de la aplicación: </string>
     <string name="ap_vuelve">Vuelve pronto </string>
+    <string name="ap_delete_turno">¿Esta seguro? Se eliminaran todas las claves asociadas a este turno.</string>
+    <string name="ap_delete_pensum">¿Esta seguro? Se eliminaran todas los objetos pensum-materia asociadas a este pensum.</string>
+    <string name="ap_delete_evaluación">¿Esta seguro? Se eliminaran todas los turnos asociadas a esta evaluación.</string>
+    <string name="ap_debes01">Debes llenar los campos de nombre, intento y duración</string>
+    <string name="ap_desea01">¿Desea eliminar el registro?</string>
+
 
     <!-- DC -->
     <string name="msg_bienvenida">¡Bienvenido!</string>

@@ -151,7 +151,12 @@
     <string name="ap_fecha_no_valida">Date not valid, please check</string>
     <string name="ap_salir">Do you want to exit the application:</string>
     <string name="ap_vuelve">Come back soon </string>
-
+    <string name="ap_delete_turno">Are you sure? All the keys associated with this turn will be eliminated.</string>
+    <string name="ap_delete_pensum">Are you sure? All the subject-matter objects associated with this curriculum will be eliminated.</string>
+    <string name="ap_delete_evaluación">Are you sure? All shifts associated with this evaluation will be eliminated.</string>
+    <string name="ap_debes01">You must fill in the fields of name, intent and duration</string>
+    <string name="ap_desea01">Do you want to delete the record?</string>
+    <string name="ap_visible_si">Visible: YES</string>
     <!-- DC -->
     <string name="msg_bienvenida">Welcome!</string>
     <string name="opc_escuela">School</string>

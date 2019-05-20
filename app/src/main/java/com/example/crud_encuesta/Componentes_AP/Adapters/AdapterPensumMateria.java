@@ -154,7 +154,7 @@ public class AdapterPensumMateria extends BaseAdapter {
                 Button btCrear = (Button) dialog.findViewById(R.id.d_agregar_pensum_materia);
                 Button btCancelar = (Button) dialog.findViewById(R.id.d_cancelar_pensum_materia);
 
-                titulo.setText("Editar");
+                titulo.setText(R.string.mt_editar);
 
                 //llenamos el spinner
                 ArrayAdapter<CharSequence> adaptadorSpinner = new ArrayAdapter(
@@ -198,11 +198,12 @@ public class AdapterPensumMateria extends BaseAdapter {
                                         getIdPensum()
                                 );
                                 //creamos registro
+                                /*
                                 if (daoPensumMateria.Editar(pensumMateria)){
                                     Toast.makeText(v.getContext(),"Se guardó con éxito",Toast.LENGTH_SHORT).show();
                                 }else {
                                     Toast.makeText(v.getContext(),"Fallo al guardar, intente de nuevo",Toast.LENGTH_SHORT).show();
-                                }
+                                }*/
                                 daoPensumMateria.Editar(pensumMateria);
                                 //refrescamos la lista
                                 pensumMaterias = daoPensumMateria.verTodos(getIdPensum());
@@ -215,7 +216,7 @@ public class AdapterPensumMateria extends BaseAdapter {
                         } else {
                             Toast.makeText(
                                     v.getContext(),
-                                    "Debes llenar y seleccionar todos los campos",
+                                    R.string.ap_llena_todos_los_campos,
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -245,12 +246,12 @@ public class AdapterPensumMateria extends BaseAdapter {
                 //creamos Alertdialogo
 
                 AlertDialog.Builder delete_emergente = new AlertDialog.Builder(activity);
-                delete_emergente.setMessage("¿Desea eliminar el registro?");
+                delete_emergente.setMessage(R.string.ap_desea01);
                 delete_emergente.setCancelable(true);
 
                 //Caso positivo
 
-                delete_emergente.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                delete_emergente.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //elimina el registro, actualiza la lista y notifica el cambio al adaptador
