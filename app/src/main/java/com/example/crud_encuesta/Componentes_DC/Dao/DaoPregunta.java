@@ -21,13 +21,15 @@ public class DaoPregunta {
     private String nombreBD = "proy_aplicacion.db";
     private int id_grupo_emp=0;
     private int id_area;
+    private int id_tipo_item;
     private DatabaseAccess dba;
 
-    public DaoPregunta(Context ct, int id_grupo_emp, int id_area){
+    public DaoPregunta(Context ct, int id_grupo_emp, int id_area,int id_tipo_item){
         this.ct = ct;
         this.id_area = id_area;
         this.id_grupo_emp = id_grupo_emp;
         this.dba = DatabaseAccess.getInstance(ct);
+        this.id_tipo_item = id_tipo_item;
     }
 
     public boolean insertar(Pregunta pregunta){
@@ -133,14 +135,42 @@ public class DaoPregunta {
     public ArrayList<Pregunta> busqueda(String pregunta){
         cx = dba.open();
         ArrayList<Pregunta> preguntas=new ArrayList<>();
-        Cursor cursor = cx.rawQuery("SELECT * FROM PREGUNTA WHERE PREGUNTA LIKE '%"+pregunta+"%'", null);
 
-        if(cursor.moveToFirst()){
-            cursor.moveToFirst();
-            do {
-                preguntas.add(new Pregunta(cursor.getInt(cursor.getColumnIndex("ID_PREGUNTA")),cursor.getInt(cursor.getColumnIndex("ID_GRUPO_EMP")),cursor.getString(cursor.getColumnIndex("PREGUNTA"))));
-            }while (cursor.moveToNext());
+        if(id_tipo_item == 3){
+
+            Cursor cursor = cx.rawQuery("SELECT * FROM PREGUNTA WHERE PREGUNTA LIKE '%"+pregunta+"%' AND ID_GRUPO_EMP ="+id_grupo_emp, null);
+
+            if(cursor.moveToFirst()){
+                cursor.moveToFirst();
+                do {
+                    preguntas.add(new Pregunta(cursor.getInt(cursor.getColumnIndex("ID_PREGUNTA")),cursor.getInt(cursor.getColumnIndex("ID_GRUPO_EMP")),cursor.getString(cursor.getColumnIndex("PREGUNTA"))));
+                }while (cursor.moveToNext());
+            }
+
+        }else{
+
+            Cursor cursor2 = cx.rawQuery("SELECT * FROM GRUPO_EMPAREJAMIENTO WHERE  ID_AREA ="+id_area, null);
+
+            if(cursor2.moveToFirst()){
+
+                do{
+
+                    Cursor cursor3 = cx.rawQuery("SELECT * FROM PREGUNTA WHERE PREGUNTA LIKE '%"+pregunta+"%' AND ID_GRUPO_EMP ="+cursor2.getString(cursor2.getColumnIndex("ID_GRUPO_EMP")), null);
+
+                    if(cursor3.moveToFirst()){
+                        do {
+                            preguntas.add(new Pregunta(cursor3.getInt(cursor3.getColumnIndex("ID_PREGUNTA")),cursor3.getInt(cursor3.getColumnIndex("ID_GRUPO_EMP")),cursor3.getString(cursor3.getColumnIndex("PREGUNTA"))));
+                        }while (cursor3.moveToNext());
+                    }
+
+                }while(cursor2.moveToNext());
+                 /**/
+            }
+
         }
+
+
+
 
         return preguntas;
     }

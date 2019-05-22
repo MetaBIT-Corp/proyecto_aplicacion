@@ -154,7 +154,7 @@ public class AdapterPensumMateria extends BaseAdapter {
                 Button btCrear = (Button) dialog.findViewById(R.id.d_agregar_pensum_materia);
                 Button btCancelar = (Button) dialog.findViewById(R.id.d_cancelar_pensum_materia);
 
-                titulo.setText(R.string.mt_editar);
+                titulo.setText(v.getResources().getString(R.string.mt_editar));
 
                 //llenamos el spinner
                 ArrayAdapter<CharSequence> adaptadorSpinner = new ArrayAdapter(
@@ -216,7 +216,7 @@ public class AdapterPensumMateria extends BaseAdapter {
                         } else {
                             Toast.makeText(
                                     v.getContext(),
-                                    R.string.ap_llena_todos_los_campos,
+                                    v.getResources().getString(R.string.ap_llena_todos_los_campos),
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -246,12 +246,12 @@ public class AdapterPensumMateria extends BaseAdapter {
                 //creamos Alertdialogo
 
                 AlertDialog.Builder delete_emergente = new AlertDialog.Builder(activity);
-                delete_emergente.setMessage(R.string.ap_desea01);
+                delete_emergente.setMessage(v.getResources().getString(R.string.ap_desea01));
                 delete_emergente.setCancelable(true);
 
                 //Caso positivo
 
-                delete_emergente.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
+                delete_emergente.setPositiveButton(v.getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //elimina el registro, actualiza la lista y notifica el cambio al adaptador

@@ -25,6 +25,7 @@ import com.example.crud_encuesta.Componentes_AP.DAO.DAOTurno;
 import com.example.crud_encuesta.Componentes_AP.Models.Pensum;
 import com.example.crud_encuesta.Componentes_AP.Models.PensumMateria;
 import com.example.crud_encuesta.Componentes_AP.Models.Turno;
+import com.example.crud_encuesta.Componentes_MR.Funciones;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
@@ -87,10 +88,13 @@ public class PensumActivity extends AppCompatActivity {
                 final TextView titulo = (TextView) dialog.findViewById(R.id.ap_tv_title_dialogo_pensum);
                 final EditText anio = (EditText) dialog.findViewById(R.id.ap_edt_anio_pensum);
                 final Spinner carreras = (Spinner) dialog.findViewById(R.id.spinner_carrera_pensum);
+                Button btnAnio = (Button) dialog.findViewById(R.id.btn_agregar_anio);
                 Button btCrear = (Button) dialog.findViewById(R.id.d_agregar_pensum);
                 Button btCancelar = (Button) dialog.findViewById(R.id.d_cancelar_pensum);
 
                 titulo.setText(getResources().getText(R.string.ap_nuevo));
+
+                Funciones.setBtnAnio(dialog,btnAnio,anio); /*Seteando valor a vista de Año Título.*/
 
                 //llenamos el spinner
                 ArrayAdapter<CharSequence> adaptadorSpinner = new ArrayAdapter(

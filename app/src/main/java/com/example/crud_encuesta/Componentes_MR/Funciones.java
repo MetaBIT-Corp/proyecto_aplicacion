@@ -3,7 +3,6 @@ package com.example.crud_encuesta.Componentes_MR;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.text.SpannableStringBuilder;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +16,6 @@ import com.example.crud_encuesta.R;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import static java.lang.Integer.parseInt;
-
 public class Funciones {
 
     public Activity a;
@@ -26,7 +23,7 @@ public class Funciones {
     public static String comprobarCampo(EditText campo, String nombre, Activity a){
         String cadena = "";
         if(campo.getText().toString().isEmpty()){
-            cadena = "\n"+a.getResources().getString(R.string.campo_v)+" "+nombre+" "+a.getResources().getString(R.string.vacio_v);
+            cadena = a.getResources().getString(R.string.campo_v)+" "+nombre+" "+a.getResources().getString(R.string.vacio_v)+"\n";
         }
         return cadena;
     }
@@ -42,7 +39,7 @@ public class Funciones {
             int anio_actual = Calendar.getInstance().get(Calendar.YEAR);
 
             if( anio_ingresado>anio_actual+50 || anio_ingresado<anio_actual-50 ){
-                cadena = a.getResources().getString(R.string.anio_v);
+                cadena = a.getResources().getString(R.string.anio_v)+"\n";
             }
         }
         return cadena;

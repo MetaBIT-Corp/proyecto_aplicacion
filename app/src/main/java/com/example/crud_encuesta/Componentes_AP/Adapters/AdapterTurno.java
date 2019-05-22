@@ -275,7 +275,7 @@ public class AdapterTurno extends BaseAdapter {
                         } else {
                             Toast.makeText(
                                     v.getContext(),
-                                    R.string.rellene_v,
+                                    v.getResources().getString(R.string.rellene_v),
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -312,12 +312,12 @@ public class AdapterTurno extends BaseAdapter {
                 //creamos Alertdialogo
 
                 AlertDialog.Builder delete_emergente = new AlertDialog.Builder(activity);
-                delete_emergente.setMessage(R.string.ap_delete_turno);
+                delete_emergente.setMessage(v.getResources().getString(R.string.ap_delete_turno));
                 delete_emergente.setCancelable(true);
 
                 //Caso positivo
 
-                delete_emergente.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
+                delete_emergente.setPositiveButton(v.getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //elimina el registro, actualiza la lista y notifica el cambio al adaptador
@@ -371,13 +371,13 @@ public class AdapterTurno extends BaseAdapter {
                 Button btn_OK = (Button) dialog.findViewById(R.id.ap_btn_cerrar_vista_turno);
 
                 //seteamos views con los valores que tiene el registro
-                tv_dateinicial.setText(R.string.ap_dateinit + " " +turno.getDateInicial());
-                tv_datefinal.setText(R.string.ap_datefinish +" "+ turno.getDateFinal());
-                tv_pass.setText(R.string.ap_hint_password+ " " + turno.getContrasenia());
+                tv_dateinicial.setText(v.getResources().getString(R.string.ap_dateinit) + " : " +turno.getDateInicial());
+                tv_datefinal.setText(v.getResources().getString(R.string.ap_datefinish) +" : "+ turno.getDateFinal());
+                tv_pass.setText(v.getResources().getString(R.string.ap_hint_password) + " : " + turno.getContrasenia());
                 if (turno.getVisible() == 1) {
-                    tv_visible.setText("Visible: "+ R.string.si);
+                    tv_visible.setText("Visible: "+ v.getResources().getString(R.string.si));
                 } else {
-                    tv_visible.setText("Visible: "+ R.string.no);
+                    tv_visible.setText("Visible: "+ v.getResources().getString(R.string.no));
                 }
 
                 btn_OK.setOnClickListener(new View.OnClickListener() {

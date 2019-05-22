@@ -49,7 +49,7 @@ public class PreguntaActivity extends AppCompatActivity {
         id_area = b.getInt("id_area");
         id_tipo_item = b.getInt("id_tipo_item");
 
-        dao = new DaoPregunta(this, id_gpo_emp, id_area);
+        dao = new DaoPregunta(this, id_gpo_emp, id_area, id_tipo_item);
 
         lista_preguntas = dao.verTodos();
         adaptador = new AdaptadorPregunta(lista_preguntas,this,dao, id_tipo_item);

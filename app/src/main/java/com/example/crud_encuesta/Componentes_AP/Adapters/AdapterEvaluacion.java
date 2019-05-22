@@ -156,8 +156,8 @@ public class AdapterEvaluacion extends BaseAdapter {
                 Button btCrear = (Button) dialog.findViewById(R.id.d_agregar_eva);
                 Button btCancelar = (Button) dialog.findViewById(R.id.d_cancelar_eva);
 
-                btCrear.setText(R.string.btn_guardar);
-                titulo.setText(R.string.mt_editar);
+                btCrear.setText(v.getResources().getString(R.string.btn_guardar));
+                titulo.setText(v.getResources().getString(R.string.mt_editar));
 
                 //seteamos ediitext y checkbox con los valores que tiene el contacto
                 nombre.setText(evaluacion.getNombre());
@@ -207,7 +207,7 @@ public class AdapterEvaluacion extends BaseAdapter {
                         } else {
                             Toast.makeText(
                                     v.getContext(),
-                                    R.string.ap_debes01,
+                                    v.getResources().getString(R.string.ap_debes01),
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -241,12 +241,12 @@ public class AdapterEvaluacion extends BaseAdapter {
                 //creamos Alertdialogo
 
                 AlertDialog.Builder delete_emergente = new AlertDialog.Builder(activity);
-                delete_emergente.setMessage(R.string.ap_delete_evaluación);
+                delete_emergente.setMessage(v.getResources().getString(R.string.ap_delete_evaluación));
                 delete_emergente.setCancelable(true);
 
                 //Caso positivo
 
-                delete_emergente.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
+                delete_emergente.setPositiveButton(v.getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //elimina el registro, actualiza la lista y notifica el cambio al adaptador
@@ -259,7 +259,7 @@ public class AdapterEvaluacion extends BaseAdapter {
 
                 //Caso negativo
 
-                delete_emergente.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                delete_emergente.setNegativeButton(v.getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // no esperamos que haga nada al cerrar, solo se cierra
@@ -303,10 +303,10 @@ public class AdapterEvaluacion extends BaseAdapter {
                 Button btOk = (Button) dialog.findViewById(R.id.ap_btn_cerrar_vista_eva);
 
                 //seteamos ediitext y checkbox con los valores que tiene el contacto
-                nombre.setText(R.string.ap_nombre_eva + evaluacion.getNombre());
-                duracion.setText(R.string.ap_duracion_eva + evaluacion.getDuracion());
-                intento.setText(R.string.ap_num_intento_eva + evaluacion.getCantIntento());
-                desc.setText(R.string.ap_desc_eva + evaluacion.getDescripcion());
+                nombre.setText(v.getResources().getString(R.string.ap_nombre_eva)+ " : " + evaluacion.getNombre());
+                duracion.setText(v.getResources().getString(R.string.ap_duracion_eva) +" : "+ evaluacion.getDuracion());
+                intento.setText(  v.getResources().getString(R.string.ap_num_intento_eva) + " : " + evaluacion.getCantIntento());
+                desc.setText(v.getResources().getString(R.string.ap_desc_eva) + " : "+evaluacion.getDescripcion());
                 /*if (evaluacion.getRetroceder() == 1) {
                     retroceso.setText("Se puede retroceder: SI");
                 } else {

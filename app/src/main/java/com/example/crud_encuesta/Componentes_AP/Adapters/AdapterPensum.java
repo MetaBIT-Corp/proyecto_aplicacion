@@ -24,6 +24,7 @@ import com.example.crud_encuesta.Componentes_AP.DAO.DAOPensum;
 import com.example.crud_encuesta.Componentes_AP.DAO.DAOTurno;
 import com.example.crud_encuesta.Componentes_AP.Models.Pensum;
 import com.example.crud_encuesta.Componentes_AP.Models.Turno;
+import com.example.crud_encuesta.Componentes_MR.Funciones;
 import com.example.crud_encuesta.R;
 
 import java.util.ArrayList;
@@ -135,11 +136,14 @@ public class AdapterPensum  extends BaseAdapter {
                 final TextView titulo = (TextView) dialog.findViewById(R.id.ap_tv_title_dialogo_pensum);
                 final EditText anio = (EditText) dialog.findViewById(R.id.ap_edt_anio_pensum);
                 final Spinner carreras = (Spinner) dialog.findViewById(R.id.spinner_carrera_pensum);
+                Button btnAnio = (Button) dialog.findViewById(R.id.btn_agregar_anio);
                 Button btCrear = (Button) dialog.findViewById(R.id.d_agregar_pensum);
                 Button btCancelar = (Button) dialog.findViewById(R.id.d_cancelar_pensum);
 
-                titulo.setText(R.string.mt_editar);
+                titulo.setText(v.getResources().getString(R.string.mt_editar));
                 anio.setText(""+pensum.getAnio());
+
+                Funciones.setBtnAnio(dialog,btnAnio,anio); /*Seteando valor a vista de Año Título.*/
 
                 //llenamos el spinner
                 ArrayAdapter<CharSequence> adaptadorSpinner = new ArrayAdapter(
@@ -203,7 +207,7 @@ public class AdapterPensum  extends BaseAdapter {
                         } else {
                             Toast.makeText(
                                     v.getContext(),
-                                    R.string.ap_llena_todos_los_campos,
+                                    v.getResources().getString(R.string.ap_llena_todos_los_campos),
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -236,12 +240,12 @@ public class AdapterPensum  extends BaseAdapter {
                 //creamos Alertdialogo
 
                 AlertDialog.Builder delete_emergente = new AlertDialog.Builder(activity);
-                delete_emergente.setMessage(R.string.ap_delete_pensum);
+                delete_emergente.setMessage(v.getResources().getString(R.string.ap_delete_pensum));
                 delete_emergente.setCancelable(true);
 
                 //Caso positivo
 
-                delete_emergente.setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
+                delete_emergente.setPositiveButton(v.getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //elimina el registro, actualiza la lista y notifica el cambio al adaptador
