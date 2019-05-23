@@ -42,8 +42,18 @@ public class ClaveActivity extends AppCompatActivity {
         id_encuesta = getIntent().getIntExtra("id_encuesta", 0);
         id_turno = getIntent().getIntExtra("id_turno", 0);
 
-        if(id_turno!=0) id_consulta=id_turno; tipo=true;
-        if(id_encuesta!=0) id_consulta=id_encuesta; tipo=false;
+        if(id_turno!=0){
+            id_consulta=id_turno;
+            tipo=true;
+        }
+        if(id_encuesta!=0){
+            id_consulta=id_encuesta;
+            tipo=false;
+        }
+
+        System.out.println("id_turno: "+id_turno);
+        System.out.println("tipo: "+tipo);
+        //System.out.println(id_encuesta);
 
         daoClave = new DAOClave(this);
         claves = daoClave.getClaves(id_consulta, tipo);
@@ -96,7 +106,7 @@ public class ClaveActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 agregar_clave();
-                claves = daoClave.getClaves(id_turno, tipo);
+                claves = daoClave.getClaves(id_consulta, tipo);
                 claveAdapter.notifyDataSetChanged();
                 refresh();
                 Toast.makeText(ClaveActivity.this, getString(R.string.mt_clave_agregada), Toast.LENGTH_SHORT).show();

@@ -30,4 +30,10 @@ public class Area {
         this.id_docente = id_docente;
         this.id_tipo_itemm = id_tipo_itemm;
     }
+
+    public Area(int id, String titulo, int id_tipo_itemm) {
+        this.id = id;
+        this.titulo = titulo;
+        this.id_tipo_itemm = id_tipo_itemm;
+    }
 }

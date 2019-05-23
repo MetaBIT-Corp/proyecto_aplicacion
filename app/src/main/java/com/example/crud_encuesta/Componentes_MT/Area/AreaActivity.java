@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.crud_encuesta.Componentes_AP.DAO.DAOUsuario;
 import com.example.crud_encuesta.Componentes_DC.Activities.GpoEmpActivity;
 import com.example.crud_encuesta.Componentes_DC.Activities.PreguntaActivity;
 import com.example.crud_encuesta.Componentes_EL.Materia.MateriaActivity;
@@ -45,23 +46,29 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
     private EditText etBuscar;
 
     //Datos de otros modelos
-    private int seleccion_item=0;
-    private int id_cat_mat = 1;
-    private int id_pdg_dcn = 1;
+    private int seleccion_item;
+    private int id_cat_mat;
+    private int id_pdg_dcn;
+    DAOUsuario daoUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_area);
 
+        daoUsuario= new DAOUsuario(this);
+
         imgBuscar = (ImageView)findViewById(R.id.buscarArea);
         imgTodos = (ImageView)findViewById(R.id.todosArea);
         etBuscar = (EditText)findViewById(R.id.etBuscar);
         fabArea = (FloatingActionButton)findViewById(R.id.fabArea);
 
+        id_cat_mat = getIntent().getIntExtra("id_materia",0);
+        id_pdg_dcn = daoUsuario.getUsuarioLogueado().getIDUSUARIO();
+
         daoArea = new DAOArea(this);
-        areas = daoArea.getAreas(id_cat_mat);
-        areaAdapter = new AreaAdapter(AreaActivity.this, areas, daoArea, id_cat_mat, iconos, this);
+        areas = daoArea.getAreas(id_cat_mat, id_pdg_dcn);
+        areaAdapter = new AreaAdapter(AreaActivity.this, areas, daoArea, id_cat_mat, id_pdg_dcn, iconos, this);
 
         listView = (ListView)findViewById(R.id.list_areas);
         listView.setAdapter(areaAdapter);
@@ -89,7 +96,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
         imgTodos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                areas = daoArea.getAreas(id_cat_mat);
+                areas = daoArea.getAreas(id_cat_mat, id_pdg_dcn);
                 refresh();
             }
         });
@@ -130,10 +137,17 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 String titulo_area = mArea.getText().toString();
 
+
+                int id_usuario = daoArea.getDocente(id_pdg_dcn);
+
+                System.out.println(id_cat_mat);
+                System.out.println(id_pdg_dcn);
+                System.out.println(seleccion_item);
+
                 if(!titulo_area.isEmpty()){
-                    Area area = new Area(titulo_area, id_cat_mat, id_pdg_dcn, seleccion_item);
+                    Area area = new Area(titulo_area, id_cat_mat, id_usuario, seleccion_item);
                     daoArea.insertar(area);
-                    areas = daoArea.getAreas(id_cat_mat);
+                    areas = daoArea.getAreas(id_cat_mat, id_pdg_dcn);
                     areaAdapter.notifyDataSetChanged();
                     Toast.makeText(AreaActivity.this, getString(R.string.mt_area_agregada), Toast.LENGTH_SHORT).show();
 
@@ -172,7 +186,7 @@ public class AreaActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void refresh(){
-        listView.setAdapter(new AreaAdapter(AreaActivity.this, areas, daoArea, id_cat_mat, iconos, this));
+        listView.setAdapter(new AreaAdapter(AreaActivity.this, areas, daoArea, id_cat_mat, id_pdg_dcn, iconos, this));
     }
 
    /* public void onBackPressed()

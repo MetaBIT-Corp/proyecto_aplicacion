@@ -12,10 +12,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,21 +29,25 @@ import com.example.crud_encuesta.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AreaAdapter extends BaseAdapter {
+public class AreaAdapter extends BaseAdapter{
     private LayoutInflater inflater = null;
+
     Context context;
     List<Area> areas = new ArrayList<>();
     DAOArea daoArea;
     int id_materia;
+    int id_docente;
     Area area;
     int[] iconos;
     Activity a;
+    String[] modalidad = {"Opcion multiple", "Verdader/Falso", "Emparejamiento", "Respuesta corta"};
 
-    public AreaAdapter(Context context, List<Area> areas, DAOArea daoArea, int id_materia, int[] iconos, Activity a){
+    public AreaAdapter(Context context, List<Area> areas, DAOArea daoArea, int id_materia, int id_docente, int[] iconos, Activity a){
         this.context = context;
         this.areas = areas;
         this.daoArea = daoArea;
         this.id_materia = id_materia;
+        this.id_docente = id_docente;
         this.iconos = iconos;
         this.a = a;
 
@@ -52,11 +59,13 @@ public class AreaAdapter extends BaseAdapter {
 
         final View mView = inflater.inflate(R.layout.elemento_list_area, null);
         TextView tituloArea = (TextView)mView.findViewById(R.id.elemento_area);
+        TextView modArea = (TextView)mView.findViewById(R.id.modalidad_area);
         ImageView imgEdit = (ImageView)mView.findViewById(R.id.img_edit);
         ImageView imgDelete = (ImageView)mView.findViewById(R.id.img_delete);
         Button btnAddGrupoEmp = (Button) mView.findViewById(R.id.btn_grupo_emp);
 
-        tituloArea.setText(areas.get(position).titulo);
+        tituloArea.setText("Titulo: "+areas.get(position).titulo);
+        modArea.setText("Modalidad: "+modalidad[areas.get(position).id_tipo_itemm-1]);
         imgEdit.setImageResource(iconos[0]);
         imgDelete.setImageResource(iconos[1]);
 
@@ -78,7 +87,7 @@ public class AreaAdapter extends BaseAdapter {
                 in.putExtra("accion",0);
                 //fin
                 context.startActivity(in);
-                a.finish();
+                //a.finish();
             }
         });
 
@@ -89,6 +98,8 @@ public class AreaAdapter extends BaseAdapter {
                 final int i = Integer.parseInt(v.getTag().toString());
                 final View mView = inflater.inflate(R.layout.dialogo_area, null);
                 EditText edt = (EditText)mView.findViewById(R.id.etArea);
+                Spinner sp = (Spinner)mView.findViewById(R.id.spModalidad);
+                sp.setVisibility(View.GONE);
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
 
                 TextView txt = mView.findViewById(R.id.msj);
@@ -98,7 +109,7 @@ public class AreaAdapter extends BaseAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         editar_area(i, mView);
-                        areas = daoArea.getAreas(id_materia);
+                        areas = daoArea.getAreas(id_materia, id_docente);
                         notifyDataSetChanged();
                         /*Intent i = new Intent(context, AreaActivity.class);
                         context.startActivity(i);*/
@@ -133,7 +144,7 @@ public class AreaAdapter extends BaseAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         eliminar_area(i);
-                        areas = daoArea.getAreas(id_materia);
+                        areas = daoArea.getAreas(id_materia, id_docente);
                         notifyDataSetChanged();
                         Toast.makeText(context, R.string.mt_eliminado_msj, Toast.LENGTH_SHORT).show();
                     }
@@ -212,5 +223,4 @@ public class AreaAdapter extends BaseAdapter {
             Toast.makeText(context, "El area debe tener un titulo", Toast.LENGTH_SHORT).show();
         }
     }
-
 }

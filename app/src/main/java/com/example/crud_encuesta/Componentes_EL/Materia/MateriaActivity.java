@@ -204,6 +204,9 @@ public class MateriaActivity extends AppCompatActivity {
     }
 
 
-
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
+    }
 
 }

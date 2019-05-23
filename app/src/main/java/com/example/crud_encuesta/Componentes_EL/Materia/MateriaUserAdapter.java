@@ -72,7 +72,7 @@ public class MateriaUserAdapter extends BaseAdapter {
                 i.putExtra("id_user",idUser);
                 i.putExtra("rol_user",rol);
                 context.startActivity(i);
-                activity.finish();
+                //activity.finish();
             }
         });
 

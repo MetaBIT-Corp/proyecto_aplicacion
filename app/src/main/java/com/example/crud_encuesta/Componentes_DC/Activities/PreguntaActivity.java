@@ -152,14 +152,16 @@ public class PreguntaActivity extends AppCompatActivity {
 
     public void onBackPressed()
     {
+        super.onBackPressed();
+        finish();
         //do whatever you want the 'Back' button to do
         //as an example the 'Back' button is set to start a new Activity named 'NewActivity'
-        if (id_tipo_item!=3) {
+        /*if (id_tipo_item!=3) {
             startActivity(new Intent(PreguntaActivity.this, AreaActivity.class));
             finish();
         }else{
             startActivity(new Intent(PreguntaActivity.this, GpoEmpActivity.class));
             finish();
-        }
+        }*/
     }
 }

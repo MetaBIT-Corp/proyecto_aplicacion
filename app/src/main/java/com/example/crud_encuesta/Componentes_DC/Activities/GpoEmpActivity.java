@@ -44,6 +44,7 @@ public class GpoEmpActivity extends AppCompatActivity {
 
         //Inicio
         id_tipo_item = b.getInt("id_tipo_item");
+        if(id_tipo_item!=3)finish();
         accion = b.getInt("accion");
 
         //Fin
