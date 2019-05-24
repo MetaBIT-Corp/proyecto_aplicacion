@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,7 @@ public class ActivityDocente extends AppCompatActivity {
         listaEscuelas = Funciones.obtenerListaEscuelas(escuelas); /*Lista con Strings de Escuelas*/
 
         final ListView list = (ListView) findViewById(R.id.lista_docente);
-        Button agregar = (Button) findViewById(R.id.btn_nuevo_docente);
+        FloatingActionButton agregar = (FloatingActionButton) findViewById(R.id.btn_nuevo_docente);
         ImageView btnBuscar=findViewById(R.id.el_find);
         ImageView btnTodos=findViewById(R.id.el_all);
         final EditText buscar=findViewById(R.id.find_nom);
