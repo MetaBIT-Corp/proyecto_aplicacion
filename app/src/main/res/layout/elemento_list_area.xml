@@ -37,14 +37,11 @@
                 android:text="@string/mt_area" />
 
         </LinearLayout>
-        <android.support.v4.widget.Space
-            android:layout_width="20dp"
-            android:layout_height="0dp" />
 
 
         <Button
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:id="@+id/btn_grupo_emp"
             android:paddingRight="8dp"
             android:background="@drawable/question"/>
@@ -55,8 +52,8 @@
 
         <ImageView
             android:id="@+id/img_edit"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             app:srcCompat="@drawable/edit_" />
         <android.support.v4.widget.Space
             android:layout_width="10dp"
@@ -64,8 +61,8 @@
 
         <ImageView
             android:id="@+id/img_delete"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             app:srcCompat="@drawable/delete_" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
