@@ -157,13 +157,13 @@ public class ActivityDocente extends AppCompatActivity {
                     public void onClick(View v) {
 
                         String errores="";
-                        errores += Funciones.comprobarCampo(carnet,"Carnet",ActivityDocente.this);
-                        errores += Funciones.comprobarCampo(anio_titulo,"Año de Título",ActivityDocente.this);
+                        errores += Funciones.comprobarCampo(carnet,getResources().getString(R.string.carnet_v),ActivityDocente.this);
+                        errores += Funciones.comprobarCampo(anio_titulo,getResources().getString(R.string.aniot_v),ActivityDocente.this);
                         errores += Funciones.comprobarAnio(anio_titulo,ActivityDocente.this);
-                        errores += Funciones.comprobarCampo(tipo_jornada,"Tipo de Jornada",ActivityDocente.this);
-                        errores += Funciones.comprobarCampo(cargo_actual,"Cargo Actual",ActivityDocente.this);
-                        errores += Funciones.comprobarCampo(cargo_secundario,"Cargo Secundario",ActivityDocente.this);
-                        errores += Funciones.comprobarCampo(nombre,"Nombre",ActivityDocente.this);
+                        errores += Funciones.comprobarCampo(tipo_jornada,getResources().getString(R.string.tipoj_v),ActivityDocente.this);
+                        errores += Funciones.comprobarCampo(cargo_actual,getResources().getString(R.string.cargoa_v),ActivityDocente.this);
+                        errores += Funciones.comprobarCampo(cargo_secundario,getResources().getString(R.string.cargos_v),ActivityDocente.this);
+                        errores += Funciones.comprobarCampo(nombre,getResources().getString(R.string.nombre_v),ActivityDocente.this);
 
                         if(errores.isEmpty()) {
                             int checki;

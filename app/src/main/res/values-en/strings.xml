@@ -266,6 +266,13 @@
     <string name="vacio_v">it\'s empty.</string>
     <string name="rellene_v">Please fill the form.</string>
     <string name="anio_v">Invalid Year</string>
+    <string name="nombre_v">Name</string>
+    <string name="anioI_v">Ingress Year</string>
+    <string name="carnet_v">Carnet</string>
+    <string name="aniot_v">Title Yeat</string>
+    <string name="tipoj_v">Journey Type</string>
+    <string name="cargoa_v">Actual Charge</string>
+    <string name="cargos_v">Secondary Charge</string>
     <!-- END Validaciones -->
 
 

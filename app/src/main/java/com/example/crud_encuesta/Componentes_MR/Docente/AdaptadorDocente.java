@@ -271,13 +271,13 @@ public class AdaptadorDocente extends BaseAdapter {
                     public void onClick(View v) {
 
                         String errores="";
-                        errores += Funciones.comprobarCampo(carnet,"Carnet", a);
-                        errores += Funciones.comprobarCampo(anio_titulo,"Año de Título", a);
-                        errores += Funciones.comprobarAnio(anio_titulo, a);
-                        errores += Funciones.comprobarCampo(tipo_jornada,"Tipo de Jornada", a);
-                        errores += Funciones.comprobarCampo(cargo_actual,"Cargo Actual", a);
-                        errores += Funciones.comprobarCampo(cargo_secundario,"Cargo Secundario", a);
-                        errores += Funciones.comprobarCampo(nombre,"Nombre", a);
+                        errores += Funciones.comprobarCampo(carnet,a.getResources().getString(R.string.carnet_v),a);
+                        errores += Funciones.comprobarCampo(anio_titulo,a.getResources().getString(R.string.aniot_v),a);
+                        errores += Funciones.comprobarAnio(anio_titulo,a);
+                        errores += Funciones.comprobarCampo(tipo_jornada,a.getResources().getString(R.string.tipoj_v),a);
+                        errores += Funciones.comprobarCampo(cargo_actual,a.getResources().getString(R.string.cargoa_v),a);
+                        errores += Funciones.comprobarCampo(cargo_secundario,a.getResources().getString(R.string.cargos_v),a);
+                        errores += Funciones.comprobarCampo(nombre,a.getResources().getString(R.string.nombre_v),a);
 
                         if(errores.isEmpty()) {
 

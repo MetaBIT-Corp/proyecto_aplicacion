@@ -123,9 +123,9 @@ public class ActivityEstudiante extends AppCompatActivity {
 
                         String errores="";
 
-                        errores += Funciones.comprobarCampo(carnet,"Carnet",ActivityEstudiante.this);
-                        errores += Funciones.comprobarCampo(nombre,"Nombre",ActivityEstudiante.this);
-                        errores += Funciones.comprobarCampo(anio_ingreso,"Año de Ingreso",ActivityEstudiante.this);
+                        errores += Funciones.comprobarCampo(carnet,getResources().getString(R.string.carnet_v),ActivityEstudiante.this);
+                        errores += Funciones.comprobarCampo(nombre,getResources().getString(R.string.nombre_v),ActivityEstudiante.this);
+                        errores += Funciones.comprobarCampo(anio_ingreso,getResources().getString(R.string.anioI_v),ActivityEstudiante.this);
                         errores += Funciones.comprobarAnio(anio_ingreso,ActivityEstudiante.this);
 
                         if (errores.isEmpty()){
@@ -161,8 +161,8 @@ public class ActivityEstudiante extends AppCompatActivity {
                                 astericos+="*";
                             }
                             String clave_formateada=(usuario.getCLAVE().substring(0,2)+astericos);
-                            usrAlert.setMessage("Usuario de Estudiante creado:\n\n"+"Usuario: "+usuario.getNOMUSUARIO()+"\nClave: "+clave_formateada);
-                            usrAlert.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            usrAlert.setMessage(R.string.alertUser+"\n\n"+R.string.usuario+usuario.getNOMUSUARIO()+"\n"+R.string.clave+clave_formateada);
+                            usrAlert.setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {}
                             });

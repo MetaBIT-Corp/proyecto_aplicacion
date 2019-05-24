@@ -205,9 +205,9 @@ public class AdaptadorEstudiante extends BaseAdapter {
 
                         String errores="";
 
-                        errores += Funciones.comprobarCampo(carnet,"Carnet",a);
-                        errores += Funciones.comprobarCampo(nombre,"Nombre",a);
-                        errores += Funciones.comprobarCampo(anio_ingreso,"Año de Ingreso",a);
+                        errores += Funciones.comprobarCampo(carnet,a.getResources().getString(R.string.carnet_v),a);
+                        errores += Funciones.comprobarCampo(nombre,a.getResources().getString(R.string.nombre_v),a);
+                        errores += Funciones.comprobarCampo(anio_ingreso,a.getResources().getString(R.string.anioI_v),a);
                         errores += Funciones.comprobarAnio(anio_ingreso,a);
 
                         if(errores.isEmpty()){
