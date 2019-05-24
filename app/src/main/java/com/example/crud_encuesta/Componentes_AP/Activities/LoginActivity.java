@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //guardamos en variables los datos que ha ingresado el usuario
-                final String usuario = tvUsuario.getEditText().getText().toString();
+                final String usuario = tvUsuario.getEditText().getText().toString().trim();
                 final String pass = tvPass.getEditText().getText().toString();
 
                 if(daoUsuario.loginUsuario(pass,usuario)){
