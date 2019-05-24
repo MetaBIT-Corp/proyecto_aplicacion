@@ -237,6 +237,7 @@ public class AdapterEvaluacion extends BaseAdapter {
                 //recuperamos el contacto de la lista y seteamos id
                 evaluacion = evaluaciones.get(pos);
                 setIdEvaluacion(evaluacion.getId());
+                setIdCarga(evaluacion.getIdCargaAcad());
 
                 //creamos Alertdialogo
 

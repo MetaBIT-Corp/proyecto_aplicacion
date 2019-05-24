@@ -135,6 +135,7 @@ public class AdapterPensumMateria extends BaseAdapter {
                 //recuperamos la posicion del registro
                 int pos = Integer.parseInt(v.getTag().toString());
                 pensumMateria = pensumMaterias.get(pos);
+
                 setIdPensumMateria(pensumMateria.getIdPensumMateria());
                 setIdPensum(pensumMateria.getIdPensum());
                 setId_materia(pensumMateria.getIdMateria());

@@ -117,7 +117,7 @@ public class AdapterTurno extends BaseAdapter {
         String fechafinal = turno.getDateFinal();
         String[] pfechafinal = fechafinal.split(" ");
 
-        tv_item.setText("Id: " + turno.getId() + "\r\n"+ R.string.ap_dateinit+"\r\n" + turno.getDateInicial() + " \r\n"+R.string.ap_datefinish+"\r\n " + turno.getDateFinal());
+        tv_item.setText("Id: " + turno.getId() + "\r\n"+ view.getResources().getString(R.string.ap_dateinit)+"\r\n" + turno.getDateInicial() + " \r\n"+view.getResources().getString(R.string.ap_datefinish)+"\r\n " + turno.getDateFinal());
 
 
         //ocultados de acuerdo a rol
@@ -185,8 +185,8 @@ public class AdapterTurno extends BaseAdapter {
                 String[] pfechafinal = fechafinal.split(" ");
 
                 //seteamos valores de views
-                btCrear.setText(R.string.btn_guardar);
-                titulo.setText(R.string.mt_editar);
+                btCrear.setText(v.getResources().getString(R.string.btn_guardar));
+                titulo.setText(v.getResources().getString(R.string.mt_editar));
                 dateinicial.setText(pfechainicial[0]);
                 datefinal.setText(pfechafinal[0]);
                 timeinicial.setText(pfechainicial[1]);
@@ -269,7 +269,7 @@ public class AdapterTurno extends BaseAdapter {
                             }else {
                                 Toast.makeText(
                                         v.getContext(),
-                                        R.string.ap_fecha_no_valida,
+                                        v.getResources().getString(R.string.ap_fecha_no_valida),
                                         Toast.LENGTH_SHORT).show();
                             }
                         } else {
@@ -308,6 +308,7 @@ public class AdapterTurno extends BaseAdapter {
                 //recuperamos el contacto de la lista y seteamos id
                 turno = turnos.get(pos);
                 setIdTurno(turno.getId());
+                setIdEvaluacion(turno.getIdEvaluacion());
 
                 //creamos Alertdialogo
 
