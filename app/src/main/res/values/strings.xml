@@ -212,7 +212,7 @@
     <string name="est_chck_activo">Activo</string>
     <string name="est_tv_nombre">Nombre: </string>
     <string name="est_tv_anio">Año Ingreso: </string>
-    <string name="est_borrar">¿Quieres eliminar al Estudiante?</string>
+    <string name="est_borrar">¿Quieres eliminar al Estudiante? Esto eliminará todos sus datos, incluido sus credenciales de Usuario</string>
     <!-- END Estudiante-->
 
     <!-- Docente -->
@@ -230,7 +230,7 @@
     <string name="dcn_tv_jornada">Tipo de Jornada: </string>
     <string name="dcn_tv_cargo">Cargo Actual: </string>
     <string name="dcn_tv_cargo_sec">Cargo Secundario: </string>
-    <string name="dcn_borrar">¿Quieres eliminar al Docente?</string>
+    <string name="dcn_borrar">¿Quieres eliminar al Docente? Esto eliminará todos sus datos, incluido sus credenciales de Usuario</string>
     <!-- END Docente -->
 
     <!-- Materia_Ciclo -->
