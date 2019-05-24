@@ -48,7 +48,6 @@ public class SubMenuMateriaActivity extends AppCompatActivity {
                 Intent i=new Intent(SubMenuMateriaActivity.this, AreaActivity.class);
                 i.putExtra("id_materia",idMat);
                 startActivity(i);
-                finish();
             }
         });
 
@@ -58,7 +57,6 @@ public class SubMenuMateriaActivity extends AppCompatActivity {
                 Intent i=new Intent(SubMenuMateriaActivity.this, EvaluacionActivity.class);
                 i.putExtra("id_materia",idMat);
                 startActivity(i);
-                finish();
             }
         });
 

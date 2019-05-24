@@ -25,12 +25,7 @@
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.EditText"
             android:textSize="20dp"/>
 
-        <ImageView
-            android:id="@+id/log"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:background="@drawable/loggin"/>
+
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
