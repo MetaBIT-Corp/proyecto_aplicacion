@@ -205,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*
         //Llenar base de datos
         imgLlenarBD = (ImageView) findViewById(R.id.db_a);
         imgLlenarBD.setOnClickListener(new View.OnClickListener() {
@@ -272,6 +273,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.show();
             }
         });
+        */
     }
 
     /*

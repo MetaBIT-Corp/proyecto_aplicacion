@@ -22,7 +22,6 @@ public class VerAreasActivity extends AppCompatActivity {
     private int id_clave;
     private String clave;
     private ListView listView;
-    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +39,6 @@ public class VerAreasActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.lsVerAreas);
         listView.setAdapter(verAreasAdapter);
 
-
-
-
-
-        //listView = (ListView)findViewById(R.id.lsVerAreas);
-        //listView.setAdapter(new VerAreasAdapter(this, getAreasClave()));
-
-        back = (ImageView)findViewById(R.id.back_area);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
     }
 
     public List<String> areas(SQLiteDatabase db, int ide){

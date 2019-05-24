@@ -122,6 +122,7 @@
     <string name="mt_vaciar_bd">Do you want to Empty the database</string>
     <string name="mt_vaciar">Empty</string>
     <string name="mt_bd_vaciada">The database has been emptied</string>
+    <string name="clavearea">KeyArea</string>
 
     <string name="ap_evaluaciones">Pensum</string>
     <string name="ap_buscar_pensum">Search pensum</string>

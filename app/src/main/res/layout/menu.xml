@@ -31,6 +31,7 @@
             android:orientation="horizontal"
             android:gravity="right">
 
+            <!--
             <ImageView
                 android:id="@+id/db_a"
                 android:layout_width="40dp"
@@ -44,6 +45,8 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
                 android:src="@drawable/db_x"/>
+
+            -->
 
             <ImageView
                 android:id="@+id/log"

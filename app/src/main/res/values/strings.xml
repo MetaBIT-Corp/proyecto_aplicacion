@@ -275,6 +275,7 @@
     <string name="tipoj_v">Tipo de Jornada</string>
     <string name="cargoa_v">Cargo Actual</string>
     <string name="cargos_v">Cargo Secundario</string>
+    <string name="clavearea">ClaveArea</string>
     <!-- END Validaciones -->
 
 </resources>

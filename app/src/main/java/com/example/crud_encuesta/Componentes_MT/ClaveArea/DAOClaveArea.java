@@ -38,6 +38,8 @@ public class DAOClaveArea {
         SQLiteDatabase db = databaseAccess.open();
 
         areas = areas(db, id_clave);
+        System.out.println("Id_clave"+id_clave);
+        System.out.println("areas: "+areas.size());
         Cursor cursor = db.rawQuery("SELECT * FROM clave_area WHERE id_clave="+id_clave,null);
 
         /*areas = areas(db, id_clave);
@@ -58,6 +60,8 @@ public class DAOClaveArea {
         }
 
         databaseAccess.close();
+
+        System.out.println("Clavearea: "+areasClave.size());
 
         return  areasClave;
     }
