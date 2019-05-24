@@ -110,7 +110,7 @@ public class ActivityEstudiante extends AppCompatActivity {
                 Button guardar = (Button) dialogo.findViewById(R.id.btn_agregar_estd);
                 Button cancelar = (Button) dialogo.findViewById(R.id.btn_cancelar_estd);
 
-                mensaje.setText(R.string.set_anio);
+                mensaje.setText(R.string.est_titulo2);
                 guardar.setText(R.string.btn_registrar);
                 cancelar.setText(R.string.btn_cancelar);
 
@@ -161,7 +161,7 @@ public class ActivityEstudiante extends AppCompatActivity {
                                 astericos+="*";
                             }
                             String clave_formateada=(usuario.getCLAVE().substring(0,2)+astericos);
-                            usrAlert.setMessage(R.string.alertUser+"\n\n"+R.string.usuario+usuario.getNOMUSUARIO()+"\n"+R.string.clave+clave_formateada);
+                            usrAlert.setMessage(getResources().getString(R.string.alertUser)+"\n\n"+getResources().getString(R.string.usuario)+usuario.getNOMUSUARIO()+"\n"+getResources().getString(R.string.clave)+clave_formateada);
                             usrAlert.setPositiveButton(R.string.aceptar, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {}
