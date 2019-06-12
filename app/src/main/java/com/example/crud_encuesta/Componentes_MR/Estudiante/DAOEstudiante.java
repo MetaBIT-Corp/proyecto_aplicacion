@@ -44,7 +44,7 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
 
         request = Volley.newRequestQueue(ct);
         request2 = Volley.newRequestQueue(ct);
-        
+
         progreso = new ProgressDialog(ct);
         String cargando = ct.getResources().getString(R.string.ws_cargando);
         progreso.setMessage(cargando);
@@ -52,7 +52,6 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
 
     public boolean insertarUsuario(Usuario usuario){
         int correlativo = getCorrelativoUsuario() + 1;
-        Log.d("CorrelativoUsu: ",""+correlativo);
         id_usuario = correlativo;
         usuario.setIDUSUARIO(correlativo);
         ContentValues contenedor = new ContentValues();
@@ -86,7 +85,6 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
 
     public boolean insertar(Estudiante estd){
         int correlativo = getCorrelativoEstudiante() + 1;
-        Log.d("CorrelativoEst: ",""+correlativo);
         estd.setId(correlativo);
         ContentValues contenedor = new ContentValues();
         contenedor.put("CARNET", estd.getCarnet());
@@ -124,7 +122,6 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         progreso.show();
 
         url = url.replace(" ","%20");
-        Log.d("URL: ", url);
         jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,null,this,this);
 
         if(i==0)

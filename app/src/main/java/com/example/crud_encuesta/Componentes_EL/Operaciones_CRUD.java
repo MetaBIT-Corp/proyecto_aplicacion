@@ -1,11 +1,19 @@
 package com.example.crud_encuesta.Componentes_EL;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.crud_encuesta.Componentes_MR.Docente.Docente;
 
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_EL.Carrera.Carrera;
@@ -16,9 +24,17 @@ import com.example.crud_encuesta.Componentes_EL.ModelosAdicionales.Facultad;
 import com.example.crud_encuesta.Componentes_EL.ModelosAdicionales.Pensum;
 import com.example.crud_encuesta.R;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
-public class Operaciones_CRUD {
+public class Operaciones_CRUD implements Response.Listener<JSONObject>, Response.ErrorListener{
+
+    private  ProgressDialog progreso;
+    private  RequestQueue request;
+    private  JsonObjectRequest jsonObjectRequest;
+    private Context ct;
+    private  String host = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/";
 
     public static final Toast insertar(SQLiteDatabase db, ContentValues c, Context context, String table_name) {
         try {
@@ -34,7 +50,25 @@ public class Operaciones_CRUD {
         final String condicion = column_name + " = ?";
         final String[] argumentos = {"" + id};
         db.delete(table_name, condicion, argumentos);
+        if(table_name.equals("ENCUESTA")){
+            Operaciones_CRUD o_crud = new Operaciones_CRUD();
+            o_crud.cargarWebService(context, id);
+        }
         Toast.makeText(context, R.string.men_eliminar, Toast.LENGTH_SHORT).show();
+    }
+
+    private void cargarWebService(Context ct, int id) {
+        this.ct = ct;
+        request = Volley.newRequestQueue(ct);
+        progreso = new ProgressDialog(ct);
+        String cargando = ct.getResources().getString(R.string.ws_cargando);
+        progreso.setMessage(cargando);
+
+        progreso.show();
+        String url = host+"ws_eliminar_encuesta.php?id_encuesta="+id;
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,null,this,this);
+
+        request.add(jsonObjectRequest);
     }
 
     public static final Toast actualizar(SQLiteDatabase db, ContentValues c, Context context, String table_name, String column_name, int id) {
@@ -361,5 +395,17 @@ public class Operaciones_CRUD {
         Cursor c = db.rawQuery(" SELECT * FROM " + EstructuraTablas.DOCENTE_TABLE_NAME+" WHERE IDUSUARIO= "+idusuario, null);
         c.moveToFirst();
         return c.getInt(0);
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        progreso.hide();
+        Toast.makeText(ct, R.string.ws_error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        progreso.hide();
+        Toast.makeText(ct, R.string.ws_exito, Toast.LENGTH_SHORT).show();
     }
 }
