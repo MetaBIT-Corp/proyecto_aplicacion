@@ -32,7 +32,10 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
     private Context ct;
     private ProgressDialog progreso;
     private RequestQueue request;
+    private RequestQueue request2;
     private JsonObjectRequest jsonObjectRequest;
+    private String host = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/";
+    private int id_usuario;
 
     public DAOEstudiante(Context ct){
         this.ct = ct;
@@ -40,10 +43,20 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         cx = dba.open();
 
         request = Volley.newRequestQueue(ct);
+        request2 = Volley.newRequestQueue(ct);
+        
+        progreso = new ProgressDialog(ct);
+        String cargando = ct.getResources().getString(R.string.ws_cargando);
+        progreso.setMessage(cargando);
     }
 
     public boolean insertarUsuario(Usuario usuario){
+        int correlativo = getCorrelativoUsuario() + 1;
+        Log.d("CorrelativoUsu: ",""+correlativo);
+        id_usuario = correlativo;
+        usuario.setIDUSUARIO(correlativo);
         ContentValues contenedor = new ContentValues();
+        contenedor.put("IDUSUARIO",correlativo);
         contenedor.put("NOMUSUARIO",usuario.getNOMUSUARIO());
         contenedor.put("CLAVE",usuario.getCLAVE());
         contenedor.put("ROL",usuario.getROL());
@@ -54,7 +67,7 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         if(resultado > 0){
             respuesta = true;
 
-            String url = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/ws_crear_usuario_estudiante.php?" +
+            String url = host+"ws_crear_usuario_estudiante.php?" +
                     "idusuario="+usuario.getIDUSUARIO()+"&" +
                     "nomusuario="+usuario.getNOMUSUARIO()+"&" +
                     "clave="+usuario.getCLAVE()+"&" +
@@ -65,13 +78,22 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         return respuesta;
     }
 
+    private int getCorrelativoUsuario() {
+        Cursor cursor = cx.rawQuery("SELECT IDUSUARIO  FROM USUARIO",null);
+        if (cursor.moveToLast())return Integer.parseInt(cursor.getString(0));
+        return 0;
+    }
+
     public boolean insertar(Estudiante estd){
+        int correlativo = getCorrelativoEstudiante() + 1;
+        Log.d("CorrelativoEst: ",""+correlativo);
+        estd.setId(correlativo);
         ContentValues contenedor = new ContentValues();
         contenedor.put("CARNET", estd.getCarnet());
         contenedor.put("NOMBRE", estd.getNombre());
         contenedor.put("ACTIVO", estd.getActivo());
         contenedor.put("ANIO_INGRESO", estd.getAnio_ingreso());
-        contenedor.put("IDUSUARIO",estd.getId_usuario());
+        contenedor.put("IDUSUARIO",id_usuario);
 
         long resultado = cx.insert("ESTUDIANTE", null, contenedor);
         boolean respuesta = false;
@@ -79,9 +101,9 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         if(resultado > 0){
             respuesta = true;
 
-            String url = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/ws_insertar_estudiante.php?" +
+            String url = host+"ws_insertar_estudiante.php?" +
                     "id_est="+estd.getId()+"&" +
-                    "idusuario="+estd.getId_usuario()+"&" +
+                    "idusuario="+id_usuario+"&" +
                     "carnet="+estd.getCarnet()+"&" +
                     "nombre="+estd.getNombre()+"&" +
                     "activo="+estd.getActivo()+"&" +
@@ -92,16 +114,23 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         return respuesta;
     }
 
+    private int getCorrelativoEstudiante() {
+        Cursor cursor = cx.rawQuery("SELECT ID_EST  FROM ESTUDIANTE",null);
+        if (cursor.moveToLast())return Integer.parseInt(cursor.getString(0));
+        return 0;
+    }
+
     private void cargarWebService(int i, String url) {
-        progreso = new ProgressDialog(ct);
-        String cargando = ct.getResources().getString(R.string.ws_cargando);
-        progreso.setMessage(cargando);
         progreso.show();
 
         url = url.replace(" ","%20");
         Log.d("URL: ", url);
         jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,null,this,this);
-        request.add(jsonObjectRequest);
+
+        if(i==0)
+            request.add(jsonObjectRequest);
+        else
+            request2.add(jsonObjectRequest);
     }
 
     public boolean eliminar(int id){
@@ -190,13 +219,13 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(ct, R.string.ws_error, Toast.LENGTH_SHORT).show();
         progreso.hide();
+        Toast.makeText(ct, R.string.ws_error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onResponse(JSONObject response) {
-        Toast.makeText(ct, R.string.ws_exito, Toast.LENGTH_SHORT).show();
         progreso.hide();
+        Toast.makeText(ct, R.string.ws_exito, Toast.LENGTH_SHORT).show();
     }
 }
