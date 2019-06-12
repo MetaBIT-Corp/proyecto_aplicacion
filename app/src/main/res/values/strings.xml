@@ -200,6 +200,10 @@
     <string name="agregar_opc">Agregar opción</string>
     <string name="nueva_preg">Nueva Pregunta</string>
     <string name="agregar_preg">Agregar pregunta</string>
+    <string name="ws_exito">Datos actualizados con exito en la BD remota!</string>
+    <string name="ws_error">Datos NO actualizados en la BD remota!</string>
+    <string name="ws_cargando">Cargando...</string>
+
     <!-- END DC -->
 
     <!-- Estudiante -->

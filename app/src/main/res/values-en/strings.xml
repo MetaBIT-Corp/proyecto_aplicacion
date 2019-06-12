@@ -199,6 +199,9 @@
     <string name="agregar_opc">Add option</string>
     <string name="nueva_preg">New Question</string>
     <string name="agregar_preg">Add question</string>
+    <string name="ws_exito">Updated data remote DB successfully!</string>
+    <string name="ws_error">Remote DB does NOT updated</string>
+    <string name="ws_cargando">Loading...</string>
     <!-- END DC -->
 
     <!-- Estudiante -->

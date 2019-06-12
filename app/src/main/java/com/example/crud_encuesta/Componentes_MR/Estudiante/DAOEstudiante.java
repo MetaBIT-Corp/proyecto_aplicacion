@@ -1,25 +1,45 @@
 package com.example.crud_encuesta.Componentes_MR.Estudiante;
 
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.DatabaseAccess;
+import com.example.crud_encuesta.R;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
-public class DAOEstudiante {
+public class DAOEstudiante implements Response.Listener<JSONObject>, Response.ErrorListener{
 
     private SQLiteDatabase cx;
     private ArrayList<Estudiante> lista = new ArrayList<>();
     private Estudiante estudiante;
     private Usuario usuario;
     private Context ct;
+    private ProgressDialog progreso;
+    private RequestQueue request;
+    private JsonObjectRequest jsonObjectRequest;
 
     public DAOEstudiante(Context ct){
         this.ct = ct;
         DatabaseAccess dba = DatabaseAccess.getInstance(ct);
         cx = dba.open();
+
+        request = Volley.newRequestQueue(ct);
     }
 
     public boolean insertarUsuario(Usuario usuario){
@@ -27,7 +47,22 @@ public class DAOEstudiante {
         contenedor.put("NOMUSUARIO",usuario.getNOMUSUARIO());
         contenedor.put("CLAVE",usuario.getCLAVE());
         contenedor.put("ROL",usuario.getROL());
-        return (cx.insert("USUARIO", null,contenedor))>0;
+
+        long resultado = cx.insert("USUARIO", null,contenedor);
+        boolean respuesta = false;
+
+        if(resultado > 0){
+            respuesta = true;
+
+            String url = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/ws_crear_usuario_estudiante.php?" +
+                    "idusuario="+usuario.getIDUSUARIO()+"&" +
+                    "nomusuario="+usuario.getNOMUSUARIO()+"&" +
+                    "clave="+usuario.getCLAVE()+"&" +
+                    "rol="+usuario.getROL();
+
+            cargarWebService(0, url);
+        }
+        return respuesta;
     }
 
     public boolean insertar(Estudiante estd){
@@ -37,7 +72,36 @@ public class DAOEstudiante {
         contenedor.put("ACTIVO", estd.getActivo());
         contenedor.put("ANIO_INGRESO", estd.getAnio_ingreso());
         contenedor.put("IDUSUARIO",estd.getId_usuario());
-        return (cx.insert("ESTUDIANTE", null, contenedor))>0;
+
+        long resultado = cx.insert("ESTUDIANTE", null, contenedor);
+        boolean respuesta = false;
+
+        if(resultado > 0){
+            respuesta = true;
+
+            String url = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/ws_insertar_estudiante.php?" +
+                    "id_est="+estd.getId()+"&" +
+                    "idusuario="+estd.getId_usuario()+"&" +
+                    "carnet="+estd.getCarnet()+"&" +
+                    "nombre="+estd.getNombre()+"&" +
+                    "activo="+estd.getActivo()+"&" +
+                    "anio_ingreso="+estd.getAnio_ingreso();
+
+            cargarWebService(1, url);
+        }
+        return respuesta;
+    }
+
+    private void cargarWebService(int i, String url) {
+        progreso = new ProgressDialog(ct);
+        String cargando = ct.getResources().getString(R.string.ws_cargando);
+        progreso.setMessage(cargando);
+        progreso.show();
+
+        url = url.replace(" ","%20");
+        Log.d("URL: ", url);
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,null,this,this);
+        request.add(jsonObjectRequest);
     }
 
     public boolean eliminar(int id){
@@ -122,5 +186,17 @@ public class DAOEstudiante {
                 cursor.getString(2),
                 cursor.getInt(3));
         return usuario;
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(ct, R.string.ws_error, Toast.LENGTH_SHORT).show();
+        progreso.hide();
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        Toast.makeText(ct, R.string.ws_exito, Toast.LENGTH_SHORT).show();
+        progreso.hide();
     }
 }
