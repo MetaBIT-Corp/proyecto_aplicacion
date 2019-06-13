@@ -28,8 +28,8 @@ public class IntentoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intento);
 
         id_turno = getIntent().getIntExtra("id_turno_intento", 0);
-        id_encuestado = getIntent().getIntExtra("id_encuesta_intento", 0);
-        id_estudiante = getIntent().getIntExtra("id_estudiante", 0);
+        id_encuestado = getIntent().getIntExtra("id_encuesta_intento", 1);
+        id_estudiante = getIntent().getIntExtra("id_estudiante", 1);
 
         listView = (ListView)findViewById(R.id.lsPreguntas);
         listView.setAdapter(new IntentoAdapter(getPreguntas(), id_estudiante, id_clave, id_encuestado, this, this, tamanio));
@@ -52,7 +52,7 @@ public class IntentoActivity extends AppCompatActivity {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         SQLiteDatabase db = databaseAccess.open();
 
-        id_clave = IntentoConsultasDB.getClave(id_turno, db);
+        id_clave = 1;//IntentoConsultasDB.getClave(id_turno, db);
 
         String sentencia_pregunta = "SELECT ID_PREGUNTA, ID_GRUPO_EMP, PREGUNTA FROM PREGUNTA WHERE ID_PREGUNTA IN\n" +
                 "(SELECT ID_PREGUNTA FROM CLAVE_AREA_PREGUNTA WHERE ID_CLAVE_AREA IN\n" +

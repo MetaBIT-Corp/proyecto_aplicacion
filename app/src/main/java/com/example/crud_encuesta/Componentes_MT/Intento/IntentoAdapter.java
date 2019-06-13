@@ -319,6 +319,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
     public void iniciar_intento() {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
         SQLiteDatabase db = databaseAccess.open();
+        int ultimo_intento = IntentoConsultasDB.ultimo_intento(id_estudiante , db)+1;
 
         ContentValues registro = new ContentValues();
         registro.put("id_est", id_estudiante);
@@ -328,10 +329,14 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
         registro.put("numero_intento", IntentoConsultasDB.ultimo_intento(id_estudiante , db)+1);
 
         db.insert("intento", null, registro);
+
         Cursor cursor = db.rawQuery("SELECT ID_INTENTO FROM INTENTO ORDER BY ID_INTENTO DESC LIMIT 1", null);
         cursor.moveToFirst();
 
         id_intento = cursor.getInt(0);
+
+        WSIntento wsIntento = new WSIntento(context);
+        wsIntento.inicio_intento(id_estudiante, id_encuestado, id_clave, fecha_actual(), ultimo_intento);
 
     }
 
@@ -346,7 +351,8 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
 
         db.update("intento", reg, "id_intento=" + id_intento, null);
 
-
+        WSIntento wsIntento = new WSIntento(context);
+        wsIntento.terminar_intento(id_intento, fecha_actual(), calcular_nota());
     }
 
     public String fecha_actual() {
@@ -376,6 +382,9 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                 registro.put("id_intento", id_intento);
                 registro.put("id_pregunta", rg.getId());
                 db.insert("respuesta", null, registro);
+
+                WSIntento wsIntento = new WSIntento(context);
+                wsIntento.modelo_respuesta(id_seleccion, rg.getId(), id_intento, "");
             }
         }
 
@@ -393,6 +402,9 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                 registro.put("id_intento", id_intento);
                 registro.put("id_pregunta", rg.getId());
                 db.insert("respuesta", null, registro);
+
+                WSIntento wsIntento = new WSIntento(context);
+                wsIntento.modelo_respuesta(id_seleccion, rg.getId(), id_intento, "");
             }
         }
 
@@ -402,6 +414,9 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                 registro.put("id_intento", id_intento);
                 registro.put("id_pregunta", sp.getId());
                 db.insert("respuesta", null, registro);
+
+                WSIntento wsIntento = new WSIntento(context);
+                wsIntento.modelo_respuesta(idesGPO.get(sp.getSelectedItemPosition()), sp.getId(), id_intento, "");
             }
         }
 
@@ -413,6 +428,9 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                 registro.put("id_pregunta", idPreguntaRC.get(i));
                 registro.put("texto_respuesta", et.getText().toString());
                 db.insert("respuesta", null, registro);
+
+                WSIntento wsIntento = new WSIntento(context);
+                wsIntento.modelo_respuesta(et.getId(), idPreguntaRC.get(i), id_intento, et.getText().toString());
                 i++;
             }
         }

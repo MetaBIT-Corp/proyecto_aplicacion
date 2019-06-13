@@ -8,10 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_AP.DAO.DAOUsuario;
 import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
+import com.example.crud_encuesta.Componentes_MT.Intento.IntentoActivity;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.MainActivity;
 import com.example.crud_encuesta.R;
@@ -54,6 +56,16 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(v.getContext(),getResources().getText(R.string.ap_usuario),Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        TextView txt = findViewById(R.id.copyright);
+
+        txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginActivity.this, IntentoActivity.class);
+                startActivity(i);
             }
         });
 
