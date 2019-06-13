@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -131,6 +132,7 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
     }
 
     public boolean eliminar(int id){
+        wsEliminar(id);
         return (cx.delete("ESTUDIANTE", "ID_EST="+id, null))>0;
     }
 
@@ -211,7 +213,23 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
                 cursor.getString(1),
                 cursor.getString(2),
                 cursor.getInt(3));
+
         return usuario;
+    }
+
+    /***
+     * WS Para eliminar Estudiante y el Usuario
+     * @autor Ricardo Estupinian
+     * @param id Identificador unico del Estudiante
+     */
+    private void wsEliminar(int id) {
+        request = Volley.newRequestQueue(ct);
+        String cargando = ct.getResources().getString(R.string.ws_cargando);
+        progreso.show();
+        String url = host+"EL16002/ws_EliminarEstudiante.php?id="+id;
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,null,this,this);
+        request.add(jsonObjectRequest);
+        progreso.hide();
     }
 
     @Override
