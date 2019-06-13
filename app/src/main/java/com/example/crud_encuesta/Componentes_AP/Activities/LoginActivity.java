@@ -59,16 +59,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        TextView txt = findViewById(R.id.copyright);
-
-        txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, IntentoActivity.class);
-                startActivity(i);
-            }
-        });
-
 
     }
 
