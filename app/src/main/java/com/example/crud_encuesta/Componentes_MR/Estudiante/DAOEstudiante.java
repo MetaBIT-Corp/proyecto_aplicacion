@@ -66,7 +66,7 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         if(resultado > 0){
             respuesta = true;
 
-            String url = host+"ws_crear_usuario_estudiante.php?" +
+            String url = host+"DC16009/ws_crear_usuario_estudiante.php?" +
                     "idusuario="+usuario.getIDUSUARIO()+"&" +
                     "nomusuario="+usuario.getNOMUSUARIO()+"&" +
                     "clave="+usuario.getCLAVE()+"&" +
@@ -99,7 +99,7 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         if(resultado > 0){
             respuesta = true;
 
-            String url = host+"ws_insertar_estudiante.php?" +
+            String url = host+"DC16009/ws_insertar_estudiante.php?" +
                     "id_est="+estd.getId()+"&" +
                     "idusuario="+id_usuario+"&" +
                     "carnet="+estd.getCarnet()+"&" +
