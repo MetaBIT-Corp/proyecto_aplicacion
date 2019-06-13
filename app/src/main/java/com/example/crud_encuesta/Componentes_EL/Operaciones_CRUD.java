@@ -65,7 +65,7 @@ public class Operaciones_CRUD implements Response.Listener<JSONObject>, Response
         progreso.setMessage(cargando);
 
         progreso.show();
-        String url = host+"ws_eliminar_encuesta.php?id_encuesta="+id;
+        String url = host+"DC16009/ws_eliminar_encuesta.php?id_encuesta="+id;
         jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,null,this,this);
 
         request.add(jsonObjectRequest);
