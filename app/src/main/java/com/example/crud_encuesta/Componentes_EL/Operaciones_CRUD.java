@@ -24,6 +24,8 @@ import com.example.crud_encuesta.Componentes_EL.ModelosAdicionales.Facultad;
 import com.example.crud_encuesta.Componentes_EL.ModelosAdicionales.Pensum;
 import com.example.crud_encuesta.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -67,7 +69,6 @@ public class Operaciones_CRUD implements Response.Listener<JSONObject>, Response
         progreso.show();
         String url = host+"DC16009/ws_eliminar_encuesta.php?id_encuesta="+id;
         jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,null,this,this);
-
         request.add(jsonObjectRequest);
     }
 
@@ -76,11 +77,41 @@ public class Operaciones_CRUD implements Response.Listener<JSONObject>, Response
             final String condicion = column_name + " = ?";
             final String[] argumentos = {"" + id};
             db.update(table_name, c, condicion, argumentos);
+
+            if(table_name==EstructuraTablas.ENCUESTA_TABLA_NAME){
+                Operaciones_CRUD op=new Operaciones_CRUD();
+                op.wsActualizarEncuesta(c);
+            }
             return Toast.makeText(context, R.string.men_actualizar, Toast.LENGTH_SHORT);
 
         } catch (Exception e) {
             return Toast.makeText(context, "Error", Toast.LENGTH_SHORT);
         }
+    }
+
+    /***
+     * Web Service de update para la tabla de Encuestas
+     * @autor Ricardo Estupinian
+     * @param c Content Values para extraer los datos y agrgarlos al JSON
+     */
+    private void wsActualizarEncuesta(ContentValues c){
+        String url=host+"EL16002/ws_UpdateEncuesta.php";
+        JSONObject json=new JSONObject();
+        try {
+            json.put(EstructuraTablas.COL_0_ENCUESTA,c.getAsString(EstructuraTablas.COL_0_ENCUESTA));
+            json.put(EstructuraTablas.COL_1_ENCUESTA,c.getAsString(EstructuraTablas.COL_1_ENCUESTA));
+            json.put(EstructuraTablas.COL_2_ENCUESTA,c.getAsString(EstructuraTablas.COL_2_ENCUESTA));
+            json.put(EstructuraTablas.COL_3_ENCUESTA,c.getAsString(EstructuraTablas.COL_3_ENCUESTA));
+            json.put(EstructuraTablas.COL_4_ENCUESTA,c.getAsString(EstructuraTablas.COL_4_ENCUESTA));
+            json.put(EstructuraTablas.COL_5_ENCUESTA,c.getAsString(EstructuraTablas.COL_5_ENCUESTA));
+            Log.d("JSON",json.toString());
+            jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,url,json,this,this);
+            request.add(jsonObjectRequest);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public static ArrayList<Escuela> todosEscuela(String table_name, SQLiteDatabase db) {
