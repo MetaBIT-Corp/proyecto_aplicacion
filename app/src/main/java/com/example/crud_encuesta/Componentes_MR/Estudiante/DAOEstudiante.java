@@ -18,6 +18,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
 import com.example.crud_encuesta.DatabaseAccess;
+import com.example.crud_encuesta.ObtenerCorrelativoTabla;
 import com.example.crud_encuesta.R;
 
 import org.json.JSONObject;
@@ -37,6 +38,7 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
     private JsonObjectRequest jsonObjectRequest;
     private String host = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/";
     private int id_usuario;
+    private ObtenerCorrelativoTabla obtenerCorrelativoTabla;
 
     public DAOEstudiante(Context ct){
         this.ct = ct;
@@ -49,6 +51,8 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         progreso = new ProgressDialog(ct);
         String cargando = ct.getResources().getString(R.string.ws_cargando);
         progreso.setMessage(cargando);
+
+        obtenerCorrelativoTabla = new ObtenerCorrelativoTabla();
     }
 
     public boolean insertarUsuario(Usuario usuario){
@@ -79,8 +83,18 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
     }
 
     private int getCorrelativoUsuario() {
+
+        obtenerCorrelativoTabla.peticion("USUARIO", "IDUSUARIO");
+        int correlativoRemoto = obtenerCorrelativoTabla.obtenerCorrelativo();
+
         Cursor cursor = cx.rawQuery("SELECT IDUSUARIO  FROM USUARIO",null);
-        if (cursor.moveToLast())return Integer.parseInt(cursor.getString(0));
+        if (cursor.moveToLast()){
+            if(Integer.parseInt(cursor.getString(0)) > correlativoRemoto){
+                return Integer.parseInt(cursor.getString(0));
+            }else{
+                return correlativoRemoto;
+            }
+        }
         return 0;
     }
 
@@ -114,8 +128,19 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
     }
 
     private int getCorrelativoEstudiante() {
+
+        obtenerCorrelativoTabla.peticion("ESTUDIANTE", "ID_EST");
+        int correlativoRemoto = obtenerCorrelativoTabla.obtenerCorrelativo();
+
         Cursor cursor = cx.rawQuery("SELECT ID_EST  FROM ESTUDIANTE",null);
-        if (cursor.moveToLast())return Integer.parseInt(cursor.getString(0));
+        if (cursor.moveToLast()){
+            if(Integer.parseInt(cursor.getString(0)) > correlativoRemoto){
+                return Integer.parseInt(cursor.getString(0));
+            }else{
+                return correlativoRemoto;
+            }
+
+        }
         return 0;
     }
 
