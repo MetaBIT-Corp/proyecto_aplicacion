@@ -153,7 +153,7 @@ public class EncuestaActivity extends AppCompatActivity {
                                 ai=year;
                                 mi=month;
                                 di=dayOfMonth;
-                                cadenai=dayOfMonth+"/"+month+"/"+year+" ";
+                                cadenai=year+"-"+month+"-"+dayOfMonth+" ";
 
                                 TimePickerDialog hora=new TimePickerDialog(EncuestaActivity.this, new TimePickerDialog.OnTimeSetListener() {
                                     @Override
@@ -185,7 +185,7 @@ public class EncuestaActivity extends AppCompatActivity {
                                 af=year;
                                 mf=month;
                                 df=dayOfMonth;
-                                cadenaf=dayOfMonth+"/"+month+"/"+year+" ";
+                                cadenaf=year+"-"+month+"-"+dayOfMonth+" ";
 
                                 TimePickerDialog hora=new TimePickerDialog(EncuestaActivity.this, new TimePickerDialog.OnTimeSetListener() {
                                     @Override
@@ -195,8 +195,8 @@ public class EncuestaActivity extends AppCompatActivity {
 
                                         if ((di>df&&mi>=mf)||mi>mf||ai>af||(di==df&&hi>=hf)||(hi==12&&hf>=12)){
                                             Toast.makeText(EncuestaActivity.this,R.string.men_fecha_error,Toast.LENGTH_SHORT).show();
-                                            infi.setText("dd/mm/aa");
-                                            inff.setText("dd/mm/aa");
+                                            infi.setText("aa-mm-dd");
+                                            inff.setText("aa-mm-dd");
                                         }
                                     }
                                 },ho,min,seg);

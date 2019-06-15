@@ -80,7 +80,7 @@ public class Operaciones_CRUD implements Response.Listener<JSONObject>, Response
 
             if(table_name==EstructuraTablas.ENCUESTA_TABLA_NAME){
                 Operaciones_CRUD op=new Operaciones_CRUD();
-                op.wsActualizarEncuesta(c);
+                op.wsActualizarEncuesta(c,id,context);
             }
             return Toast.makeText(context, R.string.men_actualizar, Toast.LENGTH_SHORT);
 
@@ -94,11 +94,17 @@ public class Operaciones_CRUD implements Response.Listener<JSONObject>, Response
      * @autor Ricardo Estupinian
      * @param c Content Values para extraer los datos y agrgarlos al JSON
      */
-    private void wsActualizarEncuesta(ContentValues c){
+    private void wsActualizarEncuesta(ContentValues c,int id, Context context){
         String url=host+"EL16002/ws_UpdateEncuesta.php";
+        ct=context;
+        request = Volley.newRequestQueue(ct);
+        progreso = new ProgressDialog(ct);
+        String cargando = ct.getResources().getString(R.string.ws_cargando);
+        progreso.setMessage(cargando);
+
         JSONObject json=new JSONObject();
         try {
-            json.put(EstructuraTablas.COL_0_ENCUESTA,c.getAsString(EstructuraTablas.COL_0_ENCUESTA));
+            json.put(EstructuraTablas.COL_0_ENCUESTA,id);
             json.put(EstructuraTablas.COL_1_ENCUESTA,c.getAsString(EstructuraTablas.COL_1_ENCUESTA));
             json.put(EstructuraTablas.COL_2_ENCUESTA,c.getAsString(EstructuraTablas.COL_2_ENCUESTA));
             json.put(EstructuraTablas.COL_3_ENCUESTA,c.getAsString(EstructuraTablas.COL_3_ENCUESTA));
@@ -110,8 +116,6 @@ public class Operaciones_CRUD implements Response.Listener<JSONObject>, Response
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public static ArrayList<Escuela> todosEscuela(String table_name, SQLiteDatabase db) {
