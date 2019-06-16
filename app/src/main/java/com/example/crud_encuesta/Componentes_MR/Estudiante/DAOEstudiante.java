@@ -5,11 +5,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
+import android.widget.ListView;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,9 +18,9 @@ import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.ObtenerCorrelativoTabla;
 import com.example.crud_encuesta.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 public class DAOEstudiante implements Response.Listener<JSONObject>, Response.ErrorListener{
@@ -156,7 +153,7 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         return (cx.update("ESTUDIANTE", contenedor, "ID_EST="+estd.getId(), null))>0;
     }
 
-    public ArrayList<Estudiante> verTodos(){
+    /*public ArrayList<Estudiante> verTodos(){
         lista.clear();
         Cursor cursor = cx.rawQuery("SELECT * FROM ESTUDIANTE",null);
 
@@ -173,6 +170,53 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
             }while (cursor.moveToNext());
         }
         return lista;
+    }*/
+
+    public ArrayList<Estudiante> verTodos(AdaptadorEstudiante adaptadorEstudiante, ListView listView){
+        request = Volley.newRequestQueue(ct);
+        wsConsulta(adaptadorEstudiante, listView);
+
+        return lista;
+    }
+
+    public void wsConsulta(final AdaptadorEstudiante adaptadorEstudiante, final ListView listView) {
+
+        progreso.show();
+        String url = host+"MR11139/WSReadEstudiantes.php";
+
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray json = response.optJSONArray("ESTUDIANTE");
+                    lista.clear();
+                    for (int i = 0; i<json.length();i++){
+                        JSONObject jsonObject = null;
+                        jsonObject = json.getJSONObject(i);
+                        lista.add(estudiante = new Estudiante(
+                                jsonObject.optInt("ID_EST"),
+                                jsonObject.optString("CARNET"),
+                                jsonObject.optString("NOMBRE"),
+                                jsonObject.optInt("ACTIVO"),
+                                jsonObject.optString("ANIO_INGRESO"),
+                                jsonObject.optInt("IDUSUARIO")
+                        ));
+                    }
+
+                    listView.setAdapter(adaptadorEstudiante);
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        request.add(jsonObjectRequest);
+        progreso.hide();
     }
 
     public ArrayList<Estudiante> verBusqueda(String parametro){

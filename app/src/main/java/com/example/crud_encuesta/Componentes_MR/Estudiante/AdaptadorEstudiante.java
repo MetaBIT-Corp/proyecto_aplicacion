@@ -237,7 +237,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
                             dao.editarUsuario(usuario);
 
                             notifyDataSetChanged();
-                            lista = dao.verTodos();
+                            //lista = dao.verTodos();
                             dialogo.dismiss();
                         }else{
                             Toast.makeText(a, errores+"\n"+a.getResources().getString(R.string.rellene_v), Toast.LENGTH_SHORT).show();
@@ -275,7 +275,7 @@ public class AdaptadorEstudiante extends BaseAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dao.eliminar(getId());
-                        lista = dao.verTodos();
+                        //lista = dao.verTodos();
                         notifyDataSetChanged();
                     }
                 });

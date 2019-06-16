@@ -39,23 +39,27 @@ public class ActivityEstudiante extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estudiante);
 
+        final ListView list = (ListView) findViewById(R.id.lista_estudiante);
+
+        final EditText buscar=findViewById(R.id.find_nom);
+
         dao = new DAOEstudiante(this);
-        lista = dao.verTodos();
+        lista = dao.verTodos(adapter,list);
         adapter = new AdaptadorEstudiante(this,lista,dao);
+        lista = dao.verTodos(adapter,list);
+        adapter = new AdaptadorEstudiante(this,lista,dao);
+
         access = DatabaseAccess.getInstance(ActivityEstudiante.this);
         db = access.open();
-
-        final ListView list = (ListView) findViewById(R.id.lista_estudiante);
-        final EditText buscar=findViewById(R.id.find_nom);
 
         FloatingActionButton agregar = (FloatingActionButton) findViewById(R.id.btn_nuevo_estudiante);
         ImageView btnBuscar=findViewById(R.id.el_find);
         ImageView btnTodos=findViewById(R.id.el_all);
 
         /*Llenando Lista de Estudiantes en DB*/
-        if((lista != null) && (lista.size() > 0)){
+        /*if((lista != null) && (lista.size() > 0)){
             list.setAdapter(adapter);
-        }
+        }*/
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -77,7 +81,7 @@ public class ActivityEstudiante extends AppCompatActivity {
         btnTodos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lista = dao.verTodos();
+                lista = dao.verTodos(adapter,list);
                 if((lista != null) && (lista.size() > 0)){
                     list.setAdapter(adapter);
                 }
@@ -168,8 +172,8 @@ public class ActivityEstudiante extends AppCompatActivity {
                             });
                             usrAlert.show();
 
-                            lista = dao.verTodos();
-                            adapter.notifyDataSetChanged();
+                            //lista = dao.verTodos();
+                            //adapter.notifyDataSetChanged();
                             dialogo.dismiss();
 
                         } else {
