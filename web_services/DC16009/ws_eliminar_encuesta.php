@@ -2,18 +2,12 @@
 
 if (isset($_REQUEST['id_encuesta'])) {
 	
-	$id_encuesta = $_REQUEST['id_encuesta'];
+	$conexion = include '../conexion_bd.php';
 
-	$servidor = 'localhost';
-	$usuario = 'eisi_q';
-	$database = 'EISI_Q';
-	$password = 'enQest*s%8102%';
+	$id_encuesta = $_REQUEST['id_encuesta'];
 
 	$respuesta = array('resultado' =>  0);
 	json_encode($respuesta);
-
-	
-	$conexion = mysqli_connect($servidor, $usuario, $password, $database);
 
 	if($conexion){
 		$query = "DELETE FROM ENCUESTA WHERE ID_ENCUESTA = '$id_encuesta';";
