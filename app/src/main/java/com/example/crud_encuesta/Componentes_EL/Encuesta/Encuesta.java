@@ -10,6 +10,23 @@ public class Encuesta {
     public Encuesta() {
     }
 
+    public Encuesta(int id, String titulo, String descripcion, String fecha_in, String fecha_fin, Docente id_docente) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.fecha_in = fecha_in;
+        this.fecha_fin = fecha_fin;
+        this.id_docente = id_docente;
+    }
+
+    public Encuesta(int id, String titulo, String descripcion, String fecha_in, String fecha_fin) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.fecha_in = fecha_in;
+        this.fecha_fin = fecha_fin;
+    }
+
     public int getId() {
         return id;
     }

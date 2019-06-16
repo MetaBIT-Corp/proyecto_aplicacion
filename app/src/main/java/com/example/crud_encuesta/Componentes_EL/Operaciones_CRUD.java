@@ -6,6 +6,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.crud_encuesta.Componentes_EL.Encuesta.EncuestaAdapter;
 import com.example.crud_encuesta.Componentes_MR.Docente.Docente;
 
 import android.app.ProgressDialog;
@@ -14,6 +15,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.crud_encuesta.Componentes_EL.Carrera.Carrera;
@@ -22,6 +24,7 @@ import com.example.crud_encuesta.Componentes_EL.Escuela.Escuela;
 import com.example.crud_encuesta.Componentes_EL.Materia.Materia;
 import com.example.crud_encuesta.Componentes_EL.ModelosAdicionales.Facultad;
 import com.example.crud_encuesta.Componentes_EL.ModelosAdicionales.Pensum;
+import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 
 import org.json.JSONArray;
@@ -32,11 +35,29 @@ import java.util.ArrayList;
 
 public class Operaciones_CRUD implements Response.Listener<JSONObject>, Response.ErrorListener{
 
+    private SQLiteDatabase db;
+    private final ArrayList<Encuesta> listaEncuestas = new ArrayList<>();
+    private Encuesta encuesta;
     private  ProgressDialog progreso;
     private  RequestQueue request;
     private  JsonObjectRequest jsonObjectRequest;
     private Context ct;
     private  String host = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/";
+
+    public Operaciones_CRUD(Context ct){
+        this.ct = ct;
+        DatabaseAccess dba = DatabaseAccess.getInstance(ct);
+        db = dba.open();
+
+        request = Volley.newRequestQueue(ct);
+
+        progreso = new ProgressDialog(ct);
+        String cargando = ct.getResources().getString(R.string.ws_cargando);
+        progreso.setMessage(cargando);
+    }
+
+    public Operaciones_CRUD() {
+    }
 
     public static final Toast insertar(SQLiteDatabase db, ContentValues c, Context context, String table_name) {
         try {
@@ -430,6 +451,51 @@ public class Operaciones_CRUD implements Response.Listener<JSONObject>, Response
         Cursor c = db.rawQuery(" SELECT * FROM " + EstructuraTablas.DOCENTE_TABLE_NAME+" WHERE IDUSUARIO= "+idusuario, null);
         c.moveToFirst();
         return c.getInt(0);
+    }
+
+    public ArrayList<Encuesta> todosEncuestaW(SQLiteDatabase db, ArrayList<Docente> d, int id, EncuestaAdapter encuestaAdapter, ListView listView) {
+        request = Volley.newRequestQueue(ct);
+        wsConsultaEncuestas(db,d,id,encuestaAdapter,listView);
+        return listaEncuestas;
+    }
+
+    public void wsConsultaEncuestas(final SQLiteDatabase db, ArrayList<Docente> d, int id, final EncuestaAdapter encuestaAdapter, final ListView listView) {
+
+        progreso.show();
+        String url = host+"MR11139/WSReadEncuestas.php?idusuario="+id;
+
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray json = response.optJSONArray("ENCUESTA");
+                    listaEncuestas.clear();
+                    for (int i = 0; i<json.length();i++){
+                        JSONObject jsonObject = null;
+                        jsonObject = json.getJSONObject(i);
+                        listaEncuestas.add(encuesta = new Encuesta(
+                                jsonObject.optInt("ID_ENCUESTA"),
+                                jsonObject.optString("TITULO_ENCUESTA"),
+                                jsonObject.optString("DESCRIPCION_ENCUESTA"),
+                                jsonObject.optString("FECHA_INICIO_ENCUESTA"),
+                                jsonObject.optString("FECHA_FINAL_ENCUESTA")
+                        ));
+                    }
+
+                    listView.setAdapter(encuestaAdapter);
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        request.add(jsonObjectRequest);
+        progreso.hide();
     }
 
     @Override

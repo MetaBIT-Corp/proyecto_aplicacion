@@ -33,6 +33,8 @@ import java.util.Calendar;
 
 public class EncuestaActivity extends AppCompatActivity {
 
+    private Operaciones_CRUD op_crud;
+
     SQLiteDatabase db;
     DatabaseAccess access;
     ListView listView;
@@ -58,6 +60,8 @@ public class EncuestaActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        op_crud = new Operaciones_CRUD(this);
+
         FloatingActionButton fab= findViewById(R.id.fab);
         listView=findViewById(R.id.list_view_base);
         access=DatabaseAccess.getInstance(EncuestaActivity.this);
@@ -81,7 +85,7 @@ public class EncuestaActivity extends AppCompatActivity {
 
         if (rol==1){
             l.setVisibility(View.GONE);
-            listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes,iduser);
+            listaEncuesta=op_crud.todosEncuestaW(db,listaDocentes,iduser,adapter,listView);
         }
 
         ImageView btnBuscar=findViewById(R.id.el_find);
@@ -119,6 +123,10 @@ public class EncuestaActivity extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
+        if (rol==1){
+            l.setVisibility(View.GONE);
+            listaEncuesta=op_crud.todosEncuestaW(db,listaDocentes,iduser,adapter,listView);
+        }
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -248,5 +256,4 @@ public class EncuestaActivity extends AppCompatActivity {
             }
         });
     }
-
 }
