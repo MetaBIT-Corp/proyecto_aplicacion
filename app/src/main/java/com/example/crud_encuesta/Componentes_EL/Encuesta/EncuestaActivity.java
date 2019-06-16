@@ -1,5 +1,11 @@
 package com.example.crud_encuesta.Componentes_EL.Encuesta;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.crud_encuesta.Componentes_MR.Docente.Docente;
 
 import android.annotation.SuppressLint;
@@ -28,12 +34,24 @@ import com.example.crud_encuesta.Componentes_EL.Operaciones_CRUD;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.R;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class EncuestaActivity extends AppCompatActivity {
+public class EncuestaActivity extends AppCompatActivity
+        implements Response.Listener<JSONObject>, Response.ErrorListener{
 
     private Operaciones_CRUD op_crud;
+
+    /*
+    WEBSERVICE
+     */
+    RequestQueue requestQueue;
+    JsonObjectRequest jsonObjectRequest;
+    /*
+    FIN WEBSERVICE
+     */
 
     SQLiteDatabase db;
     DatabaseAccess access;
@@ -61,6 +79,8 @@ public class EncuestaActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         op_crud = new Operaciones_CRUD(this);
+
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         FloatingActionButton fab= findViewById(R.id.fab);
         listView=findViewById(R.id.list_view_base);
@@ -241,6 +261,7 @@ public class EncuestaActivity extends AppCompatActivity {
                                 listaEncuesta=Operaciones_CRUD.todosEncuesta(db,listaDocentes,iduser);
                             }
                             adapter.setL(listaEncuesta);
+                            cargarWebService(getUltimaEncuesta());
                         }
                     }
                 });
@@ -255,5 +276,43 @@ public class EncuestaActivity extends AppCompatActivity {
                 d.show();
             }
         });
+    }
+
+    private Encuesta getUltimaEncuesta(){
+        Encuesta encuesta = new Encuesta();
+        int tamanio = listaEncuesta.size();
+        encuesta = listaEncuesta.get(tamanio-1);
+        return encuesta;
+    }
+
+    private void cargarWebService(Encuesta encuesta) {
+        String host = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/";
+        String ws= "AP16014/ws_create_encuesta.php?";
+        String url = host+ ws +
+                "id_encuesta=" + encuesta.getId() +
+                "&descripcion_encuesta=" + encuesta.getDescripcion() +
+                "&titulo_encuesta=" + encuesta.getTitulo() +
+                "&id_pdg_dcn=" + 1 +
+                "&fecha_inicio_encuesta=" + encuesta.getFecha_in()+
+                "&fecha_final_encuesta="+encuesta.getFecha_fin();
+        url = url.replace(" ", "%20");
+        jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                this,
+                this
+        );
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(this, R.string.ws_error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        Toast.makeText(this, R.string.ws_exito, Toast.LENGTH_SHORT).show();
     }
 }
