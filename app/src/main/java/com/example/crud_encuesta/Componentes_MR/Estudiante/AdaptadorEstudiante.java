@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
@@ -235,7 +236,6 @@ public class AdaptadorEstudiante extends BaseAdapter {
 
                             dao.editar(estudiante);
                             dao.editarUsuario(usuario);
-
                             notifyDataSetChanged();
                             //lista = dao.verTodos();
                             dialogo.dismiss();

@@ -292,7 +292,7 @@ public class EncuestaActivity extends AppCompatActivity
                 "id_encuesta=" + encuesta.getId() +
                 "&descripcion_encuesta=" + encuesta.getDescripcion() +
                 "&titulo_encuesta=" + encuesta.getTitulo() +
-                "&id_pdg_dcn=" + 1 +
+                "&id_pdg_dcn=" + 1+
                 "&fecha_inicio_encuesta=" + encuesta.getFecha_in()+
                 "&fecha_final_encuesta="+encuesta.getFecha_fin();
         url = url.replace(" ", "%20");

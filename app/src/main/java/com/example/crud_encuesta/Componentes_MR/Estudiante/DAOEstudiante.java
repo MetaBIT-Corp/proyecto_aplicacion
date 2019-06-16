@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
+import com.example.crud_encuesta.Componentes_EL.Encuesta.Encuesta;
 import com.example.crud_encuesta.DatabaseAccess;
 import com.example.crud_encuesta.ObtenerCorrelativoTabla;
 import com.example.crud_encuesta.R;
@@ -144,6 +145,7 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
     }
 
     public boolean editar(Estudiante estd){
+        cargarWebServiceEditar(estd);
         ContentValues contenedor = new ContentValues();
         contenedor.put("ID_EST", estd.getId());
         contenedor.put("CARNET", estd.getCarnet());
@@ -277,6 +279,28 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         progreso.hide();
     }
 
+    public void cargarWebServiceEditar(Estudiante estudiante) {
+        request = Volley.newRequestQueue(ct);
+        String host = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/";
+        String ws= "AP16014/ws_update_estudiante.php?";
+        String url = host+ ws +
+                "id_est=" + estudiante.getId() +
+                "&anio_ingreso=" + estudiante.getAnio_ingreso() +
+                "&carnet=" + estudiante.getCarnet() +
+                "&nombre=" + estudiante.getNombre()+
+                "&id_usuario=" + estudiante.getId_usuario()+
+                "&activo="+estudiante.getActivo();
+        url = url.replace(" ", "%20");
+        jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                null,
+                this,
+                this
+        );
+        request.add(jsonObjectRequest);
+    }
+
     @Override
     public void onErrorResponse(VolleyError error) {
         progreso.hide();
@@ -288,4 +312,5 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         progreso.hide();
         Toast.makeText(ct, R.string.ws_exito, Toast.LENGTH_SHORT).show();
     }
+
 }
