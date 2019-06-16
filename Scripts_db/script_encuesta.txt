@@ -1,0 +1,796 @@
+
+--==============================================================
+-- Table: TIPO_ITEM
+--==============================================================
+create table TIPO_ITEM (
+ID_TIPO_ITEM         INTEGER              not null,
+NOMBRE_TIPO_ITEM     VARCHAR(100),
+primary key (ID_TIPO_ITEM)
+);
+
+--==============================================================
+-- Table: ESCUELA
+--==============================================================
+create table ESCUELA (
+ID_ESCUELA           INTEGER              not null,
+NOMBRE_ESCUELA       VARCHAR(100)         not null,
+primary key (ID_ESCUELA)
+);
+
+--==============================================================
+-- Table: CARRERA
+--==============================================================
+create table CARRERA (
+ID_CARRERA           INTEGER              not null,
+ID_ESCUELA           INTEGER,
+NOMBRE_CARRERA       VARCHAR(100)         not null,
+primary key (ID_CARRERA),
+foreign key (ID_ESCUELA)
+      references ESCUELA (ID_ESCUELA)
+);
+
+--==============================================================
+-- Table: PENSUM
+--==============================================================
+create table PENSUM (
+ID_PENUM             INTEGER              not null,
+ANIO_PENSUM          INTEGER              not null,
+primary key (ID_PENUM)
+);
+
+--==============================================================
+-- Table: CAT_MAT_MATERIA
+--==============================================================
+create table CAT_MAT_MATERIA (
+ID_CAT_MAT           INTEGER              not null,
+ID_PENUM             INTEGER,
+ID_CARRERA           INTEGER,
+CODIGO_MAT           VARCHAR(45)          not null,
+NOMBRE_MAR           VARCHAR(100)         not null,
+ES_ELECTIVA          INTEGER              not null,
+MAXIMO_CANT_PREGUNTAS INTEGER              not null,
+primary key (ID_CAT_MAT),
+foreign key (ID_CARRERA)
+      references CARRERA (ID_CARRERA),
+foreign key (ID_PENUM)
+      references PENSUM (ID_PENUM)
+);
+
+--==============================================================
+-- Table: PDG_DCN_DOCENTE
+--==============================================================
+create table PDG_DCN_DOCENTE (
+ID_PDG_DCN           INTEGER              not null,
+ID_ESCUELA           INTEGER,
+CARNET_PDG_DCN       VARCHAR(45)          not null,
+ANIO_TITULACION_PDG_DCN VARCHAR(45)           default NULL,
+ACTIVO               INTEGER              not null default NULL,
+PDG_DCN_PRIORIDAD    INTEGER               default 0,
+ID_GEN_USUARIO       INTEGER,
+TIPOJORNADA          INTEGER               default NULL,
+DESCRIPCIONDOCENTE   VARCHAR(800)          default NULL,
+ID_CARGO_ACTUAL      INTEGER               default 1,
+DISPLAY_NAME         VARCHAR(100)          default NULL,
+ID_SEGUNDO_CARGO     INTEGER               default NULL,
+NOMBRE_DOCENTE       VARCHAR(150)         not null,
+primary key (ID_PDG_DCN),
+foreign key (ID_ESCUELA)
+      references ESCUELA (ID_ESCUELA)
+);
+
+--==============================================================
+-- Table: AREA
+--==============================================================
+create table AREA (
+ID_AREA              INTEGER              not null,
+ID_CAT_MAT           INTEGER,
+ID_PDG_DCN           INTEGER,
+ID_TIPO_ITEM         INTEGER              not null,
+TITULO               VARCHAR(100)         not null,
+primary key (ID_AREA),
+foreign key (ID_TIPO_ITEM)
+      references TIPO_ITEM (ID_TIPO_ITEM),
+foreign key (ID_CAT_MAT)
+      references CAT_MAT_MATERIA (ID_CAT_MAT),
+foreign key (ID_PDG_DCN)
+      references PDG_DCN_DOCENTE (ID_PDG_DCN)
+);
+
+--==============================================================
+-- Table: MATERIA_CICLO
+--==============================================================
+create table MATERIA_CICLO (
+ID_MAT_CI            INTEGER              not null,
+ID_CAT_MAT           INTEGER,
+CICLO                VARCHAR(45)          not null default NULL,
+ANIO                 VARCHAR(4)           not null,
+primary key (ID_MAT_CI),
+foreign key (ID_CAT_MAT)
+      references CAT_MAT_MATERIA (ID_CAT_MAT)
+);
+
+--==============================================================
+-- Table: CARGA_ACADEMICA
+--==============================================================
+create table CARGA_ACADEMICA (
+ID_CARG_ACA          INTEGER              not null,
+ID_MAT_CI            INTEGER,
+ID_PDG_DCN           INTEGER,
+primary key (ID_CARG_ACA),
+foreign key (ID_PDG_DCN)
+      references PDG_DCN_DOCENTE (ID_PDG_DCN),
+foreign key (ID_MAT_CI)
+      references MATERIA_CICLO (ID_MAT_CI)
+);
+
+--==============================================================
+-- Table: ENCUESTA
+--==============================================================
+create table ENCUESTA (
+ID_ENCUESTA          INTEGER              not null,
+ID_PDG_DCN           INTEGER              not null,
+TITULO_ENCUESTA      VARCHAR(100)         not null,
+DESCRIPCION_ENCUESTA CHAR(254),
+FECHA_INICIO_ENCUESTA DATE                 not null,
+FECHA_FINAL_ENCUESTA DATE                 not null,
+primary key (ID_ENCUESTA),
+foreign key (ID_PDG_DCN)
+      references PDG_DCN_DOCENTE (ID_PDG_DCN)
+);
+
+--==============================================================
+-- Table: CLAVE
+--==============================================================
+create table CLAVE (
+ID_CLAVE             INTEGER              not null,
+ID_ENCUESTA          INTEGER,
+NUMERO_CLAVE         INTEGER              not null,
+primary key (ID_CLAVE),
+foreign key (ID_ENCUESTA)
+      references ENCUESTA (ID_ENCUESTA)
+);
+
+--==============================================================
+-- Index: AREA_PK
+--==============================================================
+create unique index AREA_PK on AREA (
+ID_AREA ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_19_FK
+--==============================================================
+create  index RELATIONSHIP_19_FK on AREA (
+ID_TIPO_ITEM ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_34_FK
+--==============================================================
+create  index RELATIONSHIP_34_FK on AREA (
+ID_CAT_MAT ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_35_FK
+--==============================================================
+create  index RELATIONSHIP_35_FK on AREA (
+ID_PDG_DCN ASC
+);
+
+--==============================================================
+-- Index: CARGA_ACADEMICA_PK
+--==============================================================
+create unique index CARGA_ACADEMICA_PK on CARGA_ACADEMICA (
+ID_CARG_ACA ASC
+);
+
+--==============================================================
+-- Index: DOCENTE_CARGA_ACAD_FK
+--==============================================================
+create  index DOCENTE_CARGA_ACAD_FK on CARGA_ACADEMICA (
+ID_PDG_DCN ASC
+);
+
+--==============================================================
+-- Index: MAT_CICLO_CARGA_ACAD_FK
+--==============================================================
+create  index MAT_CICLO_CARGA_ACAD_FK on CARGA_ACADEMICA (
+ID_MAT_CI ASC
+);
+
+--==============================================================
+-- Index: CARRERA_PK
+--==============================================================
+create unique index CARRERA_PK on CARRERA (
+ID_CARRERA ASC
+);
+
+--==============================================================
+-- Index: FK_ESCUELA_CARRERA_FK
+--==============================================================
+create  index FK_ESCUELA_CARRERA_FK on CARRERA (
+ID_ESCUELA ASC
+);
+
+--==============================================================
+-- Index: CAT_MAT_MATERIA_PK
+--==============================================================
+create unique index CAT_MAT_MATERIA_PK on CAT_MAT_MATERIA (
+ID_CAT_MAT ASC
+);
+
+--==============================================================
+-- Index: FK_CARRERA_CAT_MAT_MATERIA_FK
+--==============================================================
+create  index FK_CARRERA_CAT_MAT_MATERIA_FK on CAT_MAT_MATERIA (
+ID_CARRERA ASC
+);
+
+--==============================================================
+-- Index: FK_PENSUM_CAT_MAT_MATERIA_FK
+--==============================================================
+create  index FK_PENSUM_CAT_MAT_MATERIA_FK on CAT_MAT_MATERIA (
+ID_PENUM ASC
+);
+
+--==============================================================
+-- Index: CLAVE_PK
+--==============================================================
+create unique index CLAVE_PK on CLAVE (
+ID_CLAVE ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_33_FK
+--==============================================================
+create  index RELATIONSHIP_33_FK on CLAVE (
+ID_ENCUESTA ASC
+);
+
+--==============================================================
+-- Table: CLAVE_AREA
+--==============================================================
+create table CLAVE_AREA (
+ID_CLAVE_AREA        INTEGER              not null,
+ID_AREA              INTEGER              not null,
+ID_CLAVE             INTEGER              not null,
+NUMERO_PREGUNTAS     INTEGER              not null,
+ALEATORIO            smallint             not null,
+PESO                 INTEGER              not null,
+primary key (ID_CLAVE_AREA),
+foreign key (ID_CLAVE)
+      references CLAVE (ID_CLAVE),
+foreign key (ID_AREA)
+      references AREA (ID_AREA)
+);
+
+--==============================================================
+-- Index: CLAVE_AREA_PK
+--==============================================================
+create unique index CLAVE_AREA_PK on CLAVE_AREA (
+ID_CLAVE_AREA ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_25_FK
+--==============================================================
+create  index RELATIONSHIP_25_FK on CLAVE_AREA (
+ID_CLAVE ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_26_FK
+--==============================================================
+create  index RELATIONSHIP_26_FK on CLAVE_AREA (
+ID_AREA ASC
+);
+
+--==============================================================
+-- Table: GRUPO_EMPAREJAMIENTO
+--==============================================================
+create table GRUPO_EMPAREJAMIENTO (
+<<<<<<< HEAD
+ID_GRUPO_EMP         INTEGER              primary key autoincrement,
+ID_AREA              INTEGER              not null,
+DESCRIPCION_GRUPO_EMP VARCHAR(100),
+=======
+ID_GRUPO_EMP         INTEGER              not null,
+ID_AREA              INTEGER              not null,
+DESCRIPCION_GRUPO_EMP VARCHAR(100),
+primary key (ID_GRUPO_EMP),
+>>>>>>> 11cb402901805647d91d60d9d7d6be771ef0971c
+foreign key (ID_AREA)
+      references AREA (ID_AREA)
+);
+
+--==============================================================
+-- Table: PREGUNTA
+--==============================================================
+create table PREGUNTA (
+ID_PREGUNTA          INTEGER              not null,
+ID_GRUPO_EMP         INTEGER              not null,
+PREGUNTA             CHAR(254)            not null,
+primary key (ID_PREGUNTA),
+foreign key (ID_GRUPO_EMP)
+      references GRUPO_EMPAREJAMIENTO (ID_GRUPO_EMP)
+);
+
+--==============================================================
+-- Table: CLAVE_AREA_PREGUNTA
+--==============================================================
+create table CLAVE_AREA_PREGUNTA (
+ID_CLAVE_AREA_PRE    INTEGER              not null,
+ID_PREGUNTA          INTEGER              not null,
+ID_CLAVE_AREA        INTEGER,
+primary key (ID_CLAVE_AREA_PRE),
+foreign key (ID_CLAVE_AREA)
+      references CLAVE_AREA (ID_CLAVE_AREA),
+foreign key (ID_PREGUNTA)
+      references PREGUNTA (ID_PREGUNTA)
+);
+
+--==============================================================
+-- Index: CLAVE_AREA_PREGUNTA_PK
+--==============================================================
+create unique index CLAVE_AREA_PREGUNTA_PK on CLAVE_AREA_PREGUNTA (
+ID_CLAVE_AREA_PRE ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_27_FK
+--==============================================================
+create  index RELATIONSHIP_27_FK on CLAVE_AREA_PREGUNTA (
+ID_CLAVE_AREA ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_28_FK
+--==============================================================
+create  index RELATIONSHIP_28_FK on CLAVE_AREA_PREGUNTA (
+ID_PREGUNTA ASC
+);
+
+--==============================================================
+-- Table: GEN_EST_ESTUDIANTE
+--==============================================================
+create table GEN_EST_ESTUDIANTE (
+CARNET_GEN_EST       VARCHAR(10)          not null,
+ID_GEN_EST           INTEGER              not null,
+ID_GEN_USR           INTEGER,
+NOMBRE_GEN_EST       VARCHAR(45)          not null,
+DISPONIBLE_GEN_EST   INTEGER              not null default 1,
+primary key (ID_GEN_EST)
+);
+
+--==============================================================
+-- Table: DETALLEINSCEST
+--==============================================================
+create table DETALLEINSCEST (
+ID_DET_INSC          INTEGER              not null,
+ID_GEN_EST           INTEGER,
+ID_MAT_CI            INTEGER,
+primary key (ID_DET_INSC),
+foreign key (ID_MAT_CI)
+      references MATERIA_CICLO (ID_MAT_CI),
+foreign key (ID_GEN_EST)
+      references GEN_EST_ESTUDIANTE (ID_GEN_EST)
+);
+
+--==============================================================
+-- Index: DETALLEINSCEST_PK
+--==============================================================
+create unique index DETALLEINSCEST_PK on DETALLEINSCEST (
+ID_DET_INSC ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_17_FK
+--==============================================================
+create  index RELATIONSHIP_17_FK on DETALLEINSCEST (
+ID_MAT_CI ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_18_FK
+--==============================================================
+create  index RELATIONSHIP_18_FK on DETALLEINSCEST (
+ID_GEN_EST ASC
+);
+
+--==============================================================
+-- Index: ENCUESTA_PK
+--==============================================================
+create unique index ENCUESTA_PK on ENCUESTA (
+ID_ENCUESTA ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_37_FK
+--==============================================================
+create  index RELATIONSHIP_37_FK on ENCUESTA (
+ID_PDG_DCN ASC
+);
+
+--==============================================================
+-- Table: ENCUESTADO
+--==============================================================
+create table ENCUESTADO (
+ID                   VARCHAR(50)          not null,
+primary key (ID)
+);
+
+--==============================================================
+-- Index: ENCUESTADO_PK
+--==============================================================
+create unique index ENCUESTADO_PK on ENCUESTADO (
+ID ASC
+);
+
+--==============================================================
+-- Index: ESCUELA_PK
+--==============================================================
+create unique index ESCUELA_PK on ESCUELA (
+ID_ESCUELA ASC
+);
+
+--==============================================================
+-- Table: EVALUACION
+--==============================================================
+create table EVALUACION (
+ID_EVALUACION        INTEGER              not null,
+ID_CARG_ACA          INTEGER              not null,
+DURACION             TIME                 not null,
+INTENTO              INTEGER              not null,
+NOMBRE_EVALUACION    VARCHAR(100)         not null,
+DESCRIPCION_EVALUACION CHAR(254),
+RETROCEDER           smallint             not null,
+primary key (ID_EVALUACION),
+foreign key (ID_CARG_ACA)
+      references CARGA_ACADEMICA (ID_CARG_ACA)
+);
+
+--==============================================================
+-- Index: EVALUACION_PK
+--==============================================================
+create unique index EVALUACION_PK on EVALUACION (
+ID_EVALUACION ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_14_FK
+--==============================================================
+create  index RELATIONSHIP_14_FK on EVALUACION (
+ID_CARG_ACA ASC
+);
+
+--==============================================================
+-- Index: GEN_EST_ESTUDIANTE_PK
+--==============================================================
+create unique index GEN_EST_ESTUDIANTE_PK on GEN_EST_ESTUDIANTE (
+ID_GEN_EST ASC
+);
+
+--==============================================================
+-- Table: GRUPO_CARGA
+--==============================================================
+create table GRUPO_CARGA (
+ID_GRUP_CARG         INTEGER              not null,
+ID_PDG_DCN           INTEGER,
+ID_MAT_CI            INTEGER,
+TIPO                 VARCHAR(15)          not null,
+primary key (ID_GRUP_CARG),
+foreign key (ID_PDG_DCN)
+      references PDG_DCN_DOCENTE (ID_PDG_DCN),
+foreign key (ID_MAT_CI)
+      references MATERIA_CICLO (ID_MAT_CI)
+);
+
+--==============================================================
+-- Index: GRUPO_CARGA_PK
+--==============================================================
+create unique index GRUPO_CARGA_PK on GRUPO_CARGA (
+ID_GRUP_CARG ASC
+);
+
+--==============================================================
+-- Index: DOCENTE_GRUPO_CAR_FK
+--==============================================================
+create  index DOCENTE_GRUPO_CAR_FK on GRUPO_CARGA (
+ID_PDG_DCN ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_9_FK
+--==============================================================
+create  index RELATIONSHIP_9_FK on GRUPO_CARGA (
+ID_MAT_CI ASC
+);
+
+--==============================================================
+-- Index: GRUPO_EMPAREJAMIENTO_PK
+--==============================================================
+create unique index GRUPO_EMPAREJAMIENTO_PK on GRUPO_EMPAREJAMIENTO (
+ID_GRUPO_EMP ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_38_FK
+--==============================================================
+create  index RELATIONSHIP_38_FK on GRUPO_EMPAREJAMIENTO (
+ID_AREA ASC
+);
+
+--==============================================================
+-- Table: INTENTO
+--==============================================================
+create table INTENTO (
+ID_INTENTO           INTEGER              not null,
+ID_GEN_EST           INTEGER,
+ID_CLAVE             INTEGER,
+ID                   VARCHAR(50),
+FECHA_INICIO_INTENTO DATE                 not null,
+FECHA_FINAL_INTENTO  DATE,
+NUMERO_INTENTO       INTEGER              not null,
+NOTA_INTENTO         DECIMAL(2,2),
+primary key (ID_INTENTO),
+foreign key (ID_GEN_EST)
+      references GEN_EST_ESTUDIANTE (ID_GEN_EST),
+foreign key (ID_CLAVE)
+      references CLAVE (ID_CLAVE),
+foreign key (ID)
+      references ENCUESTADO (ID)
+);
+
+--==============================================================
+-- Index: INTENTO_PK
+--==============================================================
+create unique index INTENTO_PK on INTENTO (
+ID_INTENTO ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_23_FK
+--==============================================================
+create  index RELATIONSHIP_23_FK on INTENTO (
+ID_GEN_EST ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_32_FK
+--==============================================================
+create  index RELATIONSHIP_32_FK on INTENTO (
+ID_CLAVE ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_30_FK
+--==============================================================
+create  index RELATIONSHIP_30_FK on INTENTO (
+ID ASC
+);
+
+--==============================================================
+-- Index: MATERIA_CICLO_PK
+--==============================================================
+create unique index MATERIA_CICLO_PK on MATERIA_CICLO (
+ID_MAT_CI ASC
+);
+
+--==============================================================
+-- Index: MATERIA_MATERIA_CICLO_FK
+--==============================================================
+create  index MATERIA_MATERIA_CICLO_FK on MATERIA_CICLO (
+ID_CAT_MAT ASC
+);
+
+--==============================================================
+-- Table: OPCION
+--==============================================================
+create table OPCION (
+ID_OPCION            INTEGER              not null,
+ID_PREGUNTA          INTEGER              not null,
+OPCION               CHAR(254)            not null,
+CORRECTA             smallint             not null,
+primary key (ID_OPCION),
+foreign key (ID_PREGUNTA)
+      references PREGUNTA (ID_PREGUNTA)
+);
+
+--==============================================================
+-- Index: OPCION_PK
+--==============================================================
+create unique index OPCION_PK on OPCION (
+ID_OPCION ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_21_FK
+--==============================================================
+create  index RELATIONSHIP_21_FK on OPCION (
+ID_PREGUNTA ASC
+);
+
+--==============================================================
+-- Index: PDG_DCN_DOCENTE_PK
+--==============================================================
+create unique index PDG_DCN_DOCENTE_PK on PDG_DCN_DOCENTE (
+ID_PDG_DCN ASC
+);
+
+--==============================================================
+-- Index: FK_ESCUELA_PDG_DCN_DOCENTE_FK
+--==============================================================
+create  index FK_ESCUELA_PDG_DCN_DOCENTE_FK on PDG_DCN_DOCENTE (
+ID_ESCUELA ASC
+);
+
+--==============================================================
+-- Index: PENSUM_PK
+--==============================================================
+create unique index PENSUM_PK on PENSUM (
+ID_PENUM ASC
+);
+
+--==============================================================
+-- Index: PREGUNTA_PK
+--==============================================================
+create unique index PREGUNTA_PK on PREGUNTA (
+ID_PREGUNTA ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_24_FK
+--==============================================================
+create  index RELATIONSHIP_24_FK on PREGUNTA (
+ID_GRUPO_EMP ASC
+);
+
+--==============================================================
+-- Table: RESPUESTA
+--==============================================================
+create table RESPUESTA (
+ID_RESPUESTA         INTEGER              not null,
+ID_OPCION            INTEGER              not null,
+ID_INTENTO           INTEGER              not null,
+TEXTO_RESPUESTA      VARCHAR(30),
+primary key (ID_RESPUESTA),
+foreign key (ID_INTENTO)
+      references INTENTO (ID_INTENTO),
+foreign key (ID_OPCION)
+      references OPCION (ID_OPCION)
+);
+
+--==============================================================
+-- Index: RESPUESTA_PK
+--==============================================================
+create unique index RESPUESTA_PK on RESPUESTA (
+ID_RESPUESTA ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_29_FK
+--==============================================================
+create  index RELATIONSHIP_29_FK on RESPUESTA (
+ID_INTENTO ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_31_FK
+--==============================================================
+create  index RELATIONSHIP_31_FK on RESPUESTA (
+ID_OPCION ASC
+);
+
+--==============================================================
+-- Index: TIPO_ITEM_PK
+--==============================================================
+create unique index TIPO_ITEM_PK on TIPO_ITEM (
+ID_TIPO_ITEM ASC
+);
+
+--==============================================================
+-- Table: TURNO
+--==============================================================
+create table TURNO (
+ID_TURNO             INTEGER              not null,
+ID_EVALUACION        INTEGER              not null,
+FECHA_INICIO_TURNO   DATE                 not null,
+FECHA_FINAL_TURNO    DATE                 not null,
+VISIBILIDAD          smallint             not null,
+CONTRASENIA          VARCHAR(50)          not null,
+primary key (ID_TURNO),
+foreign key (ID_EVALUACION)
+      references EVALUACION (ID_EVALUACION)
+);
+
+--==============================================================
+-- Index: TURNO_PK
+--==============================================================
+create unique index TURNO_PK on TURNO (
+ID_TURNO ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_39_FK
+--==============================================================
+create  index RELATIONSHIP_39_FK on TURNO (
+ID_EVALUACION ASC
+);
+
+--==============================================================
+-- Table: TURNO_CLAVE
+--==============================================================
+create table TURNO_CLAVE (
+ID_TURNO_CLAVE       INTEGER              not null,
+ID_CLAVE             INTEGER,
+ID_TURNO             INTEGER,
+primary key (ID_TURNO_CLAVE),
+foreign key (ID_TURNO)
+      references TURNO (ID_TURNO),
+foreign key (ID_CLAVE)
+      references CLAVE (ID_CLAVE)
+);
+
+--==============================================================
+-- Index: TURNO_CLAVE_PK
+--==============================================================
+create unique index TURNO_CLAVE_PK on TURNO_CLAVE (
+ID_TURNO_CLAVE ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_36_FK
+--==============================================================
+create  index RELATIONSHIP_36_FK on TURNO_CLAVE (
+ID_TURNO ASC
+);
+
+--==============================================================
+-- Index: RELATIONSHIP_40_FK
+--==============================================================
+create  index RELATIONSHIP_40_FK on TURNO_CLAVE (
+ID_CLAVE ASC
+);
+<<<<<<< HEAD
+
+INSERT INTO TIPO_ITEM(ID_TIPO_ITEM,NOMBRE_TIPO_ITEM) VALUES (1, 'Opcion multiple');
+INSERT INTO TIPO_ITEM(ID_TIPO_ITEM,NOMBRE_TIPO_ITEM) VALUES (2, 'Falso/Verdadero');
+INSERT INTO TIPO_ITEM(ID_TIPO_ITEM,NOMBRE_TIPO_ITEM) VALUES (3, 'Emparejamiento');
+INSERT INTO TIPO_ITEM(ID_TIPO_ITEM,NOMBRE_TIPO_ITEM) VALUES (4, 'Repuesta corta');
+
+
+INSERT INTO PENSUM(ID_PENUM,ANIO_PENSUM) VALUES (1,1996);
+INSERT INTO PENSUM(ID_PENUM,ANIO_PENSUM) VALUES (2,1998);
+INSERT INTO PENSUM(ID_PENUM,ANIO_PENSUM) VALUES (3,2000);
+
+INSERT INTO ESCUELA(ID_ESCUELA,NOMBRE_ESCUELA) VALUES (1,'EISI');
+INSERT INTO ESCUELA(ID_ESCUELA,NOMBRE_ESCUELA) VALUES (2,'EII');
+
+INSERT INTO CARRERA(ID_CARRERA,ID_ESCUELA,NOMBRE_CARRERA) VALUES (1,1,'Ingenieria de Sistemas Informaticos');
+INSERT INTO CARRERA(ID_CARRERA,ID_ESCUELA,NOMBRE_CARRERA) VALUES (1,2,'Ingenieria Industrial');
+
+
+INSERT INTO CAT_MAT_MATERIA(ID_CAT_MAT,ID_PENUM,ID_CARRERA,CODIGO_MAT,NOMBRE_MAR,ES_ELECTIVA,MAXIMO_CANT_PREGUNTAS) VALUES (1,1,1,'ARC115','Super ARC',0,40);
+INSERT INTO CAT_MAT_MATERIA(ID_CAT_MAT,ID_PENUM,ID_CARRERA,CODIGO_MAT,NOMBRE_MAR,ES_ELECTIVA,MAXIMO_CANT_PREGUNTAS) VALUES (2,1,1,'HDP115','Herramientas de productividad',0,40);
+INSERT INTO CAT_MAT_MATERIA(ID_CAT_MAT,ID_PENUM,ID_CARRERA,CODIGO_MAT,NOMBRE_MAR,ES_ELECTIVA,MAXIMO_CANT_PREGUNTAS) VALUES (3,1,1,'SDU115','Sistemas digitales',0,40);
+
+
+INSERT INTO PDG_DCN_DOCENTE(ID_PDG_DCN,ID_ESCUELA,CARNET_PDG_DCN,ANIO_TITULACION_PDG_DCN,ACTIVO,PDG_DCN_PRIORIDAD,ID_GEN_USUARIO,TIPOJORNADA,DESCRIPCIONDOCENTE,ID_CARGO_ACTUAL,DISPLAY_NAME,ID_SEGUNDO_CARGO,NOMBRE_DOCENTE) VALUES (1,1,'DC16009','2000',1,3,1,1,'Buen docente',1,'Pablo',2,'Juan Pablo Diaz');
+INSERT INTO PDG_DCN_DOCENTE(ID_PDG_DCN,ID_ESCUELA,CARNET_PDG_DCN,ANIO_TITULACION_PDG_DCN,ACTIVO,PDG_DCN_PRIORIDAD,ID_GEN_USUARIO,TIPOJORNADA,DESCRIPCIONDOCENTE,ID_CARGO_ACTUAL,DISPLAY_NAME,ID_SEGUNDO_CARGO,NOMBRE_DOCENTE) VALUES (2,1,'MT16007','2000',1,3,2,1,'Buen docente',3,'Enrique',1,'Enrique Menjivar');
+
+
+
+INSERT INTO AREA(ID_AREA,ID_CAT_MAT,ID_PDG_DCN,ID_TIPO_ITEM,TITULO) VALUES (1,1,1,1,'Gestion de memoria');
+INSERT INTO AREA(ID_AREA,ID_CAT_MAT,ID_PDG_DCN,ID_TIPO_ITEM,TITULO) VALUES (2,1,1,1,'ALU');
+INSERT INTO AREA(ID_AREA,ID_CAT_MAT,ID_PDG_DCN,ID_TIPO_ITEM,TITULO) VALUES (3,1,1,1,'Sistemas Operativos');
+INSERT INTO AREA(ID_AREA,ID_CAT_MAT,ID_PDG_DCN,ID_TIPO_ITEM,TITULO) VALUES (4,1,1,1,'Set de Instrucciones');
+INSERT INTO AREA(ID_AREA,ID_CAT_MAT,ID_PDG_DCN,ID_TIPO_ITEM,TITULO) VALUES (5,1,1,1,'Memoria Cache');
+INSERT INTO AREA(ID_AREA,ID_CAT_MAT,ID_PDG_DCN,ID_TIPO_ITEM,TITULO) VALUES (6,2,2,1,'Historia de Informatica');
+INSERT INTO AREA(ID_AREA,ID_CAT_MAT,ID_PDG_DCN,ID_TIPO_ITEM,TITULO) VALUES (7,2,2,1,'BBDD');
+INSERT INTO AREA(ID_AREA,ID_CAT_MAT,ID_PDG_DCN,ID_TIPO_ITEM,TITULO) VALUES (8,2,2,1,'Evaluacion de Proyectos');
+
+
+INSERT INTO GRUPO_EMPAREJAMIENTO(ID_GRUPO_EMP,ID_AREA,DESCRIPCION_GRUPO_EMP) VALUES (1,1,'Preguntas de gestion de memoria.');
+=======
+>>>>>>> 11cb402901805647d91d60d9d7d6be771ef0971c
