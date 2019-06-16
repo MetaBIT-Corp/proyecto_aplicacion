@@ -28,8 +28,8 @@ public class IntentoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intento);
 
         id_turno = getIntent().getIntExtra("id_turno_intento", 0);
-        id_encuestado = getIntent().getIntExtra("id_encuesta_intento", 1);
-        id_estudiante = getIntent().getIntExtra("id_estudiante", 1);
+        id_encuestado = getIntent().getIntExtra("id_encuesta_intento", 0);
+        id_estudiante = getIntent().getIntExtra("id_estudiante", 0);
 
         listView = (ListView)findViewById(R.id.lsPreguntas);
         listView.setAdapter(new IntentoAdapter(getPreguntas(), id_estudiante, id_clave, id_encuestado, this, this, tamanio));

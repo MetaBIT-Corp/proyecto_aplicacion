@@ -30,7 +30,6 @@ public class WSIntento implements Response.Listener<JSONObject>, Response.ErrorL
     @Override
     public void onErrorResponse(VolleyError error) {
         Toast.makeText(context, "Error "+error.toString(), Toast.LENGTH_LONG).show();
-        System.out.println(error.toString());
     }
 
     @Override
@@ -40,6 +39,10 @@ public class WSIntento implements Response.Listener<JSONObject>, Response.ErrorL
 
     public void inicio_intento(int id_est, int id_encuesta, int id_clave, String fecha_inicio, int numero_intento){
         //progress("Cargando...");
+        String id_encuestaStr=Integer.toString(id_encuesta);
+        fecha_inicio=fecha_inicio.replace(" ", "%20");
+
+        if(id_encuesta==0) id_encuestaStr="null";
 
         //Local
         /*String url = "http://192.168.1.3:8001/encuesta/intento_create.php?" +
@@ -52,12 +55,10 @@ public class WSIntento implements Response.Listener<JSONObject>, Response.ErrorL
         //Remoto
         String url = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/MT16007/intento_create.php?" +
                 "id_est="+id_est+
-                "&id_encuesta="+id_encuesta+
+                "&id_encuesta="+id_encuestaStr+
                 "&id_clave="+id_clave+
-                "&fecha_inicio_intento="+fecha_inicio+
-                "&numero_intento="+numero_intento;
-
-        url = url.replace(" ", "%20");
+                "&numero_intento="+numero_intento+
+                "&fecha_inicio_intento="+fecha_inicio;
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         requestQueue.add(jsonObjectRequest);
