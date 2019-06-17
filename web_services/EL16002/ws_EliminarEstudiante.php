@@ -9,18 +9,12 @@ if (isset($_REQUEST['id'])) {
     if ($conexion) {
         $query     = "DELETE FROM ESTUDIANTE WHERE ID_EST = '$id';";
         $resultado = mysqli_query($conexion, $query);
+
         if ($resultado) {
             $respuesta['resultadoEstudiante'] = 1;
         }
 
-        $query1     = "DELETE FROM USUARIO WHERE IDUSUARIO = '$id';";
-        $resultado1 = mysqli_query($conexion, $query1);
-        if ($resultado1) {
-            $respuesta['resultadoUsuario'] = 1;
-        }
-
     }
-
     echo json_encode($respuesta);
     mysqli_close($conexion);
 

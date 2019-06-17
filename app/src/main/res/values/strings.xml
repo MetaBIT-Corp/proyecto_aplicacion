@@ -216,7 +216,7 @@
     <string name="est_chck_activo">Activo</string>
     <string name="est_tv_nombre">Nombre: </string>
     <string name="est_tv_anio">Año Ingreso: </string>
-    <string name="est_borrar">¿Quieres eliminar al Estudiante? Esto eliminará todos sus datos, incluido sus credenciales de Usuario</string>
+    <string name="est_borrar">¿Quieres eliminar al Estudiante? Esto eliminará todos sus datos.</string>
     <!-- END Estudiante-->
 
     <!-- Docente -->
