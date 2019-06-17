@@ -170,7 +170,7 @@ create table ESCUELA
 /*==============================================================*/
 create table ESTUDIANTE
 (
-   ID_EST               int not null,
+   ID_EST               int not null AUTO_INCREMENT,
    IDUSUARIO            char(2),
    CARNET               varchar(10) not null,
    NOMBRE               varchar(100) not null,
