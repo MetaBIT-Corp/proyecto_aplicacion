@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,7 @@ public class EncuestaAdapter extends BaseAdapter {
     int dia,mes,año,ho,min;
     boolean seg;
 
-    int di,df,mi,mf,ai,af,hi,hf;
+    int di,df,mi,mf,ai,af,hi,hf=0;
     String cadenai = null;
     String cadenaf=null;
 
@@ -169,7 +170,6 @@ public class EncuestaAdapter extends BaseAdapter {
                 infi.setText(c.getFecha_in());
                 inff.setText(c.getFecha_fin());
 
-
                 btnfi.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -188,7 +188,8 @@ public class EncuestaAdapter extends BaseAdapter {
                                 ai=year;
                                 mi=month;
                                 di=dayOfMonth;
-                                cadenai=year+"-"+month+"-"+dayOfMonth+" ";
+                                cadenai=year+"-"+(month+1)+"-"+dayOfMonth+" ";
+                                Log.d("MEs",mi+"");
 
                                 TimePickerDialog hora=new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
                                     @Override
@@ -220,7 +221,7 @@ public class EncuestaAdapter extends BaseAdapter {
                                 af=year;
                                 mf=month;
                                 df=dayOfMonth;
-                                cadenaf=year+"-"+month+"-"+dayOfMonth+" ";
+                                cadenaf=year+"-"+(month+1)+"-"+dayOfMonth+" ";
 
                                 TimePickerDialog hora=new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
                                     @Override

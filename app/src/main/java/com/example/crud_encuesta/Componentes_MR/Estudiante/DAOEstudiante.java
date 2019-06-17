@@ -301,6 +301,52 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         request.add(jsonObjectRequest);
     }
 
+    public ArrayList<Estudiante> verBusqueda(AdaptadorEstudiante adaptadorEstudiante, ListView listView, String parametro){
+        lista.clear();
+        wsConsultaBusqueda(adaptadorEstudiante, listView, parametro);
+        return lista;
+    }
+
+    public void wsConsultaBusqueda(final AdaptadorEstudiante adaptadorEstudiante, final ListView listView, String parametro) {
+
+        progreso.show();
+        String url = host+"MR11139/WSBusquedaEstudiante.php?parametro="+parametro;
+
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray json = response.optJSONArray("ESTUDIANTE");
+                    lista.clear();
+                    for (int i = 0; i<json.length();i++){
+                        JSONObject jsonObject = null;
+                        jsonObject = json.getJSONObject(i);
+                        lista.add(estudiante = new Estudiante(
+                                jsonObject.optInt("ID_EST"),
+                                jsonObject.optString("CARNET"),
+                                jsonObject.optString("NOMBRE"),
+                                jsonObject.optInt("ACTIVO"),
+                                jsonObject.optString("ANIO_INGRESO"),
+                                jsonObject.optInt("IDUSUARIO")
+                        ));
+                    }
+
+                    listView.setAdapter(adaptadorEstudiante);
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        request.add(jsonObjectRequest);
+        progreso.hide();
+    }
+
     @Override
     public void onErrorResponse(VolleyError error) {
         progreso.hide();
