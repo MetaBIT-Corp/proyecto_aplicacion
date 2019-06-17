@@ -70,7 +70,7 @@ public class ActivityEstudiante extends AppCompatActivity {
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lista = dao.verBusqueda(buscar.getText().toString());
+                lista = dao.verBusqueda(adapter,list,buscar.getText().toString());
                 if((lista != null) && (lista.size() > 0)){
                     list.setAdapter(adapter);
                 }
