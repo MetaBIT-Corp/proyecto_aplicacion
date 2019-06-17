@@ -262,6 +262,7 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
             public void onClick(View v) {
                 AlertDialog.Builder emergente = new AlertDialog.Builder(context);
                 emergente.setTitle(R.string.mt_finalizar);
+                emergente.setCancelable(false);
                 emergente.setMessage(R.string.mt_finalizar_evaluacion);
                 emergente.setIcon(R.drawable.infoazul);
 
@@ -272,7 +273,8 @@ public class IntentoAdapter extends BaseAdapter implements AdapterView.OnItemSel
                         terminar_intento();
 
                         AlertDialog.Builder nota = new AlertDialog.Builder(context);
-                        nota.setTitle("Nombre evaluación");
+                        nota.setTitle("Evaluación finalizada");
+                        nota.setCancelable(false);
                         nota.setMessage("Nota: " + calcular_nota());
                         nota.setPositiveButton(R.string.mt_aceptar, new DialogInterface.OnClickListener() {
                             @Override
