@@ -288,7 +288,6 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
                 "&anio_ingreso=" + estudiante.getAnio_ingreso() +
                 "&carnet=" + estudiante.getCarnet() +
                 "&nombre=" + estudiante.getNombre()+
-                "&id_usuario=" + estudiante.getId_usuario()+
                 "&activo="+estudiante.getActivo();
         url = url.replace(" ", "%20");
         jsonObjectRequest = new JsonObjectRequest(

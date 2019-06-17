@@ -3,15 +3,13 @@
 $json=array();  // se encarga de almacenar la información que retorna el webService
 	
     //validación
-    if(isset($_GET["id_est"]) && 
-       isset($_GET["id_usuario"]) && 
+    if(isset($_GET["id_est"]) &&  
        isset($_GET["carnet"]) && 
        isset($_GET["nombre"]) && 
        isset($_GET["activo"]) && 
        isset($_GET["anio_ingreso"])){
         
 		$id_est = $_GET["id_est"];
-        $id_usuario = $_GET["id_usuario"];
         $carnet = $_GET["carnet"];
         $nombre = $_GET["nombre"];
         $activo = $_GET["activo"];
@@ -22,7 +20,6 @@ $json=array();  // se encarga de almacenar la información que retorna el webSer
         
 		$insert= "UPDATE ESTUDIANTE SET 
         ID_EST='{$id_est}',
-        IDUSUARIO='{$id_usuario}',
         CARNET='{$carnet}',
         NOMBRE='{$nombre}',
         ACTIVO='{$activo}',
