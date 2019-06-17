@@ -14,9 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.crud_encuesta.Componentes_AP.Models.Usuario;
-import com.example.crud_encuesta.Componentes_EL.Encuesta.Encuesta;
 import com.example.crud_encuesta.DatabaseAccess;
-import com.example.crud_encuesta.ObtenerCorrelativoTabla;
 import com.example.crud_encuesta.R;
 
 import org.json.JSONArray;
@@ -35,21 +33,16 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
     private RequestQueue request;
     private JsonObjectRequest jsonObjectRequest;
     private String host = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/";
-    private int id_usuario;
-    private ObtenerCorrelativoTabla obtenerCorrelativoTabla;
 
     public DAOEstudiante(Context ct){
         this.ct = ct;
         DatabaseAccess dba = DatabaseAccess.getInstance(ct);
         cx = dba.open();
 
-        request = Volley.newRequestQueue(ct);
-
         progreso = new ProgressDialog(ct);
         String cargando = ct.getResources().getString(R.string.ws_cargando);
         progreso.setMessage(cargando);
 
-        obtenerCorrelativoTabla = new ObtenerCorrelativoTabla();
     }
 
     public boolean insertarUsuario(Usuario usuario){
@@ -98,7 +91,7 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
                     "activo="+estd.getActivo()+"&" +
                     "anio_ingreso="+estd.getAnio_ingreso();
 
-            cargarWebService(url);
+            cargarWebServiceInsertar(url);
         }
         return respuesta;
     }
@@ -120,15 +113,6 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         return 0;
     }*/
 
-    private void cargarWebService(String url) {
-        progreso.show();
-
-        url = url.replace(" ","%20");
-        jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,null, this, this);
-
-        request.add(jsonObjectRequest);
-
-    }
 
     public boolean eliminar(int id){
         wsEliminar(id);
@@ -179,6 +163,17 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
         wsConsulta(adaptadorEstudiante, listView);
 
         return lista;
+    }
+
+    private void cargarWebServiceInsertar(String url) {
+        progreso.show();
+        request = Volley.newRequestQueue(ct);
+        url = url.replace(" ","%20");
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,null, this, this);
+
+        request.add(jsonObjectRequest);
+
+        progreso.hide();
     }
 
     public void wsConsulta(final AdaptadorEstudiante adaptadorEstudiante, final ListView listView) {
@@ -271,7 +266,6 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
      */
     private void wsEliminar(int id) {
         request = Volley.newRequestQueue(ct);
-        String cargando = ct.getResources().getString(R.string.ws_cargando);
         progreso.show();
         String url = host+"EL16002/ws_EliminarEstudiante.php?id="+id;
         jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,null,this,this);
@@ -280,8 +274,9 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
     }
 
     public void cargarWebServiceEditar(Estudiante estudiante) {
+        progreso.show();
         request = Volley.newRequestQueue(ct);
-        String host = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/";
+        //String host = "https://eisi.fia.ues.edu.sv/encuestas/pdm115_ws/";
         String ws= "AP16014/ws_update_estudiante.php?";
         String url = host+ ws +
                 "id_est=" + estudiante.getId() +
@@ -290,6 +285,7 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
                 "&nombre=" + estudiante.getNombre()+
                 "&activo="+estudiante.getActivo();
         url = url.replace(" ", "%20");
+
         jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -297,7 +293,9 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
                 this,
                 this
         );
+
         request.add(jsonObjectRequest);
+        progreso.hide();
     }
 
     public ArrayList<Estudiante> verBusqueda(AdaptadorEstudiante adaptadorEstudiante, ListView listView, String parametro){
@@ -310,6 +308,7 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
 
         progreso.show();
         String url = host+"MR11139/WSBusquedaEstudiante.php?parametro="+parametro;
+        request = Volley.newRequestQueue(ct);
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -348,13 +347,11 @@ public class DAOEstudiante implements Response.Listener<JSONObject>, Response.Er
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        progreso.hide();
-        Toast.makeText(ct, R.string.ws_error, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ct,  R.string.ws_error + error.toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onResponse(JSONObject response) {
-        progreso.hide();
         Toast.makeText(ct, R.string.ws_exito, Toast.LENGTH_SHORT).show();
     }
 
